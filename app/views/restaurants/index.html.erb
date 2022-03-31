@@ -1,1 +1,26 @@
-<h1><%= @restaurants.size %></h1>
+<div class="d-flex flex-row-reverse">
+  <%= link_to 'Add Restaurant', new_restaurant_path, class: 'btn btn-outline-success mx-20' %>
+</div>
+<div class="mt-3 row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-lg-2 col-md-4 col-sm-10 mx-auto">
+      <div class="image-card border-gray">
+        <% image = restaurant.images.attached? ? restaurant.images.first : 'default_thumbnail.svg' %>
+        <%= image_tag image, class: 'card-img border-bottom-gray' %>
+        <div class="p-3">
+          <h6 class="fw-bold"><%= restaurant.name %></h6>
+          <div class="description">
+            <label>Cuisine</label>
+            <h6><%= restaurant.cuisine %></h6>
+            <label>City</label>
+            <h6><%= restaurant.city %></h6>
+            <label>Average Score</label>
+            <h6><%= 8.99 %></h6>
+            <label>Favorite Dish</label>
+            <h6><%= restaurant.favorite_dish %></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

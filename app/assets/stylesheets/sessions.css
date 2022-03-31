@@ -1,0 +1,75 @@
+body {
+    font-family: Roboto;
+    overflow-x: hidden;
+}
+
+.session-container {
+    display: flex;
+    background-color: #65b123;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-card {
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0.1px 0.1px black;
+    border-radius: 5px;
+    padding: 40px 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: black;
+}
+
+h4 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+.submit-button, .submit-button:hover {
+    background-color: #65b123;
+    padding: 15px 50px;
+    font-size: 16px;
+    border-radius: 0;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+
+.session-link, .session-link:hover {
+    color: black;
+}
+
+.user-initial-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #65b123;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.session-header {
+    box-shadow: 0.1px 0.1px black;
+}
+
+.session-heading {
+    color: #65b123;
+    padding: 5px;
+    font-weight: bolder;
+    font-size: 26px;
+}
+.mx-20{
+    margin-right: 20px;
+    margin-top: 20px;
+}

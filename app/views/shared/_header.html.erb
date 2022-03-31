@@ -1,0 +1,40 @@
+<header class="session-header">
+  <div class="d-flex align-items-center px-4 <%= user_signed_in? ? 'justify-content-between' : 'justify-content-center' %>">
+    <div class="session-heading">
+      Restaurant Reviews
+    </div>
+    <% if user_signed_in? %>
+      <div class="dropdown cursor-pointer">
+        <div class="dropdown-toggle d-flex flex-row align-items-center" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="user-initial-circle">
+            <%= current_user.first_name[0] %>
+          </span>
+          <%= current_user.first_name %>
+        </div>
+        <div class="dropdown-menu" aria-labelledby="sessionDropdown">
+          <div class="dropdown-item pb-3 m-0 pr-2 pl-4 pt-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#logOutModal">
+            Log Out
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>
+
+<div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you Sure</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You want to logout.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= link_to 'LOG OUT', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+</div>

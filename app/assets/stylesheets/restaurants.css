@@ -1,0 +1,32 @@
+.restaurant-btn, .restaurant-btn:hover {
+    color: #65b123;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.image-card {
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0.1px 0.1px black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.border-gray {
+    border: 1px solid #d7d7d7;
+}
+
+.border-bottom-gray {
+    border: 1px solid #d7d7d7;
+}
+
+.card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.description > label {
+    font-size: 15px;
+}
