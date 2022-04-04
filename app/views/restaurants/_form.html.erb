@@ -1,7 +1,7 @@
 <div>
   <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mt-4 mx-auto">
     <div class="form-card border-gray">
-      <%= form_for(restaurant, url: restaurants_path) do |f| %>
+      <%= form_with(model: restaurant) do |f| %>
 
         <% if restaurant.errors.any? %>
           <div id="error_explanation">
@@ -64,7 +64,7 @@
         </div>
 
         <div class="text-center">
-          <%= f.submit "Add Restaurant", class: "submit-button border-0 mt-4 mb-4" %>
+          <%= f.submit class: "submit-button border-0 mt-4 mb-4" %>
         </div>
       <% end %>
     </div>
