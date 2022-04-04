@@ -30,3 +30,8 @@
 .description > label {
     font-size: 15px;
 }
+
+.actions {
+    right: 1rem;
+    top: 1rem;
+}

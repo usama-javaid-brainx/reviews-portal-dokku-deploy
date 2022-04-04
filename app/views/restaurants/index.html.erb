@@ -4,7 +4,15 @@
 <div class="mt-3 row">
   <% @restaurants.each do |restaurant| %>
     <div class="col-lg-2 col-md-4 col-sm-10 mx-auto">
-      <div class="image-card border-gray">
+      <div class="image-card border-gray position-relative">
+        <div class="dropdown actions position-absolute">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'dropdown-item' %></li>
+            <li><%= link_to 'Delete', restaurant_path(restaurant), data: { 'turbo-method': :delete, 'turbo-confirm': "Are you sure to delete?" }, class: 'dropdown-item' %></li>
+          </ul>
+        </div>
         <% image = restaurant.images.attached? ? restaurant.images.first : 'default_thumbnail.svg' %>
         <%= image_tag image, class: 'card-img border-bottom-gray' %>
         <div class="p-3">
