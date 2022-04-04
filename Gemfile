@@ -10,7 +10,7 @@ gem "rails", "~> 7.0", ">= 7.0.2.3"
 gem "sprockets-rails", "~> 3.4"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+gem "pg", "~> 1.3"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.6"
@@ -36,6 +36,9 @@ gem "redis", "~> 4.6"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
+gem "devise", "~> 4.8"
+gem "image_processing", "~> 1.12"
+gem "devise-bootstrapped", "~> 0.1"
 gem 'country_select', "~> 7.0", require: 'country_select_without_sort_alphabetical'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,9 +75,3 @@ group :test do
   gem "selenium-webdriver", "~> 4.1"
   gem "webdrivers", "~> 5.0"
 end
-
-gem "pg", "~> 1.3"
-
-gem "devise", "~> 4.8"
-gem "image_processing", "~> 1.12"
-gem "devise-bootstrapped", "~> 0.1"
