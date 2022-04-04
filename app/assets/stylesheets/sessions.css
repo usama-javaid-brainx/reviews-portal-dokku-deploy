@@ -5,9 +5,12 @@ body {
 
 .session-container {
     display: flex;
-    background-color: #65b123;
     align-items: center;
-    height: 100vh;
+    min-height: calc(100vh - 50px);
+    background-image: url('restaurant_view.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .form-card {

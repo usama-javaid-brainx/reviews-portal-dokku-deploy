@@ -1,21 +1,22 @@
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-    <h2 class="text-center">Forgot your password?</h2>
+<div class="session-container">
+  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto">
+    <div class="form-card">
+      <h4 class=" text-center">Forgot your password?</h4>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= devise_error_messages! %>
+        <br>
+        <p class="text-left">Please enter your email address and we will send you a link to reset your password.</p>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Email Address', class: 'form-control mt-4' %>
+        </div>
 
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= devise_error_messages! %>
-      <br>
-      <p class="text-left">Please enter your email address and we will send you a link to reset your password.</p>
-      <div class="form-group">
-        <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
+        <div class="form-group text-center">
+          <%= f.submit "Send me reset password instructions", class: "btn submit-button mt-4 mb-4" %>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
       </div>
-
-      <div class="form-group">
-        <%= f.submit "Send me reset password instructions", class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
-    <% end %>
-    <div class="text-center">
-      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
