@@ -1,0 +1,86 @@
+<div>
+  <div class="col-xl-5 col-lg-6 col-md-7 col-sm-10 mt-4 mx-auto">
+    <div class="form-card border-gray">
+      <div class="mt-2 row">
+        <div class="col-4 mt-2">
+          Restaurant Name
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant.name %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Country
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.country %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          City
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.city %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Cuisine
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.cuisine %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Favorite Dish
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.favorite_dish %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4">
+        <%= label_tag "Attachments" %><br/>
+        <div class="ml-20 d-flex flex-row flex-wrap">
+          <% @restaurant.images.each do |attachment| %>
+            <%= image_tag attachment, class: 'attachments-imag' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Average_score
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.average_score %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Notes
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.notes %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Google Map Link
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.google_maps_link %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Date
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant&.date %>" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

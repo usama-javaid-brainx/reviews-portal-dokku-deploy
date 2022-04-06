@@ -6,29 +6,32 @@
     <div class="col-lg-2 col-md-4 col-sm-10 mx-auto">
       <div class="image-card border-gray position-relative">
         <div class="dropdown actions position-absolute">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-          </button>
+          <div id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= image_tag 'details_icon.svg' %>
+          </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <li><%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'dropdown-item' %></li>
             <li><%= link_to 'Delete', restaurant_path(restaurant), data: { 'turbo-method': :delete, 'turbo-confirm': "Are you sure to delete?" }, class: 'dropdown-item' %></li>
           </ul>
         </div>
-        <% image = restaurant.images.attached? ? restaurant.images.first : 'default_thumbnail.svg' %>
-        <%= image_tag image, class: 'card-img border-bottom-gray' %>
-        <div class="p-3">
-          <h6 class="fw-bold"><%= restaurant.name %></h6>
-          <div class="description">
-            <label>Cuisine</label>
-            <h6><%= restaurant.cuisine %></h6>
-            <label>City</label>
-            <h6><%= restaurant.city %></h6>
-            <label>Average Score</label>
-            <h6><%= 8.99 %></h6>
-            <label>Favorite Dish</label>
-            <h6><%= restaurant.favorite_dish %></h6>
+        <%= link_to restaurant_path(restaurant) do %>
+          <% image = restaurant.images.attached? ? restaurant.images.first : 'default_thumbnail.svg' %>
+          <%= image_tag image, class: 'card-img border-bottom-gray' %>
+          <div class="p-3">
+            <h6 class="fw-bold"><%= restaurant.name %></h6>
+            <div class="description">
+              <label>Cuisine</label>
+              <h6><%= restaurant.cuisine %></h6>
+              <label>City</label>
+              <h6><%= restaurant.city %></h6>
+              <label>Average Score</label>
+              <h6><%= 8.99 %></h6>
+              <label>Favorite Dish</label>
+              <h6><%= restaurant.favorite_dish %></h6>
+            </div>
           </div>
+          </div>
+        <% end %>
         </div>
-      </div>
-    </div>
   <% end %>
 </div>
