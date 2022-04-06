@@ -14,7 +14,7 @@
           Country
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.country %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.country %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -22,7 +22,7 @@
           City
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.city %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.city %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -30,7 +30,7 @@
           Cuisine
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.cuisine %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.cuisine %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -38,7 +38,7 @@
           Favorite Dish
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.favorite_dish %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.favorite_dish %>" disabled>
         </div>
       </div>
       <div class="mt-4">
@@ -54,7 +54,7 @@
           Average_score
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.average_score %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.average_score.present? ? '%.2f' % @restaurant.average_score : 0.00 %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -62,7 +62,7 @@
           Notes
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.notes %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.notes %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -70,7 +70,7 @@
           Google Map Link
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.google_maps_link %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.google_maps_link %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -78,7 +78,7 @@
           Date
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant&.date %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.date %>" disabled>
         </div>
       </div>
     </div>

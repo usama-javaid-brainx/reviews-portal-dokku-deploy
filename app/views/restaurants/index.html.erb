@@ -25,7 +25,7 @@
               <label>City</label>
               <h6><%= restaurant.city %></h6>
               <label>Average Score</label>
-              <h6><%= 8.99 %></h6>
+              <h6><%= restaurant.average_score.present? ? '%.2f' % restaurant.average_score : 0.00 %></h6>
               <label>Favorite Dish</label>
               <h6><%= restaurant.favorite_dish %></h6>
             </div>
