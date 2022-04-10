@@ -1,6 +1,13 @@
 <div>
   <div class="col-xl-5 col-lg-6 col-md-7 col-sm-10 mt-4 mx-auto">
     <div class="form-card border-gray">
+      <div class="d-flex justify-content-end">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <a href="<%= edit_restaurant_path(@restaurant) %>" type="button" class="btn btn-outline-primary">Edit</a>
+          <a href="<%= restaurant_path(@restaurant) %>" type="button" class="btn btn-outline-primary"
+             data-turbo-method="delete" data-turbo-confirm="Are you sure to delete?">Delete</a>
+        </div>
+      </div>
       <div class="mt-2 row">
         <div class="col-4 mt-2">
           Restaurant Name
@@ -43,9 +50,13 @@
       </div>
       <div class="mt-4">
         <%= label_tag "Attachments" %><br/>
-        <div class="ml-20 d-flex flex-row flex-wrap">
+        <div class="ml-20 d-flex flex-row flex-wrap" id="gallery">
           <% @restaurant.images.each do |attachment| %>
-            <%= image_tag attachment, class: 'attachments-imag' %>
+            <a href="<%= Rails.application.routes.url_helpers.rails_blob_path(attachment) %>" target="_blank"
+               data-pswp-width="<%= attachment.metadata[:width] %>"
+               data-pswp-height="<%= attachment.metadata[:height] %>">
+              <%= image_tag attachment, class: 'attachments-imag' %>
+            </a>
           <% end %>
         </div>
       </div>
