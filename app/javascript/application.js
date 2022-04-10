@@ -11,7 +11,7 @@ document.addEventListener('turbo:load', () => {
   //   speed: 500,
   // });
   const lightbox = new PhotoSwipeLightbox({
-    gallery: '#lightgallery',
+    gallery: '#gallery',
     children: 'a',
     pswpModule: () => PhotoSwipe
   });
