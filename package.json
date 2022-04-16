@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/turbo-rails": "^7.1.1",
+    "esbuild": "^0.14.36",
+    "photoswipe": "^5.2.4",
+    "stimulus-places-autocomplete": "https://github.com/joemasilotti/stimulus-places-autocomplete"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+  }
+}

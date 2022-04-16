@@ -38,6 +38,11 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path, notice: "Restaurant deleted successfully!" if @restaurant.destroy
   end
 
+  def delete_attachment
+    @image = ActiveStorage::Attachment.find(params[:attachment_id])
+    @image.purge if @image.present?
+  end
+
   private
 
   def set_restaurant
@@ -45,6 +50,8 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require('restaurant').permit(:name, :country, :city, :favorite_dish, :cuisine, :average_score, :notes, :date, :google_maps_link, images: [])
+    params.require('restaurant').permit(:name, :address, :state, :country, :city, :latitude, :longitude, :place_id,
+                                        :favorite_dish, :cuisine,
+                                        :average_score, :notes, :date, images: [])
   end
 end

@@ -18,10 +18,10 @@
       </div>
       <div class="mt-4 row">
         <div class="col-4 mt-2">
-          Country
+          Address
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant.country %>" disabled>
+          <input class="form-control w-100" value="<%= @restaurant.address %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -30,6 +30,14 @@
         </div>
         <div class="col-8">
           <input class="form-control w-100" value="<%= @restaurant.city %>" disabled>
+        </div>
+      </div>
+      <div class="mt-4 row">
+        <div class="col-4 mt-2">
+          Country
+        </div>
+        <div class="col-8">
+          <input class="form-control w-100" value="<%= @restaurant.country %>" disabled>
         </div>
       </div>
       <div class="mt-4 row">
@@ -52,11 +60,15 @@
         <%= label_tag "Attachments" %><br/>
         <div class="ml-20 d-flex flex-row flex-wrap" id="gallery">
           <% @restaurant.images.each do |attachment| %>
-            <a href="<%= Rails.application.routes.url_helpers.rails_blob_path(attachment) %>" target="_blank"
-               data-pswp-width="<%= attachment.metadata[:width] %>"
-               data-pswp-height="<%= attachment.metadata[:height] %>">
-              <%= image_tag attachment, class: 'attachments-imag' %>
-            </a>
+            <div class="d-flex flex-column" id="<%= dom_id(attachment) %>">
+              <a class="gallery-image" href="<%= Rails.application.routes.url_helpers.rails_blob_path(attachment) %>" target="_blank"
+                 data-pswp-width="<%= attachment.metadata[:width] %>"
+                 data-pswp-height="<%= attachment.metadata[:height] %>">
+                <%= image_tag attachment, class: 'attachments-img' %>
+              </a>
+              <%= link_to 'Remove', delete_attachment_restaurant_path(@restaurant.id, attachment_id: attachment.id),
+                          data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure, you want to delete?' } %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -81,7 +93,7 @@
           Google Map Link
         </div>
         <div class="col-8">
-          <input class="form-control w-100" value="<%= @restaurant.google_maps_link %>" disabled>
+          <%= link_to @restaurant.google_maps_link, @restaurant.google_maps_link, class: "form-control w-100", target: '_blank' %>
         </div>
       </div>
       <div class="mt-4 row">

@@ -1,3 +1,10 @@
+<%= content_for :head_content do %>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFbLw7Yc1hLAOvQAWbd48XdvtNhieq5Y&libraries=places&callback=initMap"
+    async=""
+    defer=""
+  ></script>
+<% end %>
 <div>
   <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mt-4 mx-auto">
     <div class="form-card border-gray">
@@ -19,52 +26,99 @@
           </div>
         <% end %>
 
-        <div class="form-group mt-4">
-          <%= f.label "Restaurant Name" %><br/>
-          <%= f.text_field :name, autofocus: true, placeholder: 'Name', class: 'mt-2 form-control' %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "Country" %><br/>
-          <%= f.country_select :country, { priority_countries: %w[US FR], priority_countries_divider: "~~~~~~", include_blank: 'Select a country' }, { placeholder: 'Country', class: 'mt-2 form-select' } %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "City" %><br/>
-          <%= f.text_field :city, placeholder: 'City', class: 'mt-2 form-control' %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "Attachments" %><br/>
-          <%= f.file_field :images, class: 'mt-2 form-control', multiple: true %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "Cuisine" %><br/>
-          <%= f.text_field :cuisine, placeholder: 'Cuisine', class: 'mt-2 form-control' %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "Favorite Dish" %><br/>
-          <%= f.text_field :favorite_dish, placeholder: 'Dish Name', class: 'mt-2 form-control' %>
-        </div>
-        <div class="form-group mt-4">
-          <%= f.label "Average Score" %><br/>
-          <%= f.number_field :average_score, placeholder: 'Average Score', class: 'mt-2 form-control', step: "0.01" %>
-        </div>
+        <div
+          data-controller="places"
+          data-action="google-maps-callback@window->places#initMap"
+          data-places-country-value='["us"]'>
+          <div class="form-group mt-4">
+            <label for="search">Search a location</label><br/>
+            <input class="mt-2 form-control" id="search" type="text" placeholder="Search a location" autofocus
+                   data-action="keydown->places#keydown"
+                   data-places-target="field"/>
+          </div>
 
-        <div class="form-group mt-4">
-          <%= f.label "Notes" %><br/>
-          <%= f.text_area :notes, placeholder: 'Notes', class: 'mt-2 form-control' %>
-        </div>
+          <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
+          <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>
+          <%= f.hidden_field :latitude, data: { 'places-target': 'latitude' } %>
 
-        <div class="form-group mt-4">
-          <%= f.label "Google Maps Link" %><br/>
-          <%= f.text_field :google_maps_link, placeholder: 'Google Maps Link', class: 'mt-2 form-control' %>
-        </div>
+          <div class="p-4">
+            <div data-places-target="map" style="height:400px;width:400px"></div>
+          </div>
 
-        <div class="form-group mt-4">
-          <%= f.label "Date" %><br/>
-          <%= f.date_select :date, placeholder: 'Date', class: 'mt-2 form-control' %>
-        </div>
+          <div class="form-group mt-4">
+            <%= f.label "Restaurant Name" %><br/>
+            <%= f.text_field :name, placeholder: 'Name', class: 'mt-2 form-control',
+                             data: { 'places-target': 'name' } %>
+          </div>
 
-        <div class="text-center">
-          <%= f.submit class: "submit-button border-0 mt-4 mb-4" %>
+          <div class="form-group mt-4">
+            <%= f.label "Address" %><br/>
+            <%= f.text_field :address, placeholder: 'Address', class: 'mt-2 form-control',
+                             data: { 'places-target': 'address' } %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "City" %><br/>
+            <%= f.text_field :city, placeholder: 'City', class: 'mt-2 form-control',
+                             data: { 'places-target': 'city' } %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "State" %><br/>
+            <%= f.text_field :state, placeholder: 'State', class: 'mt-2 form-control',
+                             data: { 'places-target': 'state' } %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "Country" %><br/>
+            <%= f.text_field :country, placeholder: 'Country', class: 'mt-2 form-control',
+                             data: { 'places-target': 'country' } %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "Attachments" %><br/>
+            <%= f.file_field :images, class: 'mt-2 form-control', multiple: true %>
+          </div>
+          <div class="mt-3 d-flex flex-row flex-wrap" id="gallery">
+            <% restaurant.images.each do |attachment| %>
+              <div class="d-flex flex-column" id="<%= dom_id(attachment) %>">
+                <a class="gallery-image" href="<%= Rails.application.routes.url_helpers.rails_blob_path(attachment) %>" target="_blank"
+                   data-pswp-width="<%= attachment.metadata[:width] %>"
+                   data-pswp-height="<%= attachment.metadata[:height] %>">
+                  <%= image_tag attachment, class: 'attachments-img' %>
+                </a>
+                <%= link_to 'Remove', delete_attachment_restaurant_path(restaurant.id, attachment_id: attachment.id),
+                            data: { 'turbo-method': :delete, 'turbo-confirm': 'Are you sure, you want to delete?' } %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "Cuisine" %><br/>
+            <%= f.text_field :cuisine, placeholder: 'Cuisine', class: 'mt-2 form-control' %>
+          </div>
+          <div class="form-group mt-4">
+            <%= f.label "Favorite Dish" %><br/>
+            <%= f.text_field :favorite_dish, placeholder: 'Dish Name', class: 'mt-2 form-control' %>
+          </div>
+          <div class="form-group mt-4">
+            <%= f.label "Average Score" %><br/>
+            <%= f.number_field :average_score, placeholder: 'Average Score', class: 'mt-2 form-control', step: "0.01" %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "Notes" %><br/>
+            <%= f.text_area :notes, placeholder: 'Notes', class: 'mt-2 form-control' %>
+          </div>
+
+          <div class="form-group mt-4">
+            <%= f.label "Date" %><br/>
+            <%= f.date_select :date, placeholder: 'Date', class: 'mt-2 form-control' %>
+          </div>
+
+          <div class="text-center">
+            <%= f.submit class: "submit-button border-0 mt-4 mb-4" %>
+          </div>
         </div>
       <% end %>
     </div>

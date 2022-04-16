@@ -1,8 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "controllers"
+import "./controllers"
 
-import PhotoSwipeLightbox from "photoswipe-lightbox"
+import PhotoSwipeLightbox from "photoswipe/lightbox"
 import PhotoSwipe from "photoswipe"
 
 document.addEventListener('turbo:load', () => {
@@ -12,8 +12,15 @@ document.addEventListener('turbo:load', () => {
   // });
   const lightbox = new PhotoSwipeLightbox({
     gallery: '#gallery',
-    children: 'a',
+    children: 'a.gallery-image',
     pswpModule: () => PhotoSwipe
   });
   lightbox.init();
 })
+
+window.initMap = function (...args) {
+  const event = new Event('google-maps-callback', {
+    bubbles: true, cancelable: true, ...args
+  })
+  window.dispatchEvent(event)
+}
