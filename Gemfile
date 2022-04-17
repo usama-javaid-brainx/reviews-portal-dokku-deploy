@@ -39,8 +39,8 @@ gem "redis", "~> 4.6"
 gem "devise", git: 'https://github.com/ghiculescu/devise.git', branch: "error-code-422"
 gem "image_processing", "~> 1.12"
 gem "devise-bootstrapped", "~> 0.1"
-gem 'country_select', "~> 7.0", require: 'country_select_without_sort_alphabetical'
 
+gem 'aws-sdk-s3', require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
