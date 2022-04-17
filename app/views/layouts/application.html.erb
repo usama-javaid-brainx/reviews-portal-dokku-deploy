@@ -13,6 +13,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= yield(:head_content) if content_for?(:head_content) %>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFbLw7Yc1hLAOvQAWbd48XdvtNhieq5Y&libraries=places"
+      async=""
+      defer=""
+    ></script>
   </head>
   <body>
     <%= render "shared/header" %>
