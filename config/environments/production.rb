@@ -91,6 +91,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   Rails.application.routes.default_url_options = config.action_mailer.default_url_options = {host: Rails.application.credentials.dig(:host)}
-
-  config.active_storage.variant_processor = :mini_magick
 end
