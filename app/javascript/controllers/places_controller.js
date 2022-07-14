@@ -56,7 +56,6 @@ export default class extends Controller {
 
     this.marker.setPosition(place.geometry.location)
     this.marker.setVisible(true)
-    debugger
     this.latitudeValue = this.latitudeTarget.value = place.geometry.location.lat()
     this.longitudeValue = this.longitudeTarget.value = place.geometry.location.lng()
     this.nameTarget.value = place.name
