@@ -63,6 +63,8 @@ group :development do
   gem "web-console", "~> 4.2"
 
   gem 'annotate', '~> 3.2'
+
+  gem 'pagy', '~> 5.10'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
