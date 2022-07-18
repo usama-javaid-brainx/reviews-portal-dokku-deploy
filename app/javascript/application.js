@@ -24,3 +24,4 @@ window.initMap = function (...args) {
   })
   window.dispatchEvent(event)
 }
+
