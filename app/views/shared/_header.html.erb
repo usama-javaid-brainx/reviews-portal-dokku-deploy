@@ -1,40 +1,55 @@
-<header class="session-header">
-  <div class="d-flex align-items-center px-4 <%= user_signed_in? ? 'justify-content-between' : 'justify-content-center' %>">
-    <a class="session-heading text-decoration-none" href="<%= root_path %>">
-      Restaurant Reviews
-    </a>
-    <% if user_signed_in? %>
-      <div class="dropdown cursor-pointer">
-        <div class="dropdown-toggle d-flex flex-row align-items-center" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="user-initial-circle">
-            <%= current_user.first_name[0] %>
-          </span>
-          <%= current_user.first_name %>
-        </div>
-        <div class="dropdown-menu" aria-labelledby="sessionDropdown">
-          <div class="dropdown-item pb-3 m-0 pr-2 pl-4 pt-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#logOutModal">
-            Log Out
-          </div>
-        </div>
+<header class="d-flex align-items-center sticky-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-3">
+        <%= link_to root_path, class: 'logo' do %>
+          <%= image_tag("template/logo.png") %>
+          <%= image_tag("template/logo1.png") %>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</header>
+      <div class="col-lg-6 col-6 text-center">
+        <ul class="menu d-none d-lg-inline-flex align-items-center jutify-content-center">
+          <li><a class="nav_link active" href="#"><%= image_tag("template/nav-icon1.png") %><span>Restaurants</span></a></li>
+          <li><a class="nav_link" href="#"><%= image_tag("template/nav-icon2.png") %><span>Games</span></a></li>
+          <li><a class="nav_link" href="#"><%= image_tag("template/nav-icon3.png") %><span>Books</span></a></li>
+          <li><a class="nav_link" href="#"><%= image_tag("template/nav-icon4.png") %><span>Movies</span></a></li>
+          <li class="dropdown ml_15">
+            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon5.png") %></a>
+            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
+              <li><a class="dropdown-item" href="#">New Item 1</a></li>
+              <li><a class="dropdown-item" href="#">New Item 2</a></li>
+              <li><a class="dropdown-item" href="#">New Item 3</a></li>
+            </ul>
+          </li>
+        </ul>
 
-<div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you Sure</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- menu dropdown for mobile -->
+        <div class="d-lg-none dropdown menuItemDropdown">
+          <a href="#" class="toggler" id="menuItemDropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon1.png") %><span>Restaurants</span><%= image_tag("template/bottom-arrow3.png", class: 'arrow') %></a>
+
+          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon2.png") %></span><span>Games</span></a></li>
+            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon3.png") %></span><span>Books</span></a></li>
+            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon4.png") %></span><span>Movies</span></a></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="modal-body">
-        You want to logout.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'LOG OUT', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
+      <div class="col-lg-3 col-3 text-end">
+        <div class="dropdown user d-inline-block">
+          <a class="d-inline-flex align-items-center" href="#" id="user_dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <p class="name">Hello, <span>James</span></p>
+            <%= image_tag("template/avatar1.png", class: 'avatar') %>
+            <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="user_dropdown">
+            <li><a class="dropdown-item" href="#">New User 1</a></li>
+            <li><a class="dropdown-item" href="#">New User 2</a></li>
+            <li><a class="dropdown-item" href="#">New User 3</a></li>
+            <li><a class="dropdown-item" href="#">New User 4</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</header>
