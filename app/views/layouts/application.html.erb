@@ -37,7 +37,6 @@
 
   <% if user_signed_in? %> <%= render "shared/header" %> <% end %>
 
-
   <%= render 'shared/flash_messages' %>
   <%= yield %>
   <%= javascript_include_tag 'dashboard' %>
