@@ -80,6 +80,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     aws-eventstream (1.2.0)
     aws-partitions (1.577.0)
     aws-sdk-core (3.130.1)
@@ -261,6 +264,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  annotate (~> 3.2)
   aws-sdk-s3
   bootsnap (~> 1.11)
   capybara (~> 3.36)
