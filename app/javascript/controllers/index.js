@@ -9,3 +9,7 @@ application.register("hello", HelloController)
 
 import PlacesController from "./places_controller.js"
 application.register("places", PlacesController)
+
+
+import TogglePasswordController from "./toggle_password_controller.js";
+application.register("toggle-password", TogglePasswordController)

@@ -99,3 +99,10 @@
     margin-right: 20px;
     margin-top: 20px;
 }
+.input-container { position: relative; }
+.input-password-icon {
+    position: absolute;
+    top: 42px;
+    right: 15px;
+    cursor: pointer;
+}
