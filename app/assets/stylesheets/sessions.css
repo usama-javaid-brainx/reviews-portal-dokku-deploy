@@ -1,48 +1,70 @@
-body {
-    font-family: Roboto;
-    overflow-x: hidden;
-}
-
 .session-container {
     display: flex;
-    align-items: center;
     min-height: 100vh;
-    background-image: url('restaurant_view.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background: #FBFBFE;
+    flex-wrap: wrap;
+    position: relative;
 }
 
-.form-card {
+.session-container::after {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    content: url('texture_right_2.png');
+}
+
+.session-container::before {
+    content: url('texture_left.png');
+    position: absolute;
+}
+
+.session-container .form-container {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.session-container .form-card {
     width: 100%;
     background-color: #FFFFFF;
-    box-shadow: 0.1px 0.1px black;
     border-radius: 5px;
     padding: 40px 50px;
-    font-family: 'Roboto', sans-serif;
     font-weight: 600;
-    color: black;
+    border: 1px solid #e4e4e4;
 }
 
-h4 {
-    font-family: 'Roboto Slab', serif;
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 18px;
+.session-container .form-card label {
+    margin-bottom: 2px;
+    font-size: 1.5rem;
 }
 
-.submit-button, .submit-button:hover {
-    background-color: #65b123;
-    padding: 15px 50px;
-    font-size: 16px;
-    border-radius: 0;
-    font-weight: bold;
-    color: #FFFFFF;
+.session-container .form-card .form-control {
+    padding: 8px 12px 8px 16px;
+    height: 40px;
+    font-size: 1.4rem;
+    border-radius: 6px;
 }
 
+.session-container .form-card .devise-links {
+    display: flex;
+    align-items: center;
+}
 
-.session-link, .session-link:hover {
-    color: black;
+.session-container .form-card .devise-links .divider {
+    height: 40px;
+    background: #EDEDFB;
+    width: 1px;
+}
+
+.session-link {
+    color: #5F33DD;
+    font-size: 1.4rem;
+}
+
+.session-link:hover {
+    text-decoration: underline;
 }
 
 .user-initial-circle {
@@ -72,7 +94,8 @@ h4 {
     font-weight: bolder;
     font-size: 26px;
 }
-.mx-20{
+
+.mx-20 {
     margin-right: 20px;
     margin-top: 20px;
 }
