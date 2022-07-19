@@ -37,29 +37,35 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <!-- review area start -->
-          <div class="review_area pt_30" id="review_area">
-            <div class="row">
-              <div class="col-lg-9">
-                <%= render 'review' %>
+
+
+          <%= form_for @restaurant, :as => @restaurant, :url => root_path, :html => {:method => 'post'} do |form| %>
+            <!-- review area start -->
+            <div class="review_area pt_30" id="review_area">
+              <div class="row">
+                <div class="col-lg-9">
+                  <%= render 'review', restaurant: @restaurant, f: form %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- photo area start -->
-          <div class="photo_area pt_30" id="photo_area">
-            <%= render 'photos' %>
-          </div>
+            <!-- photo area start -->
+            <div class="photo_area pt_30" id="photo_area">
+              <%= render 'photos', restaurant: @restaurant %>
+            </div>
 
-          <!-- localization area start -->
-          <div class="localization_area pt_30" id="localization_area">
-            <%= render 'localization' %>
-          </div>
+            <!-- localization area start -->
+            <div class="localization_area pt_30" id="localization_area">
+              <%= render 'localization', restaurant: @restaurant %>
+            </div>
 
-          <!-- tags area start -->
-          <div class="tags_area pt_30" id="tags_area">
-            <%= render 'tags' %>
-          </div>
+            <!-- tags area start -->
+            <div class="tags_area pt_30" id="tags_area">
+              <%= render 'tags', restaurant: @restaurant %>
+            </div>
+          <% end %>
+
+
 
           <!-- Favourite dishes area start -->
           <div class="pt_30" id="favourite_dishes_area">
