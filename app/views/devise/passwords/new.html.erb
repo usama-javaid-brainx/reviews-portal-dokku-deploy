@@ -1,21 +1,24 @@
 <div class="session-container">
-  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto">
+  <div class="w-100 text-center mt-5"><%= image_tag('template/logo.png') %></div>
+  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto form-container">
     <div class="form-card">
-      <h4 class=" text-center">Forgot your password?</h4>
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <h2 class="h1">Forgot your password?</h2>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post}) do |f| %>
         <%= devise_error_messages! %>
         <br>
-        <p class="text-left">Please enter your email address and we will send you a link to reset your password.</p>
-        <div class="form-group">
-          <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Email Address', class: 'form-control mt-4' %>
+        <p class="forget-description">Please enter your email address and we will send you a link to reset your password.</p>
+        <div class="form-group mt-5">
+          <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Enter your email address', class: 'form-control mt-4' %>
         </div>
 
         <div class="form-group text-center">
-          <%= f.submit "Send me reset password instructions", class: "btn submit-button mt-4 mb-4" %>
+          <%= f.submit "Send reset password link", class: "btn btn-primary d-block w-100 mt-5 mb-4" %>
         </div>
       <% end %>
       <div class="text-center">
-        <%= render "devise/shared/links" %>
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Back to login page", new_session_path(resource_name), class: 'session-link' %>
+        <% end -%>
       </div>
     </div>
   </div>

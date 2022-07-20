@@ -1,32 +1,44 @@
 <div class="session-container">
-  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto">
+  <div class="w-100 text-center mt-5"><%= image_tag('template/logo.png') %></div>
+  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto form-container">
     <div class="form-card">
-      <h4 class=" text-center">Sign Up</h4>
+      <h2 class="h1 text-center">Sign Up</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         <div class="form-group mt-4">
-          <%= f.text_field :first_name, placeholder: 'First Name', autofocus: false, class: 'form-control mt-2', required: true %>
+          <%= f.label :first_name, "First Name" %>
+          <%= f.text_field :first_name, placeholder: 'Enter your first name', autofocus: false, class: 'form-control', required: true %>
         </div>
-        <div class="form-group mt-4">
-          <%= f.text_field :last_name, placeholder: 'Last Name', autofocus: false, class: 'form-control mt-2', required: true %>
+        <div class="form-group mt-5">
+          <%= f.label :last_name, "Last Name" %>
+          <%= f.text_field :last_name, placeholder: 'Enter your last name', autofocus: false, class: 'form-control', required: true %>
         </div>
-        <div class="form-group mt-4">
-          <%= f.email_field :email, placeholder: 'Email', autofocus: false, class: 'form-control mt-2', required: true %>
+        <div class="form-group mt-5">
+          <%= f.label :email, "Email" %>
+          <%= f.email_field :email, placeholder: 'Enter your email', autofocus: false, class: 'form-control mt-2', required: true %>
         </div>
 
-        <div class="form-group mt-4">
-          <%= f.password_field :password, placeholder: 'Password', autocomplete: "off", class: 'form-control mt-2', required: true %>
+        <div class="form-group mt-5 input-container" data-controller="toggle-password">
+          <%= f.label :password, "Password" %>
+          <%= f.password_field :password, placeholder: 'Enter your password', autocomplete: "off", class: "icon-attached form-control mt-2", required: true,
+              'data-toggle-password-target': "password" %>
+          <i class="fa fa-eye input-password-icon" data-toggle-password-target="toggleIcon" data-action="click->toggle-password#togglePassword"></i>
         </div>
 
-        <div class="form-group mt-4">
-          <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', autocomplete: "off", class: 'form-control mt-2', required: true %>
+        <div class="form-group mt-5 input-container" data-controller="toggle-password">
+          <%= f.label :password_confirmation, "Confirm Password" %>
+          <%= f.password_field :password_confirmation, placeholder: 'Confirm your password', autocomplete: "off", class: "icon-attached form-control mt-2", required: true, 'data-toggle-password-target': "password" %>
+          <i class="fa fa-eye input-password-icon" data-toggle-password-target="toggleIcon" data-action="click->toggle-password#togglePassword"></i>
         </div>
+
         <div class="text-center">
-          <%= f.submit "Sign up", class: "submit-button border-0 mt-4 mb-4" %>
+          <%= f.submit "Sign up", class: "btn btn-primary d-block w-100 mt-5 mb-5" %>
         </div>
       <% end %>
       <div class="text-center">
-        <%= render "devise/shared/links" %>
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Back to login page", new_session_path(resource_name), class: 'session-link' %>
+        <% end -%>
       </div>
     </div>
   </div>
