@@ -10,7 +10,7 @@
     position: absolute;
     height: 100%;
     right: 0;
-    content: url('texture_right_2.png');
+    content: url('texture_right.png');
 }
 
 .session-container::before {
