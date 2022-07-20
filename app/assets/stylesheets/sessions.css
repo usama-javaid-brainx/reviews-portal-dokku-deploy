@@ -24,10 +24,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    max-width: 450px;
 }
 
 .session-container .form-card {
     width: 100%;
+    max-width: 450px;
     background-color: #FFFFFF;
     border-radius: 5px;
     padding: 40px 50px;
@@ -45,6 +47,14 @@
     height: 40px;
     font-size: 1.4rem;
     border-radius: 6px;
+}
+
+.session-container .form-card #error_explanation > h2 {
+    display: none;
+}
+
+.session-container .form-card #error_explanation {
+    color: red;
 }
 
 .session-container .form-card .devise-links {
@@ -84,6 +94,10 @@
     cursor: pointer;
 }
 
+.forget-description {
+    font-weight: 400;
+}
+
 .session-header {
     box-shadow: 0.1px 0.1px black;
 }
@@ -99,10 +113,14 @@
     margin-right: 20px;
     margin-top: 20px;
 }
-.input-container { position: relative; }
+
+.input-container {
+    position: relative;
+}
+
 .input-password-icon {
     position: absolute;
-    top: 42px;
+    top: 40px;
     right: 15px;
     cursor: pointer;
 }

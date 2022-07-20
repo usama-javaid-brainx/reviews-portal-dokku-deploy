@@ -1,32 +1,43 @@
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-    <h2 class="text-center">Change your password</h2>
+<div class="session-container">
+  <div class="w-100 text-center mt-5"><%= image_tag('template/logo.png') %></div>
+  <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 mx-auto form-container">
+    <div class="form-card">
+      <h2 class="h1">Reset Password</h2>
+      <p class="forget-description my-3">
+        We have received a request to reset the password for the user. Create a new password below.</p>
 
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
-      <%= f.hidden_field :reset_password_token %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.hidden_field :reset_password_token %>
 
-      <div class="form-group">
-        <%= f.label :password, "New password" %><br />
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-        <% end %>
-        <%= f.password_field :password, autofocus: true, autocomplete: "off", class: 'form-control' %>
+        <%= devise_error_messages! %>
+
+        <div class="form-group mt-5 input-container" data-controller="toggle-password">
+          <%= f.label :password, "Password" %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "Enter your new password", class: 'form-control', 'data-toggle-password-target': "password" %>
+          <i class="fa fa-eye input-password-icon" data-toggle-password-target="toggleIcon" data-action="click->toggle-password#togglePassword"></i>
+        </div>
+
+        <div class="form-group mt-5 input-container" data-controller="toggle-password">
+          <%= f.label :password_confirmation, "Confirm password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm your password", class: 'form-control', 'data-toggle-password-target': "password" %>
+          <i class="fa fa-eye input-password-icon" data-toggle-password-target="toggleIcon" data-action="click->toggle-password#togglePassword"></i>
+        </div>
+
+        <div class="form-group mt-5">
+          <%= f.submit "Change my password", class: 'btn btn-primary btn-block w-100' %>
+        </div>
+      <% end %>
+
+      <div class="text-center mt-4">
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Back to login page", new_session_path(resource_name), class: 'session-link' %>
+        <% end -%>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "Change my password", class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
-    <% end %>
-
-    <div class="text-center">
-      <%= render "devise/shared/links" %>
     </div>
-
   </div>
 </div>
+
+
+
+
