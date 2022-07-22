@@ -1,7 +1,9 @@
 <h2>Tags</h2>
-<div class="tabs_content_wrap">
-  <form class="tags_search_form">
-    <input type="text" placeholder="Search Tags...">
+<div class="tabs_content_wrap" data-controller="tags">
+  <div class="tags_search_form">
+
+    <input type="text" data-tags-target="tagInput" data-action="input->tags#makeTag" placeholder="Search Tags...">
     <button><%= image_tag("template/search.png") %></button>
-  </form>
+  </div>
+  <div class="tags d-flex flex-wrap" data-tags-target="tags"></div>
 </div>

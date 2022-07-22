@@ -39,7 +39,7 @@
         <div class="col-lg-6">
 
 
-          <%= form_for @restaurant, :as => @restaurant, :url => root_path, :html => {:method => 'post'} do |form| %>
+          <%= form_for @restaurant, :url => restaurants_path, :html => {:method => 'post'} do |form| %>
             <!-- review area start -->
             <div class="review_area pt_30" id="review_area">
               <div class="row">
@@ -63,6 +63,9 @@
             <div class="tags_area pt_30" id="tags_area">
               <%= render 'tags', restaurant: @restaurant %>
             </div>
+
+            <%= form.submit "Add Review", class: 'btn white ml_25' %>
+
           <% end %>
 
 

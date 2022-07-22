@@ -1,0 +1,36 @@
+import {Controller} from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = ["tagInput", "tags"]
+
+  makeTag() {
+    var tag_input = this.tagInputTarget
+    var tags = this.tagsTarget
+
+    var input_val = tag_input.value.trim();
+    var no_comma_val = input_val.replace(/,/g, "");
+    //
+    if (input_val.slice(-1) === "," && no_comma_val.length > 0) {
+      var new_tag = compile_tag(no_comma_val);
+      tags.appendChild(new_tag);
+      tag_input.value = "";
+    }
+  }
+}
+
+function compile_tag(tag_content) {
+  var tag = document.createElement("div");
+  tag.setAttribute("class", "tag-badge d-flex align-items-center mt-4 mr-2");
+  var text = document.createElement("span");
+  text.innerHTML = tag_content;
+
+  var remove = document.createElement("i");
+  remove.setAttribute("class", "fa fa-remove ml_10 mt-1");
+  remove.setAttribute("id", "remove1");
+  remove.onclick = function() {this.parentNode.remove();};
+  //
+  tag.appendChild(text);
+  tag.appendChild(remove);
+  //
+  return tag;
+}

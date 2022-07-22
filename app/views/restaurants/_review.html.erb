@@ -1,54 +1,75 @@
 <h2>Review</h2>
 <div class="tabs_content_wrap">
 
-    <div class="row align-items-center form_group">
-      <%= f.label :name, "Restaurant Name", class: 'col-lg-5' %>
-      <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter restaurant name", type: "text" %>
-    </div>
-
-    <div class="row align-items-center form_group">
-      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
-      <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
-    </div>
-
-
-
-    <div class="form_group">
-      <label for="">Score</label>
-    </div>
-
-
-  <p>
-    <%= f.label :average_score, 'Rating', class: 'indent' %>
-  <div class= "rating">
-    1 &#9734;<%= f.radio_button :average_score, '1' %>
-    2 &#9734;<%= f.radio_button :average_score, '2' %>
-    3 &#9734;<%= f.radio_button :average_score, '3' %>
-    4 &#9734;<%= f.radio_button :average_score, '4' %>
-    5 &#9734;<%= f.radio_button :average_score, '5' %>
+  <div class="row align-items-center form_group">
+    <%= f.label :name, "Restaurant Name", class: 'col-lg-5' %>
+    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter restaurant name", type: "text" %>
   </div>
-  </p>
 
-    <div class="row align-items-center form_group">
-      <div class="col-lg-5">
-        <label for="">Price range</label>
-      </div>
-      <div class="col-lg-7">
-        <div class="d-flex align-items-center price_range">
-          <div>
-            <span>$</span>
-            <span>$</span>
-            <span>$</span>
-            <span>$</span>
-          </div>
-          <p>Select price range</p>
+  <div class="row align-items-center form_group">
+    <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
+    <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
+  </div>
+
+
+  <div class="form_group">
+    <label for="">Score</label>
+  </div>
+
+
+  <div>
+    <%= f.label :average_score, 'Rating', class: 'indent' %>
+    <div class="rating">
+
+
+      <span class="radio-button">
+        <%= f.label :average_score, "$" %>
+        <%= f.radio_button :average_score, '1' %>
+      </span>
+
+      <span class="radio-button">
+        <%= f.label :average_score, "$" %>
+        <%= f.radio_button :average_score, '2' %>
+      </span>
+
+      <span class="radio-button">
+        <%= f.label :average_score, "$" %>
+        <%= f.radio_button :average_score, '3' %>
+      </span>
+
+      <span class="radio-button">
+        <%= f.label :average_score, "$" %>
+        <%= f.radio_button :average_score, '4' %>
+      </span>
+
+      <span class="radio-button">
+        <%= f.label :average_score, "$" %>
+        <%= f.radio_button :average_score, '5' %>
+      </span>
+
+    </div>
+  </div>
+
+  <div class="row align-items-center form_group">
+    <div class="col-lg-5">
+      <label for="">Price range</label>
+    </div>
+    <div class="col-lg-7">
+      <div class="d-flex align-items-center price_range">
+        <div>
+          <span>$</span>
+          <span>$</span>
+          <span>$</span>
+          <span>$</span>
         </div>
+        <p>Select price range</p>
       </div>
     </div>
+  </div>
 
-    <div class="row form_group">
-      <%= f.label :notes, "Notes", class: 'col-lg-5' %>
-        <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", class: 'col-lg-7', cols: '30', rows: '5' %>
-    </div>
+  <div class="row form_group">
+    <%= f.label :notes, "Notes", class: 'col-lg-5' %>
+    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", class: 'col-lg-7', cols: '30', rows: '5' %>
+  </div>
 
 </div>
