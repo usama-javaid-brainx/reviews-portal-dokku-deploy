@@ -1,4 +1,4 @@
-class AddColumnsToResturants < ActiveRecord::Migration[7.0]
+class AddColumnsToRestaurants < ActiveRecord::Migration[7.0]
   def change
     add_column :restaurants, :zip_code, :string, default: ""
     add_column :restaurants, :tags, :string, default: ""
