@@ -43,7 +43,35 @@
 .ml-2 {
     margin-left: 0.5rem !important;
 }
+.rating .radio-button {
+    margin-right: 5px;
+    position: relative;
+}
+.rating input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    color: blue;
+    border: 0.5px solid #CCCCE1;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
 
-/*.radio-button::after {*/
-/*    content: "$";*/
-/*}*/
+.rating input[type="radio"]::before {
+    content: "$";
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -3px
+}
+
+.rating input[type="radio"]:checked {
+    border-color: green;
+}
+.rating input[type="radio"]:checked::before {
+    color: green;
+}
