@@ -49,6 +49,8 @@ gem "bootsnap", "~> 1.11", require: false
 
 gem 'country_select', '~> 6.0'
 
+gem 'pagy', '~> 5.10'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -65,7 +67,6 @@ group :development do
   gem "web-console", "~> 4.2"
 
   gem 'annotate', '~> 3.2'
-  gem 'pagy', '~> 5.10'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
