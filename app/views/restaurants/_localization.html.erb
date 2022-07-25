@@ -11,50 +11,33 @@
     <div class="tab-pane fade show active" id="enterManually">
       <div class="form_wrap">
         <div class="enterManually_form">
+
           <div class="row align-items-center form_group">
-            <div class="col-lg-5">
-              <label for="">Country</label>
-            </div>
-            <div class="col-lg-7">
-              <select name="" id="">
-                <option value="">USA</option>
-                <option value="">Belize</option>
-                <option value="">Japan</option>
-                <option value="">Brazil</option>
-              </select>
-            </div>
+            <%= f.label :country, 'Country', class: 'col-lg-5' %>
+            <span class="col-lg-7 p-0">
+              <%= f.country_select(:country, priority_countries: ["US", "GB", "FR", "DE"], selected: "US") %>
+            </span>
           </div>
+
           <div class="row align-items-center form_group">
-            <div class="col-lg-5">
-              <label for="">State</label>
-            </div>
-            <div class="col-lg-7">
-              <input type="text" value="Nashivlle">
-            </div>
+            <%= f.label :state, "State", class: 'col-lg-5' %>
+            <%= f.text_field :state, class: "col-lg-7", placeholder: "Enter state" %>
           </div>
+
+
           <div class="row align-items-center form_group">
-            <div class="col-lg-5">
-              <label for="">City</label>
-            </div>
-            <div class="col-lg-7">
-              <input type="text" value="Nashivlle">
-            </div>
+            <%= f.label :city, "City", class: 'col-lg-5' %>
+            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city" %>
           </div>
+
           <div class="row align-items-center form_group">
-            <div class="col-lg-5">
-              <label for="">Address</label>
-            </div>
-            <div class="col-lg-7">
-              <input type="text" value="700 Taylor St">
-            </div>
+            <%= f.label :address, "Address", class: 'col-lg-5' %>
+            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address" %>
           </div>
-          <div class="row align-items-center zipCode">
-            <div class="col-lg-5">
-              <label for="">Zip Code</label>
-            </div>
-            <div class="col-lg-7">
-              <input type="text" value="TN 37208">
-            </div>
+
+          <div class="row align-items-center zipCode taxt-capitalize">
+              <%= f.label :zip_code, "Zip Code", class: 'col-lg-5' %>
+              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208" %>
           </div>
         </div>
       </div>
