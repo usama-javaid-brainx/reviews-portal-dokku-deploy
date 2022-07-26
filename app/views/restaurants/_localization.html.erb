@@ -1,57 +1,64 @@
 <h2>Localization</h2>
 <div class="tabs_content_wrap">
-
-  <ul class="nav nav-tabs d-flex" role="tablist">
-    <li><a class="active" href="#enterManually" data-bs-toggle="tab" aria-selected="true">Enter manually</a></li>
-    <li><a href="#google_map" data-bs-toggle="tab" aria-selected="false">Search on the map</a></li>
-  </ul>
-
-  <div class="tab-content">
+  <div class="tab-content"
+       data-controller="places"
+       data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
+       data-places-latitude-value="<%= restaurant.latitude %>"
+       data-places-longitude-value="<%= restaurant.longitude %>"
+       data-places-place-id-value="<%= restaurant.place_id %>"
+  >
     <!-- enterManually tab -->
     <div class="tab-pane fade show active" id="enterManually">
-      <div class="form_wrap">
+      <div class="form_wrap" >
         <div class="enterManually_form">
 
+          <div class="row align-items-center form_group mt-5 mt-4">
+            <label for="search" class="col-lg-5">Search a location</label><br/>
+            <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
+                   data-action="keydown->places#keydown"
+                   data-places-target="field"/>
+          </div>
+
+          <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
+          <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>
+          <%= f.hidden_field :latitude, data: { 'places-target': 'latitude' } %>
+
+          <div class="p-4 d-none">
+            <div data-places-target="map" style="height:400px;width:400px"></div>
+          </div>
+
           <div class="row align-items-center form_group">
-            <%= f.label :country, 'Country', class: 'col-lg-5' %>
-            <span class="col-lg-7 p-0">
-              <%= f.country_select(:country, priority_countries: ["US", "GB", "FR", "DE"], selected: "US") %>
-            </span>
+            <%= f.label "Restaurant Name", class: "col-lg-5" %><br/>
+            <%= f.text_field :name, class: "col-lg-7", placeholder: 'Name', data: { 'places-target': 'name' } %>
+          </div>
+
+          <div class="row align-items-center form_group">
+            <%= f.label :country, "Country", class: "col-lg-5" %>
+            <%= f.text_field :country, class: "col-lg-7", placeholder: "Enter counrty", data: { 'places-target': 'country' }, :disabled => true  %>
           </div>
 
           <div class="row align-items-center form_group">
             <%= f.label :state, "State", class: 'col-lg-5' %>
-            <%= f.text_field :state, class: "col-lg-7", placeholder: "Enter state" %>
+            <%= f.text_field :state, class: "col-lg-7", placeholder: "Enter state", data: { 'places-target': 'state' } %>
           </div>
-
 
           <div class="row align-items-center form_group">
             <%= f.label :city, "City", class: 'col-lg-5' %>
-            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city" %>
+            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city", data: { 'places-target': 'city' } %>
           </div>
 
           <div class="row align-items-center form_group">
             <%= f.label :address, "Address", class: 'col-lg-5' %>
-            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address" %>
+            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address", data: { 'places-target': 'address' }  %>
           </div>
 
           <div class="row align-items-center zipCode taxt-capitalize">
               <%= f.label :zip_code, "Zip Code", class: 'col-lg-5' %>
-              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208" %>
+              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208", data: { 'places-target': 'postCode' } %>
           </div>
         </div>
       </div>
     </div>
-    <!-- google_map tab -->
-    <div class="tab-pane fade position-relative" id="google_map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26360909.888257876!2d-113.74875964478716!3d36.242299409623534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1656912801550!5m2!1sen!2sbd"
-        width="100%" height="342px" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="location_search_form">
-        <input type="text" placeholder="Where are you looking for...">
-        <button><%= image_tag("template/search.png") %></button>
-      </div>
-    </div>
+
   </div>
 </div>

@@ -1,19 +1,18 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["tagInput", "tags"]
+  static targets = ["tagInput", "tags", "selectedTags"]
 
   makeTag() {
-      let input_val = this.tagInputTarget.value.trim();
-      let no_comma_val = input_val.replace(/,/g, "");
-      if (input_val.slice(-1) === "," && no_comma_val.length > 0) {
-        var new_tag = compile_tag(no_comma_val);
-        this.tagsTarget.appendChild(new_tag);
-        this.tagInputTarget.value = "";
-      }
+    let input_val = this.tagInputTarget.value.trim();
+    let no_comma_val = input_val.replace(/,/g, "");
+    if (input_val.slice(-1) === "," && no_comma_val.length > 0) {
+      var new_tag = compile_tag(no_comma_val);
+      this.tagsTarget.appendChild(new_tag);
+      this.selectedTagsTarget.value = this.selectedTagsTarget.value.concat(",", no_comma_val);
+      this.tagInputTarget.value = "";
+    }
   }
-
-
 }
 
 function compile_tag(tag_content) {

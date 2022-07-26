@@ -61,43 +61,39 @@
 
             <!-- tags area start -->
             <div class="tags_area pt_30" id="tags_area">
-              <%= render 'tags', restaurant: @restaurant %>
+              <%= render 'tags', restaurant: @restaurant, f: form %>
             </div>
 
-            <%= form.submit "Add Review", class: 'btn white ml_25' %>
+
+            <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
+              <%= render 'favourite_dishes', restaurant: @restaurant, f: form %>
+            </div>
+
+
+            <div class="row pt_50 align-items-center">
+              <div class="col-3 col-sm-4">
+                <a class="btn white cancel" href="#">Cancel</a>
+              </div>
+              <div class="col-9 col-sm-8 d-flex justify-content-end">
+                <div class="public_review">
+                  <div class="mode-switch d-flex flex-row align-items-center">
+
+                    <!--                    <input type="checkbox" id="switch"/>-->
+                    <%= form.check_box :shareable, checked: true, id: 'switch' %>
+                    <label for="switch"></label>
+
+
+                  </div>
+                  <%= image_tag('template/icon4.png', class: 'mr_5') %>
+                  <span>Public REVIEW</span>
+                </div>
+
+                <%= form.submit "Add Review", class: 'btn white add_review ml_25' %>
+              </div>
+            </div>
 
           <% end %>
 
-
-
-          <!-- Favourite dishes area start -->
-          <div class="pt_30" id="favourite_dishes_area">
-            <h2>Favourite dishes</h2>
-            <div class="tabs_content_wrap">
-              <div class="favourite_dishes_tab_wrap text-center">
-                <h2>No favourites dishes yet</h2>
-                <p>Add your favourite dishes</p>
-                <a class="btn white" href="#"><span class="icon">+</span><span>Add Meal</span></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="row pt_50 align-items-center">
-            <div class="col-3 col-sm-4">
-              <a class="btn white cancel" href="#">Cancel</a>
-            </div>
-            <div class="col-9 col-sm-8 d-flex justify-content-end">
-              <div class="public_review">
-                <div class="mode-switch d-flex flex-row align-items-center">
-                  <input type="checkbox" id="switch"/>
-                  <label for="switch"></label>
-                </div>
-                <%= image_tag('template/icon4.png', class: 'mr_5') %>
-                <span>Public REVIEW</span>
-              </div>
-              <a class="btn white add_review ml_25" href="#">Add Review</a>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -11,16 +11,9 @@
     <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
   </div>
 
-
-  <div class="row form_group">
-      <%= f.label :average_score, 'Rating', class: 'indent col-lg-5' %>
-      <div class="rating d-flex col-lg-7 p-0">
-        <span class="radio-button"><%= f.radio_button :average_score, '1' %></span>
-        <span class="radio-button"><%= f.radio_button :average_score, '2' %></span>
-        <span class="radio-button"><%= f.radio_button :average_score, '3' %></span>
-        <span class="radio-button"><%= f.radio_button :average_score, '4' %></span>
-        <span class="radio-button"><%= f.radio_button :average_score, '5' %></span>
-      </div>
+  <div class="form_group align-items-center row">
+    <%= f.label "Average Score", class: "col-lg-5" %>
+    <%= f.number_field :average_score, placeholder: 'Average Score', class: 'col-lg-7', step: "0.01", max: "10" %>
   </div>
 
   <div class="row form_group">
@@ -31,23 +24,6 @@
       <span class="radio-button"><%= f.radio_button :price_range, '3' %></span>
       <span class="radio-button"><%= f.radio_button :price_range, '4' %></span>
       <span class="radio-button"><%= f.radio_button :price_range, '5' %></span>
-    </div>
-  </div>
-
-  <div class="row align-items-center form_group">
-    <div class="col-lg-5">
-      <label for="">Price range</label>
-    </div>
-    <div class="col-lg-7">
-      <div class="d-flex align-items-center price_range">
-        <div>
-          <span>$</span>
-          <span>$</span>
-          <span>$</span>
-          <span>$</span>
-        </div>
-        <p>Select price range</p>
-      </div>
     </div>
   </div>
 
