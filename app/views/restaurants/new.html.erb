@@ -51,7 +51,7 @@
 
             <!-- photo area start -->
             <div class="photo_area pt_30" id="photo_area">
-              <%= render 'photos', restaurant: @restaurant %>
+              <%= render 'photos', restaurant: @restaurant, f: form %>
             </div>
 
             <!-- localization area start -->
@@ -64,11 +64,9 @@
               <%= render 'tags', restaurant: @restaurant, f: form %>
             </div>
 
-
             <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
               <%= render 'favourite_dishes', restaurant: @restaurant, f: form %>
             </div>
-
 
             <div class="row pt_50 align-items-center">
               <div class="col-3 col-sm-4">
@@ -77,12 +75,8 @@
               <div class="col-9 col-sm-8 d-flex justify-content-end">
                 <div class="public_review">
                   <div class="mode-switch d-flex flex-row align-items-center">
-
-                    <!--                    <input type="checkbox" id="switch"/>-->
-                    <%= form.check_box :shareable, checked: true, id: 'switch' %>
+                    <%= form.check_box :shareable, checked: false, id: 'switch' %>
                     <label for="switch"></label>
-
-
                   </div>
                   <%= image_tag('template/icon4.png', class: 'mr_5') %>
                   <span>Public REVIEW</span>
@@ -93,10 +87,8 @@
             </div>
 
           <% end %>
-
         </div>
       </div>
     </div>
   </div>
-
 </main>

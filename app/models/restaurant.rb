@@ -35,6 +35,8 @@ class Restaurant < ApplicationRecord
 
   validates :name, :country, :average_score, :cuisine, :date, presence: true
 
+  accepts_nested_attributes_for :meals
+
   def google_maps_link
     "http://maps.google.com/?q=#{latitude},#{longitude}"
   end
