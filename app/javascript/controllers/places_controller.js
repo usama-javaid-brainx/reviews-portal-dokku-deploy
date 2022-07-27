@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["field", "map", "name", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount"]
+  static targets = ["field", "map", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount"]
   static values = {
     latitude: String,
     longitude: String,
@@ -31,7 +31,7 @@ export default class extends Controller {
     if (this.hasFieldTarget) {
       this.autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
       this.autocomplete.bindTo('bounds', this.map)
-      this.autocomplete.setFields(['place_id', 'address_components', 'geometry', 'icon', 'name'])
+      this.autocomplete.setFields(['place_id', 'address_components', 'geometry', 'icon'])
       this.autocomplete.addListener('place_changed', this.placeChanged.bind(this))
     }
     // this.marker = new google.maps.Marker({
@@ -58,7 +58,6 @@ export default class extends Controller {
     this.marker.setVisible(true)
     this.latitudeValue = this.latitudeTarget.value = place.geometry.location.lat()
     this.longitudeValue = this.longitudeTarget.value = place.geometry.location.lng()
-    this.nameTarget.value = place.name
     this.placeIdValue = this.placeIdTarget.value = place.place_id
 
     let address1 = "";

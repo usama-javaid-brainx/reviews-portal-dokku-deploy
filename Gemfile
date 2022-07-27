@@ -48,6 +48,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", "~> 1.11", require: false
 gem 'cocoon', '~> 1.2'
 gem 'pagy', '~> 5.10'
+gem 'filestack-rails', '~> 5.5'
 
 # Use Sass to process CSS
 gem "sassc-rails"

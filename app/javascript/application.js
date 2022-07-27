@@ -46,3 +46,8 @@ $fileInput.on('change', function () {
     $textContainer.text(filesCount + ' uploaded files');
   }
 });
+
+
+function callbackOnOpen1() {
+  console.log(data);
+}

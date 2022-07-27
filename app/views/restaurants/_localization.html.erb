@@ -1,23 +1,11 @@
 <h2>Localization</h2>
 <div class="tabs_content_wrap">
-  <div class="tab-content"
-       data-controller="places"
-       data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
-       data-places-latitude-value="<%= restaurant.latitude %>"
-       data-places-longitude-value="<%= restaurant.longitude %>"
-       data-places-place-id-value="<%= restaurant.place_id %>"
-  >
+  <div class="tab-content">
     <!-- enterManually tab -->
     <div class="tab-pane fade show active" id="enterManually">
       <div class="form_wrap" >
         <div class="enterManually_form">
 
-          <div class="row align-items-center form_group mt-5 mt-4">
-            <label for="search" class="col-lg-5">Search a location</label><br/>
-            <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
-                   data-action="keydown->places#keydown"
-                   data-places-target="field"/>
-          </div>
 
           <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
           <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>

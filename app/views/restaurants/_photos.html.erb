@@ -2,9 +2,29 @@
 <div class="tabs_content_wrap">
   <div class="file_upload_place">
     <div class="content">
-      <div class="upload_link d-none">
+      <div class="upload_link">
         <a href="#">Upload files</a>
         <span> or drag and drop</span></p>
+
+        <%#= filestack_picker_element 'button test', 'callbackForButton', id: 'someuniqueid', input_id: 'someuniqueinputid', pickerOptions: { 'fromSources': 'facebook', 'maxFiles': 50 } %>
+        <%= f.filestack_field :images, 'Upload Your Avatar!', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onClose: 'callbackOnClose', onOpen: 'callbackOnOpen', onFileSelected: 'callbackOnFileSelected' } %>
+        <script>
+
+          function callbackOnClose(data) {
+            console.log(data);
+          }
+
+          function callbackOnOpen(data) {
+            console.log(data);
+          }
+
+          function callbackOnFileSelected(data) {
+            debugger
+            console.log(data)
+          }
+
+
+        </script>
       </div>
     </div>
   </div>
