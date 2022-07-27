@@ -15,3 +15,6 @@ application.register("toggle-password", TogglePasswordController)
 
 import TagsController from "./tags_controller.js"
 application.register("tags", TagsController)
+
+import PhotosController from "./photos_controller.js"
+application.register("photos", PhotosController)

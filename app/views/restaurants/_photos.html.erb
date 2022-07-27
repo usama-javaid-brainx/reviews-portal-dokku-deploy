@@ -1,31 +1,44 @@
 <h2>Photos</h2>
-<div class="tabs_content_wrap">
+<div class="tabs_content_wrap" data-controller="photos">
+
+  <div class="uploaded-files">
+    <img class="mb-3 main-thumbnail" data-photos-target="mainThumbnail" src="https://cdn.filestackcontent.com/vcyhtMigQuG1HpC74uit" style="border-radius: 6px;">
+    <div class="d-flex" id="js-thumbnails" >
+      <img src="https://cdn.filestackcontent.com/REdChJLsSIKvAeg7yKuK" class="thumbnail px-0" data-action="click->photos#updatePhoto" >
+      <img src="https://cdn.filestackcontent.com/vcyhtMigQuG1HpC74uit" class="thumbnail px-0" data-action="click->photos#updatePhoto">
+      <img src="https://cdn.filestackcontent.com/REdChJLsSIKvAeg7yKuK" class="thumbnail px-0" data-action="click->photos#updatePhoto">
+      <img src="https://cdn.filestackcontent.com/REdChJLsSIKvAeg7yKuK" class="thumbnail px-0" data-action="click->photos#updatePhoto">
+      <%= f.filestack_field :images, 'Upload files', class:'thumbnail px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileSelected: 'callbackOnFileSelected', onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+
+    </div>
+
+  </div>
+
   <div class="file_upload_place">
     <div class="content">
       <div class="upload_link">
-        <a href="#">Upload files</a>
-        <span> or drag and drop</span></p>
-
-        <%#= filestack_picker_element 'button test', 'callbackForButton', id: 'someuniqueid', input_id: 'someuniqueinputid', pickerOptions: { 'fromSources': 'facebook', 'maxFiles': 50 } %>
-        <%= f.filestack_field :images, 'Upload Your Avatar!', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onClose: 'callbackOnClose', onOpen: 'callbackOnOpen', onFileSelected: 'callbackOnFileSelected' } %>
-        <script>
-
-          function callbackOnClose(data) {
-            console.log(data);
-          }
-
-          function callbackOnOpen(data) {
-            console.log(data);
-          }
-
-          function callbackOnFileSelected(data) {
-            debugger
-            console.log(data)
-          }
-
-
-        </script>
+        <%= f.filestack_field :images, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileSelected: 'callbackOnFileSelected', onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+        <span> or drag and drop</span>
+        <div>PNG, JGP (max 10MB)</div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  function callbackOnFileUploadFinished(data) {
+    // 'https://cdn.filestackcontent.com/REdChJLsSIKvAeg7yKuK'
+
+    console.log(data)
+    const image = document.createElement('img');
+    image.classList.add('thumbnail', 'px-0')
+    image.setAttribute(
+      'src',
+      data.url
+    );
+
+    const thumnails = document.getElementById('js-thumbnails');
+    thumnails.appendChild(image);
+
+  }
+</script>

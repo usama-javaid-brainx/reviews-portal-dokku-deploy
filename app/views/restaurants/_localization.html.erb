@@ -2,22 +2,13 @@
 <div class="tabs_content_wrap">
   <div class="tab-content">
     <!-- enterManually tab -->
-    <div class="tab-pane fade show active" id="enterManually">
-      <div class="form_wrap" >
         <div class="enterManually_form">
-
-
           <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
           <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>
           <%= f.hidden_field :latitude, data: { 'places-target': 'latitude' } %>
 
           <div class="p-4 d-none">
             <div data-places-target="map" style="height:400px;width:400px"></div>
-          </div>
-
-          <div class="row align-items-center form_group">
-            <%= f.label "Restaurant Name", class: "col-lg-5" %><br/>
-            <%= f.text_field :name, class: "col-lg-7", placeholder: 'Name', data: { 'places-target': 'name' } %>
           </div>
 
           <div class="row align-items-center form_group">
@@ -45,8 +36,7 @@
               <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208", data: { 'places-target': 'postCode' } %>
           </div>
         </div>
-      </div>
-    </div>
+
 
   </div>
 </div>
