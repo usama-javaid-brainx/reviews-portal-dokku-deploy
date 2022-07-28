@@ -1,14 +1,9 @@
 <h2>Favourite dishes</h2>
-<div class="tabs_content_wrap">
+<div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/icon9.png') %>">
   <div class="favourite_dishes_tab_wrap text-center">
 
 
-    <% f.fields_for :meals do |meal| %>
-      Name: <%= meal.text_field :name %>
-      Notes: <%= meal.text_field :notes %>
-    <% end %>
-    
-    <ul class="favorite_dishes_list d-none">
+    <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
       <li>
         <%= image_tag('template/favorite_dishes1.png', class: 'main_img') %>
         <div class="d-flex justify-content-between align-items-center w-100 ml_15">
@@ -16,42 +11,67 @@
             <h4>Meal Name 1</h4>
             <p>Meal notes...</p>
           </div>
-          <a href="#">
+          <span class="cursor-pointer" >
             <%= image_tag('template/pen.png') %>
-          </a>
-        </div>
-      </li>
-      <li>
-        <%= image_tag('template/favorite_dishes2.png', class:'main_img') %>
-        <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-          <div>
-            <h4>Meal Name 2</h4>
-            <p>Meal notes...</p>
-          </div>
-          <a href="#">
-            <%= image_tag('template/pen.png') %>
-          </a>
-        </div>
-      </li>
-      <li>
-        <%= image_tag('template/favorite_dishes3.png', class:'main_img') %>
-        <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-          <div>
-            <h4>Meal Name 3</h4>
-            <p>Meal notes...</p>
-          </div>
-          <a href="#">
-            <%= image_tag('template/pen.png') %>
-          </a>
+            <%= image_tag('template/icon9.png') %>
+          </span>
         </div>
       </li>
     </ul>
 
 
-
-
     <h2>No favourites dishes yet</h2>
     <p>Add your favourite dishes</p>
-    <button type="button" class="btn white"><span class="icon">+</span><span>Add Meal</span></button>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn white" data-toggle="modal" data-target="#exampleModal">
+      <span class="icon">+</span><span>Add Meal</span>
+    </button>
+
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade meal-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title h2" id="exampleModalLabel">Edit meal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <input type="file" class="d-none" id="imageSelected" data-meals-target="fileInput" accept="image/png, image/jpeg, image/jpg">
+
+            <div class="img-wrapper" data-action="click->meals#openFileSelector">
+              <%= image_tag('template/plus.png', class: "border-dashed brand-logo", data: {target: 'meals.image'}) %>
+            </div>
+
+          </div>
+
+          <div class="form-group row align-items-center">
+            <label for="name" class="col-sm-4 col-form-label">Meal Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-plaintext" id="mealName" placeholder="Enter name" data-meals-target="mealName">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Notes</label>
+            <div class="col-sm-8">
+              <textarea type="text" class="form-control-plaintext" id="mealNotes" data-meals-target="mealNotes"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn white" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-action="click->meals#saveChanges">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+

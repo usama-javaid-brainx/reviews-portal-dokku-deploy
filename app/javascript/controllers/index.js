@@ -18,3 +18,6 @@ application.register("tags", TagsController)
 
 import PhotosController from "./photos_controller.js"
 application.register("photos", PhotosController)
+
+import MealsController from "./meals_controller.js"
+application.register("meals", MealsController)

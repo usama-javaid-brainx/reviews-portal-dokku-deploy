@@ -96,3 +96,15 @@
     object-fit: cover;
     max-height: 70px;
 }
+
+.meal-modal .img-wrapper {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px dashed grey;
+    background: darkgrey;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
