@@ -3,9 +3,9 @@
 @import "bootstrap.min.css";
 @import "helper.css";
 @import "nice-select.css";
-@import "responsive.css";
 @import "simplebar.css";
 @import "style.css";
+@import "responsive.css";
 
 
 .form-control:focus {
@@ -88,6 +88,7 @@
 .uploaded-files .main-thumbnail {
     border-radius: 6px;
     max-height: 350px;
+    overflow: hidden;
 }
 
 .uploaded-files .thumbnail {
@@ -95,4 +96,9 @@
     border-radius: 6px;
     object-fit: cover;
     max-height: 70px;
+    margin-right: 5px;
+}
+
+.uploaded-files .upload-button {
+    border: 0.5px dashed;
 }
