@@ -3,7 +3,12 @@
   <div class="favourite_dishes_tab_wrap text-center">
 
 
-    <ul class="favorite_dishes_list">
+    <% f.fields_for :meals do |meal| %>
+      Name: <%= meal.text_field :name %>
+      Notes: <%= meal.text_field :notes %>
+    <% end %>
+    
+    <ul class="favorite_dishes_list d-none">
       <li>
         <%= image_tag('template/favorite_dishes1.png', class: 'main_img') %>
         <div class="d-flex justify-content-between align-items-center w-100 ml_15">
