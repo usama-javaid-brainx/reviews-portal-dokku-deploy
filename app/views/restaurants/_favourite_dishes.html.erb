@@ -1,33 +1,16 @@
 <h2>Favourite dishes</h2>
 <div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/icon9.png') %>">
   <div class="favourite_dishes_tab_wrap text-center">
-
-
     <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
-      <li>
-        <%= image_tag('template/favorite_dishes1.png', class: 'main_img') %>
-        <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-          <div>
-            <h4>Meal Name 1</h4>
-            <p>Meal notes...</p>
-          </div>
-          <span class="cursor-pointer" >
-            <%= image_tag('template/pen.png') %>
-            <%= image_tag('template/icon9.png') %>
-          </span>
-        </div>
-      </li>
     </ul>
-
-
-    <h2>No favourites dishes yet</h2>
-    <p>Add your favourite dishes</p>
-
+    <div data-meals-target="noMealDiv">
+      <h2>No favourites dishes yet</h2>
+      <div>Add your favourite dishes</div>
+    </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn white" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <span class="icon">+</span><span>Add Meal</span>
     </button>
-
   </div>
 
   <!-- Modal -->
@@ -36,21 +19,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title h2" id="exampleModalLabel">Edit meal</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
         <div class="modal-body">
-          <div>
-            <input type="file" class="d-none" id="imageSelected" data-meals-target="fileInput" accept="image/png, image/jpeg, image/jpg">
-
-            <div class="img-wrapper" data-action="click->meals#openFileSelector">
-              <%= image_tag('template/plus.png', class: "border-dashed brand-logo", data: {target: 'meals.image'}) %>
-            </div>
-
+          <div class="d-flex align-items-center justify-content-center" style="height: 350px; width: 100%;">
+            <%= image_tag('template/plus.png', id: 'meal-photo', data: { 'meals-target': 'image'} ) %>
+            <%= f.filestack_field :images, 'Upload files', class:'thumbnail px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished1' } %>
           </div>
 
-          <div class="form-group row align-items-center">
+          <div class="form-group row align-items-center mb-3">
             <label for="name" class="col-sm-4 col-form-label">Meal Name</label>
             <div class="col-sm-8">
               <input type="text" class="form-control-plaintext" id="mealName" placeholder="Enter name" data-meals-target="mealName">
@@ -66,12 +44,17 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn white" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" data-action="click->meals#saveChanges">Save changes</button>
+          <button type="button" class="btn white" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-meals-target="mealId" data-action="click->meals#saveChanges">Save changes</button>
         </div>
       </div>
     </div>
   </div>
 
+  <script>
+    function callbackOnFileUploadFinished1(data) {
+      document.getElementById('meal-photo').src = data.url;
+    }
+  </script>
 </div>
 

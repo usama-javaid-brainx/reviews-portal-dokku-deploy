@@ -7,7 +7,6 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-
             <h2 class="title">Add restaurant review</h2>
             <!-- add restaurant review nav start -->
             <ul class="nav nav-pills" id="add-restaurant-review-nav">
@@ -37,14 +36,12 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-
-
           <%= form_for @restaurant, :url => restaurants_path, :html => {:method => 'post'} do |form| %>
             <div data-controller="places"
                  data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
                  data-places-latitude-value="<%= @restaurant.latitude %>"
                  data-places-longitude-value="<%= @restaurant.longitude %>"
-                 data-places-place-id-value="<%= @restaurant.place_id %>" >
+                 data-places-place-id-value="<%= @restaurant.place_id %>">
               <!-- review area start -->
               <div class="review_area pt_30" id="review_area">
                 <div class="row">

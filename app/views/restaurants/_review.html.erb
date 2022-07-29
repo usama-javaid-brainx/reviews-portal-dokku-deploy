@@ -1,10 +1,20 @@
 <h2>Review</h2>
 <div class="tabs_content_wrap">
 
+
+
+  <div class="form_group row align-items-center">
+    <label for="search" class="col-lg-5">Resturant</label>
+
+    <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
+           data-action="keydown->places#keydown"
+           data-places-target="field"/>
+  </div>
+
+
   <div class="row align-items-center form_group">
     <%= f.label :name, "Restaurant Name", class: 'col-lg-5' %>
-    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter restaurant name", type: "text", id: "search", 'data-action':"keydown->places#keydown", 'data-places-target': "field" %>
-
+    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter restaurant name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
 
