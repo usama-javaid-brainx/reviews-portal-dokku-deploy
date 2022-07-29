@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["field", "map", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount"]
+  static targets = ["field", "map", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount" , "name"]
   static values = {
     latitude: String,
     longitude: String,
@@ -58,6 +58,7 @@ export default class extends Controller {
     this.marker.setVisible(true)
     this.latitudeValue = this.latitudeTarget.value = place.geometry.location.lat()
     this.longitudeValue = this.longitudeTarget.value = place.geometry.location.lng()
+    this.nameTarget.value = place.name
     this.placeIdValue = this.placeIdTarget.value = place.place_id
 
     let address1 = "";
