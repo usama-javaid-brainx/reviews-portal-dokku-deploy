@@ -31,7 +31,7 @@ export default class extends Controller {
     if (this.hasFieldTarget) {
       this.autocomplete = new google.maps.places.Autocomplete(this.fieldTarget)
       this.autocomplete.bindTo('bounds', this.map)
-      this.autocomplete.setFields(['place_id', 'address_components', 'geometry', 'icon'])
+      this.autocomplete.setFields(['place_id', 'address_components', 'geometry', 'icon', 'name'])
       this.autocomplete.addListener('place_changed', this.placeChanged.bind(this))
     }
     // this.marker = new google.maps.Marker({
@@ -53,7 +53,6 @@ export default class extends Controller {
       this.map.setCenter(place.geometry.location)
       this.map.setZoom(17)
     }
-
     this.marker.setPosition(place.geometry.location)
     this.marker.setVisible(true)
     this.latitudeValue = this.latitudeTarget.value = place.geometry.location.lat()
