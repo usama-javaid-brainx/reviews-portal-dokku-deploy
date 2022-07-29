@@ -3,9 +3,9 @@
 @import "bootstrap.min.css";
 @import "helper.css";
 @import "nice-select.css";
-@import "responsive.css";
 @import "simplebar.css";
 @import "style.css";
+@import "responsive.css";
 
 
 .form-control:focus {
@@ -63,7 +63,7 @@
 
 .rating input[type="radio"]::before {
     content: "$";
-    color: red;
+    color: #CCCCE1;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,11 +72,11 @@
 }
 
 .rating input[type="radio"]:checked {
-    border-color: green;
+    border-color: #0d6efd;
 }
 
 .rating input[type="radio"]:checked::before {
-    color: green;
+    color: #0d6efd;
 }
 
 .file_upload_place .upload_link button{
@@ -88,6 +88,7 @@
 .uploaded-files .main-thumbnail {
     border-radius: 6px;
     max-height: 350px;
+    overflow: hidden;
 }
 
 .uploaded-files .thumbnail {
@@ -95,6 +96,7 @@
     border-radius: 6px;
     object-fit: cover;
     max-height: 70px;
+
 }
 
 .meal-modal .img-wrapper {
@@ -107,4 +109,10 @@
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
+
+    margin-right: 5px;
+}
+
+.uploaded-files .upload-button {
+    border: 0.5px dashed;
 }
