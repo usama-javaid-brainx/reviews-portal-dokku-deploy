@@ -33,7 +33,8 @@ class Restaurant < ApplicationRecord
 
   has_many_attached :images
 
-  validates :name, :country, :average_score, :cuisine, :date, presence: true
+  validates :name, :country, :average_score, :cuisine, presence: true
+  # validates :name, :country, :average_score, :cuisine, :date, presence: true  (Remove Date, as it is not coming from front end)
 
   accepts_nested_attributes_for :meals
 

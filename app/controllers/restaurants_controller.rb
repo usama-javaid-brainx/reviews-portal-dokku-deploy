@@ -11,14 +11,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-
-    debugger
-    # @restaurant = current_user.restaurants.new(restaurant_params)
-    # if @restaurant.save
-    #   redirect_to restaurants_path, notice: "Restaurant created successfully!"
-    # else
-    #   render :new
-    # end
+    @restaurant = current_user.restaurants.new(restaurant_params)
+    if @restaurant.save
+      redirect_to restaurants_path, notice: "Restaurant created successfully!"
+    else
+      render :new
+    end
   end
 
   def show
@@ -52,8 +50,9 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require('restaurant').permit(:name, :address, :state, :country, :city, :latitude, :longitude, :place_id,
-                                        :favorite_dish, :cuisine,
-                                        :average_score, :notes, :date, images: [])
+    params.require('restaurant').permit(:name, :address, :state, :city, :country, :latitude, :longitude, :place_id,
+                                        :price_range, :cuisine, :average_score, :notes, images: [])
+  #  TODO
+  # Favourite_dishes and date(not coming from front end) to added
   end
 end
