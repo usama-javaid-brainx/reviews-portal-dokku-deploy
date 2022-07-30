@@ -1902,10 +1902,9 @@ header .logo img:nth-child(2){
 }
 
 .add_review_area .add_review{
-	color: #A5A5B9;
+	color: #6E3EF7;
 	font-size: 1.4rem;
-	border-color: transparent;
-	background: #EDEDFB;
+	border-color: #6E3EF7;
 	padding: 1rem 2.4rem;
 }
 

@@ -80,7 +80,7 @@
     color: white;
 }
 
-.file_upload_place .upload_link button{
+.file_upload_place .upload_link button {
     background: transparent;
     border: none;
     color: #0d6efd;
@@ -118,37 +118,69 @@
 .uploaded-files .upload-button {
     border: 0.5px dashed;
 }
-.modal-container{
+
+.modal-container {
     max-width: 650px;
 }
-.modal-container .modal-content{
+
+.modal-container .modal-content {
     border-radius: 16px;
 }
-.modal-container .modal-content .modal-header{
+
+.modal-container .modal-content .modal-header {
     padding: 20px 24px 20px 24px;
 }
-.modal-body .thumbnail{
-    width: 120px;
-    padding: 5px;
-    border-radius: 3px;
-    border: 1px solid lightgray;
-    color: gray;
-    font-size: 14px;
-    font-weight: 400;
-    background-color: white;
-}
-.modal-container .modal-footer{
+
+.modal-container .modal-footer {
     padding: 15px 24px 15px 24px;
 }
-.modal-container .modal-footer button{
+
+.modal-container .modal-footer button {
     padding: 10px 20px 10px 20px;
     font-size: 15px;
     font-weight: 500;
 }
-.modal-body{
+
+.modal-body {
     padding: 20px 24px 20px 24px;
     background-color: rgba(0, 0, 0, 0.08);
 }
-.modal-body .input-field{
+
+.modal-body .input-field {
     height: 40px;
+}
+
+.modal-body .image-container {
+    height: 350px;
+    width: 100%;
+    margin-bottom: 30px
+}
+
+.modal-body .image-container .thumbnail {
+    width: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    color: gray;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-body .image-container .thumbnail:hover {
+    background-color: #6E3EF7;
+    color: white;
+    transition: 0.2s;
+    border: none;
+}
+#meal-photo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto auto;
+    position: relative;
+    z-index: 100;
 }
