@@ -97,6 +97,7 @@
     border-radius: 6px;
     object-fit: cover;
     max-height: 70px;
+    margin-right: 3px;
 
 }
 
@@ -116,4 +117,38 @@
 
 .uploaded-files .upload-button {
     border: 0.5px dashed;
+}
+.modal-container{
+    max-width: 650px;
+}
+.modal-container .modal-content{
+    border-radius: 16px;
+}
+.modal-container .modal-content .modal-header{
+    padding: 20px 24px 20px 24px;
+}
+.modal-body .thumbnail{
+    width: 120px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    color: gray;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: white;
+}
+.modal-container .modal-footer{
+    padding: 15px 24px 15px 24px;
+}
+.modal-container .modal-footer button{
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.modal-body{
+    padding: 20px 24px 20px 24px;
+    background-color: rgba(0, 0, 0, 0.08);
+}
+.modal-body .input-field{
+    height: 40px;
 }
