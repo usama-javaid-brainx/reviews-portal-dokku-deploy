@@ -45,9 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "notes"
-    t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
   end
 
