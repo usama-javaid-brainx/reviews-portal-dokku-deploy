@@ -8,25 +8,25 @@ export default class extends Controller {
   }
 
 
-  saveChanges( event) {
+  saveChanges(event) {
     if (event.currentTarget.id != "") {
-      let meal = favourite_dishes[event.currentTarget.id - 1]
-      meal["name"] = this.mealNameTarget.value
-      meal["notes"] = this.mealNotesTarget.value
-      meal["image"] = this.imageTarget.src
+      var favourite_dish = favourite_dishes[event.currentTarget.id - 1]
+      favourite_dish["name"] = this.mealNameTarget.value
+      favourite_dish["notes"] = this.mealNotesTarget.value
+      favourite_dish["image"] = this.imageTarget.src
     } else {
       this.makeNewMeal()
       this.favouriteMealsTarget.classList.remove('d-none')
       this.noMealDivTarget.classList.add('d-none')
-      let favourite_dish = {
+      var favourite_dish = {
         "id": favourite_dishes.length + 1,
         "name": this.mealNameTarget.value,
         "notes": this.mealNotesTarget.value,
         "image": this.imageTarget.src
       }
-      favourite_dishes.push(favourite_dish)
-      this.resetModal()
     }
+    favourite_dishes.push(favourite_dish)
+    this.resetModal()
   }
 
   editMeal(event) {
@@ -52,14 +52,14 @@ export default class extends Controller {
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
         <div class="text-left">
           <h4>${this.mealNameTarget.value}</h4>
-          <p>${this.mealNotesTarget.value.substring(0, 10).trim()}...</p>
+          <p>${this.mealNotesTarget.value.substring(0, 20).trim()}...</p>
         </div>
         <span class="cursor-pointer">
             <span id="${favourite_dishes.length + 1}" data-action="click->meals#editMeal">
                 <img src="${this.editIconValue}">
             </span>
             <span>
-            <img id="${favourite_dishes.length + 1}" data-action="click->meals#deleteMeal" src="${this.deleteIconValue}">
+            <img style="background-color: red" id="${favourite_dishes.length + 1}" data-action="click->meals#deleteMeal" src="${this.deleteIconValue}">
             </span> 
         </span>
       </div>

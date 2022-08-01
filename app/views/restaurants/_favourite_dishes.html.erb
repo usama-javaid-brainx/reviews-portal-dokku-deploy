@@ -1,14 +1,14 @@
 <h2>Favourite dishes</h2>
 <div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/icon9.png') %>">
   <div class="favourite_dishes_tab_wrap text-center">
-    <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
+    <ul class="favorite_dishes_list d-none" data-meals-target="favouriteMeals">
     </ul>
     <div data-meals-target="noMealDiv">
       <h2>No favourites dishes yet</h2>
       <div>Add your favourite dishes</div>
     </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" data-action="click->meals#resetModal" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <span class="icon">+</span><span>Add Meal</span>
     </button>
   </div>
