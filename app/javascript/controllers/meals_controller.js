@@ -9,6 +9,7 @@ export default class extends Controller {
 
 
   saveChanges(event) {
+    debugger
     if (event.currentTarget.id != "") {
       var favourite_dish = favourite_dishes[event.currentTarget.id - 1]
       favourite_dish["name"] = this.mealNameTarget.value
