@@ -1,12 +1,39 @@
 <h2>Favourite dishes</h2>
 <div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/icon9.png') %>">
   <div class="favourite_dishes_tab_wrap text-center">
-    <ul class="favorite_dishes_list d-none" data-meals-target="favouriteMeals">
+    <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
+      <% index = 0 %>
+      <%= f.fields_for :meals do |meal_form| %>
+        <li data-meals-target="mealCard" id="<%= index %>">
+          <img id="image-<%= index %>" class='main_img' src='<%= meal_form.object.image_url %>'>
+          <%= meal_form.hidden_field :image_url %>
+          <%= meal_form.hidden_field :name %>
+          <%= meal_form.hidden_field :notes %>
+          <%= meal_form.hidden_field :_destroy %>
+          <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
+            <div class="text-left">
+              <h4 id="name-<%= index %>"> <%= meal_form.object.name %></h4>
+              <p id="notes-<%= index %>"><%= meal_form.object.notes %>...</p>
+            </div>
+            <span class="cursor-pointer">
+            <span id="<%= index %>" data-action="click->meals#editMeal">
+                <%= image_tag('template/pen.png') %>
+            </span>
+            <span>
+            <img style="background-color: red" id="<%= index %>" data-action="click->meals#deleteMeal" src="<%= asset_path('template/icon9.png') %>">
+            </span>
+        </span>
+          </div>
+        </li>
+        <% index += 1 %>
+      <% end %>
     </ul>
-    <div data-meals-target="noMealDiv">
-      <h2>No favourites dishes yet</h2>
-      <div>Add your favourite dishes</div>
-    </div>
+    <% if f.object.meals.empty? %>
+      <div data-meals-target="noMealDiv">
+        <h2>No favourites dishes yet</h2>
+        <div>Add your favourite dishes</div>
+      </div>
+    <% end %>
     <!-- Button trigger modal -->
     <button type="button" data-action="click->meals#resetModal" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <span class="icon">+</span><span>Add Meal</span>
@@ -25,7 +52,7 @@
 
         <div class="modal-body">
           <div class="image-container position-relative">
-            <%= f.filestack_field :images, 'Upload File', class: 'thumbnail px-0 position-absolute', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished1' } %>
+            <%= f.filestack_field :images_input, 'Upload File', class: 'thumbnail px-0 position-absolute', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished1' } %>
             <img id='meal-photo' data-meals-target="image">
           </div>
 

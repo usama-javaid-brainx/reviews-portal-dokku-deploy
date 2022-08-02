@@ -2,7 +2,7 @@
 <div class="col-lg-3 col-md-6">
   <div class="card">
     <div class="card-header p-0 border-0 position-relative">
-      <% if resturant.images.attached? %>
+      <% if resturant.images.present? %>
         <div class="owl-carousel owl-theme card_carousel">
           <% resturant.images.each do |image| %>
             <div class="item"><%= image_tag(image) %></div>

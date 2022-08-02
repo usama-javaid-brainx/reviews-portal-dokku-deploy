@@ -8,17 +8,20 @@
     </div>
 
     <div class="d-flex" id="js-thumbnails" >
-      <%= f.filestack_field :images, '+', class:'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+      <%= f.filestack_field :images_input, '+', class:'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
     </div>
   </div>
 
   <div class="file_upload_place" id="file_upload_place">
     <div class="content">
       <div class="upload_link">
-        <%= f.filestack_field :images, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+        <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
         <div>PNG, JGP (max 10MB)</div>
       </div>
     </div>
+  </div>
+  <div id="image_inputs">
+
   </div>
 </div>
 
@@ -34,12 +37,14 @@
       updateImage(image)
     })
     document.getElementById('js-thumbnails').prepend(image)
+    const input = document.createElement('input')
+    input.value = data.url
+    input.hidden = true
+    input.name = 'restaurant[images][]'
+    document.getElementById('image_inputs').append(input)
     updateImage(image)
-
     document.getElementById('js-uploaded-files').classList.remove('d-none')
     document.getElementById('file_upload_place').classList.add('d-none')
-
-
   }
 
   function updateImage(that) {

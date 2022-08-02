@@ -36,7 +36,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <%= form_for @restaurant, :url => restaurants_path, :html => {:method => 'post'} do |form| %>
+          <%= form_for @restaurant do |form| %>
             <div data-controller="places"
                  data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
                  data-places-latitude-value="<%= @restaurant.latitude %>"
@@ -84,7 +84,7 @@
                     <span>Public REVIEW</span>
                   </div>
 
-                  <%= form.submit "Add Review", class: 'btn white add_review ml_25' %>
+                  <%= form.submit form.object.new_record? ? "Add Review" : "update Review", class: 'btn white add_review ml_25' %>
                 </div>
               </div>
             </div>
