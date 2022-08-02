@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require('restaurant').permit(:name, :address, :state, :city, :country, :latitude, :longitude, :place_id,
+    params.require('restaurant').permit(:name, :address, :state, :city, :country, :latitude, :longitude, :place_id, :favorite_dish,
                                         :price_range, :cuisine, :average_score, :notes, images: [])
   #  TODO
   # Favourite_dishes and date(not coming from front end) to added

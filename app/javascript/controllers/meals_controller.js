@@ -1,12 +1,11 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["favouriteMeals", "mealName" ,"mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard"]
+  static targets = ["favouriteMeals", "mealName" ,"mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel"]
 
   static get values() {
     return {editIcon: String, deleteIcon: String}
   }
-
 
   saveChanges(event) {
     if (event.currentTarget.id >= "1") {
@@ -37,6 +36,7 @@ export default class extends Controller {
   }
 
   editMeal(event) {
+    this.modalLabelTarget.innerText = "Edit Meal"
     let meal = favourite_dishes[event.currentTarget.id - 1]
     this.mealNameTarget.value = meal["name"]
     this.mealNotesTarget.value = meal["notes"]
@@ -74,6 +74,7 @@ export default class extends Controller {
   }
 
   resetModal(event) {
+    this.modalLabelTarget.innerText = "Add Meal"
     this.imageTarget.src = ""
     this.mealNameTarget.value = ""
     this.mealNotesTarget.value = ""
