@@ -12,8 +12,18 @@
           </div>
 
           <div class="row align-items-center form_group">
-            <%= f.label :country, "Country", class: "col-lg-5" %>
-            <%= f.text_field :country, class: "col-lg-7", placeholder: "Enter country", data: { 'places-target': 'country' } %>
+            <%= f.label :address, "Address", class: 'col-lg-5' %>
+            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address", data: { 'places-target': 'address' }  %>
+          </div>
+
+          <div class="row align-items-center form_group">
+            <%= f.label :city, "City", class: 'col-lg-5' %>
+            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city", data: { 'places-target': 'city' } %>
+          </div>
+
+          <div class="row align-items-center zipCode form_group taxt-capitalize">
+              <%= f.label :zip_code, "Zip Code", class: 'col-lg-5' %>
+              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208", data: { 'places-target': 'postCode' } %>
           </div>
 
           <div class="row align-items-center form_group">
@@ -22,19 +32,10 @@
           </div>
 
           <div class="row align-items-center form_group">
-            <%= f.label :city, "City", class: 'col-lg-5' %>
-            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city", data: { 'places-target': 'city' } %>
+            <%= f.label :country, "Country", class: "col-lg-5" %>
+            <%= f.text_field :country, class: "col-lg-7", placeholder: "Enter country", data: { 'places-target': 'country' } %>
           </div>
 
-          <div class="row align-items-center form_group">
-            <%= f.label :address, "Address", class: 'col-lg-5' %>
-            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address", data: { 'places-target': 'address' }  %>
-          </div>
-
-          <div class="row align-items-center zipCode taxt-capitalize">
-              <%= f.label :zip_code, "Zip Code", class: 'col-lg-5' %>
-              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "TN 37208", data: { 'places-target': 'postCode' } %>
-          </div>
         </div>
   </div>
 </div>
