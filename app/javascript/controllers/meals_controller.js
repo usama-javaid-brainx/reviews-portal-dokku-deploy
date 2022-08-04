@@ -56,7 +56,7 @@ export default class extends Controller {
   }
 
   deleteMeal() {
-    // this.mealCardTarget.remove()
+    this.mealCardTarget.remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
     }
@@ -79,7 +79,7 @@ export default class extends Controller {
                 <img src="${this.editIconValue}">
             </span>
             <span>
-            <img style="background-color: red" id="${randomId}" data-action="click->meals#deleteMeal" src="${this.deleteIconValue}">
+            <img style="height: 17px" id="${randomId}" data-action="click->meals#deleteMeal" src="${this.deleteIconValue}">
             </span> 
         </span>
       </div>
