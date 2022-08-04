@@ -9,3 +9,15 @@ application.register("hello", HelloController)
 
 import PlacesController from "./places_controller.js"
 application.register("places", PlacesController)
+
+import TogglePasswordController from "./toggle_password_controller.js";
+application.register("toggle-password", TogglePasswordController)
+
+import TagsController from "./tags_controller.js"
+application.register("tags", TagsController)
+
+import PhotosController from "./photos_controller.js"
+application.register("photos", PhotosController)
+
+import MealsController from "./meals_controller.js"
+application.register("meals", MealsController)

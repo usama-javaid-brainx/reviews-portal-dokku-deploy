@@ -1,0 +1,90 @@
+<h2>Favourite dishes</h2>
+<div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/icon9.png') %>">
+  <div class="favourite_dishes_tab_wrap text-center">
+    <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
+      <% index = 0 %>
+      <%= f.fields_for :meals do |meal_form| %>
+        <li data-meals-target="mealCard" id="<%= index %>">
+          <img id="image-<%= index %>" class='main_img' src='<%= meal_form.object.image_url %>'>
+          <%= meal_form.hidden_field :image_url %>
+          <%= meal_form.hidden_field :name %>
+          <%= meal_form.hidden_field :notes %>
+          <%= meal_form.hidden_field :_destroy %>
+          <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
+            <div class="text-left">
+              <h4 id="name-<%= index %>"> <%= meal_form.object.name %></h4>
+              <p id="notes-<%= index %>"><%= meal_form.object.notes %>...</p>
+            </div>
+            <span class="cursor-pointer">
+            <span id="<%= index %>" data-action="click->meals#editMeal">
+                <%= image_tag('template/pen.png') %>
+            </span>
+            <span>
+            <img style="background-color: red" id="<%= index %>" data-action="click->meals#deleteMeal" src="<%= asset_path('template/icon9.png') %>">
+            </span>
+        </span>
+          </div>
+        </li>
+        <% index += 1 %>
+      <% end %>
+    </ul>
+    <% if f.object.meals.empty? %>
+      <div data-meals-target="noMealDiv">
+        <h2>No favourites dishes yet</h2>
+        <div>Add your favourite dishes</div>
+      </div>
+    <% end %>
+    <!-- Button trigger modal -->
+    <button type="button" data-action="click->meals#resetModal" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <span class="icon">+</span><span>Add Meal</span>
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade meal-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-container" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 data-meals-target="modalLabel" class="modal-title h2" id="exampleModalLabel">Add meal</h5>
+          <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="image-container position-relative">
+            <%= f.filestack_field :images_input, 'Upload File', class: 'thumbnail px-0 position-absolute', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished1' } %>
+            <img id='meal-photo' data-meals-target="image">
+          </div>
+
+          <div class="form-group row align-items-center mb-3">
+            <label for="name" class="col-sm-4 col-form-label">Meal Name</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-plaintext input-field" id="mealName" placeholder="Enter name" data-meals-target="mealName">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Notes</label>
+            <div class="col-sm-8">
+              <textarea type="text" class="form-control-plaintext" id="mealNotes" data-meals-target="mealNotes"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between modal-footer">
+          <button type="button" class="btn white" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-meals-target="mealId" data-action="click->meals#saveChanges">Save
+            changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function callbackOnFileUploadFinished1(data) {
+      document.getElementById('meal-photo').src = data.url;
+    }
+  </script>
+</div>
+

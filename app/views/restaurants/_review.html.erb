@@ -1,48 +1,45 @@
 <h2>Review</h2>
 <div class="tabs_content_wrap">
-  <form action="">
-    <div class="row align-items-center form_group">
-      <div class="col-lg-5">
-        <label for="">Restaurant Name</label>
-      </div>
-      <div class="col-lg-7">
-        <input type="text" placeholder="Enter restaurant name">
-      </div>
+
+  <div class="form_group row align-items-center">
+    <label for="search" class="col-lg-5">Resturant</label>
+
+    <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
+           data-action="keydown->places#keydown"
+           data-places-target="field"/>
+  </div>
+
+
+  <div class="row align-items-center form_group">
+    <%= f.label :name, "Restaurant Name", class: 'col-lg-5' %>
+    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter restaurant name", type: "text", id: "search", 'data-places-target': "name" %>
+  </div>
+
+
+  <div class="row align-items-center form_group">
+    <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
+    <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Average Score", class: "col-lg-5" %>
+    <%= f.number_field :average_score, placeholder: 'Average Score', class: 'col-lg-7', step: "0.01", max: "10" %>
+  </div>
+
+  <div class="row form_group" data-controller="dollar-price-range">
+    <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
+    <div class="rating d-flex col-lg-7 p-0" data-dollar-price-range-target="dollar">
+      <span data-action="" class="radio-button"><%= f.radio_button :price_range, '1' %></span>
+      <span class="radio-button"><%= f.radio_button :price_range, '2' %></span>
+      <span class="radio-button"><%= f.radio_button :price_range, '3' %></span>
+      <span class="radio-button"><%= f.radio_button :price_range, '4' %></span>
+      <span class="radio-button"><%= f.radio_button :price_range, '5' %></span>
     </div>
-    <div class="row align-items-center form_group">
-      <div class="col-lg-5">
-        <label for="">Cuisine</label>
-      </div>
-      <div class="col-lg-7">
-        <input type="text" placeholder="Enter cusine">
-      </div>
-    </div>
-    <div class="form_group">
-      <label for="">Score</label>
-    </div>
-    <div class="row align-items-center form_group">
-      <div class="col-lg-5">
-        <label for="">Price range</label>
-      </div>
-      <div class="col-lg-7">
-        <div class="d-flex align-items-center price_range">
-          <div>
-            <span>$</span>
-            <span>$</span>
-            <span>$</span>
-            <span>$</span>
-          </div>
-          <p>Select price range</p>
-        </div>
-      </div>
-    </div>
-    <div class="row form_group">
-      <div class="col-lg-5">
-        <label for="">Notes</label>
-      </div>
-      <div class="col-lg-7">
-        <textarea name="" id="" cols="30" rows="5" placeholder="Write your notes..."></textarea>
-      </div>
-    </div>
-  </form>
+  </div>
+
+  <div class="row form_group">
+    <%= f.label :notes, "Notes", class: 'col-lg-5' %>
+    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", class: 'col-lg-7', cols: '30', rows: '5' %>
+  </div>
+
 </div>

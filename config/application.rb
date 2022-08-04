@@ -20,5 +20,8 @@ module RestaurantReviewsWeb
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.active_storage.replace_on_assign_to_many = false
+
+    config.filestack_rails.api_key = 'AsdSW6x8RQLBqBzol5cAkz'
+    config.filestack_rails.client_name = 'filestack_client'
   end
 end

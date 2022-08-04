@@ -1,9 +1,8 @@
 class RestaurantsController < ApplicationController
-
   before_action :set_restaurant, only: [:edit, :show, :update, :destroy]
 
   def index
-    @restaurants = current_user.restaurants
+    @pagy, @restaurants = pagy(current_user.restaurants, items: 10)
   end
 
   def new
@@ -50,8 +49,6 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require('restaurant').permit(:name, :address, :state, :country, :city, :latitude, :longitude, :place_id,
-                                        :favorite_dish, :cuisine,
-                                        :average_score, :notes, :date, images: [])
+    params.require(:restaurant).permit(:name, :shareable, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 end

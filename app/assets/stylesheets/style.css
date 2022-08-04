@@ -69,7 +69,7 @@ textarea:focus {
 
 /* body */
 body {
-	font-family: 'Inter', sans-serif;
+	font-family: 'Inter', sans-serif !important;
 	font-weight: 400;
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -1382,6 +1382,7 @@ header .logo img:nth-child(2){
 }
 
 .favorite_dishes_list li{
+	text-align: left;
 	display: flex;
 	align-items: center;
 	padding: 2.4rem 0;
@@ -1623,7 +1624,7 @@ header .logo img:nth-child(2){
 }
 
 .add_review_area input{
-	width: 100%;
+	/*width: 100%;*/
 	height: 4rem;
 	padding: 1rem 1.2rem 1rem 1.8rem;
 	background: #FFFFFF;
@@ -1634,7 +1635,7 @@ header .logo img:nth-child(2){
 }
 
 .add_review_area textarea{
-	width: 100%;
+	/*width: 100%;*/
 	padding: 1.6rem;
 	padding-right: .8rem;
 	background: #FFFFFF;
@@ -1902,10 +1903,9 @@ header .logo img:nth-child(2){
 }
 
 .add_review_area .add_review{
-	color: #A5A5B9;
+	color: #6E3EF7;
 	font-size: 1.4rem;
-	border-color: transparent;
-	background: #EDEDFB;
+	border-color: #6E3EF7;
 	padding: 1rem 2.4rem;
 }
 
