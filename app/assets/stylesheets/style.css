@@ -418,6 +418,31 @@ header {
 	background: #F7F5FC;
 }
 
+.pagy li a{
+	font-size: 14px;
+	color: #6E3EF7;
+}
+
+.pagy li a:hover{
+	color: #fff;
+	background-color: #6E3EF7;
+	border: 1px solid #6E3EF7 !important;
+}
+
+.pagy li.active a{
+	background-color: #6E3EF7 !important;
+	border: 1px solid #6E3EF7 !important;
+}
+
+.pagy nav ul li.prev a{
+	border-top-left-radius: 0.5rem !important;
+	border-bottom-left-radius: 0.5rem !important;
+}
+
+.pagy nav ul li.next a{
+	border-top-right-radius: 0.75rem !important;
+	border-bottom-right-radius: 0.75rem !important;
+}
 
 /* card desing */
 
