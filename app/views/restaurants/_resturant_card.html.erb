@@ -19,13 +19,13 @@
           <%= link_to "Review", edit_restaurant_path(resturant), class: 'review_btn' %>
           <a class="add_btn" href="#"><%= image_tag("template/add.png") %></a>
         </div>
-        <p class="product_rating"><%= image_tag("template/star.png") %><span><%= resturant.average_score %></span></p>
+        <p class="product_rating"><%= image_tag("template/star.png") if resturant.average_score? %><span><%= resturant.average_score %></span></p>
       </div>
       <h3><%= resturant.name %></h3>
       <ul class="list_group">
         <li><%= resturant.city %></li>
         <li><%= resturant.state %>, <%= resturant.country %></li>
-        <li><span>$</span><span>$</span><span>$</span><span>$</span></li>
+        <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
       </ul>
     </div>
   </div>
