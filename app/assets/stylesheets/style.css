@@ -453,20 +453,22 @@ header {
 	margin: 0 .4rem;
 }
 
-.card .card-header img{
-	max-height: 250px;
+.card .card-header .item img{
+	height: 250px;
 }
 
 .card .card-body .list_group li{
 	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
 .card_carousel .owl-dot.active{
 	background: #FFFFFF;
 }
-
+.image-placeholder{
+	background: white;
+	text-align: center;
+	border-bottom: 1px solid lightgray;
+}
 .favourite{
 	position: absolute;
 	top: .8rem;

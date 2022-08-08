@@ -9,6 +9,8 @@
           <% end %>
         </div>
         <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+        <% else %>
+        <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
       <% end %>
     </div>
     <div class="card-body">
