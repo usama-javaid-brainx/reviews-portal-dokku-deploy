@@ -453,6 +453,16 @@ header {
 	margin: 0 .4rem;
 }
 
+.card .card-header img{
+	max-height: 250px;
+}
+
+.card .card-body .list_group li{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .card_carousel .owl-dot.active{
 	background: #FFFFFF;
 }
