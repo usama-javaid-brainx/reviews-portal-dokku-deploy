@@ -533,6 +533,7 @@ header {
 	border-radius: 4px;
 	text-align: center;
 	margin-right: 4px;
+	font-size: 1.4rem;
 }
 
 .review_btn:hover{
@@ -970,8 +971,7 @@ header {
 }
 
 .content_area{
-	max-height: calc(100vh - 17.7rem);
-	overflow: auto;
+	margin-top: 100px;
 }
 
 .content_wrap{
@@ -2021,7 +2021,14 @@ header {
 		font-size: 1.2rem;
 	}
 }
-@media (max-width: 991px) {
+@media (min-width: 992px) {
+	.content_area{
+		max-height: calc(100vh - 17.7rem);
+		overflow: auto;
+		margin-top: unset;
+	}
+}
+	@media (max-width: 991px) {
 	.add_review_area .title{
 		padding-bottom: 0;
 	}
