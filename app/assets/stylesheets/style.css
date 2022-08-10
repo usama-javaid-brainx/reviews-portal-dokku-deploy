@@ -480,6 +480,7 @@ header {
 
 .card .card-header .item img{
 	height: 250px;
+	object-fit: cover;
 }
 
 .card_carousel .owl-dot.active{
