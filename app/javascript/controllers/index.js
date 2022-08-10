@@ -21,3 +21,6 @@ application.register("photos", PhotosController)
 
 import MealsController from "./meals_controller.js"
 application.register("meals", MealsController)
+
+import DollarPriceRangeController from "./dollar_price_range_controller.js"
+application.register("dollar-price-range", DollarPriceRangeController)

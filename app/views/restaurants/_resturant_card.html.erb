@@ -15,7 +15,7 @@
       <div class="top">
         <div>
           <%= link_to "Review", edit_restaurant_path(resturant), class: 'review_btn' %>
-          <a class="add_btn" href="#"><%= image_tag("template/add.png") %></a>
+          <a class="share_btn" href="#"><%= resturant.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
         </div>
         <p class="product_rating"><%= image_tag("template/star.png") %><span><%= resturant.average_score %></span></p>
       </div>
@@ -23,7 +23,11 @@
       <ul class="list_group">
         <li><%= resturant.city %></li>
         <li><%= resturant.state %>, <%= resturant.country %></li>
-        <li><span>$</span><span>$</span><span>$</span><span>$</span></li>
+
+        <li>
+          <span>$</span><span>$</span><span>$</span><span>$</span><span>$</span>
+        </li>
+
       </ul>
     </div>
   </div>

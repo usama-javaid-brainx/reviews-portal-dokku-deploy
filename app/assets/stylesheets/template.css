@@ -183,3 +183,26 @@
     position: relative;
     z-index: 100;
 }
+
+.share_btn {
+    display: inline-block;
+    width: 2.8rem;
+    height: 2.4rem;
+    background: #F7F5FC;
+    border: 1px solid #6E3EF7;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.share_btn:hover {
+    background: #6E3EF7;
+}
+
+.share_btn:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.bg-blue {
+    background-color: #0d6efd !important;
+}
