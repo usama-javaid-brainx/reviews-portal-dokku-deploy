@@ -29,11 +29,11 @@
   <div class="row form_group" >
     <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
     <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if restaurant.price_range > 1 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if restaurant.price_range > 2 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if restaurant.price_range > 3 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if restaurant.price_range > 4 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if restaurant.price_range > 5 }" %></span>
+      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if restaurant.price_range.present? && restaurant.price_range > 1 }" %></span>
+      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if restaurant.price_range.present? && restaurant.price_range > 2 }" %></span>
+      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if restaurant.price_range.present? && restaurant.price_range > 3 }" %></span>
+      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if restaurant.price_range.present? && restaurant.price_range > 4 }" %></span>
+      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if restaurant.price_range.present? && restaurant.price_range > 5 }" %></span>
     </div>
   </div>
 
