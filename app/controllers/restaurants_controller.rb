@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:edit, :show, :update, :destroy]
 
   def index
-    @pagy, @restaurants = pagy(current_user.restaurants, items: 10)
+    @pagy, @restaurants = pagy(current_user.restaurants, items: 12)
   end
 
   def new

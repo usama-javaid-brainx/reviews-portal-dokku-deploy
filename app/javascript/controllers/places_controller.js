@@ -105,7 +105,7 @@ export default class extends Controller {
       }
     }
 
-    this.addressTarget.value = `${address1} ${postcode}`;
+    this.addressTarget.value = address1;
     this.postCodeTarget.value = postcode
 
   }

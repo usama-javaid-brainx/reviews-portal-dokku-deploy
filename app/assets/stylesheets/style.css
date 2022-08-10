@@ -157,10 +157,6 @@ header {
 	transition: .3s;
 }
 
-header .logo img:nth-child(2){
-	display: none;
-}
-
 .menu li{
 	display: inline-block;
 	margin-right: .8rem;
@@ -422,6 +418,31 @@ header .logo img:nth-child(2){
 	background: #F7F5FC;
 }
 
+.pagy li a{
+	font-size: 14px;
+	color: #6E3EF7;
+}
+
+.pagy li a:hover{
+	color: #fff;
+	background-color: #6E3EF7;
+	border: 1px solid #6E3EF7 !important;
+}
+
+.pagy li.active a{
+	background-color: #6E3EF7 !important;
+	border: 1px solid #6E3EF7 !important;
+}
+
+.pagy nav ul li.prev a{
+	border-top-left-radius: 0.5rem !important;
+	border-bottom-left-radius: 0.5rem !important;
+}
+
+.pagy nav ul li.next a{
+	border-top-right-radius: 0.75rem !important;
+	border-bottom-right-radius: 0.75rem !important;
+}
 
 /* card desing */
 
@@ -457,10 +478,18 @@ header .logo img:nth-child(2){
 	margin: 0 .4rem;
 }
 
+.card .card-header .item img{
+	height: 250px;
+}
+
 .card_carousel .owl-dot.active{
 	background: #FFFFFF;
 }
-
+.image-placeholder{
+	background: white;
+	text-align: center;
+	border-bottom: 1px solid lightgray;
+}
 .favourite{
 	position: absolute;
 	top: .8rem;
@@ -500,9 +529,11 @@ header .logo img:nth-child(2){
 	line-height: 2.2rem;
 	background: #F7F5FC;
 	border: 1px solid #6E3EF7;
+	color: #6E3EF7;
 	border-radius: 4px;
 	text-align: center;
 	margin-right: 4px;
+	font-size: 1.4rem;
 }
 
 .review_btn:hover{
@@ -558,7 +589,7 @@ header .logo img:nth-child(2){
 .card h3{
 	color: #00000A;
 	font-weight: 500;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	line-height: 1.177;
 	padding: 1.2rem 0 .4rem;
 }
@@ -577,10 +608,13 @@ header .logo img:nth-child(2){
 	line-height: 1.428;
 	position: relative;
 	padding-right: 1.1rem;
+	white-space: nowrap;
 }
 
 .card .list_group li span{
 	display: inline-block;
+	margin-top: auto;
+	margin-bottom: auto;
 	width: 1.5rem;
 	height: 1.5rem;
 	line-height: 1.3rem;
@@ -590,7 +624,7 @@ header .logo img:nth-child(2){
 	color: #CCCCE1;
 	font-size: .8rem;
 	transition: .2s;
-	margin-right: 1px;
+	margin-right: 2px;
 }
 
 .card .list_group li span:hover{
@@ -694,7 +728,7 @@ header .logo img:nth-child(2){
 	background: #6E3EF7;
 	border-radius: 6px;
 	border: 1px solid transparent;
-	padding: 1.6rem 3.6rem;
+	padding: 1rem 3rem;
 	color: #FFFFFF;
 	font-size: 1.6rem;
 	font-weight: 500;
@@ -937,8 +971,7 @@ header .logo img:nth-child(2){
 }
 
 .content_area{
-	max-height: calc(100vh - 17.7rem);
-	overflow: auto;
+	margin-top: 100px;
 }
 
 .content_wrap{
@@ -1087,7 +1120,7 @@ header .logo img:nth-child(2){
 	align-items: center;
 	color: #424250;
 	font-weight: 400;
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	line-height: 1.428;
 	position: relative;
 	padding-right: 1.1rem;
@@ -1534,7 +1567,7 @@ header .logo img:nth-child(2){
 
 .add_review_area .title{
 	font-weight: 600;
-	font-size: 3.2rem;
+	font-size: 3rem;
 	line-height: 1.25;
 	color: #00000A;
 }
@@ -1973,5 +2006,30 @@ header .logo img:nth-child(2){
 	100% {
 		-webkit-transform: scale(1, 1);
 		opacity: 0;
+	}
+}
+
+@media (max-width: 575px){
+	.back{
+		top: 1rem;
+		left: .8rem;
+	}
+	.add_review_area .nav-pills .nav-item{
+		margin-right: 1.7rem;
+	}
+	.add_review_area .nav-pills .nav-item a{
+		font-size: 1.2rem;
+	}
+}
+@media (min-width: 992px) {
+	.content_area{
+		max-height: calc(100vh - 17.7rem);
+		overflow: auto;
+		margin-top: unset;
+	}
+}
+	@media (max-width: 991px) {
+	.add_review_area .title{
+		padding-bottom: 0;
 	}
 }

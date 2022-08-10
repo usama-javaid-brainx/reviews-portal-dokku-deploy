@@ -69,9 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "foursqaure_score"
-    t.string "foursqaure_url"
-    t.string "foursqaure_id"
     t.string "zip_code", default: ""
     t.string "tags", default: ""
     t.integer "price_range"

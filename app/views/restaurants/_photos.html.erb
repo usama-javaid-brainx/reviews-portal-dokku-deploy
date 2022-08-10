@@ -15,7 +15,7 @@
   <div class="file_upload_place" id="file_upload_place">
     <div class="content">
       <div class="upload_link">
-        <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+        <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished', accept: ["image/*"], maxFiles: 10 } %>
         <div>PNG, JGP (max 10MB)</div>
       </div>
     </div>

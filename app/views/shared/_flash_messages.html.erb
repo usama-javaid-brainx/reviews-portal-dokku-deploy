@@ -1,6 +1,6 @@
 <% if flash.notice || flash.alert %>
   <div class="" style="z-index: 2; width: 500px; position: absolute; top: 50px; left: calc(50% - 250px);">
-    <div class="alert <%= flash.notice ? 'alert-primary' : 'alert-danger' %> alert-dismissible fade show" role="alert">
+    <div class="alert mt-5 <%= flash.notice ? 'alert-primary' : 'alert-danger' %> alert-dismissible fade show" role="alert">
       <%= flash.notice || flash.alert %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
