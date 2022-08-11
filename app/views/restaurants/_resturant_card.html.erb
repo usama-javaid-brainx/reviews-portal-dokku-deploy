@@ -16,7 +16,7 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <%= link_to "Review", edit_restaurant_path(resturant), class: 'review_btn' %>
+          <%= link_to "Review", restaurant_path(resturant), class: 'review_btn' %>
           <a class="share_btn" href="#"><%= resturant.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
         </div>
         <p class="product_rating"><%= image_tag("template/star.png") if resturant.average_score? %><span><%= resturant.average_score %></span></p>

@@ -10,23 +10,13 @@
     <div class="position-relative d-lg-none">
       <!-- carousel start -->
       <div class="owl-carousel owl-theme card_carousel">
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
-        <div class="item"><%= image_tag("template/details-img1.png") %></div>
+        <% @restaurant.images[0..5].each do |image_src| %>
+          <div class="item">
+            <img src=<%= image_src %>>
+          </div>
+        <% end %>
       </div>
       <!-- carousel start -->
-      <a class="back" href="#">
-        <%= image_tag("template/left-arrow1.png") %>
-      </a>
-      <a class="upload" href="#">
-        <%= image_tag("template/upload.png") %>
-      </a>
-      <button class="favourite">
-        <%= image_tag("template/favourites.png") %>
-      </button>
     </div>
 
     <div class="container custom">
@@ -41,10 +31,10 @@
               <%= image_tag("template/icon4.png", class: 'mr_5') %>
               <span>Public REVIEW</span>
             </div>
-            <h1>Rolf and Daughters</h1>
+            <h1><%= @restaurant.name %></h1>
             <ul class="list_group">
-              <li>Italian</li>
-              <li>Nashville, USA</li>
+              <li><%= @restaurant.city %></li>
+              <li><%= @restaurant.state %>, <%= @restaurant.country %></li>
               <li>
                 <span>$</span>
                 <span>$</span>
@@ -57,7 +47,7 @@
             <div class="d-flex align-items-center justify-content-end avatar">
               <div>
                 <p class="reviewer">Reviewer</p>
-                <p class="name">James Schuler</p>
+                <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
               </div>
               <%= image_tag("template/avatar1.png") %>
             </div>
@@ -66,12 +56,14 @@
                 <%= image_tag("template/favourites1.png") %>
                 <span>Save as Favourite</span></a>
               <p class="rating">
-                <%= image_tag("template/star.png") %><span>8.75</span></p>
+                <%= image_tag("template/star.png") %><span><%= @restaurant.average_score %></span></p>
             </div>
             <div>
               <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
-              <a class="btn white" href="#"><%= image_tag("template/icon6.png") %><span>Add photo</span></a>
-              <a class="btn" href="#"><%= image_tag("template/icon7.png") %><span>Edit</span></a>
+              
+              <%= link_to edit_restaurant_path(@restaurant), class: 'btn' do %>
+                <%= image_tag("template/icon7.png") %><span>Edit</span>
+              <% end %>
             </div>
           </div>
           <!-- for mobile -->
@@ -81,45 +73,38 @@
                 <%= image_tag("template/avatar1.png") %>
                 <div class="pl_10">
                   <p class="reviewer">Reviewer</p>
-                  <p class="name">James Schuler</p>
+                  <p class="name"><%= @restaurant.name %></p>
                 </div>
               </div>
               <div class="rating_box">
-                <p class="rating"><%= image_tag("template/star.png") %><span>8.75</span></p>
+                <p class="rating"><%= image_tag("template/star.png") %>
+                  <span><%= @restaurant.average_score %></span></p>
               </div>
             </div>
             <div class="d-flex justify-content-between pt_30">
-              <a class="btn white" href="#"><%= image_tag("template/icon6.png") %><span>Add photo</span></a>
-              <a class="btn" href="#"><%= image_tag("template/icon7.png") %><span>Edit</span></a>
+              <!--              <a class="btn" href="#"><%#= image_tag("template/icon7.png") %><span>Edit</span></a>-->
+              <%= link_to "Edit", edit_restaurant_path(@restaurant), class: 'btn' %>
             </div>
           </div>
+          <!-- mobile end-->
         </div>
+
+        <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
           <div class="col-lg-6">
-            <div class="position-relative">
-              <%= image_tag("template/gallery1.png") %>
-              <a class="search" href="#"><%= image_tag("template/icon8.png") %></a>
-              <a class="delect" href="#"><%= image_tag("template/icon9.png") %></a>
-            </div>
+            <img src=<%= @restaurant.images.last %>>
           </div>
           <div class="col-lg-6">
             <div class="row g-3">
-              <div class="col-lg-6">
-                <%= image_tag("template/gallery2.png") %>
-              </div>
-              <div class="col-lg-6">
-                <%= image_tag("template/gallery3.png") %>
-              </div>
-              <div class="col-lg-6">
-                <%= image_tag("template/gallery4.png") %>
-              </div>
-              <div class="col-lg-6 position-relative">
-                <%= image_tag("template/gallery5.png") %>
-                <a class="seeAll" href="#"><%= image_tag("template/icon10.png") %><span>See All Photos</span></a>
-              </div>
+              <% @restaurant.images[0..3].each do |image_src| %>
+                <div class="col-lg-6 small">
+                  <img src=<%= image_src %>>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
+        <!-- gallery end-->
       </div>
     </div>
   </section>
@@ -127,57 +112,33 @@
   <div class="container custom pb_50">
     <div class="row g-lg-5">
       <div class="col-lg-8">
+
         <!-- tags area start -->
         <div class="pt_50">
           <h3 class="pb_10">Tags</h3>
           <div class="tags_wrap position-relative">
             <ul class="tags_list">
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Parking</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>A lot of space</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Large selection</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Backyard</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Intimate</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Good prices</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Air conditioning</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Live music</span></a></li>
-              <li><a href="#"><%= image_tag("template/check.png") %><span>Nice Service</span></a></li>
+              <% @restaurant.tags.split(",").drop(1).each do |res_tag| %>
+                <li><%= image_tag("template/check.png") if @restaurant.tags? %><span><%= res_tag %></span>
+                </li>
+              <% end %>
             </ul>
-            <a class="pen" href="#"><%= image_tag("template/pen.png") %></a>
           </div>
         </div>
+
         <!-- notes area start -->
         <div class="pt_50">
-          <h3 class="pb_10">Notes</h3>
+          <h3 class="pb_10">Review Body</h3>
           <div class="notes_wrap position-relative">
-            <p>Best good dining experience we had in Nashville (sightseeing from NYC)! It's definitely worth going.</p>
-            <a class="pen" href="#"><%= image_tag("template/pen.png") %></a>
+            <p><%= @restaurant.notes %></p>
           </div>
         </div>
+
         <!-- Favorite Dishes area start -->
         <div class="pt_50">
           <h3 class="pb_10">Favorite Dishes</h3>
           <div class="favorite_dishes_wrap">
             <ul class="favorite_dishes_list">
-              <li>
-                <%= image_tag("template/favorite_dishes1.png", class: 'main_img') %>
-                <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                  <div>
-                    <h4>Meal Name 1</h4>
-                    <p>Meal notes...</p>
-                  </div>
-                  <a href="#"><%= image_tag("template/pen.png") %></a>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/favorite_dishes2.png", class: 'main_img') %>
-                <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                  <div>
-                    <h4>Meal Name 2</h4>
-                    <p>Meal notes...</p>
-                  </div>
-                  <a href="#"><%= image_tag("template/pen.png") %></a>
-                </div>
-              </li>
               <li>
                 <%= image_tag("template/favorite_dishes3.png", class: 'main_img') %>
                 <div class="d-flex justify-content-between align-items-center w-100 ml_15">
@@ -185,15 +146,14 @@
                     <h4>Meal Name 3</h4>
                     <p>Meal notes...</p>
                   </div>
-                  <a href="#"><%= image_tag("template/pen.png") %></a>
                 </div>
               </li>
             </ul>
-            <a class="addNewMeal" href="#"><span class="icon">+</span><span>Add New Meal</span></a>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
+
         <!-- review area start -->
         <div class="pt_50">
           <h3 class="pb_10">Reviews</h3>
@@ -206,32 +166,18 @@
                   <p class="totel_review">409 reviews</p>
                 </div>
               </li>
-              <li>
-                <%= image_tag("template/review-logo8.png") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/review-logo9.png") %>
-                <div>
-                  <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
-                  <p class="totel_review">2453 reviews</p>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
+
         <!-- map area start -->
         <div class="pt_30">
           <h3 class="pb_10">Localization</h3>
           <div class="map_wrap">
-            <%= image_tag("template/Map.png", class: 'map_img') %>
+            <%#= image_tag("template/Map.png", class: 'map_img') %>
             <div class="position-relative pt_15 pb_15">
-              <h4>USA, Nashivlle</h4>
-              <p>700 Taylor St, TN 37208</p>
-              <a class="pen" href="#"><%= image_tag("template/pen.png") %></a>
+              <h4><%= @restaurant.country %>, <%= @restaurant.state %></h4>
+              <p><%= @restaurant.address %>, <%= @restaurant.zip_code %></p>
             </div>
             <a class="btn white" href="#"><span>Show on the Map</span></a>
           </div>
