@@ -60,7 +60,6 @@
             </div>
             <div>
               <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
-              
               <%= link_to edit_restaurant_path(@restaurant), class: 'btn' do %>
                 <%= image_tag("template/icon7.png") %><span>Edit</span>
               <% end %>
@@ -82,8 +81,10 @@
               </div>
             </div>
             <div class="d-flex justify-content-between pt_30">
-              <!--              <a class="btn" href="#"><%#= image_tag("template/icon7.png") %><span>Edit</span></a>-->
-              <%= link_to "Edit", edit_restaurant_path(@restaurant), class: 'btn' %>
+              <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
+              <%= link_to edit_restaurant_path(@restaurant), class: 'btn' do %>
+                <%= image_tag("template/icon7.png") %><span>Edit</span>
+              <% end %>
             </div>
           </div>
           <!-- mobile end-->
@@ -92,11 +93,11 @@
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
           <div class="col-lg-6">
-            <img src=<%= @restaurant.images.last %>>
+            <img src=<%= @restaurant.images.first %>>
           </div>
           <div class="col-lg-6">
             <div class="row g-3">
-              <% @restaurant.images[0..3].each do |image_src| %>
+              <% @restaurant.images[1..4].each do |image_src| %>
                 <div class="col-lg-6 small">
                   <img src=<%= image_src %>>
                 </div>
