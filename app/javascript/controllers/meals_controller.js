@@ -63,7 +63,7 @@ export default class extends Controller {
   }
 
   makeNewMeal() {
-    let randomId = Math.random() * 36;
+    let randomId = Math.floor(Math.random() * 1000) * 3243;
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
        <img id = "image-${randomId}" class='main_img' src='${this.imageTarget.src}'>
        <input name="restaurant[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
