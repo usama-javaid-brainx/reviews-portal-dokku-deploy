@@ -77,14 +77,14 @@
                 <div class="col-9 col-sm-8 d-flex justify-content-end">
                   <div class="public_review">
                     <div class="mode-switch d-flex flex-row align-items-center">
-                      <%= form.check_box :shareable, checked: false, id: 'switch' %>
+                      <%= form.check_box :shareable, id: 'switch' %>
                       <label for="switch"></label>
                     </div>
                     <%= image_tag('template/icon4.png', class: 'mr_5') %>
                     <span>Public REVIEW</span>
                   </div>
 
-                  <%= form.submit form.object.new_record? ? "Add Review" : "update Review", class: 'btn white add_review ml_25' %>
+                  <%= form.submit form.object.new_record? ? "Add Review" : "Update Review", class: 'btn white add_review ml_25' %>
                 </div>
               </div>
             </div>

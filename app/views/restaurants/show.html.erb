@@ -92,18 +92,20 @@
 
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
-          <div class="col-lg-6">
-            <img src=<%= @restaurant.images.first %>>
-          </div>
-          <div class="col-lg-6">
-            <div class="row g-3">
-              <% @restaurant.images[1..4].each do |image_src| %>
-                <div class="col-lg-6 small">
-                  <img src=<%= image_src %>>
-                </div>
-              <% end %>
+          <% if @restaurant.images? %>
+            <div class="col-lg-6">
+              <img src=<%= @restaurant.images.first %>>
             </div>
-          </div>
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <% @restaurant.images[1..4].each do |image_src| %>
+                  <div class="col-lg-6 small">
+                    <img src=<%= image_src %>>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
         <!-- gallery end-->
       </div>
@@ -140,50 +142,61 @@
           <h3 class="pb_10">Favorite Dishes</h3>
           <div class="favorite_dishes_wrap">
             <ul class="favorite_dishes_list">
-              <li>
-                <%= image_tag("template/favorite_dishes3.png", class: 'main_img') %>
-                <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                  <div>
-                    <h4>Meal Name 3</h4>
-                    <p>Meal notes...</p>
+              <% @restaurant.meals.each do |meal| %>
+                <li>
+                  <img class="main_img" src=<%= meal.image_url %>>
+                  <div class="d-flex justify-content-between align-items-center w-100 ml_15">
+                    <div>
+                      <h4><%= meal.name %></h4>
+                      <p><%= meal.notes %></p>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
 
-        <!-- review area start -->
-        <div class="pt_50">
-          <h3 class="pb_10">Reviews</h3>
-          <div class="review_wrap">
-            <ul>
-              <li>
-                <%= image_tag("template/review-logo7.png") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         <!-- map area start -->
         <div class="pt_30">
           <h3 class="pb_10">Localization</h3>
           <div class="map_wrap">
-            <%#= image_tag("template/Map.png", class: 'map_img') %>
-            <div class="position-relative pt_15 pb_15">
+<!--            <span id="lat"> <%#= @restaurant.latitude %> </span>-->
+<!--            <span id="long"> <%#= @restaurant.longitude %> </span>-->
+            <div id="map">
+            </div>
+            <div class="position-relative mt-3 pt_15 pb_15">
               <h4><%= @restaurant.country %>, <%= @restaurant.state %></h4>
               <p><%= @restaurant.address %>, <%= @restaurant.zip_code %></p>
             </div>
-            <a class="btn white" href="#"><span>Show on the Map</span></a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </main>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFbLw7Yc1hLAOvQAWbd48XdvtNhieq5Y&callback=initMap"
+  async=""
+  defer=""
+></script>
+<script>
+  function initMap() {
+    // let long = document.getElementById("long");
+    // let lat = document.getElementById("lat");
+    const place = { lat: -25.344, lng: 131.031 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: place,
+    });
+    const marker = new google.maps.Marker({
+      position: place,
+      map: map,
+    });
+  }
+  window.initMap = initMap;
+
+</script>

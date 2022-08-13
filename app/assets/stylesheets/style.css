@@ -1406,7 +1406,10 @@ header {
 	top: 1.6rem;
 	right: 1.6rem;
 }
-
+#map {
+	height: 250px;
+	width: 100%;
+}
 /* favorite dishes area  */
 .favorite_dishes_wrap {
 	background: #FFFFFF;
