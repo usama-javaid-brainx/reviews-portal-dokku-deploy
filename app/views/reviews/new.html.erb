@@ -1,4 +1,3 @@
-<%#= render 'form', restaurant: @restaurant %>
 <main class="position-relative">
   <a class="back" href="#"><%= image_tag("template/left-arrow.png") %></a>
   <div class="add_review_area pt_30">
@@ -7,8 +6,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <h2 class="title">Add restaurant review</h2>
-            <!-- add restaurant review nav start -->
+            <h2 class="title">Add Review</h2>
+            <!-- add review nav start -->
             <ul class="nav nav-pills" id="add-restaurant-review-nav">
               <li class="nav-item">
                 <a href="#review_area" class="nav-link active">Review</a>
@@ -26,7 +25,7 @@
                 <a href="#favourite_dishes_area" class="nav-link">Favourite dishes</a>
               </li>
             </ul>
-            <!-- add restaurant review nav end -->
+            <!-- add review nav end -->
           </div>
         </div>
       </div>
@@ -46,28 +45,28 @@
               <div class="review_area pt_30" id="review_area">
                 <div class="row">
                   <div class="col-lg-12">
-                    <%= render 'review', restaurant: @review, f: form %>
+                    <%= render 'review', review: @review, f: form %>
                   </div>
                 </div>
               </div>
 
               <!-- photo area start -->
               <div class="photo_area pt_30" id="photo_area">
-                <%= render 'photos', restaurant: @review, f: form %>
+                <%= render 'photos', review: @review, f: form %>
               </div>
 
               <!-- localization area start -->
               <div class="localization_area pt_30" id="localization_area">
-                <%= render 'localization', restaurant: @review, f: form %>
+                <%= render 'localization', review: @review, f: form %>
               </div>
 
               <!-- tags area start -->
               <div class="tags_area pt_30" id="tags_area">
-                <%= render 'tags', restaurant: @review, f: form %>
+                <%= render 'tags', review: @review, f: form %>
               </div>
 
               <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
-                <%= render 'favourite_dishes', restaurant: @review, f: form %>
+                <%= render 'favourite_dishes', review: @review, f: form %>
               </div>
 
               <div class="row pt_50 align-items-center">
