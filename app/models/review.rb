@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: restaurants
+# Table name: reviews
 #
 #  id               :bigint           not null, primary key
 #  user_id          :bigint
@@ -30,7 +30,7 @@
 #  shareable        :boolean
 #  images           :json
 #
-class Restaurant < ApplicationRecord
+class Review < ApplicationRecord
 
   attr_accessor :images_input
 
@@ -42,7 +42,7 @@ class Restaurant < ApplicationRecord
   # has_many_attached :images
 
   validates :name, presence: true
-  # only require name to create resturant review
+  # only require name to create review
 
   accepts_nested_attributes_for :meals
 

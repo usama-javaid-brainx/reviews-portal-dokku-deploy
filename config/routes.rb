@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "restaurants#index"
-  resources :restaurants do
+  root "reviews#index"
+  resources :reviews do
     delete :delete_attachment, on: :member
   end
 

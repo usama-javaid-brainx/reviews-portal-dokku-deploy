@@ -2,9 +2,9 @@
 <div class="col-lg-3 col-md-6">
   <div class="card">
     <div class="card-header p-0 border-0 position-relative">
-      <% if resturant.images.present? %>
+      <% if review.images.present? %>
         <div class="owl-carousel owl-theme card_carousel">
-          <% resturant.images.each do |image| %>
+          <% review.images.each do |image| %>
             <div class="item"><%= image_tag(image) %></div>
           <% end %>
         </div>
@@ -16,15 +16,15 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <%= link_to "Review", restaurant_path(resturant), class: 'review_btn' %>
-          <a class="share_btn" href="#"><%= resturant.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
+          <%= link_to "Review", review_path(review), class: 'review_btn' %>
+          <a class="share_btn" href="#"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
         </div>
-        <p class="product_rating"><%= image_tag("template/star.png") if resturant.average_score? %><span><%= resturant.average_score %></span></p>
+        <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %><span><%= review.average_score %></span></p>
       </div>
-      <h3><%= resturant.name %></h3>
+      <h3><%= review.name %></h3>
       <ul class="list_group">
-        <li><%= resturant.city %></li>
-        <li><%= resturant.state %>, <%= resturant.country %></li>
+        <li><%= review.city %></li>
+        <li><%= review.state %>, <%= review.country %></li>
         <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
       </ul>
     </div>

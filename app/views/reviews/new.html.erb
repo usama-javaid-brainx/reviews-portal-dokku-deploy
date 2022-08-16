@@ -36,38 +36,38 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <%= form_for @restaurant do |form| %>
+          <%= form_for @review do |form| %>
             <div data-controller="places"
                  data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
-                 data-places-latitude-value="<%= @restaurant.latitude %>"
-                 data-places-longitude-value="<%= @restaurant.longitude %>"
-                 data-places-place-id-value="<%= @restaurant.place_id %>">
+                 data-places-latitude-value="<%= @review.latitude %>"
+                 data-places-longitude-value="<%= @review.longitude %>"
+                 data-places-place-id-value="<%= @review.place_id %>">
               <!-- review area start -->
               <div class="review_area pt_30" id="review_area">
                 <div class="row">
                   <div class="col-lg-12">
-                    <%= render 'review', restaurant: @restaurant, f: form %>
+                    <%= render 'review', restaurant: @review, f: form %>
                   </div>
                 </div>
               </div>
 
               <!-- photo area start -->
               <div class="photo_area pt_30" id="photo_area">
-                <%= render 'photos', restaurant: @restaurant, f: form %>
+                <%= render 'photos', restaurant: @review, f: form %>
               </div>
 
               <!-- localization area start -->
               <div class="localization_area pt_30" id="localization_area">
-                <%= render 'localization', restaurant: @restaurant, f: form %>
+                <%= render 'localization', restaurant: @review, f: form %>
               </div>
 
               <!-- tags area start -->
               <div class="tags_area pt_30" id="tags_area">
-                <%= render 'tags', restaurant: @restaurant, f: form %>
+                <%= render 'tags', restaurant: @review, f: form %>
               </div>
 
               <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
-                <%= render 'favourite_dishes', restaurant: @restaurant, f: form %>
+                <%= render 'favourite_dishes', restaurant: @review, f: form %>
               </div>
 
               <div class="row pt_50 align-items-center">
@@ -83,7 +83,6 @@
                     <%= image_tag('template/icon4.png', class: 'mr_5') %>
                     <span>Public REVIEW</span>
                   </div>
-
                   <%= form.submit form.object.new_record? ? "Add Review" : "Update Review", class: 'btn white add_review ml_25' %>
                 </div>
               </div>

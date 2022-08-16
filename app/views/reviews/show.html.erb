@@ -10,7 +10,7 @@
     <div class="position-relative d-lg-none">
       <!-- carousel start -->
       <div class="owl-carousel owl-theme card_carousel">
-        <% @restaurant.images[0..5].each do |image_src| %>
+        <% @review.images[0..5].each do |image_src| %>
           <div class="item">
             <img src=<%= image_src %>>
           </div>
@@ -31,10 +31,10 @@
               <%= image_tag("template/icon4.png", class: 'mr_5') %>
               <span>Public REVIEW</span>
             </div>
-            <h1><%= @restaurant.name %></h1>
+            <h1><%= @review.name %></h1>
             <ul class="list_group">
-              <li><%= @restaurant.city %></li>
-              <li><%= @restaurant.state %>, <%= @restaurant.country %></li>
+              <li><%= @review.city %></li>
+              <li><%= @review.state %>, <%= @review.country %></li>
               <li>
                 <span>$</span>
                 <span>$</span>
@@ -56,11 +56,11 @@
                 <%= image_tag("template/favourites1.png") %>
                 <span>Save as Favourite</span></a>
               <p class="rating">
-                <%= image_tag("template/star.png") %><span><%= @restaurant.average_score %></span></p>
+                <%= image_tag("template/star.png") %><span><%= @review.average_score %></span></p>
             </div>
             <div>
               <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
-              <%= link_to edit_restaurant_path(@restaurant), class: 'btn' do %>
+              <%= link_to edit_review_path(@review), class: 'btn' do %>
                 <%= image_tag("template/icon7.png") %><span>Edit</span>
               <% end %>
             </div>
@@ -72,17 +72,17 @@
                 <%= image_tag("template/avatar1.png") %>
                 <div class="pl_10">
                   <p class="reviewer">Reviewer</p>
-                  <p class="name"><%= @restaurant.name %></p>
+                  <p class="name"><%= @review.name %></p>
                 </div>
               </div>
               <div class="rating_box">
                 <p class="rating"><%= image_tag("template/star.png") %>
-                  <span><%= @restaurant.average_score %></span></p>
+                  <span><%= @review.average_score %></span></p>
               </div>
             </div>
             <div class="d-flex justify-content-between pt_30">
               <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
-              <%= link_to edit_restaurant_path(@restaurant), class: 'btn' do %>
+              <%= link_to edit_review_path(@review), class: 'btn' do %>
                 <%= image_tag("template/icon7.png") %><span>Edit</span>
               <% end %>
             </div>
@@ -92,13 +92,13 @@
 
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
-          <% if @restaurant.images? %>
+          <% if @review.images? %>
             <div class="col-lg-6">
-              <img src=<%= @restaurant.images.first %>>
+              <img src=<%= @review.images.first %>>
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
-                <% @restaurant.images[1..4].each do |image_src| %>
+                <% @review.images[1..4].each do |image_src| %>
                   <div class="col-lg-6 small">
                     <img src=<%= image_src %>>
                   </div>
@@ -121,8 +121,8 @@
           <h3 class="pb_10">Tags</h3>
           <div class="tags_wrap position-relative">
             <ul class="tags_list">
-              <% @restaurant.tags.split(",").drop(1).each do |res_tag| %>
-                <li><%= image_tag("template/check.png") if @restaurant.tags? %><span><%= res_tag %></span>
+              <% @review.tags.split(",").drop(1).each do |res_tag| %>
+                <li><%= image_tag("template/check.png") if @review.tags? %><span><%= res_tag %></span>
                 </li>
               <% end %>
             </ul>
@@ -133,7 +133,7 @@
         <div class="pt_50">
           <h3 class="pb_10">Review Body</h3>
           <div class="notes_wrap position-relative">
-            <p><%= @restaurant.notes %></p>
+            <p><%= @review.notes %></p>
           </div>
         </div>
 
@@ -142,7 +142,7 @@
           <h3 class="pb_10">Favorite Dishes</h3>
           <div class="favorite_dishes_wrap">
             <ul class="favorite_dishes_list">
-              <% @restaurant.meals.each do |meal| %>
+              <% @review.meals.each do |meal| %>
                 <li>
                   <img class="main_img" src=<%= meal.image_url %>>
                   <div class="d-flex justify-content-between align-items-center w-100 ml_15">
@@ -163,13 +163,13 @@
         <div class="pt_30">
           <h3 class="pb_10">Localization</h3>
           <div class="map_wrap">
-            <span id="lat" data-latitude = <%= @restaurant.latitude %> > </span>
-            <span id="long" data-longitude = <%= @restaurant.longitude %> > </span>
+            <span id="lat" data-latitude = <%= @review.latitude %> > </span>
+            <span id="long" data-longitude = <%= @review.longitude %> > </span>
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
-              <h4><%= @restaurant.country %>, <%= @restaurant.state %></h4>
-              <p><%= @restaurant.address %>, <%= @restaurant.zip_code %></p>
+              <h4><%= @review.country %>, <%= @review.state %></h4>
+              <p><%= @review.address %>, <%= @review.zip_code %></p>
             </div>
           </div>
         </div>

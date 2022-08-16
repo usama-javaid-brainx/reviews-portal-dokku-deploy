@@ -8,8 +8,8 @@
           <!--All grid card here -->
           <div class="tab-pane fade show active" id="grid_layout1" role="tabpanel">
             <div class="row g-5">
-              <% @restaurants.each do |resturant| %>
-                <%= render 'resturant_card', resturant: resturant %>
+              <% @reviews.each do |review| %>
+                <%= render 'resturant_card', review: review %>
               <% end %>
             </div>
           </div>
@@ -23,7 +23,7 @@
 
 
   <!-- add Button -->
-  <%= link_to new_restaurant_path, class: 'addNew' do %>
+  <%= link_to new_review_path, class: 'addNew' do %>
     <%= image_tag("template/plus.png") %><span>Add New</span>
   <% end %>
 </main>
