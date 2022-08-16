@@ -7,8 +7,8 @@
           <%= image_tag("template/logo1.png", class:"d-lg-none d-block") %>
         <% end %>
       </div>
-      <div class="col-lg-6 col-6 text-center d-none">
-        <ul class="menu d-none d-lg-inline-flex align-items-center jutify-content-center">
+      <div class="col-lg-6 col-6 text-center">
+        <ul class="menu d-lg-inline-flex align-items-center jutify-content-center">
           <li><a class="nav_link active" href="#"><%= image_tag("template/nav-icon1.png") %><span>Restaurants</span></a>
           </li>
           <li><a class="nav_link" href="#"><%= image_tag("template/nav-icon2.png") %><span>Games</span></a></li>
@@ -40,7 +40,7 @@
         </div>
 
       </div>
-      <div class="col-lg-9 col-9 text-end">
+      <div class="col-lg-3 col-3 text-end">
 
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">

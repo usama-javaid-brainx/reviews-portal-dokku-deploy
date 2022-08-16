@@ -35,6 +35,7 @@ class Review < ApplicationRecord
   attr_accessor :images_input
 
   belongs_to :user
+  belongs_to :category
   has_many :meals, dependent: :destroy
 
   store_accessor :images, []

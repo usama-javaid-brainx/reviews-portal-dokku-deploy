@@ -7,6 +7,16 @@
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h2 class="title">Add Review</h2>
+
+            <!-- category area -->
+            <div class="category_area" id="category_area">
+              <div class="row">
+                <div class="col-lg-12">
+                  <%= render 'category'%>
+                </div>
+              </div>
+            </div>
+
             <!-- add review nav start -->
             <ul class="nav nav-pills" id="add-restaurant-review-nav">
               <li class="nav-item">
@@ -41,13 +51,10 @@
                  data-places-latitude-value="<%= @review.latitude %>"
                  data-places-longitude-value="<%= @review.longitude %>"
                  data-places-place-id-value="<%= @review.place_id %>">
+
               <!-- review area start -->
               <div class="review_area pt_30" id="review_area">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <%= render 'review', review: @review, f: form %>
-                  </div>
-                </div>
+                <%= render 'review', review: @review, f: form %>
               </div>
 
               <!-- photo area start -->

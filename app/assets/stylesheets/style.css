@@ -1553,6 +1553,12 @@ header {
 
 /* ============= Add restaurant review CSS start ============= */
 
+.category_area{
+	padding-top: 14rem;
+	margin-top: -10rem;
+	margin-bottom: 3rem;
+}
+
 .review_area{
 	padding-top: 15rem;
 	margin-top: -10.5rem;
@@ -1636,6 +1642,14 @@ header {
 	line-height: 1.5;
 	color: #00000A;
 	padding-bottom: .8rem;
+}
+
+.category_content_wrap{
+	padding: 2rem;
+	background: #FFFFFF;
+	border: 1px solid #EDEDFB;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+	border-radius: 6px;
 }
 
 .tabs_content_wrap{
