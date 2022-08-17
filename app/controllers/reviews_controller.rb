@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.new
+    @category = params[:category]
   end
 
   def create

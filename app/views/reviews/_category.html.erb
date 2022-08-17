@@ -1,6 +1,7 @@
 <h2>Category</h2>
 <div class="category_content_wrap">
-  <div class="form_group row align-items-center">
+  <div data-controller="category" class="form_group row align-items-center">
     <label for="search" class="col-lg-5">Category</label>
+    <%= select_tag :category, options_for_select(["Restaurants", "Books", "Movies", "Games"]), selected: params[:category] , "data-action": "click->category#categorySelect", "data-category-target": "category", class:"col-lg-7" %>
   </div>
 </div>
