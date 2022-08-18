@@ -1,14 +1,15 @@
 <h2>Review</h2>
 <div class="tabs_content_wrap">
 
-  <div class="form_group row align-items-center">
-    <label for="search" class="col-lg-5">Location</label>
+  <% if @curr_category.google_places? %>
+    <div class="form_group row align-items-center">
+      <label for="search" class="col-lg-5">Location</label>
 
-    <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
-           data-action="keydown->places#keydown"
-           data-places-target="field"/>
-  </div>
-
+      <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
+             data-action="keydown->places#keydown"
+             data-places-target="field"/>
+    </div>
+  <% end %>
 
   <div class="row align-items-center form_group">
     <%= f.label :name, "Name", class: 'col-lg-5' %>
