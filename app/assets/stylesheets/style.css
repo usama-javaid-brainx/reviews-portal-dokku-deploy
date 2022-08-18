@@ -1554,9 +1554,8 @@ header {
 /* ============= Add restaurant review CSS start ============= */
 
 .category_area{
-	padding-top: 13rem;
+	padding-top: 15rem;
 	margin-top: -10rem;
-	margin-bottom: 3rem;
 }
 
 .review_area{
@@ -1659,7 +1658,6 @@ header {
 	border-radius: 6px;
 	color: #00000A;
 	font-size: 1.4rem;
-	padding-right: 20px;
 }
 
 .category_content_wrap select:focus{

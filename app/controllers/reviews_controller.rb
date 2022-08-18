@@ -11,6 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    debugger
     @review = current_user.reviews.new(review_params)
     if @review.save
       redirect_to reviews_path, notice: "Restaurant created successfully!"
@@ -51,6 +52,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:name, :shareable, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+    params.require(:review).permit(:name, :category, :shareable, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 end
