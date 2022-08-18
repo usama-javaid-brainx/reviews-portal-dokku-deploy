@@ -5,5 +5,3 @@
         <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }, { selected: @curr_category.id }, { :class => 'col-lg-7', data: {"action": "click->category#categorySelect", "category-target": "category" }} %>
   </div>
 </div>
-
-<!--{ :selected => @category.find(params[:category_id]).name },-->
