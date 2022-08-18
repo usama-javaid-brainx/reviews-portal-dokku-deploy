@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def new
     @review = current_user.reviews.new
     @category = Category.all
-    @curr_category = Category.find(params[:category])
+    @curr_category = params[:category].present? ? Category.find(params[:category]) : Category.find(5)
   end
 
   def create
