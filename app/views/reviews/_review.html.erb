@@ -15,28 +15,30 @@
     <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
-
-  <div class="row align-items-center form_group">
-    <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
-    <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Score", class: "col-lg-5" %>
-    <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="row form_group" >
-    <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
-    <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 1 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 5 }" %></span>
+  <% if @curr_category.cuisine? %>
+    <div class="row align-items-center form_group">
+      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
+      <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
     </div>
-  </div>
+  <% end %>
 
+  <% if @curr_category.price? %>
+    <div class="form_group align-items-center row">
+      <%= f.label "Score", class: "col-lg-5" %>
+      <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+    </div>
+
+    <div class="row form_group">
+      <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
+      <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 1 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 5 }" %></span>
+      </div>
+    </div>
+  <% end %>
   <div class="row form_group">
     <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
     <%= f.text_area :notes, placeholder: "Write your reviews...", type: "text", class: 'col-lg-7', cols: '30', rows: '5' %>

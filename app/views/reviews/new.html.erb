@@ -13,18 +13,23 @@
               <li class="nav-item">
                 <a href="#review_area" class="nav-link active">Review</a>
               </li>
+
               <li class="nav-item">
                 <a href="#photo_area" class="nav-link">Photos</a>
               </li>
-              <li class="nav-item">
-                <a href="#localization_area" class="nav-link">Localization</a>
-              </li>
+              <% if @curr_category.address? %>
+                <li class="nav-item">
+                  <a href="#localization_area" class="nav-link">Localization</a>
+                </li>
+              <% end %>
               <li class="nav-item">
                 <a href="#tags_area" class="nav-link">Tags</a>
               </li>
+              <% if @curr_category.address? %>
               <li class="nav-item">
                 <a href="#favourite_dishes_area" class="nav-link">Favourite dishes</a>
               </li>
+              <% end %>
             </ul>
             <!-- add review nav end -->
           </div>
@@ -63,19 +68,21 @@
               </div>
 
               <!-- localization area start -->
-              <div class="localization_area pt_30" id="localization_area">
-                <%= render 'localization', review: @review, f: form %>
-              </div>
+              <% if @curr_category.address? %>
+                <div class="localization_area pt_30" id="localization_area">
+                  <%= render 'localization', review: @review, f: form %>
+                </div>
+              <% end %>
 
               <!-- tags area start -->
               <div class="tags_area pt_30" id="tags_area">
                 <%= render 'tags', review: @review, f: form %>
               </div>
-
-              <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
-                <%= render 'favourite_dishes', review: @review, f: form %>
-              </div>
-
+              <% if @curr_category.cuisine? %>
+                <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
+                  <%= render 'favourite_dishes', review: @review, f: form %>
+                </div>
+              <% end %>
               <div class="row pt_50 align-items-center">
                 <div class="col-3 col-sm-4">
                   <a class="btn white cancel" href="#">Cancel</a>

@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :reviews, dependent: :delete_all
+  has_many :review
 end

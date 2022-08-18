@@ -2,6 +2,8 @@
 <div class="category_content_wrap">
   <div data-controller="category" class="form_group row align-items-center">
     <label for="search" class="col-lg-5">Category</label>
-        <%= f.select :category, ["Restaurant", "Games", "Books", "Movies"], { :selected => params[:category]}, { :class => 'col-lg-7', data: {"action": "click->category#categorySelect", "category-target": "category" }} %>
+        <%= f.select :category_id, @category.all.collect {|c| [ c.name, c.id ] }, { :selected => params[:category_id] }, { :class => 'col-lg-7', data: {"action": "click->category#categorySelect", "category-target": "category" }} %>
   </div>
 </div>
+
+<!--{ :selected => @category.find(params[:category_id]).name },-->
