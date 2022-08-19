@@ -18,8 +18,8 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <%= link_to "Review", review_path(review), class: 'review_btn' %>
-          <a class="share_btn" href="#"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
+          <span class='review_btn'> Review</span>
+          <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
         </div>
         <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>
           <span><%= review.average_score %></span></p>
