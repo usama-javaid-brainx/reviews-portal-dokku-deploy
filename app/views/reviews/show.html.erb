@@ -94,18 +94,18 @@
         <div class="row img_gallery g-3 d-none d-lg-flex">
           <% if @review.images? %>
             <div class="col-lg-6">
-              <a href=<%= @restaurant.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
-                <img src=<%= @restaurant.images.first %>>
+              <a href=<%= @review.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
+                <img src=<%= @review.images.first %>>
               </a>
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
-                <% @restaurant.images[1..4].each do |image_src| %>
+                <% @review.images[1..4].each do |image_src| %>
                   <div class="col-lg-6 small position-relative">
                     <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
                       <img src=<%= image_src %>>
                     </a>
-                    <% if image_src.equal?(@restaurant.images[1..4].last) %>
+                    <% if image_src.equal?(@review.images[1..4].last) %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
                         See All Photos
@@ -132,7 +132,7 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <% @restaurant.images.each do |image_src| %>
+            <% @review.images.each do |image_src| %>
               <div class="col-3 mb-3 ">
                 <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
                   <img class="rounded img-fluid" src=<%= image_src %>>
@@ -197,8 +197,8 @@
         <div class="pt_30">
           <h3 class="pb_10">Localization</h3>
           <div class="map_wrap">
-            <span id="lat" data-latitude=<%= @restaurant.latitude %>> </span>
-            <span id="long" data-longitude=<%= @restaurant.longitude %>> </span>
+            <span id="lat" data-latitude=<%= @review.latitude %>> </span>
+            <span id="long" data-longitude=<%= @review.longitude %>> </span>
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
