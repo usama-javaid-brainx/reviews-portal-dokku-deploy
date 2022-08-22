@@ -1,116 +1,132 @@
 .restaurant-btn, .restaurant-btn:hover {
-  color: #65b123;
-  background-color: #FFFFFF;
-  margin-top: 10px;
-  margin-right: 10px;
+    color: #65b123;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
 .image-card {
-  width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: 0.1px 0.1px black;
-  border-radius: 5px;
-  cursor: pointer;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0.1px 0.1px black;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .border-gray {
-  border: 1px solid #d7d7d7;
+    border: 1px solid #d7d7d7;
 }
 
 .border-bottom-gray {
-  border: 1px solid #d7d7d7;
+    border: 1px solid #d7d7d7;
 }
 
 .card-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
 .description > label {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 .actions {
-  right: 1rem;
-  top: 23rem;
+    right: 1rem;
+    top: 23rem;
 }
 
 .image-card a {
-  color: #2E2F30 !important;
-  text-decoration: none !important;
+    color: #2E2F30 !important;
+    text-decoration: none !important;
 }
 
 .ml-20 {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .attachments-img {
-  width: auto;
-  height: 50px;
-  border-radius: 5px;
-  margin-right: 10px;
+    width: auto;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .review-list .left span {
-  width: 32px;
-  height: 32px;
-  display: inline-block;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
 }
 
 .review-list .left {
-  flex: none;
-  max-width: none;
-  margin: 0 10px 0 0;
+    flex: none;
+    max-width: none;
+    margin: 0 10px 0 0;
 }
 
 .review-list .left span img {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .review-list .right h4 {
-  font-size: 16px;
-  margin: 0;
-  display: flex;
+    font-size: 16px;
+    margin: 0;
+    display: flex;
 }
 
 .review-list .right h4 .gig-rating {
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  color: #ffbf00;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    color: #ffbf00;
 }
 
 .review-list .right h4 .gig-rating svg {
-  margin: 0 4px 0 0px;
+    margin: 0 4px 0 0px;
 }
 
 .review-list {
-  border-bottom: 1px solid #dadbdd;
-  padding: 0 0 30px;
-  margin: 0 0 30px;
+    border-bottom: 1px solid #dadbdd;
+    padding: 0 0 30px;
+    margin: 0 0 30px;
 }
 
 .review-list .right {
-  flex: auto;
+    flex: auto;
 }
 
 .review-list .review-description {
-  margin: 20px 0 0;
+    margin: 20px 0 0;
 }
 
 .review-list .review-description p {
-  font-size: 14px;
-  margin: 0;
+    font-size: 14px;
+    margin: 0;
 }
 
 .review-list .publish {
-  font-size: 13px;
-  color: #95979d;
+    font-size: 13px;
+    color: #95979d;
 }
 
 .review-section h4 {
-  font-size: 20px;
-  color: #222325;
-  font-weight: 700;
+    font-size: 20px;
+    color: #222325;
+    font-weight: 700;
+}
+
+.see-all-photo {
+    position: absolute;
+    border: 1px solid white;
+    left: 28%;
+    top: 44%;
+    padding: 10px 24px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(0, 0, 10, 0.3);
+}
+
+.gallery-icon {
+    height: unset !important;
+    width: unset !important;
 }
