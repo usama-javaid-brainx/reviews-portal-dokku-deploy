@@ -41,9 +41,12 @@ section {
 	padding: 0;
 }
 
-ol,
 ul {
 	list-style: none;
+}
+
+div[class~='list-style-unset'] ul {
+	list-style: unset !important;
 }
 
 a{
