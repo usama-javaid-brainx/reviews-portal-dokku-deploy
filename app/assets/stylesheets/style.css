@@ -1050,6 +1050,21 @@ header {
 
 
 /* Hero area start */
+.wishlist-toggle{
+	margin-top: 5rem;
+	display: flex;
+	align-items: center;
+}
+
+.wishlist-toggle span{
+	text-transform: uppercase;
+	color: #21212D;
+	font-size: 1.2rem;
+	font-weight: 500;
+	line-height: 1;
+	margin-left: 10px;
+}
+
 .public_review{
 	display: flex;
 	align-items: center;

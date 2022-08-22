@@ -27,7 +27,7 @@
               </li>
               <% if @curr_category.address? %>
               <li class="nav-item">
-                <a href="#favourite_dishes_area" class="nav-link">Favourite dishes</a>
+                <a href="#favourite_dishes_area" class="nav-link">Highlights</a>
               </li>
               <% end %>
             </ul>
@@ -47,6 +47,15 @@
                  data-places-latitude-value="<%= @review.latitude %>"
                  data-places-longitude-value="<%= @review.longitude %>"
                  data-places-place-id-value="<%= @review.place_id %>">
+
+              <!-- Wishlist Toggle -->
+              <div class="wishlist-toggle">
+                <div class="mode-switch d-flex flex-row align-items-center">
+                  <%= form.check_box :to_try, id: 'switch' %>
+                  <label for="switch"></label>
+                </div>
+                <span>To Try</span>
+              </div>
 
               <!-- category area -->
               <div class="category_area pt_30" id="category_area">
