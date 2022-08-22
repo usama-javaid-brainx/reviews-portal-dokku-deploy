@@ -4,3 +4,4 @@
 //= require template/easing.min
 //= require template/plugins
 //= require template/main
+//= require template/index.bundle.min

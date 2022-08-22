@@ -94,13 +94,23 @@
         <div class="row img_gallery g-3 d-none d-lg-flex">
           <% if @restaurant.images? %>
             <div class="col-lg-6">
-              <img src=<%= @restaurant.images.first %>>
+              <a href=<%= @restaurant.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
+                <img src=<%= @restaurant.images.first %>>
+              </a>
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
                 <% @restaurant.images[1..4].each do |image_src| %>
-                  <div class="col-lg-6 small">
-                    <img src=<%= image_src %>>
+                  <div class="col-lg-6 small position-relative">
+                    <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
+                      <img src=<%= image_src %>>
+                    </a>
+                    <% if image_src.equal?(@restaurant.images[1..4].last) %>
+                      <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
+                        See All Photos
+                      </button>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -111,6 +121,30 @@
       </div>
     </div>
   </section>
+
+  <!-- images gallery Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" style="max-height: 600px; max-width: 800px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Photo Gallery</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <% @restaurant.images.each do |image_src| %>
+              <div class="col-3 mb-3 ">
+                <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
+                  <img class="rounded img-fluid" src=<%= image_src %>>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="container custom pb_50">
     <div class="row g-lg-5">
@@ -163,8 +197,8 @@
         <div class="pt_30">
           <h3 class="pb_10">Localization</h3>
           <div class="map_wrap">
-            <span id="lat" data-latitude = <%= @restaurant.latitude %> > </span>
-            <span id="long" data-longitude = <%= @restaurant.longitude %> > </span>
+            <span id="lat" data-latitude=<%= @restaurant.latitude %>> </span>
+            <span id="long" data-longitude=<%= @restaurant.longitude %>> </span>
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
@@ -182,14 +216,13 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFbLw7Yc1hLAOvQAWbd48XdvtNhieq5Y&callback=initMap"
   async=""
 ></script>
-
 <script>
   function initMap() {
     let long = document.getElementById("long").getAttribute("data-longitude");
     let lat = document.getElementById("lat").getAttribute("data-latitude");
     lat = parseFloat(lat);
     long = parseFloat(long);
-    const place = { lat, long };
+    const place = {lat, long};
     const map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
       center: place,
@@ -199,5 +232,6 @@
       map: map,
     });
   }
+
   window.initMap = initMap;
 </script>
