@@ -1,25 +1,28 @@
 <!-- single card -->
 <div class="col-lg-3 col-md-6">
   <div class="card">
-    <div class="card-header p-0 border-0 position-relative">
-      <% if review.images.present? %>
-        <div class="owl-carousel owl-theme card_carousel">
-          <% review.images.each do |image| %>
-            <div class="item"><%= image_tag(image) %></div>
-          <% end %>
-        </div>
-        <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+    <%= link_to review_path(review) do %>
+      <div class="card-header p-0 border-0 position-relative">
+        <% if review.images.present? %>
+          <div class="owl-carousel owl-theme card_carousel">
+            <% review.images.each do |image| %>
+              <div class="item"><%= image_tag(image) %></div>
+            <% end %>
+          </div>
+          <button class="favourite"><%= image_tag("template/favourites.png") %></button>
         <% else %>
-        <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
-      <% end %>
-    </div>
+          <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
+        <% end %>
+      </div>
+    <% end %>
     <div class="card-body">
       <div class="top">
         <div>
-          <%= link_to "Review", review_path(review), class: 'review_btn' %>
-          <a class="share_btn" href="#"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></a>
+          <span class='review_btn'> Review</span>
+          <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
         </div>
-        <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %><span><%= review.average_score %></span></p>
+        <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>
+          <span><%= review.average_score %></span></p>
       </div>
       <h3><%= review.name %></h3>
       <ul class="list_group">

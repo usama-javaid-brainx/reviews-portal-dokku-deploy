@@ -16,6 +16,11 @@
     <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "Date", class: 'col-lg-5' %>
+    <%= f.date_field :date, class: "col-lg-7" %>
+  </div>
+
   <% if @curr_category.cuisine? %>
     <div class="row align-items-center form_group">
       <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
