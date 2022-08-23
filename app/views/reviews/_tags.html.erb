@@ -7,8 +7,11 @@
   </div>
   <div class="tags d-flex flex-wrap" data-tags-target="tags">
     <% if f.object.persisted? %>
+      <% f.object.tags.split(",")[1..].each do |tag| %>
       <div class="tag-badge d-flex align-items-center mt-4 mr-2">
-        <span><%= f.object.tags %></span><i class="fa fa-remove ml_10 mt-1" id="remove1"></i></div>
+          <span><%= tag %></span><i class="fa fa-remove ml_10 mt-1" id="remove1"></i>
+      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -9,23 +9,21 @@
       <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
     </div>
   </div>
-<% debugger %>
-  <% if f.object.persisted? %>
-    <div class="uploaded-files" id="js-uploaded-files">
-      <div class="mb-3 main-thumbnail">
-        <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first %>>
-      </div>
-      <div class="d-flex" id="js-thumbnails">
-        <%= f.object.images[1..].each do %>
-          <img class="thumbnail px-0" src=<%= f.object.images %>>
-        <% end %> %>
-        <button name="button" type="button" class="thumbnail upload-button px-0" id="unique-iddd" input_id="unique-input-idsd" onclick="(function(){
-          filestack_client.picker({ onUploadDone: data => (function(data){const filestack_input_field= document.getElementById('unique-input-idsd');filestack_input_field.value = data.filesUploaded.map(e => e.url);})(data), onFileUploadFinished: data => callbackOnFileUploadFinished(data),  }).open()})()">+
-        </button>
-        <input id="unique-input-idsd" style="display:none" type="text" name="review[images_input]">
-      </div>
-    </div>
-  <% end %>
+  <%# if f.object.persisted? %>
+<!--    <div class="uploaded-files" id="js-uploaded-files">-->
+<!--      <div class="mb-3 main-thumbnail">-->
+<!--        <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%#= f.object.images.first if f.object.images? %> >-->
+<!--      </div>-->
+<!--      <div class="d-flex" id="js-thumbnails">-->
+        <%# debugger %>
+        <%# f.object.images[1..].each if f.object.images? do |image_src| %>
+<!--          <img class="thumbnail px-0" src=<%#= image_src %>>-->
+        <%# end %>
+        <%#= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+<!--        <input id="unique-input-idsd" style="display:none" type="text" name="review[images_input]">-->
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
 
   <div class="file_upload_place" id="file_upload_place">
     <div class="content">
