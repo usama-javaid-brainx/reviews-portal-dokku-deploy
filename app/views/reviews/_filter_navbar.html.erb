@@ -12,9 +12,9 @@
       </div>
       <div class="col-lg-4">
         <ul class="nav">
-          <li><%= link_to 'All', reviews_path(to_try: 'all'), class: "#{'active' if params[:to_try] == 'all'}" %></li>
-          <li><%= link_to 'Reviews', reviews_path(to_try: false), class: "#{'active' if params[:to_try] == 'false'}" %></li>
-          <li><%= link_to 'To Try', reviews_path(to_try: true), class: "#{'active' if params[:to_try] == 'true'}" %></li>
+          <li><%= link_to 'All', reviews_path(to_try: 'all', category: params[:category]), class: "#{'active' if params[:to_try] == 'all'}" %></li>
+          <li><%= link_to 'Reviews', reviews_path(to_try: false, category: params[:category]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
+          <li><%= link_to 'To Try', reviews_path(to_try: true, category: params[:category]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
         </ul>
       </div>
       <div class="col-lg-4 d-flex justify-content-end">

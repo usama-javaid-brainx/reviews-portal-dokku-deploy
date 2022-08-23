@@ -2,19 +2,15 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    reviews = current_user.reviews
-    review_filter(reviews)
-
+    reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
   end
 
   def review_filter(reviews)
-    if params[:to_try].present?
-      reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true')
-      reviews = reviews.where(category_id: Category.find_by(name: params[:category]))
-    else
-      params[:to_try] = 'all'
-    end
+    params[:to_try] = 'all' if !params[:to_try].present?
+    params[:category] = 'Restaurants' if !params[:category].present?
+    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
+    reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
 
     reviews
   end

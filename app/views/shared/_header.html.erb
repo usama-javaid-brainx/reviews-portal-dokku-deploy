@@ -10,33 +10,34 @@
       <div class="col-lg-6 col-6 text-center">
         <ul class="menu d-lg-inline-flex align-items-center jutify-content-center">
           <li>
-            <%= link_to reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurant'}" do %>
+            <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
               <%= image_tag("template/nav-icon1.png") %>Restaurants
             <% end %>
           </li>
           <li>
-            <%= link_to reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
+            <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
               <%= image_tag("template/nav-icon2.png") %>Games
             <% end %>
           </li>
           <li>
-            <%= link_to reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
+            <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
               <%= image_tag("template/nav-icon3.png") %>Books
             <% end %>
           </li>
           <li>
-            <%= link_to reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
+            <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
               <%= image_tag("template/nav-icon4.png") %>Movies
             <% end %>
-
-          <li class="dropdown ml_15">
-            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon5.png") %></a>
-            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
-              <li><a class="dropdown-item" href="#">New Item 1</a></li>
-              <li><a class="dropdown-item" href="#">New Item 2</a></li>
-              <li><a class="dropdown-item" href="#">New Item 3</a></li>
-            </ul>
           </li>
+          <!--to_do-->
+          <!--          <li class="dropdown ml_15">-->
+          <!--            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon5.png") %></a>-->
+          <!--            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">-->
+          <!--              <li><a class="dropdown-item" href="#">New Item 1</a></li>-->
+          <!--              <li><a class="dropdown-item" href="#">New Item 2</a></li>-->
+          <!--              <li><a class="dropdown-item" href="#">New Item 3</a></li>-->
+          <!--            </ul>-->
+          <!--          </li>-->
         </ul>
 
         <!-- menu dropdown for mobile -->
