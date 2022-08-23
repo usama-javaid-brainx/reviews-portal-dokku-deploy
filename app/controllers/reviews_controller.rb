@@ -2,13 +2,21 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
+    reviews = current_user.reviews
+    review_filter(reviews)
+
+    @pagy, @reviews = pagy(reviews, items: 12)
+  end
+
+  def review_filter(reviews)
     if params[:to_try].present?
-      reviews = params[:to_try] == 'all' ? current_user.reviews : current_user.reviews.where(to_try: params[:to_try] == 'true')
+      reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true')
+      reviews = reviews.where(category_id: Category.find_by(name: params[:category]))
     else
       params[:to_try] = 'all'
-      reviews = current_user.reviews
     end
-    @pagy, @reviews = pagy(reviews, items: 12)
+
+    reviews
   end
 
   def new
