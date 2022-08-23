@@ -6,15 +6,6 @@ class ReviewsController < ApplicationController
     @pagy, @reviews = pagy(reviews, items: 12)
   end
 
-  def review_filter(reviews)
-    params[:to_try] = 'all' if !params[:to_try].present?
-    params[:category] = 'Restaurants' if !params[:category].present?
-    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
-    reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
-
-    reviews
-  end
-
   def new
     @review = current_user.reviews.new
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
@@ -63,5 +54,13 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+  end
+
+  def review_filter(reviews)
+    params[:to_try] = 'all' if !params[:to_try].present?
+    params[:category] = 'Restaurants' if !params[:category].present?
+    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
+    reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
+    reviews
   end
 end
