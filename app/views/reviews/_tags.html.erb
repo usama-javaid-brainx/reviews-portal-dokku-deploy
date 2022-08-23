@@ -5,5 +5,10 @@
     <input type="text" data-tags-target="tagInput" data-action="keyup->tags#makeTag" placeholder="Search Tags...">
     <button><%= image_tag("template/search.png") %></button>
   </div>
-  <div class="tags d-flex flex-wrap" data-tags-target="tags"></div>
+  <div class="tags d-flex flex-wrap" data-tags-target="tags">
+    <% if f.object.persisted? %>
+      <div class="tag-badge d-flex align-items-center mt-4 mr-2">
+        <span><%= f.object.tags %></span><i class="fa fa-remove ml_10 mt-1" id="remove1"></i></div>
+    <% end %>
+  </div>
 </div>
