@@ -103,10 +103,9 @@
                 <% @review.images[1..].each_with_index do |image_src, idx| %>
                   <div class="col-lg-6 small position-relative">
                     <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
-                      <%# debugger %>
                       <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>" >
                     </a>
-                    <% if idx == 3 %>
+                    <% if image_src.equal?(@review.images[1..4].last) %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
                         See All Photos

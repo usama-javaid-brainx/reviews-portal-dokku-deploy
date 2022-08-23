@@ -7,55 +7,81 @@
           <%= image_tag("template/logo1.png", class: "d-lg-none d-block") %>
         <% end %>
       </div>
-      <div class="col-lg-6 col-6 text-center">
-        <ul class="menu d-lg-inline-flex align-items-center jutify-content-center">
-          <li>
-            <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
-              <%= image_tag("template/nav-icon1.png") %>Restaurants
-            <% end %>
-          </li>
-          <li>
-            <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
-              <%= image_tag("template/nav-icon2.png") %>Games
-            <% end %>
-          </li>
-          <li>
-            <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
-              <%= image_tag("template/nav-icon3.png") %>Books
-            <% end %>
-          </li>
-          <li>
-            <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
-              <%= image_tag("template/nav-icon4.png") %>Movies
-            <% end %>
-          </li>
-          <!--to_do-->
-          <!--          <li class="dropdown ml_15">-->
-          <!--            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon5.png") %></a>-->
-          <!--            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">-->
-          <!--              <li><a class="dropdown-item" href="#">New Item 1</a></li>-->
-          <!--              <li><a class="dropdown-item" href="#">New Item 2</a></li>-->
-          <!--              <li><a class="dropdown-item" href="#">New Item 3</a></li>-->
-          <!--            </ul>-->
-          <!--          </li>-->
-        </ul>
-
-        <!-- menu dropdown for mobile -->
-        <div class="d-lg-none dropdown menuItemDropdown">
-          <a href="#" class="toggler" id="menuItemDropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon1.png") %>
-            <span>Restaurants</span><%= image_tag("template/bottom-arrow3.png", class: 'arrow') %></a>
-
-          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
-            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon2.png") %></span><span>Games</span></a>
+        <div class="col-lg-6 col-6 text-center">
+          <% if params[:to_try].present? %>
+          <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
+            <li>
+              <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
+                <%= image_tag("template/nav-icon1.png") %>Restaurants
+              <% end %>
             </li>
-            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon3.png") %></span><span>Books</span></a>
+            <li>
+              <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
+                <%= image_tag("template/nav-icon2.png") %>Games
+              <% end %>
             </li>
-            <li><a href="#"><span class="icon"><%= image_tag("template/nav-icon4.png") %></span><span>Movies</span></a>
+            <li>
+              <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
+                <%= image_tag("template/nav-icon3.png") %>Books
+              <% end %>
             </li>
+            <li>
+              <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
+                <%= image_tag("template/nav-icon4.png") %>Movies
+              <% end %>
+            </li>
+            <!--to_do-->
+            <!--          <li class="dropdown ml_15">-->
+            <!--            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon5.png") %></a>-->
+            <!--            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">-->
+            <!--              <li><a class="dropdown-item" href="#">New Item 1</a></li>-->
+            <!--              <li><a class="dropdown-item" href="#">New Item 2</a></li>-->
+            <!--              <li><a class="dropdown-item" href="#">New Item 3</a></li>-->
+            <!--            </ul>-->
+            <!--          </li>-->
           </ul>
+
+          <!-- menu dropdown for mobile -->
+          <div class="d-lg-none dropdown menuItemDropdown">
+
+            <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
+              <span class="icon"><%= image_tag("template/nav-icon1.png") %></span><span>Restaurants</span>
+            <% end %>
+
+            <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+              <li>
+                <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
+                  <span class="icon"> <%= image_tag("template/nav-icon2.png") %></span><span>Games</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "icon" do %>
+                  <span class="icon"><%= image_tag("template/nav-icon3.png") %></span><span>Books</span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "icon" do %>
+                  <span class="icon"><%= image_tag("template/nav-icon4.png") %></span><span>Movies</span>
+                <% end %>
+              </li>
+            </ul>
+
+            <!--remove below-->
+            <!--          <a href="#" class="toggler" id="menuItemDropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon1.png") %>-->
+            <!--            <span>Restaurants</span><%#= image_tag("template/bottom-arrow3.png", class: 'arrow') %></a>-->
+
+            <!--          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">-->
+            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon2.png") %></span><span>Games</span></a>-->
+            <!--            </li>-->
+            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon3.png") %></span><span>Books</span></a>-->
+            <!--            </li>-->
+            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon4.png") %></span><span>Movies</span></a>-->
+            <!--            </li>-->
+            <!--          </ul>-->
+          </div>
+          <% end %>
         </div>
 
-      </div>
       <div class="col-lg-3 col-3 text-end">
 
         <% if user_signed_in? %>
