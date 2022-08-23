@@ -2,7 +2,13 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    @pagy, @reviews = pagy(current_user.reviews, items: 12)
+    if params[:to_try].present?
+      reviews = params[:to_try] == 'all' ? current_user.reviews : current_user.reviews.where(to_try: params[:to_try] == 'true')
+    else
+      params[:to_try] = 'all'
+      reviews = current_user.reviews
+    end
+    @pagy, @reviews = pagy(reviews, items: 12)
   end
 
   def new

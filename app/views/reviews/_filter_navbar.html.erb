@@ -12,10 +12,9 @@
       </div>
       <div class="col-lg-4">
         <ul class="nav">
-          <li><a class="active" href="#">All</a></li>
-          <li><a href="#">Reviews</a></li>
-          <li><a href="#">To Try</a></li>
-          <li><a href="#">Favourites</a></li>
+          <li><%= link_to 'All', reviews_path(to_try: 'all'), class: "#{'active' if params[:to_try] == 'all'}" %></li>
+          <li><%= link_to 'Reviews', reviews_path(to_try: false), class: "#{'active' if params[:to_try] == 'false'}" %></li>
+          <li><%= link_to 'To Try', reviews_path(to_try: true), class: "#{'active' if params[:to_try] == 'true'}" %></li>
         </ul>
       </div>
       <div class="col-lg-4 d-flex justify-content-end">
@@ -41,7 +40,8 @@
           </li>
         </ul>
         <!-- map_enable_btn -->
-        <a class="map_enable_btn d-none" href="grid-view-map-enabled.html"><%= image_tag("template/icon3.svg") %><span class="text">Show Map</span><span class="switch"></span></a>
+        <a class="map_enable_btn d-none" href="grid-view-map-enabled.html"><%= image_tag("template/icon3.svg") %>
+          <span class="text">Show Map</span><span class="switch"></span></a>
       </div>
     </div>
   </div>
