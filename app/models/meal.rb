@@ -11,7 +11,7 @@
 #  restaurant_id :bigint
 #
 class Meal < ApplicationRecord
-  belongs_to :reviews
+  belongs_to :review
 
   validates :name, :notes, presence: true
 end

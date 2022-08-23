@@ -1,11 +1,13 @@
 class RenameRestaurantTableToReview < ActiveRecord::Migration[7.0]
-  def self.up
+  def up
+    remove_reference :meals, :restaurant, index: true, foreign_key: true
     rename_table :restaurants, :reviews
-    rename_column :meals, :restaurant_id, :review_id
+    add_reference :meals, :review, foreign_key: true, index: true
   end
 
-  def self.down
+  def down
+    remove_reference :meals, :review, foreign_key: true, index: true
     rename_table :reviews, :restaurants
-    rename_column :meals, :review_id, :restaurant_id
+    add_reference :meals, :restaurant, index: true, foreign_key: true
   end
 end
