@@ -45,6 +45,14 @@ ul {
 	list-style: none;
 }
 
+.h-unset {
+	height: unset;
+}
+
+.w-unset {
+	width: unset;
+}
+
 div[class~='list-style-unset'] ul {
 	list-style: unset !important;
 }
