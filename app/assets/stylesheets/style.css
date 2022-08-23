@@ -1338,13 +1338,26 @@ header {
 }
 
 /* img gallery */
-.img_gallery img{
-	width: 100%;
+.img_gallery .large{
+	text-align: center;
+	margin: auto;
+	max-height: 500px;
+}
+
+.img_gallery .large img{
 	height: 500px;
+	object-fit: cover;
+}
+
+.img_gallery .small{
+	text-align: center;
+	max-height: 250px;
 }
 
 .img_gallery .small img{
 	height: 244px;
+	width: 100%;
+	object-fit: cover;
 }
 
 .img_gallery .search{

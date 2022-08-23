@@ -66,9 +66,9 @@ export default class extends Controller {
     let randomId = Math.floor(Math.random() * 1000) * 3243;
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
        <img id = "image-${randomId}" class='main_img' src='${this.imageTarget.src}'>
-       <input name="restaurant[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
-       <input name="restaurant[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden>
-       <input name="restaurant[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden>
+       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
+       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden>
+       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden>
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
         <div class="text-left">
           <h4 id="name-${randomId}"> ${this.mealNameTarget.value}</h4>
