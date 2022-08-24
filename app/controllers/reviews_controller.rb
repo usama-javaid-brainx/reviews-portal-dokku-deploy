@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     params[:category] = 'Restaurants' if !params[:category].present?
     reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
-
+    reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
     reviews
   end
 

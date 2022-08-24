@@ -27,3 +27,6 @@ application.register("dollar-price-range", DollarPriceRangeController)
 
 import CategoryController from "./category_controller.js"
 application.register("category", CategoryController)
+
+import FilterController from "./filter_controller.js"
+application.register("filter", FilterController)
