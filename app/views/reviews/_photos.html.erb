@@ -1,15 +1,6 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
 
-  <!--  <div class="uploaded-files d-none" id="js-uploaded-files">-->
-  <!--    <div class="mb-3 main-thumbnail">-->
-  <!--      <img id="mainThumbnail" data-photos-target="mainThumbnail" src="https://cdn.filestackcontent.com/5gHkNOKTru4JPI3Ey1VP">-->
-  <!--    </div>-->
-  <!--    <div class="d-flex" id="js-thumbnails">-->
-  <%#= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
-  <!--    </div>-->
-  <!--  </div>-->
-
   <% if !f.object.persisted? %>
     <div class="file_upload_place" id="file_upload_place">
       <div class="content">
@@ -34,7 +25,6 @@
       <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
     </div>
   </div>
-
   <div id="image_inputs">
 
   </div>
