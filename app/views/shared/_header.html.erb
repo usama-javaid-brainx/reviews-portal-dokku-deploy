@@ -11,22 +11,22 @@
           <% if params[:to_try].present? %>
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
-              <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
+              <%= link_to reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
                 <%= image_tag("template/nav-icon1.png") %>Restaurants
               <% end %>
             </li>
             <li>
-              <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
+              <%= link_to reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
                 <%= image_tag("template/nav-icon2.png") %>Games
               <% end %>
             </li>
             <li>
-              <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
+              <%= link_to reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
                 <%= image_tag("template/nav-icon3.png") %>Books
               <% end %>
             </li>
             <li>
-              <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
+              <%= link_to reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
                 <%= image_tag("template/nav-icon4.png") %>Movies
               <% end %>
             </li>

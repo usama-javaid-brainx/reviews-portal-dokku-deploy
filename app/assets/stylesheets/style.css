@@ -71,33 +71,27 @@ ul {
     font-size: 14px;
     font-weight: 500;
     border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-cancel{
     background: #FFFFFF;
     color: #848496;
     border: 1px solid #CCCCE1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+
+.filter-cancel:hover{
+    color: #6E3EF7;
+    border: 1px solid #6E3EF7;
 }
 
 .filter-apply{
-    cursor: pointer;
-    width: 110px;
-    height: 40px;
-    line-height: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 6px;
     background: #6E3EF7;
     color: #FFFFFF;
     border: unset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.filter-btn:hover{
-    color: #6E3EF7;
-    border: 1px solid #6E3EF7;
 }
 
 .cuisine-font{
