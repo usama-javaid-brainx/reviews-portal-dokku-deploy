@@ -219,12 +219,12 @@
 <script>
   function initMap() {
     let long = document.getElementById("long").getAttribute("data-longitude");
-    let lat = document.getElementById("lat").getAttribute("data-latitude");
-    lat = parseFloat(lat);
+    let lati = document.getElementById("lat").getAttribute("data-latitude");
+    lati = parseFloat(lati);
     long = parseFloat(long);
-    const place = {lat, long};
+    const place = {lat: lati, lng: long};
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
+      zoom: 16,
       center: place,
     });
     const marker = new google.maps.Marker({
