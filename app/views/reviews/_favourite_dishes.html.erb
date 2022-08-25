@@ -2,6 +2,10 @@
 <div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/delete.svg') %>">
   <div class="favourite_dishes_tab_wrap text-center">
     <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
+      <div class="d-none" data-meals-target="noMealDiv">
+        <h2>No Highlights yet</h2>
+        <div>Add your Highlights</div>
+      </div>
       <% index = 0 %>
       <%= f.fields_for :meals do |meal_form| %>
         <li data-meals-target="mealCard" id="<%= index %>">
@@ -28,12 +32,6 @@
         <% index += 1 %>
       <% end %>
     </ul>
-    <% if f.object.meals.empty? %>
-      <div data-meals-target="noMealDiv">
-        <h2>No favourites dishes yet</h2>
-        <div>Add your favourite dishes</div>
-      </div>
-    <% end %>
     <!-- Button trigger modal -->
     <button type="button" data-action="click->meals#resetModal" class="btn white mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
       <span class="icon">+</span><span>Highlight</span>
