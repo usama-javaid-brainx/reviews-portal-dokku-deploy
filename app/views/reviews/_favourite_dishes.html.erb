@@ -2,7 +2,7 @@
 <div class="tabs_content_wrap" data-controller="meals" data-meals-edit-icon-value="<%= asset_path('template/pen.png') %>" data-meals-delete-icon-value="<%= asset_path('template/delete.svg') %>">
   <div class="favourite_dishes_tab_wrap text-center">
     <ul class="favorite_dishes_list" data-meals-target="favouriteMeals">
-      <div class="d-none" data-meals-target="noMealDiv">
+      <div class="<%= "d-none" if f.object.meals.present? %> " data-meals-target="noMealDiv">
         <h2>No Highlights yet</h2>
         <div>Add your Highlights</div>
       </div>

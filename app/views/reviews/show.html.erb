@@ -32,6 +32,9 @@
               <span>Public REVIEW</span>
             </div>
             <h1><%= @review.name %></h1>
+            <p class="date">
+              <%= @review.date.strftime("%b/%e/%Y") %>
+            </p>
             <ul class="list_group">
               <li><%= @review.city %></li>
               <li><%= @review.state %>, <%= @review.country %></li>
