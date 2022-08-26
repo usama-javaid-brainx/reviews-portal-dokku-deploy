@@ -27,9 +27,9 @@
                 <a href="#tags_area" class="nav-link">Tags</a>
               </li>
               <% if @curr_category.address? %>
-              <li class="nav-item">
-                <a href="#favourite_dishes_area" class="nav-link">Highlights</a>
-              </li>
+                <li class="nav-item">
+                  <a href="#favourite_dishes_area" class="nav-link">Highlights</a>
+                </li>
               <% end %>
             </ul>
             <!-- add review nav end -->
@@ -96,6 +96,9 @@
               <div class="row pt_50 align-items-center">
                 <div class="col-3 col-sm-4">
                   <a class="btn white cancel" href="#">Cancel</a>
+                  <% if f.object.persisted? %>
+                    <%= link_to "Delete", nil, class: "btn delete" %>
+                  <% end %>
                 </div>
                 <div class="col-9 col-sm-8 d-flex justify-content-end">
                   <div class="public_review">
