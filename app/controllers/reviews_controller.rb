@@ -55,12 +55,17 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
+
   def review_filter(reviews)
-    params[:to_try] = 'all' if !params[:to_try].present?
-    params[:category] = 'Restaurants' if !params[:category].present?
-    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
+    params[:to_try] = 'all' unless params[:to_try].present?
+    params[:category] = 'Restaurants' unless params[:category].present?
     reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
     @cuisines = reviews.select(:cuisine).distinct
+    @tags = reviews.pluck(:tags).map{|tags|tags.split(",")}.flatten.uniq.reject(&:empty?)
+    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
+    reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
+    reviews = reviews.where('tags ilike any (array[?])',params[:tags_filter].split(',').map{|str| "%,#{str}%"}) if params[:tags_filter].present?
+
     reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
     reviews
   end
