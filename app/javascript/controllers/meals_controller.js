@@ -38,25 +38,27 @@ export default class extends Controller {
   updateCard(favDish) {
     let id = favDish["id"]
     document.getElementById(`image-${id}`).src = favDish["image"]
-    document.getElementById(`restaurant_meals_attributes_${id}_image_url`).value = favDish["image"]
+    document.getElementById(`review_meals_attributes_${id}_image_url`).value = favDish["image"]
     document.getElementById(`name-${id}`).innerText = favDish["name"]
-    document.getElementById(`restaurant_meals_attributes_${id}_name`).value = favDish["name"]
+    document.getElementById(`review_meals_attributes_${id}_name`).value = favDish["name"]
     document.getElementById(`notes-${id}`).innerText = favDish["notes"]
-    document.getElementById(`restaurant_meals_attributes_${id}_notes`).value = favDish["notes"]
+    document.getElementById(`review_meals_attributes_${id}_notes`).value = favDish["notes"]
   }
 
   editMeal(event) {
+    debugger
     let id = event.currentTarget.id
     this.modalLabelTarget.innerText = "Edit Meal"
-    this.mealNameTarget.value = document.getElementById(`restaurant_meals_attributes_${id}_name`).value
-    this.mealNotesTarget.value = document.getElementById(`restaurant_meals_attributes_${id}_notes`).value
-    this.imageTarget.src = document.getElementById(`restaurant_meals_attributes_${id}_image_url`).value
+    this.mealNameTarget.value = document.getElementById(`review_meals_attributes_${id}_name`).value
+    this.mealNotesTarget.value = document.getElementById(`review_meals_attributes_${id}_notes`).value
+    this.imageTarget.src = document.getElementById(`review_meals_attributes_${id}_image_url`).value
     this.mealIdTarget.id = id
     $("#exampleModal").modal("toggle")
   }
 
-  deleteMeal() {
-    this.mealCardTarget.remove()
+  deleteMeal(event) {
+    debugger
+    document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
     }

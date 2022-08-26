@@ -53,3 +53,9 @@ function callbackOnOpen1() {
 }
 import "trix"
 import "@rails/actiontext"
+
+$('form').on('keypress', event => {
+  if (event.keyCode == 13) {
+    return false;
+  }
+});
