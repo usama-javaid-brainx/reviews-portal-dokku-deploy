@@ -37,3 +37,8 @@ export default class extends Controller {
     event.currentTarget.parentElement.remove()
   }
 }
+$('form').on('keypress', event => {
+  if (event.keyCode == 13) {
+    return false;
+  }
+});
