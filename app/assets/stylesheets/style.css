@@ -242,6 +242,19 @@ body {
     box-shadow: none;
 }
 
+.btn.delete {
+    font-size: 1.4rem;
+    color: #F44336;
+    background: #FFFFFF;
+    border-color: #F44336;
+    padding: 1rem 2.4rem;
+}
+
+.btn.delete:hover {
+    color: #FFFFFF;
+    background: #F44336;
+}
+
 /* heading  */
 
 h1 {
@@ -751,6 +764,28 @@ header {
     background: #CCCCE1;
 }
 
+.card .list_group li span {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.3rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #CCCCE1;
+    color: #CCCCE1;
+    font-size: .8rem;
+    transition: .2s;
+    margin-right: 2px;
+}
+
+.card .list_group li span:hover {
+    cursor: pointer;
+    color: #FFFFFF;
+    background: #CCCCE1;
+}
+
 .card .list_group li::before {
     content: '';
     position: absolute;
@@ -761,7 +796,6 @@ header {
     height: 3px;
     border-radius: 50%;
     background: #424250;
-
 }
 
 .card .list_group li:first-child::before {
@@ -1289,6 +1323,13 @@ header {
     align-items: center;
 }
 
+.hero_header .date {
+    color: #424250;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.428
+}
+
 .hero_header .list_group li {
     display: inline-flex;
     align-items: center;
@@ -1737,9 +1778,9 @@ header {
     padding: 1.1rem;
 }
 
-
 /* ============= Add restaurant review CSS start ============= */
 
+hitting-enter-submit
 .category_area {
     padding-top: 15rem;
     margin-top: -10rem;
@@ -2224,6 +2265,21 @@ header {
     100% {
         -webkit-transform: scale(1, 1);
         opacity: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .back {
+        top: 1rem;
+        left: .8rem;
+    }
+
+    .add_review_area .nav-pills .nav-item {
+        margin-right: 1.7rem;
+    }
+
+    .add_review_area .nav-pills .nav-item a {
+        font-size: 1.2rem;
     }
 }
 

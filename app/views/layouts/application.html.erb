@@ -58,6 +58,11 @@
     })
     window.dispatchEvent(event)
   }
+  $('form').on('keypress', event => {
+    if (event.keyCode == 13) {
+      return false;
+    }
+  });
 </script>
 
 <script>
