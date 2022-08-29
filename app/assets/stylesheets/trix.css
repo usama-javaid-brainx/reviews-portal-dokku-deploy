@@ -8,11 +8,11 @@ trix-toolbar {
 }
 
 .trix-button-group--file-tools {
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .trix-button-group--history-tools {
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .trix-button-group--block-tools {
@@ -20,15 +20,15 @@ trix-toolbar {
 }
 
 .trix-button--icon-decrease-nesting-level{
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .trix-button--icon-increase-nesting-level{
-    display: none !important;
+    /*display: none !important;*/
 }
 
 .trix-button--icon-code {
-    display: none !important;
+    /*display: none !important;*/
 }
 trix-editor {
     border: 1px solid #bbb;
