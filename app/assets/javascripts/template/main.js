@@ -9,12 +9,12 @@
 
         // card carousel Initialize
         $('.card_carousel').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 0,
             items: 1,
             autoplay: false,
             nav: false,
-            dots: true
+            dots: true,
         });
 
         // favourite button

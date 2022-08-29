@@ -31,14 +31,18 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to reviews_path, notice: "Restaurant updated successfully!"
+      redirect_to root_path, notice: "Review updated successfully!"
     else
       render :new
     end
   end
 
   def destroy
-    redirect_to reviews_path, notice: "Restaurant deleted successfully!" if @review.destroy
+    if @review.soft_destroy
+      redirect_to reviews_path, notice: "Review deleted successfully!"
+    else
+      redirect_to :new
+    end
   end
 
   def delete_attachment
@@ -61,10 +65,10 @@ class ReviewsController < ApplicationController
     params[:category] = 'Restaurants' unless params[:category].present?
     reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
     @cuisines = reviews.select(:cuisine).distinct
-    @tags = reviews.pluck(:tags).map{|tags|tags.split(",")}.flatten.uniq.reject(&:empty?)
+    @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
     reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
-    reviews = reviews.where('tags ilike any (array[?])',params[:tags_filter].split(',').map{|str| "%,#{str}%"}) if params[:tags_filter].present?
+    reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
 
     reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
     reviews
