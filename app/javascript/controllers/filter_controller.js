@@ -14,59 +14,43 @@ export default class extends Controller {
   }
 
   selectCuisine(event) {
-    var $cuisine = $(event.currentTarget).toggleClass('cuisine-select cuisine-unselect');
-    $(event.currentTarget).toggleClass('clear-cuisine')
-
-    if ($cuisine.hasClass('cuisine-select')) {
-      this.cuisines.push(event.currentTarget.innerHTML)
-      this.filterCount = this.filterCount + 1
-    } else {
-      this.cuisines = this.cuisines.filter(item => item !== event.currentTarget.innerHTML)
-      if (this.filterCount - 1 >= 0) {
-        this.filterCount = this.filterCount - 1
-      }
-    }
-
-    this.applyBtnTarget.innerHTML = 'Apply(' + this.filterCount.toString() + ')'
-    // this.filterCount()
-
+    this.cuisines = this.selectParam(event, 'clear-cuisine', this.cuisines)
   }
 
-
   selectTag(event) {
-    var $filters = $(event.currentTarget).toggleClass('cuisine-select cuisine-unselect');
-    $(event.currentTarget).toggleClass('clear-tag')
+    this.filters = this.selectParam(event, 'clear-tag', this.filters)
+  }
 
-    if ($filters.hasClass('cuisine-select')) {
-      this.filters.push(event.currentTarget.innerHTML)
+  selectParam(e, clearClass, filterType) {
+    $(e.currentTarget).toggleClass(clearClass)
+    var $selectedTag = $(e.currentTarget).toggleClass('cuisine-select cuisine-unselect');
+    if ($selectedTag.hasClass('cuisine-select')) {
+      filterType.push(e.currentTarget.innerHTML)
       this.filterCount = this.filterCount + 1
     } else {
-      this.filters = this.filters.filter(item => item !== event.currentTarget.innerHTML)
+      filterType = filterType.filter(item => item !== e.currentTarget.innerHTML)
       if (this.filterCount - 1 >= 0) {
         this.filterCount = this.filterCount - 1
       }
-
     }
-
     this.applyBtnTarget.innerHTML = 'Apply(' + this.filterCount.toString() + ')'
-    // this.filterCount()
+    return filterType
   }
 
   cuisineClearAll() {
-    this.clearAll('.clear-cuisine')
+    this.clearAll('clear-cuisine')
     this.cuisines = []
   }
 
   TagClearAll() {
-    this.clearAll('.clear-tag', 'filters')
+    this.clearAll('clear-tag')
     this.filters = []
   }
 
-  clearAll(className, filter) {
-    let tags = document.querySelectorAll(className)
+  clearAll(className) {
+    let tags = document.querySelectorAll('.' + className)
     tags.forEach(tag => {
-      tag.classList.remove(className.split('.')[1])
-      tag.classList.remove('cuisine-select')
+      tag.classList.remove(className, 'cuisine-select')
       tag.classList.add('cuisine-unselect')
     })
   }
@@ -77,7 +61,7 @@ export default class extends Controller {
 
   applyFilter() {
     this.tagsFilterTarget.value = this.filters
-    if (this.hasCuisinesFilterTarget){            //cuisines can be present or not in modal
+    if (this.hasCuisinesFilterTarget) {            //cuisines can be present or not in modal
       this.cuisinesFilterTarget.value = this.cuisines
     }
     this.filtersFormTarget.submit()
@@ -85,21 +69,19 @@ export default class extends Controller {
 
   appliedFilters() {
     let appliedFilters = 0
-    if (this.hasCuisinesFilterTarget){
+    if (this.hasCuisinesFilterTarget) {
       appliedFilters = this.cuisinesFilterTarget.value.split(',').filter(x => x != '').length + this.tagsFilterTarget.value.split(',').filter(x => x != '').length
-    }
-    else{
+    } else {
       appliedFilters = this.tagsFilterTarget.value.split(',').filter(x => x != '').length
     }
-
     if (appliedFilters > 0) {
       this.appliedFilterTarget.innerHTML = appliedFilters
       this.appliedFilterTarget.classList.add('cuisine-select', 'ml-2', 'px-2', 'rounded-3')
-
       this.applyBtnTarget.innerHTML = 'Apply(' + appliedFilters.toString() + ')'
-
       this.filterCount = appliedFilters
-      if (this.hasCuisinesFilterTarget){ this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '') }
+      if (this.hasCuisinesFilterTarget) {
+        this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')
+      }
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
     }
   }
