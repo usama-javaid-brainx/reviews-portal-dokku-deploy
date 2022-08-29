@@ -26,17 +26,14 @@
             <ul class="nav">
               <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
               <%= f.hidden_field :category, :value => "#{params[:category]}" %>
-              <li><%= link_to 'All', reviews_path(to_try: 'all', category: params[:category], score: params[:score], cuisines_filter:params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'all'}" %></li>
-              <li><%= link_to 'Reviews', reviews_path(to_try: false, category: params[:category], score: params[:score], cuisines_filter:params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
-              <li><%= link_to 'To Try', reviews_path(to_try: true, category: params[:category], score: params[:score], cuisines_filter:params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
+              <li><%= link_to 'All', reviews_path(to_try: 'all', category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'all'}" %></li>
+              <li><%= link_to 'Reviews', reviews_path(to_try: false, category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
+              <li><%= link_to 'To Try', reviews_path(to_try: true, category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
             </ul>
           </div>
           <div class="col-lg-4 d-flex justify-content-end">
             <!-- Top Rating -->
             <%= f.select(:score, [["Top Rated", "desc"], ["Low Rated", "asc"]], selected: params[:score]) %>
-
-
-
             <ul class="layout_changer nav nav-tabs d-none" role="tablist">
               <li>
                 <a href="#grid_layout1" class="active" data-bs-toggle="tab" role="tab" aria-controls="grid_layout1" aria-selected="true">
@@ -58,7 +55,6 @@
     </div>
 
     <!--filter modal-->
-
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -67,7 +63,6 @@
             <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
           </div>
           <div class="modal-body" style="background: #FBFBFE;">
-
             <% if params[:category] == 'Restaurants' %>
               <div class="card cuisine-card-h">
                 <div class="d-flex justify-content-between p-4">
@@ -83,7 +78,6 @@
                 </div>
               </div>
             <% end %>
-
             <div class="card mt-5">
               <div class="d-flex justify-content-between p-4">
                 <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
@@ -91,14 +85,11 @@
               <div class="tag-card-h ">
                 <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
                 <% tags.each do |tag| %>
-                      <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag %></span>
-
+                  <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag %></span>
                 <% end %>
               </div>
             </div>
           </div>
-
-
           <div class="modal-footer">
             <div class="d-flex justify-content-between w-100">
               <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal" style=" margin-left: unset;">Cancel</button>
@@ -108,6 +99,5 @@
         </div>
       </div>
     </div>
-
   <% end %>
 </div>
