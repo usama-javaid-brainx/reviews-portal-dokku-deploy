@@ -1,20 +1,24 @@
 <!-- single card -->
 <div class="col-lg-3 col-md-6">
   <div class="card">
-    <%= link_to review_path(review) do %>
-      <div class="card-header p-0 border-0 position-relative">
-        <% if review.images.present? %>
+    <div class="card-header p-0 border-0 position-relative">
+      <% if review.images.present? %>
+        <%= link_to review_path(review) do %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images.each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
-          <button class="favourite"><%= image_tag("template/favourites.png") %></button>
-        <% else %>
+        <% end %>
+        <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+      <% else %>
+        <%= link_to review_path(review) do %>
           <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
         <% end %>
-      </div>
-    <% end %>
+        <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+      <% end %>
+    </div>
+
     <div class="card-body">
       <div class="top">
         <div>
