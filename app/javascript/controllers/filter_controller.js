@@ -85,4 +85,10 @@ export default class extends Controller {
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
     }
   }
+
+  search(event) {
+    if (event.key === "Enter") {
+      this.filtersFormTarget.submit()
+    }
+  }
 }
