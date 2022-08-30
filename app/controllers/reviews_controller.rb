@@ -31,14 +31,14 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to reviews_path, notice: "Restaurant updated successfully!"
+      redirect_to root_path, notice: "Review updated successfully!"
     else
       render :new
     end
   end
 
   def destroy
-    redirect_to reviews_path, notice: "Restaurant deleted successfully!" if @review.destroy
+    # TODO
   end
 
   def delete_attachment
@@ -67,6 +67,7 @@ class ReviewsController < ApplicationController
     reviews = params[:category] == 'all' ? reviews : reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
     @cuisines = reviews.select(:cuisine).distinct
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
+    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     if params[:to_try] != 'favourite'
       reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     else
