@@ -46,7 +46,6 @@ export default class extends Controller {
   }
 
   editMeal(event) {
-    debugger
     let id = event.currentTarget.id
     this.modalLabelTarget.innerText = "Edit Meal"
     this.mealNameTarget.value = document.getElementById(`review_meals_attributes_${id}_name`).value
@@ -57,7 +56,6 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
-    debugger
     document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
