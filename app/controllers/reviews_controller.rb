@@ -38,11 +38,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    if @review.soft_destroy
-      redirect_to reviews_path, notice: "Review deleted successfully!"
-    else
-      redirect_to :new
-    end
+    # TODO
   end
 
   def delete_attachment

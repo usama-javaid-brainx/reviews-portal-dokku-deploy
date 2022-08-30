@@ -101,26 +101,26 @@
                     <button type="button" class="btn delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
                       Delete
                     </button>
-                  <% end %>
-                  <!-- Delete Modal -->
-                  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h2 class="modal-title" id="deleteModalLabel">Delete Review</h2>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                          Are you sure you want to delete review?
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn white cancel" data-bs-dismiss="modal">Cancel</button>
-                          <%= link_to "Delete", nil, data: { turbo_method: :delete}, class: "btn delete" %>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title" id="deleteModalLabel">Delete Review</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want to delete review?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn white cancel" data-bs-dismiss="modal">Cancel</button>
+                            <%= link_to "Delete", nil, data: { turbo_method: :delete }, class: "btn delete" %>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-
+                  <% end %>
                 </div>
                 <div class="col-9 col-sm-8 d-flex justify-content-end">
                   <div class="public_review">

@@ -31,7 +31,6 @@
 #  images           :json
 #
 class Review < ApplicationRecord
-  include Deletable
 
   has_rich_text :notes
   attr_accessor :images_input
