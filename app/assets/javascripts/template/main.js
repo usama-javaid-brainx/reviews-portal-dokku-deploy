@@ -17,11 +17,6 @@
             dots: true
         });
 
-        // favourite button
-        $('.favourite').click(function(){
-            $(this).toggleClass('checked')
-        })
-
         // niceSelect Initialize
         $('.middle_nav select').niceSelect();
 

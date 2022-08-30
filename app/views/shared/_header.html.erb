@@ -11,6 +11,9 @@
         <% if params[:to_try].present? %>
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
+              <%= link_to "All", reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
+            </li>
+            <li>
               <%= link_to reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
                 <%= image_tag("template/nav-icon1.png") %>Restaurants
               <% end %>

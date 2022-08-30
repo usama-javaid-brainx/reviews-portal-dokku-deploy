@@ -29,7 +29,7 @@
               <li><%= link_to 'All', reviews_path(to_try: 'all', category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'all'}" %></li>
               <li><%= link_to 'Reviews', reviews_path(to_try: false, category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
               <li><%= link_to 'Wish List', reviews_path(to_try: true, category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
-              <li><%= link_to 'Favourites', reviews_path(to_try: 'favourite', category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
+              <li><%= link_to 'favorites', reviews_path(to_try: 'favourite', category: params[:category], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter]), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
           </div>
           <div class="col-lg-4 d-flex justify-content-end">
