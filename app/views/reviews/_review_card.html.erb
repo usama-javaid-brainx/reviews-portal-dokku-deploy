@@ -35,6 +35,11 @@
         <% if review.state.present? and review.country.present? %>
           <li><%= review.state %> <%= ',' + review.country %></li>
         <% end %>
+        <% if !review.city.present? and !review.country.present? and review.date? %>
+          <li>
+            <%= review.date.strftime("%b/%e/%Y") %>
+          </li>
+        <% end %>
         <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
       </ul>
     </div>
