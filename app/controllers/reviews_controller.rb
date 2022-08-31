@@ -39,9 +39,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      respond_to do |format|
-        format.html { redirect_to root_path, notice: "Review removed Successfully!" }
-      end
+      redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
     end
   end
 
