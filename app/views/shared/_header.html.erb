@@ -50,7 +50,6 @@
             <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
               <span class="icon"><%= image_tag("template/nav-icon1.png") %></span><span>Restaurants</span>
             <% end %>
-
             <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
               <li>
                 <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
@@ -68,43 +67,18 @@
                 <% end %>
               </li>
             </ul>
-
-            <!--remove below-->
-            <!--          <a href="#" class="toggler" id="menuItemDropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon1.png") %>-->
-            <!--            <span>Restaurants</span><%#= image_tag("template/bottom-arrow3.png", class: 'arrow') %></a>-->
-
-            <!--          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon2.png") %></span><span>Games</span></a>-->
-            <!--            </li>-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon3.png") %></span><span>Books</span></a>-->
-            <!--            </li>-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon4.png") %></span><span>Movies</span></a>-->
-            <!--            </li>-->
-            <!--          </ul>-->
           </div>
         <% end %>
       </div>
 
       <div class="col-lg-3 col-3 text-end">
-
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
               <%= image_tag("template/avatar1.png", class: 'avatar') %>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
-            </a>            <!--remove below-->
-            <!--          <a href="#" class="toggler" id="menuItemDropdown" data-bs-toggle="dropdown" aria-expanded="false"><%#= image_tag("template/nav-icon1.png") %>-->
-            <!--            <span>Restaurants</span><%#= image_tag("template/bottom-arrow3.png", class: 'arrow') %></a>-->
-
-            <!--          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon2.png") %></span><span>Games</span></a>-->
-            <!--            </li>-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon3.png") %></span><span>Books</span></a>-->
-            <!--            </li>-->
-            <!--            <li><a href="#"><span class="icon"><%#= image_tag("template/nav-icon4.png") %></span><span>Movies</span></a>-->
-            <!--            </li>-->
-            <!--          </ul>-->
+            </a>
             <ul class="dropdown-menu" aria-labelledby="sessionDropdown">
               <li class="dropdown-item pb-3 m-0 pr-2 pl-4 pt-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#logOutModal">
                 <a class="dropdown-item" href="#" onclick="event.preventDefault()">Log Out</a>
