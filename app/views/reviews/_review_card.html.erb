@@ -1,7 +1,7 @@
 <!-- single card -->
 <div class="col-lg-3 col-md-6">
   <div class="card">
-    <div class="card-header p-0 border-0 position-relative">
+    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
       <% if review.images.present? %>
         <%= link_to review_path(review) do %>
           <div class="owl-carousel owl-theme card_carousel">
@@ -10,15 +10,14 @@
             <% end %>
           </div>
         <% end %>
-        <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
       <% else %>
         <%= link_to review_path(review) do %>
           <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
         <% end %>
-        <button class="favourite"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
       <% end %>
     </div>
-
     <div class="card-body">
       <div class="top">
         <div>
@@ -35,6 +34,11 @@
         <% end %>
         <% if review.state.present? and review.country.present? %>
           <li><%= review.state %> <%= ',' + review.country %></li>
+        <% end %>
+        <% if !review.city.present? and !review.country.present? and review.date? %>
+          <li>
+            <%= review.date.strftime("%b/%e/%Y") %>
+          </li>
         <% end %>
         <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
       </ul>

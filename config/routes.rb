@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root "reviews#index"
   resources :reviews do
     delete :delete_attachment, on: :member
+    get :update_favourite
   end
 
 end

@@ -48,6 +48,10 @@ class ReviewsController < ApplicationController
     @image.purge if @image.present?
   end
 
+  def update_favourite
+    Review.find_by(id: params[:review_id].to_s).update(favourite: params[:favourite].to_s)
+  end
+
   private
 
   def set_review
@@ -60,15 +64,16 @@ class ReviewsController < ApplicationController
 
   def review_filter(reviews)
     params[:to_try] = 'all' unless params[:to_try].present?
-    params[:category] = 'Restaurants' unless params[:category].present?
-    reviews = reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
+    params[:category] = 'all' unless params[:category].present?
+    reviews = reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
+    reviews = params[:category] == 'all' ? reviews : reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
     @cuisines = reviews.select(:cuisine).distinct
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
     reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     if params[:to_try] != 'favourite'
       reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
     else
-      reviews = reviews.where.not(favourite: nil) if params[:to_try].present?
+      reviews = reviews.where(favourite: true) if params[:to_try].present?
     end
     reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?

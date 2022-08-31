@@ -38,8 +38,12 @@
               </p>
             <% end %>
             <ul class="list_group">
-              <li><%= @review.city %></li>
-              <li><%= @review.state %>, <%= @review.country %></li>
+              <% if @review.city.present? %>
+                <li><%= @review.city %></li>
+              <% end %>
+              <% if @review.state.present? and @review.country.present? %>
+                <li><%= @review.state + ', ' %> <%= @review.country %></li>
+              <% end %>
               <li>
                 <span>$</span>
                 <span>$</span>
@@ -56,8 +60,8 @@
               </div>
               <%= image_tag("template/avatar1.png") %>
             </div>
-            <div class="d-flex align-items-center justify-content-end rating_box">
-              <a href="#">
+            <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(@review) %>">
+              <a href="#" data-action="click->favourite#updateFavourite" class="<%= 'checked' if @review.favourite == true %>">
                 <%= image_tag("template/favourites1.png") %>
                 <span>Save as Favourite</span></a>
               <p class="rating">
@@ -109,7 +113,7 @@
                 <% @review.images[1..].each_with_index do |image_src, idx| %>
                   <div class="col-lg-6 small position-relative">
                     <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
-                      <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>" >
+                      <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>">
                     </a>
                     <% if image_src.equal?(@review.images[1..4].last) %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -129,7 +133,7 @@
   </section>
 
   <!-- images gallery Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  data-bs-focus="false" >
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" style="max-height: 600px; max-width: 800px;">
       <div class="modal-content">
         <div class="modal-header">
@@ -140,7 +144,7 @@
           <div class="row">
             <% @review.images.each do |image_src| %>
               <div class="col-3 mb-3 ">
-                <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery"  >
+                <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
                   <img class="rounded img-fluid" src=<%= image_src %>>
                 </a>
               </div>
@@ -208,8 +212,12 @@
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
-              <h4><%= @review.country %>, <%= @review.state %></h4>
-              <p><%= @review.address %>, <%= @review.zip_code %></p>
+              <% if @review.country.present? and @review.state.present? %>
+                <h4><%= @review.country %>, <%= @review.state %></h4>
+              <% end %>
+              <% if @review.address.present? or @review.zip_code.present? %>
+                <p><%= @review.address + ',' if @review.address.present? %>   <%= @review.zip_code if @review.zip_code.present? %></p>
+              <% end %>
             </div>
           </div>
         </div>

@@ -33,7 +33,6 @@
 class Review < ApplicationRecord
   include Discard::Model
 
-  has_rich_text :notes
   attr_accessor :images_input
 
   belongs_to :user

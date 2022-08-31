@@ -30,3 +30,6 @@ application.register("category", CategoryController)
 
 import FilterController from "./filter_controller.js"
 application.register("filter", FilterController)
+
+import FavouriteController from "./favourite_controller.js"
+application.register("favourite", FavouriteController)
