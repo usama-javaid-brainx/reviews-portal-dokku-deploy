@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
 
   def edit
     @curr_category = @review.category
-    render :new
   end
 
   def update
