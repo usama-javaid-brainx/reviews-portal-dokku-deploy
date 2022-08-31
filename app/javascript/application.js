@@ -51,5 +51,3 @@ $fileInput.on('change', function () {
 function callbackOnOpen1() {
   console.log(data);
 }
-import "trix"
-import "@rails/actiontext"
