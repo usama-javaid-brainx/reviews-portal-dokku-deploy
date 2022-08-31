@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    reviews = review_filter(current_user.reviews)
+    reviews = review_filter(current_user.reviews.kept)
     @pagy, @reviews = pagy(reviews, items: 12)
   end
 
@@ -38,7 +38,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # TODO
+    if @review.discard
+      redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
+    end
   end
 
   def delete_attachment

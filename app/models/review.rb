@@ -31,7 +31,8 @@
 #  images           :json
 #
 class Review < ApplicationRecord
-  
+  include Discard::Model
+
   attr_accessor :images_input
 
   belongs_to :user
