@@ -34,14 +34,11 @@ class Review < ApplicationRecord
   include Discard::Model
 
   attr_accessor :images_input
+  store_accessor :images, []
 
   belongs_to :user
   belongs_to :category
   has_many :meals, dependent: :destroy
-
-  store_accessor :images, []
-
-  # has_many_attached :images
 
   validates :name, presence: true
   # only require name to create review
