@@ -21,7 +21,7 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <span class='review_btn'><%= review.to_try == true ? "Wish List" : "Review" %> </span>
+          <span class='review_btn'><%= review.to_try == true ? "Wishlist" : "Review" %> </span>
           <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
         </div>
         <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>

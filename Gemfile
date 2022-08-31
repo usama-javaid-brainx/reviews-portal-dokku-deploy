@@ -81,3 +81,4 @@ group :test do
 end
 
 gem "jsbundling-rails", "~> 1.0"
+gem 'new_ckeditor'
