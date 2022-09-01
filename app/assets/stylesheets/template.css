@@ -191,14 +191,6 @@
     line-height: 2rem;
 }
 
-.share_btn:hover {
-    background: #6E3EF7;
-}
-
-.share_btn:hover img {
-    filter: brightness(0) invert(1);
-}
-
 .bg-blue {
     background-color: #0d6efd !important;
 }
