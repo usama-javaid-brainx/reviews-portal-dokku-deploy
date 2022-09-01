@@ -64,7 +64,7 @@
             <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
           </div>
           <div class="modal-body" style="background: #FBFBFE;">
-            <% if params[:category] == 'Restaurants' %>
+            <% if params[:category] == 'Restaurants' or params[:category] == 'all'%>
               <div class="card cuisine-card-h">
                 <div class="d-flex justify-content-between p-4">
                   <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
@@ -73,7 +73,7 @@
                   <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
                   <% cuisines.each do |cuisine| %>
                     <% if cuisine.cuisine.present? %>
-                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.cuisine).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.cuisine %></span>
+                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.cuisine).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.cuisine.capitalize %></span>
                     <% end %>
                   <% end %>
                 </div>
@@ -86,7 +86,7 @@
               <div class="tag-card-h ">
                 <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
                 <% tags.each do |tag| %>
-                  <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag %></span>
+                  <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag.capitalize %></span>
                 <% end %>
               </div>
             </div>
