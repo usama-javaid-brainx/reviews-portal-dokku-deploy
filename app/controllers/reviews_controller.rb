@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     if @review.save
-      redirect_to reviews_path, notice: "Restaurant created successfully!"
+      redirect_to reviews_path, notice: "Review created successfully!"
     else
       render :new
     end

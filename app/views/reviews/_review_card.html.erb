@@ -21,7 +21,7 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <span class='review_btn'><%= review.to_try == true ? "Wish List" : "Review" %> </span>
+          <span class='<%= review.to_try? ? 'wishlist-btn' : 'review_btn' %>'><%= review.to_try? ? "Wishlist" : "Review" %> </span>
           <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
         </div>
         <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>
@@ -37,7 +37,7 @@
         <% end %>
         <% if !review.city.present? and !review.country.present? and review.date? %>
           <li>
-            <%= review.date.strftime("%e/%b/%Y") %>
+            <%= review.date.strftime("%b %e,%Y") %>
           </li>
         <% end %>
         <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>

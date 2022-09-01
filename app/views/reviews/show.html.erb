@@ -34,7 +34,7 @@
             <h1><%= @review.name %></h1>
             <% if @review.date? %>
               <p class="date">
-                <%= @review.date.strftime("%e/%b/%Y") %>
+                <%= @review.date.strftime("%b %e,%Y") %>
               </p>
             <% end %>
             <ul class="list_group">
