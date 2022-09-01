@@ -45,11 +45,11 @@
                 <li><%= @review.state + ', ' %> <%= @review.country %></li>
               <% end %>
               <li>
-                <span class="<%= ('text-white bg-secondary' if @review.price_range >= 1) if @review.price_range.present?%>">$</span>
-                <span class="<%= ('text-white bg-secondary' if @review.price_range >= 2) if @review.price_range.present?%>">$</span>
-                <span class="<%= ('text-white bg-secondary' if @review.price_range >= 3) if @review.price_range.present?%>">$</span>
-                <span class="<%= ('text-white bg-secondary' if @review.price_range >= 4) if @review.price_range.present?%>">$</span>
-                <span class="<%= ('text-white bg-secondary' if @review.price_range == 5) if @review.price_range.present?%>">$</span>
+                <span class="<%= ('text-white bg-price' if @review.price_range >= 1) if @review.price_range.present?%>">$</span>
+                <span class="<%= ('text-white bg-price' if @review.price_range >= 2) if @review.price_range.present?%>">$</span>
+                <span class="<%= ('text-white bg-price' if @review.price_range >= 3) if @review.price_range.present?%>">$</span>
+                <span class="<%= ('text-white bg-price' if @review.price_range >= 4) if @review.price_range.present?%>">$</span>
+                <span class="<%= ('text-white bg-price' if @review.price_range == 5) if @review.price_range.present?%>">$</span>
               </li>
             </ul>
           </div>
