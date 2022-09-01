@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
     reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
 
-    reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
+    reviews = reviews.order("average_score #{params[:score]} NULLS LAST") if params[:score].present?
     reviews
   end
 end
