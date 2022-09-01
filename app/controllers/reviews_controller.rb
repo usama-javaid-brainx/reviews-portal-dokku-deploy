@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.new
-    @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
+    @curr_category = params[:category] != 'all' ? Category.find_by(name: params[:category]) : Category.find_by(name: 'Restaurants')
   end
 
   def create
@@ -77,7 +77,7 @@ class ReviewsController < ApplicationController
     reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
 
-    reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
+    reviews = reviews.order("average_score #{params[:score]} NULLS LAST") if params[:score].present?
     reviews
   end
 end
