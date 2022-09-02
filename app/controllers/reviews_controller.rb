@@ -8,7 +8,11 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.new
-    @curr_category = params[:category] != 'all' ? Category.find_by(name: params[:category]) : Category.find_by(name: 'Restaurants')
+    @curr_category = if params[:category_id].present?
+                       Category.find_by(id: params[:category_id])
+                     else
+                       params[:category] != 'all' ? Category.find_by(name: params[:category]) : Category.find_by(name: 'Restaurants')
+                     end
   end
 
   def create
@@ -16,6 +20,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, notice: "Restaurant created successfully!"
     else
+      @curr_category = Category.find_by(id: params[:review][:category_id]) if params[:review][:category_id].present?
       render :new
     end
   end
