@@ -20,10 +20,10 @@
 }
 
 .profile-img-wraper {
-    /*width: 150px;*/
-    /*height: 142px;*/
-    max-width: 150px;
-    max-height: 142px;
+    width: 150px;
+    height: 142px;
+    /*max-width: 150px;*/
+    /*max-height: 142px;*/
 }
 
 .profile-name {
@@ -49,14 +49,13 @@
     border-radius: 6px;
 }
 
-.btn-profile-pic{
+.btn-profile-pic {
     align-items: center;
-    padding: 0px;
-    width: 209px;
     height: 40px;
     background: #FFFFFF;
-    border: 1px solid #E2DBF4;
+    border: 1px solid #848496;
     border-radius: 6px;
+    padding: 19px
 }
 
 .ml-14 {
@@ -67,8 +66,70 @@
     margin-left: 24px;
 }
 
+.edit-upload {
+    color: #848496;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.edit-upload:hover {
+    color: #6E3EF7;
+    border-color: #6E3EF7;
+}
+
+.edit-heading {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    color: #00000A;
+}
+
+.edit-label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #11072C;
+}
+
+.edit-text-field {
+    align-items: center;
+    padding: 8px 12px 8px 16px;
+    width: 416px;
+    height: 40px;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+}
+
+.edit-save {
+    background-color: #6E3EF7;
+    color: #FFFFFF;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 6px;
+    padding: 19px;
+    border: 1px solid #848496;
+}
+
+.edit-separator {
+    color: #848496;
+}
+
+.p-19 {
+    padding: 19px;
+}
 /*.edit-profile-icon{*/
 /*    width: 32px;*/
 /*    height: 32px;*/
 /*}*/
+
