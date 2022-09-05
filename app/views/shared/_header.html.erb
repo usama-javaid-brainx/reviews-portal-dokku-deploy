@@ -11,25 +11,25 @@
         <%# if params[:to_try].present? %>
         <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
           <li>
-            <%= link_to "All", params[:profile].present? ? profile_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
+            <%= link_to "All", params[:profile].present? ? users_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
           </li>
           <li>
-            <%= link_to params[:profile].present? ? profile_index_path(category: 'Restaurants', profile: 'true') : reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
+            <%= link_to params[:profile].present? ? users_index_path(category: 'Restaurants', profile: 'true') : reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
               <%= image_tag("template/nav-icon1.png") %>Restaurants
             <% end %>
           </li>
           <li>
-            <%= link_to params[:profile].present? ? profile_index_path(category: 'Games', profile: 'true') : reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
+            <%= link_to params[:profile].present? ? users_index_path(category: 'Games', profile: 'true') : reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
               <%= image_tag("template/nav-icon2.png") %>Games
             <% end %>
           </li>
           <li>
-            <%= link_to params[:profile].present? ? profile_index_path(category: 'Books', profile: 'true') : reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
+            <%= link_to params[:profile].present? ? users_index_path(category: 'Books', profile: 'true') : reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
               <%= image_tag("template/nav-icon3.png") %>Books
             <% end %>
           </li>
           <li>
-            <%= link_to params[:profile].present? ? profile_index_path(category: 'Movies', profile: 'true') : reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
+            <%= link_to params[:profile].present? ? users_index_path(category: 'Movies', profile: 'true') : reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
               <%= image_tag("template/nav-icon4.png") %>Movies
             <% end %>
           </li>
@@ -92,10 +92,11 @@
                 </div>
               </li>
               <li class="cursor-pointer">
-                <%= link_to "My Profile", profile_index_path(profile: 'true'), class: "dropdown-item" %>
+                <%= link_to "My Profile", users_index_path(profile: 'true'), class: "dropdown-item" %>
               </li>
               <li class="cursor-pointer">
-                <%= link_to "Edit Account", profile_edit_path(profile: 'true', profile_edit: 'true'), class: "dropdown-item" %>
+                <%#= link_to "Edit Account", users_edit_path(profile: 'true', profile_edit: 'true'), class: "dropdown-item" %>
+                <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
               </li>
               <li class="dropdown-item pb-3 m-0 pr-2 pl-4 pt-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#logOutModal">
                 <a class="dropdown-item" href="#" onclick="event.preventDefault()">Log Out</a>
