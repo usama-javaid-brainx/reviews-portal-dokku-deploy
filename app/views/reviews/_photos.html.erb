@@ -1,5 +1,5 @@
 <h2>Photos</h2>
-<div class="tabs_content_wrap" data-controller="photos">
+<div class="tabs_content_wrap">
 
   <% if !f.object.images? %>
     <div class="file_upload_place" id="file_upload_place">
@@ -14,9 +14,9 @@
 
   <div class="uploaded-files <%= "d-none" if !f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
-      <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
+      <img id="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
     </div>
-    <div class="d-flex" id="js-thumbnails">
+    <div class="d-flex" id="js-thumbnails" data-controller="reorder">
       <% if f.object.images? %>
         <% f.object.images[1..].each do |image_src| %>
           <img class="thumbnail px-0" src=<%= image_src %>>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div id="image_inputs">
-
+    <% f.hidden_field :images, id:"image_hidden" %>
   </div>
 </div>
 
@@ -46,6 +46,7 @@
     input.value = data.url
     input.hidden = true
     input.name = 'review[images][]'
+    debugger
     document.getElementById('image_inputs').append(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
@@ -54,5 +55,8 @@
 
   function updateImage(that) {
     document.getElementById('mainThumbnail').src = that.src
+  }
+  function concatenate(){
+    
   }
 </script>
