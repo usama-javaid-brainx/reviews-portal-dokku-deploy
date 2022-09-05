@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'profile/index'
-  get 'profile/edit'
-  get 'profile/update'
-  get 'profile/destroy'
+  get 'users/index'
+  # get 'users/edit'
+  # patch 'users/update'
+  delete 'users/destroy'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center mb-5">
     <div class="col-lg-6">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_with url: users_update_path, method: :patch do |f| %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
 
@@ -16,8 +16,8 @@
                   Delete Picture
                 </button>
                 <%#= f.file_field :avatar do %>
-                <%#= image_tag("template/upload.svg", class: "mr-2") %>
-                <!--                                    Upload New Picture-->
+                  <%#= image_tag("template/upload.svg", class: "mr-2") %>
+<!--                                    Upload New Picture-->
                 <%# end %>
               </div>
             </div>
@@ -32,18 +32,20 @@
             <div class="edit-heading mb-5 mt-4">Password</div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", placeholder: "Enter Old Password" %>
-
+              <%= f.text_field :current_password, class: "col-lg-7 edit-text-field", placeholder: "Enter Old Password", type: "text" %>
             </div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password"%>
+              <%= f.text_field :encrypted_password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password", type: "text" %>
             </div>
             <hr class="edit-separator">
             <div class="row align-items-center form_group  mb_50">
               <div class="edit-heading mb-5 mt-4">Account</div>
               <%= f.label :name, "Delete Account", class: 'col-5 edit-label' %>
-              <%= link_to "Delete Account", registration_path(resource_name), class:"btn-profile-pic edit-upload w-auto p-19", data: {
+<!--              <button class="btn-profile-pic edit-upload w-auto p-19">-->
+<!--                Delete Account-->
+<!--              </button>-->
+              <%= link_to "Delete Account", users_destroy_path(@article), class:"btn-profile-pic edit-upload w-auto p-19", data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
               } %>
