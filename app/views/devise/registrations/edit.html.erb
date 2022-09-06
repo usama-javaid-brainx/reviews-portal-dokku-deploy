@@ -1,24 +1,31 @@
-<div class="container">
+<div class="container" data-controller="user-validation">
   <div class="row justify-content-center mb-5">
     <div class="col-lg-6">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
 
             <div class="row align-items-center form_group  mb_50">
               <div class="edit-heading">Profile Photo</div>
               <div class="d-flex mt-5">
-                <%= image_tag("template/avatar1.png", class: 'rounded-circle') %>
-                <button class="ml-14 btn-profile-pic edit-upload"><%= image_tag("template/upload.svg", class: "mr-2") %>
-                  Upload New Picture
-                </button>
-                <button class="ml-24 btn-profile-pic edit-upload"><%= image_tag("template/edit-delete.svg", class: "mr-2") %>
-                  Delete Picture
-                </button>
-                <%#= f.file_field :avatar do %>
-                <%#= image_tag("template/upload.svg", class: "mr-2") %>
-                <!--                                    Upload New Picture-->
-                <%# end %>
+                <div class="col-1">
+                  <% if resource.avatar.attached? %>
+                    <%= image_tag(resource.avatar, class: 'rounded-circle') %>
+                  <% else %>
+                    <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                  <% end %>
+                </div>
+                <div class="d-flex align-items-center col-11 flex-wrap">
+                  <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
+                  <a class="ml-14 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg">
+                    <%= image_tag("template/upload.svg", class: "mr-2 upload-svg") %>
+                    Upload New Picture
+                  </a>
+                  <%= link_to users_remove_avatar_path, class: "ml-24 btn-profile-pic edit-upload" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
+                    Delete Picture
+                  <% end %>
+                </div>
               </div>
             </div>
             <hr class="edit-separator">
@@ -32,30 +39,53 @@
             <div class="edit-heading mb-5 mt-4">Password</div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", placeholder: "Enter Old Password" %>
+              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", required: true, autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
 
             </div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password"%>
+              <%= f.password_field :password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password" %>
             </div>
             <hr class="edit-separator">
             <div class="row align-items-center form_group  mb_50">
               <div class="edit-heading mb-5 mt-4">Account</div>
-              <%= f.label :name, "Delete Account", class: 'col-5 edit-label' %>
-              <%= link_to "Delete Account", registration_path(resource_name), class:"btn-profile-pic edit-upload w-auto p-19", data: {
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure?"
-              } %>
+              <label class="col-lg-5 edit-label">Delete Account</label>
+              <button type="button" class="btn-profile-pic edit-upload w-auto p-19" data-bs-toggle="modal" data-bs-target="#userDeleteModal">
+                Delete Account
+              </button>
             </div>
             <hr class="edit-separator  mb_50">
             <div class="row align-items-center form_group">
-              <%= f.submit "Save Changes", class:"w-auto edit-save p-19" %>
-
+              <button class="w-auto edit-save p-19"> Save Changes</button>
             </div>
           </div>
         </div>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body bg-white p-5 rounded-3">
+        <div class="d-flex justify-content-center">
+          <%= image_tag("template/alert.svg") %>
+        </div>
+        <div class="d-flex justify-content-center align-items-center p-19 fw-bold">
+          Delete Account
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          Are you sure you want to delete your account?
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          You will lose all your reviews and records.
+        </div>
+      </div>
+      <div class="d-flex pb-5">
+        <span class="col-6"> <button type="button" class="cancel-account edit-upload ml_20" data-bs-dismiss="modal">Cancel</button></span>
+        <span class="col-6"><%= link_to "Delete Account", users_delete_user_path(resource_name), class: " delete-account " %></span>
+      </div>
     </div>
   </div>
 </div>
