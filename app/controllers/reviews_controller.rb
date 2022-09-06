@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    debugger
     @review = current_user.reviews.new(review_params)
     if @review.save
       redirect_to reviews_path, notice: "Review created successfully!"
@@ -30,7 +29,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    debugger
     if @review.update(review_params)
       redirect_to root_path, notice: "Review updated successfully!"
     else
