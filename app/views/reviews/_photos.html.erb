@@ -22,11 +22,10 @@
           <img class="thumbnail px-0" src=<%= image_src %>>
         <% end %>
       <% end %>
-      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished' ,maxFiles: 10} %>
     </div>
   </div>
   <div id="image_inputs">
-    <% f.hidden_field :images, id:"image_hidden" %>
   </div>
 </div>
 
@@ -46,17 +45,12 @@
     input.value = data.url
     input.hidden = true
     input.name = 'review[images][]'
-    debugger
     document.getElementById('image_inputs').append(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
     document.getElementById('file_upload_place').classList.add('d-none')
   }
-
   function updateImage(that) {
     document.getElementById('mainThumbnail').src = that.src
-  }
-  function concatenate(){
-    
   }
 </script>
