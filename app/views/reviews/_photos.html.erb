@@ -18,14 +18,19 @@
     </div>
     <div class="d-flex" id="js-thumbnails" data-controller="reorder">
       <% if f.object.images? %>
-        <% f.object.images[1..].each do |image_src| %>
+        <% f.object.images.each do |image_src| %>
           <img class="thumbnail px-0" src=<%= image_src %>>
         <% end %>
       <% end %>
-      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished' ,maxFiles: 10} %>
+      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
+      <div id="image_inputs" data-reorder-target="inputDiv" >
+        <% if f.object.images? %>
+          <% f.object.images.each do |img_url| %>
+            <input type="hidden" name="review[images][]" value=<%= img_url %> >
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div id="image_inputs">
   </div>
 </div>
 
@@ -42,9 +47,9 @@
     })
     document.getElementById('js-thumbnails').prepend(image)
     const input = document.createElement('input')
-    input.value = data.url
-    input.hidden = true
+    input.type = "hidden"
     input.name = 'review[images][]'
+    input.value = data.url
     document.getElementById('image_inputs').append(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
