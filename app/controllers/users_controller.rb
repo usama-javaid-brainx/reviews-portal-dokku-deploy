@@ -4,46 +4,24 @@ class UsersController < ApplicationController
     @pagy, @reviews = pagy(reviews, items: 12)
   end
 
-  def edit
-    @user = current_user
+  def remove_avatar
+    if current_user.avatar.attached?
+      @avatar = ActiveStorage::Attachment.find(current_user.avatar.id)
+      @avatar.purge
+    end
+    redirect_to edit_user_registration_path
   end
 
-  def update
-    @user = current_user
-    debugger
-
-    if @user.update_with_password(params)
-      sign_in @user, :bypass => true
-
-      redirect_to root_path, :notice => "Your Password has been updated!"
+  def delete_user
+    if current_user.discard
+      sign_out if Devise.sign_out_all_scopes
+      redirect_to after_sign_out_path_for(:user), notice: "Your Account Deleted successfully"
     else
-
-      flash[:alert] = @user.errors.full_messages.join("<br />")
-      render :edit
-
+      redirect_to edit_user_registration_path
     end
-
-    if @user.update(user_params)
-      debugger
-      # redirect_to user_profile
-    else
-      debugger
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def destroy
   end
 
   private
-
-  def user_params
-    params[:last_name] = current_user.last_name
-    params[:email] = current_user.email
-    params[:encrypted_password] = current_user.encrypted_password
-    debugger
-    params.permit(:first_name, :avatar)
-  end
 
   def review_filter(reviews)
     params[:to_try] = 'all' unless params[:to_try].present?

@@ -128,6 +128,51 @@
 .p-19 {
     padding: 19px;
 }
+
+.avatar-edit{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background: #6E3EF7;
+    top: 102px;
+    left: 115px;
+}
+
+.avatar-edit-icon {
+    margin-left: 9px;
+    margin-top: 4px;
+}
+
+.cancel-account {
+    align-items: center;
+    height: 40px;
+    width: 160px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCE1;
+    border-radius: 6px;
+}
+
+.delete-account {
+    background: #F44336;
+    border-radius: 6px;
+    width: 160px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+}
+/*#error_explanation h2 {*/
+/*    display: none;*/
+/*}*/
+
+/*#error_explanation ul {*/
+/*    position: relative;*/
+/*    top: 38px;*/
+/*    background: indianred;*/
+/*}*/
+
+
 /*.edit-profile-icon{*/
 /*    width: 32px;*/
 /*    height: 32px;*/
