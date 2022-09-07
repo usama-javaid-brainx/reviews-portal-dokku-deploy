@@ -34,5 +34,8 @@ application.register("favourite", FavouriteController)
 import UserValidationController from "./user_validation_controller.js"
 application.register("user-validation", UserValidationController)
 
+import PhotosController from "./photos_controller.js"
+application.register("photos", PhotosController)
+
 import SortableImagesController from "./sortable_images_controller.js"
 application.register("sortable-images", SortableImagesController)

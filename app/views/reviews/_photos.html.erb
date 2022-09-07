@@ -1,5 +1,5 @@
 <h2>Photos</h2>
-<div class="tabs_content_wrap">
+<div class="tabs_content_wrap" data-controller="photos">
 
   <% if !f.object.images? %>
     <div class="file_upload_place" id="file_upload_place">
@@ -14,13 +14,14 @@
 
   <div class="uploaded-files <%= "d-none" if !f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
-      <img id="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
+      <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first if f.object.images? %>>
     </div>
-    <div class="d-flex" id="js-thumbnails" data-controller="sortable-images">
+    <div class="d-flex position-relative" id="js-thumbnails" data-controller="sortable-images">
       <% if f.object.images? %>
         <% f.object.images.each do |image_src| %>
-          <img class="thumbnail px-0" src=<%= image_src %>>
-            <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
+          <img class="thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
+          <div data-action="click->photos#deleteImage" class="delete"> <%= image_tag("template/image-delete.svg") %></div>
+          <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
         <% end %>
       <% end %>
       <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
@@ -33,12 +34,11 @@
     const image = document.createElement('img');
     image.classList.add('thumbnail', 'px-0')
     image.setAttribute(
-      'src',
-      data.url
+      'src', data.url
     );
-    image.addEventListener("click", () => {
-      updateImage(image)
-    })
+    image.setAttribute(
+      "data-action", "click->photos#clickImage"
+    );
     document.getElementById('js-thumbnails').prepend(image)
     const input = document.createElement('input')
     input.type = "hidden"
