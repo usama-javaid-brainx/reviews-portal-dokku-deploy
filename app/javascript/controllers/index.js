@@ -16,9 +16,6 @@ application.register("toggle-password", TogglePasswordController)
 import TagsController from "./tags_controller.js"
 application.register("tags", TagsController)
 
-import PhotosController from "./photos_controller.js"
-application.register("photos", PhotosController)
-
 import MealsController from "./meals_controller.js"
 application.register("meals", MealsController)
 
@@ -36,3 +33,6 @@ application.register("favourite", FavouriteController)
 
 import UserValidationController from "./user_validation_controller.js"
 application.register("user-validation", UserValidationController)
+
+import SortableImagesController from "./sortable_images_controller.js"
+application.register("sortable-images", SortableImagesController)

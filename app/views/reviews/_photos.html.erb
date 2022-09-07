@@ -1,5 +1,5 @@
 <h2>Photos</h2>
-<div class="tabs_content_wrap" data-controller="photos">
+<div class="tabs_content_wrap">
 
   <% if !f.object.images? %>
     <div class="file_upload_place" id="file_upload_place">
@@ -14,19 +14,17 @@
 
   <div class="uploaded-files <%= "d-none" if !f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
-      <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
+      <img id="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
     </div>
-    <div class="d-flex" id="js-thumbnails">
+    <div class="d-flex" id="js-thumbnails" data-controller="sortable-images">
       <% if f.object.images? %>
-        <% f.object.images[1..].each do |image_src| %>
+        <% f.object.images.each do |image_src| %>
           <img class="thumbnail px-0" src=<%= image_src %>>
+            <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
         <% end %>
       <% end %>
-      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
     </div>
-  </div>
-  <div id="image_inputs">
-
   </div>
 </div>
 
@@ -43,10 +41,11 @@
     })
     document.getElementById('js-thumbnails').prepend(image)
     const input = document.createElement('input')
-    input.value = data.url
-    input.hidden = true
+    input.type = "hidden"
+    input.classList.add("image-inputs")
     input.name = 'review[images][]'
-    document.getElementById('image_inputs').append(input)
+    input.value = data.url
+    document.getElementById('js-thumbnails').prepend(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
     document.getElementById('file_upload_place').classList.add('d-none')

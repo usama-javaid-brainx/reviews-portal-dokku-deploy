@@ -188,6 +188,11 @@ photoswipe@^5.2.4:
   resolved "https://registry.yarnpkg.com/photoswipe/-/photoswipe-5.2.4.tgz#918fd64c6b41b6a693743e5d70ee1a59747f491d"
   integrity sha512-7p+VH7ELUnW9/3rCULCmyXcUCEuZwcsxvxPQYzR4wk3EaXcLCiINMCspc9Qq9AJYNsqYo1qGVL1y1Tch8uKAjw==
 
+sortablejs@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.0.tgz#53230b8aa3502bb77a29e2005808ffdb4a5f7e2a"
+  integrity sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==
+
 spark-md5@^3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
