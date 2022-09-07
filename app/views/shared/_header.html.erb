@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-lg-3 col-3">
         <%= link_to root_path, class: 'logo' do %>
-          <%= image_tag("template/logo.png", class: "d-lg-block d-none") %>
-          <%= image_tag("template/logo1.png", class: "d-lg-none d-block") %>
+          <%= image_tag("template/fullsite-logo.svg", class: "d-lg-block d-none") %>
+          <%= image_tag("template/smallsite-logo.svg", class: "d-lg-none d-block") %>
         <% end %>
       </div>
       <div class="col-lg-6 col-6 text-center">
@@ -15,27 +15,27 @@
           </li>
           <li>
             <%= link_to params[:profile].present? ? users_index_path(category: 'Restaurants', profile: 'true') : reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
-              <%= image_tag("template/nav-icon1.png") %>Restaurants
+              <%= image_tag("template/cutlery.svg") %>Restaurants
             <% end %>
           </li>
           <li>
             <%= link_to params[:profile].present? ? users_index_path(category: 'Games', profile: 'true') : reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
-              <%= image_tag("template/nav-icon2.png") %>Games
+              <%= image_tag("template/games.svg") %>Games
             <% end %>
           </li>
           <li>
             <%= link_to params[:profile].present? ? users_index_path(category: 'Books', profile: 'true') : reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
-              <%= image_tag("template/nav-icon3.png") %>Books
+              <%= image_tag("template/books.svg") %>Books
             <% end %>
           </li>
           <li>
             <%= link_to params[:profile].present? ? users_index_path(category: 'Movies', profile: 'true') : reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
-              <%= image_tag("template/nav-icon4.png") %>Movies
+              <%= image_tag("template/videos.svg") %>Movies
             <% end %>
           </li>
           <!-- TODO Adding Link -->
           <li class="dropdown ml_15">
-            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon5.png") %></a>
+            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
             <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
               <li><a class="dropdown-item" href="#">New Item 1</a></li>
               <li><a class="dropdown-item" href="#">New Item 2</a></li>
@@ -48,22 +48,22 @@
         <div class="d-lg-none dropdown menuItemDropdown">
 
           <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
-            <span class="icon"><%= image_tag("template/nav-icon1.png") %></span><span>Restaurants</span>
+            <span class="icon"><%= image_tag("template/cutlery.svg") %></span><span>Restaurants</span>
           <% end %>
           <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
             <li>
               <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"> <%= image_tag("template/nav-icon2.png") %></span><span>Games</span>
+                <span class="icon"> <%= image_tag("template/games.svg") %></span><span>Games</span>
               <% end %>
             </li>
             <li>
               <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"><%= image_tag("template/nav-icon3.png") %></span><span>Books</span>
+                <span class="icon"><%= image_tag("template/books.svg") %></span><span>Books</span>
               <% end %>
             </li>
             <li>
               <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"><%= image_tag("template/nav-icon4.png") %></span><span>Movies</span>
+                <span class="icon"><%= image_tag("template/videos.svg") %></span><span>Movies</span>
               <% end %>
             </li>
           </ul>
