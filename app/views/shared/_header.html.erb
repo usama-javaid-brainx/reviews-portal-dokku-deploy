@@ -76,7 +76,15 @@
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
-              <%= image_tag("template/avatar1.png", class: 'avatar') %>
+              <% if current_user.avatar.attached? %>
+                      <span class="header-img">
+                      <%= image_tag(current_user.avatar, class: 'rounded-circle') %>
+                        </span>
+              <% else %>
+                      <span class="header-img">
+                        <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                      </span>
+              <% end %>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
             <ul class="dropdown-menu dropdown-w" aria-labelledby="sessionDropdown">
@@ -84,7 +92,9 @@
                 <div class="dropdown-item dropdown-img">
                   <div class="d-flex ">
                     <% if current_user.avatar.attached? %>
+                      <span class="col-2">
                       <%= image_tag(current_user.avatar, class: 'rounded-circle') %>
+                        </span>
                     <% else %>
                       <span class="col-2">
                         <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
@@ -115,18 +125,19 @@
 </header>
 
 <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you Sure</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-20">
+      <div class="modal-body bg-white p-5 rounded-20">
+        <div class="d-flex justify-content-center align-items-center p-19 logout-heading">
+          Log Out
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          Are you sure you want to logout?
+        </div>
       </div>
-      <div class="modal-body">
-        You want to logout.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'LOG OUT', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
+      <div class="d-flex justify-content-evenly pb-5 flex-wrap">
+        <a type="button" class="modal-cancel btn-modal d-flex justify-content-center align-items-center" data-bs-dismiss="modal">Cancel</a>
+        <%= link_to 'Log Out', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn-logout btn-modal d-flex justify-content-center align-items-center' %>
       </div>
     </div>
   </div>
