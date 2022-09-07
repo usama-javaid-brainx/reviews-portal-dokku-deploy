@@ -24,7 +24,7 @@
           <span class='<%= review.to_try? ? 'wishlist-btn' : 'review_btn' %>'><%= review.to_try? ? "Wishlist" : "Review" %> </span>
           <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
         </div>
-        <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>
+        <p class="product_rating"><%= image_tag("template/star.svg") if review.average_score? %>
           <span><%= review.average_score %></span></p>
       </div>
       <h3><%= review.name %></h3>

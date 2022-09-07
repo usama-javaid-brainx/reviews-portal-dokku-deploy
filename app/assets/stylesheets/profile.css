@@ -129,7 +129,7 @@
     padding: 19px;
 }
 
-.avatar-edit{
+.avatar-edit {
     width: 32px;
     height: 32px;
     position: absolute;
@@ -143,38 +143,56 @@
     margin-top: 4px;
 }
 
-.cancel-account {
-    align-items: center;
-    height: 40px;
-    width: 160px;
-    background: #FFFFFF;
-    border: 1px solid #CCCCE1;
-    border-radius: 6px;
-}
-
 .delete-account {
     background: #F44336;
+    color: white;
+}
+
+.delete-account:hover{
+    background: #F44336;
+    color: white;
+}
+
+.header-img {
+    width: 25px;
+}
+
+.btn-logout {
+    background: #6E3EF7;
+    color: #FFFFFF;
+}
+
+.btn-logout:hover {
+    background: #6E3EF7;
+    color: #FFFFFF;
+}
+
+.btn-modal {
     border-radius: 6px;
     width: 160px;
     height: 40px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
 }
-/*#error_explanation h2 {*/
-/*    display: none;*/
-/*}*/
 
-/*#error_explanation ul {*/
-/*    position: relative;*/
-/*    top: 38px;*/
-/*    background: indianred;*/
-/*}*/
+.modal-cancel {
+    border: 1px solid #CCCCE1;
+    color: #848496;
+}
 
+.modal-cancel:hover {
+    color: #6E3EF7;
+    border-color: #6E3EF7;
+}
 
-/*.edit-profile-icon{*/
-/*    width: 32px;*/
-/*    height: 32px;*/
-/*}*/
+.logout-heading {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+}
 
+.rounded-20 {
+    border-radius: 20px !important;
+}

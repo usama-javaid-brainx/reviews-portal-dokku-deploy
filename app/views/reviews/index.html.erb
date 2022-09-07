@@ -2,7 +2,8 @@
   <%= render "filter_navbar", reviews: @reviews, cuisines: @cuisines, tags: @tags %>
   <%= render "review_cards", reviews: @reviews, pagy: @pagy %>
   <!-- add Button -->
+
   <%= link_to new_review_path(category: params[:category]), class: 'addNew' do %>
-    <%= image_tag("template/plus.png") %><span>Add New</span>
+    <%= image_tag("template/plus.svg") %><span>Add New</span>
   <% end %>
 </main>

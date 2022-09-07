@@ -8,18 +8,11 @@
             <div class="search">
               <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <button>
-                <%= image_tag("template/search.png") %>
+                <%= image_tag("template/search.svg") %>
               </button>
             </div>
-            <!--        <form class="search">-->
-            <!--          <input type="search" placeholder="Search reviews...">-->
-            <!--          <button>-->
-            <%#= image_tag("template/search.png") %>
-            <!--          </button>-->
-            <!--        </form>-->
-
             <button type="button" class="filter" data-bs-toggle="modal" data-bs-target="#filterModal">
-              <%= image_tag("template/filter.png") %>Filters<span data-filter-target="appliedFilter"></span>
+              <%= image_tag("template/filter.svg") %>Filters<span data-filter-target="appliedFilter"></span>
             </button>
           </div>
           <div class="col-lg-4">
