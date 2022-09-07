@@ -129,7 +129,7 @@
     padding: 19px;
 }
 
-.avatar-edit{
+.avatar-edit {
     width: 32px;
     height: 32px;
     position: absolute;
@@ -162,19 +162,3 @@
     display: flex;
     color: white;
 }
-/*#error_explanation h2 {*/
-/*    display: none;*/
-/*}*/
-
-/*#error_explanation ul {*/
-/*    position: relative;*/
-/*    top: 38px;*/
-/*    background: indianred;*/
-/*}*/
-
-
-/*.edit-profile-icon{*/
-/*    width: 32px;*/
-/*    height: 32px;*/
-/*}*/
-
