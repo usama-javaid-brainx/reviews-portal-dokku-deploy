@@ -64,7 +64,7 @@
             <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
           </div>
           <div class="modal-body" style="background: #FBFBFE;">
-            <% if params[:category] == 'Restaurants' or params[:category] == 'all'%>
+            <% if params[:category] == 'Restaurants' || params[:category] == 'all'%>
               <div class="card cuisine-card-h">
                 <div class="d-flex justify-content-between p-4">
                   <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
