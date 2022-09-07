@@ -66,7 +66,7 @@
 </div>
 
 <div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body bg-white p-5 rounded-3">
         <div class="d-flex justify-content-center">
@@ -82,9 +82,9 @@
           You will lose all your reviews and records.
         </div>
       </div>
-      <div class="d-flex pb-5">
-        <span class="col-6"> <button type="button" class="cancel-account edit-upload ml_20" data-bs-dismiss="modal">Cancel</button></span>
-        <span class="col-6"><%= link_to "Delete Account", users_delete_user_path(resource_name), class: " delete-account " %></span>
+      <div class="d-flex justify-content-evenly flex-wrap pb-5">
+        <button type="button" class="cancel-account edit-upload ml_20" data-bs-dismiss="modal">Cancel</button>
+        <%= link_to "Delete Account", users_delete_user_path(resource_name), class: " delete-account " %>
       </div>
     </div>
   </div>
