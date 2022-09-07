@@ -95,10 +95,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_101605) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
-    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
+    t.text "images", default: [], array: true
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
