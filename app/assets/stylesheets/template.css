@@ -96,6 +96,26 @@
 
 }
 
+.uploaded-files .delete{
+    position: absolute;
+    background: none;
+    border: none;
+}
+
+.uploaded-files div.delete{
+    display: none;
+}
+
+.uploaded-files div.delete:first-of-type{
+    display: block;
+    position: absolute;
+    background: none;
+    border: none;
+    top: 2px;
+    left: 5px;
+    cursor: pointer;
+}
+
 .meal-modal .img-wrapper {
     height: 250px;
     display: flex;
