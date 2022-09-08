@@ -58,20 +58,6 @@
                 </div>
               </div>
 
-              <!-- category area -->
-              <div class="category_area pt_30" id="category_area">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="category_content_wrap">
-                      <div data-controller="category" class="form_group row align-items-center">
-                        <label for="search" class="col-lg-5">Wishlist</label>
-                        <%= form.select :to_try, [["False", false], ["True", true]], { include_blank: false }, class: 'col-lg-7' %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <!-- review area start -->
               <div class="review_area" id="review_area">
                 <%= render 'review', review: @review, f: form %>

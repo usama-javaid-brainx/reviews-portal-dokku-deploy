@@ -4,4 +4,8 @@
     <label for="search" class="col-lg-5">Category</label>
         <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }, { selected: @curr_category.id }, { :class => 'col-lg-7', data: {"action": "change->category#categorySelect", "category-target": "category" }} %>
   </div>
+  <div data-controller="category" class="form_group row align-items-center">
+    <label for="search" class="col-lg-5">Wishlist</label>
+    <%= f.select :to_try, [["Review", false], ["Wishlist", true]], { include_blank: false }, class: 'col-lg-7' %>
+  </div>
 </div>
