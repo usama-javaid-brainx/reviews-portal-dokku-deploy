@@ -1,0 +1,175 @@
+<main class="overflow-hidden position-relative">
+
+  <a class="back" href="javascript:history.back()">
+    <%= image_tag("template/left-arrow.svg") %>
+  </a>
+
+  <!--========== Hero area start ===========-->
+  <section class="hero_area pt_50">
+    <!-- this carousel area for mobile -->
+    <div class="position-relative d-lg-none">
+      <!-- carousel start -->
+      <div class="owl-carousel owl-theme card_carousel">
+        <% @review.images[0..5].each do |image_src| %>
+          <div class="item">
+            <img src=<%= image_src %>>
+          </div>
+        <% end %>
+      </div>
+      <!-- carousel start -->
+    </div>
+
+    <div class="container custom">
+      <div class="hero_header">
+        <!--        render guest or owner or shared link header here d-->
+        <%= render owner == true ?  "reviews/owner_show_header" : "shared/guest_show_header" %>
+
+        <!-- gallery-->
+        <div class="row img_gallery g-3 d-none d-lg-flex">
+          <% if @review.images? %>
+            <div class="col-lg-6 large ">
+              <a href=<%= @review.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
+                <img src=<%= @review.images.first %>>
+              </a>
+            </div>
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <% @review.images[1..].each_with_index do |image_src, idx| %>
+                  <div class="col-lg-6 small position-relative">
+                    <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
+                      <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>">
+                    </a>
+                    <% if image_src.equal?(@review.images[1..4].last) %>
+                      <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <%= image_tag("template/eye.svg", class: 'gallery-icon mr-2') %>
+                        See All Photos
+                      </button>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <!-- gallery end-->
+      </div>
+    </div>
+  </section>
+
+  <!-- images gallery Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" style="max-height: 600px; max-width: 800px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Photo Gallery</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <% @review.images.each do |image_src| %>
+              <div class="col-3 mb-3 ">
+                <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
+                  <img class="rounded img-fluid" src=<%= image_src %>>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container custom pb_50">
+    <div class="row g-lg-5">
+      <div class="col-lg-8">
+
+        <!-- tags area start -->
+        <div class="pt_50">
+          <h3 class="pb_10">Tags</h3>
+          <div class="tags_wrap position-relative">
+            <ul class="tags_list">
+              <% @review.tags.split(",").drop(1).each do |res_tag| %>
+                <li><%= image_tag("template/check.png") if @review.tags? %><span><%= res_tag %></span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <!-- notes area start -->
+        <div class="pt_50">
+          <h3 class="pb_10">Review Body</h3>
+          <div class="notes_wrap position-relative list-style-unset">
+            <p><%= @review.notes %></p>
+          </div>
+        </div>
+
+        <!-- Favorite Dishes area start -->
+        <div class="pt_50">
+          <h3 class="pb_10">Favorite Dishes</h3>
+          <div class="favorite_dishes_wrap">
+            <ul class="favorite_dishes_list">
+              <% @review.meals.each do |meal| %>
+                <li>
+                  <img class="main_img" src=<%= meal.image_url %>>
+                  <div class="d-flex justify-content-between align-items-center w-100 ml_15">
+                    <div>
+                      <h4><%= meal.name %></h4>
+                      <p><%= meal.notes %></p>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+
+        <!-- map area start -->
+        <div class="pt_30">
+          <h3 class="pb_10">Localization</h3>
+          <div class="map_wrap">
+            <span id="lat" data-latitude=<%= @review.latitude %>> </span>
+            <span id="long" data-longitude=<%= @review.longitude %>> </span>
+            <div id="map">
+            </div>
+            <div class="position-relative mt-3 pt_15 pb_15">
+              <% if @review.country.present? and @review.state.present? %>
+                <h4><%= @review.country %>, <%= @review.state %></h4>
+              <% end %>
+              <% if @review.address.present? or @review.zip_code.present? %>
+                <p><%= @review.address + ',' if @review.address.present? %>   <%= @review.zip_code if @review.zip_code.present? %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwFbLw7Yc1hLAOvQAWbd48XdvtNhieq5Y&callback=initMap"
+  async=""
+></script>
+<script>
+  function initMap() {
+    let long = document.getElementById("long").getAttribute("data-longitude");
+    let lati = document.getElementById("lat").getAttribute("data-latitude");
+    lati = parseFloat(lati);
+    long = parseFloat(long);
+    const place = {lat: lati, lng: long};
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 16,
+      center: place,
+    });
+    const marker = new google.maps.Marker({
+      position: place,
+      map: map,
+    });
+  }
+
+  window.initMap = initMap;
+</script>
