@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   reorderingInputs(event) {
-    debugger
     let inputs = this.element.getElementsByClassName("image-inputs")
     let imageTags = this.element.getElementsByClassName("small-thumb")
     for (let i = 0; imageTags.length > i; i++) {
