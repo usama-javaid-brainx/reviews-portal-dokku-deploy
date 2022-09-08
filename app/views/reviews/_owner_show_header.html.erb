@@ -9,7 +9,7 @@
       <span>Public REVIEW</span>
     </div>
     <h1><%= @review.name %></h1>
-    <% if @review.date? %>
+    <% if !@review.city.present? && @review.date? %>
       <p class="date">
         <%= @review.date.strftime("%b/%e/%Y") %>
       </p>
@@ -45,8 +45,10 @@
       <a href="#" data-action="click->favourite#updateFavourite" class="<%= 'checked' if @review.favourite == true %>">
         <%= image_tag("template/favourites1.svg") %>
         <span>Save as Favourite</span></a>
-      <p class="rating">
-        <%= image_tag("template/star.svg") %><span><%= @review.average_score %></span></p>
+      <% if @review.average_score.present? %>
+        <p class="rating">
+          <%= image_tag("template/star.svg") %><span><%= @review.average_score %></span></p>
+      <% end %>
     </div>
     <div>
       <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> data-action="click->guest#copyLink">
@@ -73,8 +75,10 @@
         </div>
       </div>
       <div class="rating_box">
-        <p class="rating"><%= image_tag("template/star.svg") %>
-          <span><%= @review.average_score %></span></p>
+        <% if @review.average_score.present? %>
+          <p class="rating"><%= image_tag("template/star.svg") %>
+            <span><%= @review.average_score %></span></p>
+        <% end %>
       </div>
     </div>
     <div class="d-flex justify-content-between pt_30">
