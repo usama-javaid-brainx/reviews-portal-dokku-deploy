@@ -19,7 +19,7 @@
     <div class="d-flex position-relative" id="js-thumbnails" data-controller="sortable-images">
       <% if f.object.images? %>
         <% f.object.images.each do |image_src| %>
-          <img class="thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
+          <img class="small-thumb thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
           <div data-action="click->photos#deleteImage" class="delete"> <%= image_tag("template/image-delete.svg") %></div>
           <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
         <% end %>
