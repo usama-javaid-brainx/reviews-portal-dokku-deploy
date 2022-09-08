@@ -1,7 +1,7 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
     <h1><%= @review.name %></h1>
-    <% if !@review.city.present? %>
+    <% if !@review.city.present? and @review.date.present? %>
       <p class="date">
         <%= @review.date.strftime("%b/%e/%Y") %>
       </p>
@@ -23,14 +23,19 @@
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
     <div class="d-flex align-items-center justify-content-end avatar">
+
       <div class="d-flex align-items-center justify-content-evenly rating_box">
-        <%= image_tag("template/star.svg", class: "w-25") %> <span class="align-items-center d-flex pt-2 rating"><%= @review.average_score %></span>
+        <% if @review.average_score.present? %>
+          <%= image_tag("template/star.svg", class: "w-25 ") %>
+          <span class="align-items-center d-flex pt-2 rating"><%= @review.average_score %></span>
+        <% end %>
       </div>
 
+
       <% if User.find_by(id: @review.user_id).avatar.attached? %>
-        <%= image_tag(User.find_by(id: @review.user_id).avatar, class: 'rounded-circle h-auto') %>
+        <%= image_tag(User.find_by(id: @review.user_id).avatar, class: 'rounded-circle h-auto rating_box') %>
       <% else %>
-        <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
+        <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box') %>
       <% end %>
       <div>
         <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: @review.user_id).first_name %> <%= User.find_by(id: @review.user_id).last_name %></span>
@@ -56,15 +61,16 @@
           <p class="name"><%= @review.name %></p>
         </div>
       </div>
-      <div class="rating_box">
-        <p class="rating"><%= image_tag("template/star.svg") %>
-          <span><%= @review.average_score %></span></p>
-      </div>
+      <% if @review.average_score.present? %>
+        <div class="rating_box">
+          <p class="rating"><%= image_tag("template/star.svg") %>
+            <span><%= @review.average_score %></span></p>
+        </div>
+      <% end %>
     </div>
     <div class="d-flex justify-content-between pt_30">
-      <%= link_to "#" %>
       <a class="btn white" href="#"><%= image_tag("template/check.svg") %><span>Mark To Try</span></a>
-      <%= link_to "Write Your Review", edit_review_path(@review), class: 'btn' %>
+      <%= link_to "Write Your Review", "#", class: 'btn' %>
     </div>
   </div>
   <!-- mobile end-->

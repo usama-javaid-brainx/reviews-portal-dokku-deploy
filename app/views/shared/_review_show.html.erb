@@ -22,7 +22,7 @@
     <div class="container custom">
       <div class="hero_header">
         <!--        render guest or owner or shared link header here d-->
-        <%= render owner == true ?  "reviews/owner_show_header" : "shared/guest_show_header" %>
+        <%= render owner == true ?  "reviews/owner_show_header" : 'guests/guest_show_header' %>
 
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
