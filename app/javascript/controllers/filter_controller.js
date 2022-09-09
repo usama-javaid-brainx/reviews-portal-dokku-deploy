@@ -48,7 +48,7 @@ export default class extends Controller {
   }
 
   clearAll(className) {
-    let tags = document.querySelectorAll('.' + className)
+    let tags = document.querySelectorAll(`.${className}`)
     tags.forEach(tag => {
       tag.classList.remove(className, 'cuisine-select')
       tag.classList.add('cuisine-unselect')

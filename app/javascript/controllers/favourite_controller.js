@@ -6,18 +6,14 @@ export default class extends Controller {
   }
 
   updateFavourite(event) {
-    var $favouriteReview = $(event.currentTarget).toggleClass('checked')
-    if ($favouriteReview.hasClass('checked')) {
-      this.request("GET", this.favouritePathValue, "favourite=true")
-    } else {
-      this.request("GET", this.favouritePathValue, "favourite=false")
-    }
+    let favouriteReview = $(event.currentTarget).toggleClass('checked')
+    this.request(`favourite=${favouriteReview.hasClass('checked')}`)
   }
 
-  request(type, url, data) {
+  request(data) {
     $.ajax({
-      type: type,
-      url: url,
+      type: "GET",
+      url: this.favouritePathValue,
       data: data,
       dataType: 'json'
     })

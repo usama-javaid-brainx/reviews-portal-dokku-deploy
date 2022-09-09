@@ -8,7 +8,6 @@
         <% end %>
       </div>
       <div class="col-lg-6 col-6 text-center">
-        <% if params[:to_try].present? %>
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
               <%= link_to "All", reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
@@ -68,7 +67,6 @@
               </li>
             </ul>
           </div>
-        <% end %>
       </div>
 
       <div class="col-lg-3 col-3 text-end">
