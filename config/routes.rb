@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'guests/show'
+  get 'guests/new_user'
   get 'users/index'
   get 'users/remove_avatar'
   get 'users/delete_user'

@@ -1,4 +1,5 @@
-<main class="overflow-hidden position-relative">
+<main class="overflow-hidden position-relative" data-controller="guest">
+  <div class="d-flex justify-content-center d-none" data-guest-target="shareMsg"><span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>Link Copied To Clipboard</span></div>
 
   <a class="back" href="javascript:history.back()">
     <%= image_tag("template/left-arrow.svg") %>
