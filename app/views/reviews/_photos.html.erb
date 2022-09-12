@@ -1,7 +1,7 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
 
-  <% if !f.object.persisted? %>
+  <% unless f.object.persisted? %>
     <div class="file_upload_place" id="file_upload_place">
       <div class="content">
         <div class="upload_link">
@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="uploaded-files <%= "d-none" if !f.object.persisted? %>" id="js-uploaded-files">
+  <div class="uploaded-files <%= "d-none" unless f.object.persisted? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
       <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
     </div>
