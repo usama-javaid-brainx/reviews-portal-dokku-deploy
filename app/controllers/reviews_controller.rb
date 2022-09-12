@@ -38,7 +38,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    # TODO
+    if @review.discard
+      redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
+    end
   end
 
   def delete_attachment

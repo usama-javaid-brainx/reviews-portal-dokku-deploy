@@ -40,7 +40,11 @@
             <%= review.date.strftime("%b/%e/%Y") %>
           </li>
         <% end %>
-        <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
+        <li class="ml-1">
+          <% for count in 1..5 %>
+            <span class="price-sz fs-5 pe-none <%= ('text-white bg-price' if review.price_range >= count) if review.price_range.present? %>">$</span>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
