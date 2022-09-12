@@ -12,7 +12,7 @@
       <div class="owl-carousel owl-theme card_carousel">
         <% @review.images[0..5].each do |image_src| %>
           <div class="item">
-            <img src=<%= image_src %>>
+            <%= image_tag(image_src) %>
           </div>
         <% end %>
       </div>
@@ -45,10 +45,9 @@
                 <li><%= @review.state + ', ' %> <%= @review.country %></li>
               <% end %>
               <li>
-                <span>$</span>
-                <span>$</span>
-                <span>$</span>
-                <span>$</span>
+                <% for count in 1..5 %>
+                  <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -105,17 +104,18 @@
           <% if @review.images? %>
             <div class="col-lg-6 large ">
               <a href=<%= @review.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
-                <img src=<%= @review.images.first %>>
+                <%= image_tag(@review.images.first) %>
               </a>
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
-                <% @review.images[1..].each_with_index do |image_src, idx| %>
+                <% imagesss = @review.images[1..4] %>
+                <% imagesss.each_with_index do |image_src, index| %>
                   <div class="col-lg-6 small position-relative">
                     <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
-                      <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>">
+                      <%= image_tag(image_src) %>
                     </a>
-                    <% if image_src.equal?(@review.images[1..4].last) %>
+                    <% if index == (imagesss.length) - 1 %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
                         See All Photos
@@ -145,7 +145,7 @@
             <% @review.images.each do |image_src| %>
               <div class="col-3 mb-3 ">
                 <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
-                  <img class="rounded img-fluid" src=<%= image_src %>>
+                  <%= image_tag(image_src) %>
                 </a>
               </div>
             <% end %>
@@ -188,7 +188,7 @@
             <ul class="favorite_dishes_list">
               <% @review.meals.each do |meal| %>
                 <li>
-                  <img class="main_img" src=<%= meal.image_url %>>
+                  <%= image_tag(meal.image_url, class: "main_img") %>
                   <div class="d-flex justify-content-between align-items-center w-100 ml_15">
                     <div>
                       <h4><%= meal.name %></h4>
@@ -212,11 +212,11 @@
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
-              <% if @review.country.present? and @review.state.present? %>
+              <% if @review.country.present? && @review.state.present? %>
                 <h4><%= @review.country %>, <%= @review.state %></h4>
               <% end %>
-              <% if @review.address.present? or @review.zip_code.present? %>
-                <p><%= @review.address + ',' if @review.address.present? %>   <%= @review.zip_code if @review.zip_code.present? %></p>
+              <% if @review.address.present? || @review.zip_code.present? %>
+                <p><%= @review.address %><%= ", #{@review.zip_code}" if @review.zip_code.present? %></p>
               <% end %>
             </div>
           </div>

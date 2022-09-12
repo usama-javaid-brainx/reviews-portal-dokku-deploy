@@ -33,6 +33,8 @@
 class Review < ApplicationRecord
   include Discard::Model
 
+  default_scope -> { kept }
+
   attr_accessor :images_input
 
   belongs_to :user

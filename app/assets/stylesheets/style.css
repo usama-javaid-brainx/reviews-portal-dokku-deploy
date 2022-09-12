@@ -2311,3 +2311,13 @@ hitting-enter-submit
         padding-bottom: 0;
     }
 }
+
+.price-sz {
+    width: 20px !important;
+    height: 20px !important;
+    padding-top: 3px;
+}
+
+.bg-price {
+    background: #848496;
+}

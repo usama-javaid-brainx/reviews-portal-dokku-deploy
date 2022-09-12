@@ -8,7 +8,6 @@
         <% end %>
       </div>
       <div class="col-lg-6 col-6 text-center">
-        <% if params[:to_try].present? %>
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
               <%= link_to "All", reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
@@ -33,6 +32,14 @@
                 <%= image_tag("template/nav-icon4.png") %>Movies
               <% end %>
             </li>
+<!--            todo category will come form database then will remove above code-->
+            <%# Category.all.each do |ca| %>
+<!--              <li>-->
+                <%#= link_to reviews_path(category: ca.name), class: "nav_link #{'active' if params[:category] == ca.name}" do %>
+                  <%#= image_tag("template/nav-icon1.png") %><%#= ca.name %>
+                <%# end %>
+<!--              </li>-->
+            <%# end %>
             <!-- TODO Adding Link -->
             <li class="dropdown ml_15">
               <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon5.png") %></a>
@@ -68,7 +75,6 @@
               </li>
             </ul>
           </div>
-        <% end %>
       </div>
 
       <div class="col-lg-3 col-3 text-end">
