@@ -96,12 +96,6 @@
 }
 
 @media (max-width: 991px) {
-	header .logo img:nth-child(1){
-		display: none;
-	}
-	header .logo img:nth-child(2){
-		display: block;
-	}
 	.content_area{
 		max-height: 100%;
 	}
@@ -179,9 +173,6 @@
 	.add_review_area{
 		padding-top: 10rem;
 	}
-	.add_review_area .title{
-		padding-bottom: 0;
-	}
 	.add_review_area_header{
 		top: 3.8rem;
 	}
@@ -228,16 +219,6 @@
 	}
 	.file_upload_place{
 		height: 25rem;
-	}
-	.back{
-		top: 1rem;
-		left: .8rem;
-	}
-	.add_review_area .nav-pills .nav-item{
-		margin-right: 1.7rem;
-	}
-	.add_review_area .nav-pills .nav-item a{
-		font-size: 1.4rem;
 	}
 	.add_review_area_header{
 		top: 4.5rem;

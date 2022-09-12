@@ -1,9 +1,0 @@
-<h2>Tags</h2>
-<div class="tabs_content_wrap" data-controller="tags">
-  <div class="tags_search_form">
-    <%= f.text_field :tags, class: 'd-none', 'data-tags-target': "selectedTags" %>
-    <input type="text" data-tags-target="tagInput" data-action="keyup->tags#makeTag" placeholder="Search Tags...">
-    <button><%= image_tag("template/search.png") %></button>
-  </div>
-  <div class="tags d-flex flex-wrap" data-tags-target="tags"></div>
-</div>

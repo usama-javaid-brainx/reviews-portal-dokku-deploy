@@ -1,0 +1,56 @@
+<h2>Photos</h2>
+<div class="tabs_content_wrap" data-controller="photos">
+
+  <% unless f.object.persisted? %>
+    <div class="file_upload_place" id="file_upload_place">
+      <div class="content">
+        <div class="upload_link">
+          <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
+          <div>PNG, JGP (max 10MB)</div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
+    <div class="mb-3 main-thumbnail">
+      <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
+    </div>
+    <div class="d-flex" id="js-thumbnails">
+      <% if f.object.images? %>
+        <% f.object.images[1..].each do |image_src| %>
+          <img class="thumbnail px-0" src=<%= image_src %>>
+        <% end %>
+      <% end %>
+      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+    </div>
+  </div>
+  <div id="image-inputs">
+
+  </div>
+</div>
+
+<script>
+  function callbackOnFileUploadFinished(data) {
+    const image = document.createElement('img');
+    image.classList.add('thumbnail', 'px-0')
+    image.setAttribute(
+      'src',
+      data.url
+    );
+    image.addEventListener("click", () => {
+      updateImage(image)
+    })
+    document.getElementById('js-thumbnails').prepend(image)
+    const input = document.createElement('input')
+    setAttributes(input, {value: data.url, hidden: true, name: 'review[images][]' });
+    document.getElementById('image-inputs').append(input)
+    updateImage(image)
+    document.getElementById('js-uploaded-files').classList.remove('d-none')
+    document.getElementById('file_upload_place').classList.add('d-none')
+  }
+
+  function updateImage(that) {
+    document.getElementById('mainThumbnail').src = that.src
+  }
+</script>

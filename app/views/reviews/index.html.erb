@@ -1,5 +1,5 @@
 <main class="overflow-hidden">
-  <%= render "filter_navbar" %>
+  <%= render "filter_navbar", reviews: @reviews, cuisines: @cuisines, tags: @tags %>
 
   <div class="content_area" data-simplebar>
     <div class="content_wrap pb_100">
@@ -8,14 +8,14 @@
           <!--All grid card here -->
           <div class="tab-pane fade show active" id="grid_layout1" role="tabpanel">
             <div class="row g-5">
-              <% @restaurants.each do |resturant| %>
-                <%= render 'resturant_card', resturant: resturant %>
+              <% @reviews.each do |review| %>
+                <%= render 'review_card', review: review %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
-      <div class="my-4 d-flex justify-content-center">
+      <div class="pagy my-5 d-flex justify-content-center">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
     </div>
@@ -23,7 +23,7 @@
 
 
   <!-- add Button -->
-  <%= link_to new_restaurant_path, class: 'addNew' do %>
+  <%= link_to new_review_path, class: 'addNew' do %>
     <%= image_tag("template/plus.png") %><span>Add New</span>
   <% end %>
 </main>

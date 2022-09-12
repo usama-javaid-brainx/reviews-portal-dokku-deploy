@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_095046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,21 +52,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.boolean "address"
+    t.boolean "google_places"
+    t.boolean "price"
+    t.boolean "cuisine"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "notes"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
+    t.bigint "review_id"
+    t.index ["review_id"], name: "index_meals_on_review_id"
   end
 
-  create_table "restaurants", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
     t.string "address"
-    t.string "city", null: false
+    t.string "city"
     t.string "state"
     t.string "country"
     t.string "place_id"
@@ -69,9 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "foursqaure_score"
-    t.string "foursqaure_url"
-    t.string "foursqaure_id"
     t.string "zip_code", default: ""
     t.string "tags", default: ""
     t.integer "price_range"
@@ -79,7 +96,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
     t.boolean "favourite"
     t.boolean "shareable"
     t.text "images", default: [], array: true
-    t.index ["user_id"], name: "index_restaurants_on_user_id"
+    t.bigint "category_id"
+    t.boolean "to_try", default: false
+    t.index ["category_id"], name: "index_reviews_on_category_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -103,6 +123,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_18_081547) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "meals", "restaurants"
-  add_foreign_key "restaurants", "users"
+  add_foreign_key "meals", "reviews"
+  add_foreign_key "reviews", "users"
 end

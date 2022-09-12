@@ -21,3 +21,15 @@ application.register("photos", PhotosController)
 
 import MealsController from "./meals_controller.js"
 application.register("meals", MealsController)
+
+import DollarPriceRangeController from "./dollar_price_range_controller.js"
+application.register("dollar-price-range", DollarPriceRangeController)
+
+import CategoryController from "./category_controller.js"
+application.register("category", CategoryController)
+
+import FilterController from "./filter_controller.js"
+application.register("filter", FilterController)
+
+import FavouriteController from "./favourite_controller.js"
+application.register("favourite", FavouriteController)
