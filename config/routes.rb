@@ -14,4 +14,10 @@ Rails.application.routes.draw do
     get :update_favourite
   end
 
+  resources :categories, only: :index
+
+  patch '/categories', to: 'categories#update_category'
+  patch '/categories/:id/', to: 'categories#move'
+
+
 end

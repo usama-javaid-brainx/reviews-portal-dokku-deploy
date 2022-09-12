@@ -42,3 +42,6 @@ application.register("sortable-images", SortableImagesController)
 
 import GuestController from "./guest_controller.js"
 application.register("guest", GuestController)
+
+import CategoryReorderController from "./category_reorder_controller.js"
+application.register("category-reorder", CategoryReorderController)
