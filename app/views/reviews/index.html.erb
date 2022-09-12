@@ -23,7 +23,7 @@
 
 
   <!-- add Button -->
-  <%= link_to new_review_path, class: 'addNew' do %>
+  <%= link_to new_review_path( category_id: params[:category] != 'all' ? Category.find_by(name: params[:category]).id : nil), class: 'addNew' do %>
     <%= image_tag("template/plus.png") %><span>Add New</span>
   <% end %>
 </main>

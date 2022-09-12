@@ -62,7 +62,7 @@
                 <div class="d-flex justify-content-between p-4">
                   <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
                 </div>
-                <div class="tag-card-h ">
+                <div class="tag-card-h overflow-auto">
                   <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
                   <% cuisines.each do |cuisine| %>
                     <% if cuisine.cuisine.present? %>
@@ -76,7 +76,7 @@
               <div class="d-flex justify-content-between p-4">
                 <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
               </div>
-              <div class="tag-card-h ">
+              <div class="tag-card-h overflow-auto">
                 <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
                 <% tags.each do |tag| %>
                   <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag %></span>

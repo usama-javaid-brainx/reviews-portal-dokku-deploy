@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, notice: "Restaurant created successfully!"
     else
+      @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
     end
   end
@@ -74,7 +75,7 @@ class ReviewsController < ApplicationController
     end
     reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
-    reviews = reviews.order(average_score: params[:score]) if params[:score].present?
+    reviews = reviews.order("average_score #{params[:score]} NULLS LAST") if params[:score].present?
     reviews
   end
 end
