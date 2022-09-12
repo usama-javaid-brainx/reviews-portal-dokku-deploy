@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   resources :categories, only: :index
 
   patch '/categories', to: 'categories#update_category'
+  patch '/categories/:id/', to: 'categories#move'
+
 
 end

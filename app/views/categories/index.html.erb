@@ -5,9 +5,9 @@
   <%= form_with model: @category, url: categories_path, method: 'patch' do |form| %>
     <div class="active">
       <h4 class="mt-5 mb-4">Active</h4>
-      <ul class="active-list category-list">
+      <ul class="active-list category-list" data-controller="category-reorder" data-category-reorder-url="/categories/:id/" >
         <% @categories.each do |category| %>
-          <li class="category-list-item row">
+          <li data-id="<%= category.id %>" class="category-list-item row">
             <div class="col-1"><%= image_tag('template/dollor.svg') %></div>
             <span class="category-name col-9"><%= category.name %></span>
             <div class="col-2 mode-switch d-flex flex-row align-items-center">
