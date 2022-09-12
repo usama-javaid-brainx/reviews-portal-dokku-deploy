@@ -23,8 +23,8 @@ export default class extends Controller {
 
   selectParam(e, clearClass, filterType) {
     $(e.currentTarget).toggleClass(clearClass)
-    var $selectedTag = $(e.currentTarget).toggleClass('cuisine-select cuisine-unselect');
-    if ($selectedTag.hasClass('cuisine-select')) {
+    let selectedTag = $(e.currentTarget).toggleClass('cuisine-select cuisine-unselect');
+    if (selectedTag.hasClass('cuisine-select')) {
       filterType.push(e.currentTarget.innerHTML)
       this.filterCount = this.filterCount + 1
     } else {
@@ -77,7 +77,7 @@ export default class extends Controller {
     if (appliedFilters > 0) {
       this.appliedFilterTarget.innerHTML = appliedFilters
       this.appliedFilterTarget.classList.add('cuisine-select', 'ml-2', 'px-2', 'rounded-3')
-      this.applyBtnTarget.innerHTML = 'Apply(' + appliedFilters.toString() + ')'
+      this.applyBtnTarget.innerHTML = `Apply(${appliedFilters.toString()})`
       this.filterCount = appliedFilters
       if (this.hasCuisinesFilterTarget) {
         this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')

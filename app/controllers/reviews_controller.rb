@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
     @cuisines = reviews.select(:cuisine).distinct
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
     if params[:to_try] != 'favourite'
-      reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
+      reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try]) if params[:to_try].present?
     else
       reviews = reviews.where(favourite: true) if params[:to_try].present?
     end
