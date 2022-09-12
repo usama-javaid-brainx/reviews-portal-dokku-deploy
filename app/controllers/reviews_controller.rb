@@ -4,6 +4,11 @@ class ReviewsController < ApplicationController
   def index
     reviews = review_filter(current_user.reviews.kept)
     @pagy, @reviews = pagy(reviews, items: 12)
+    @cuisine_presence = if (Category.find_by(id: params[:category]).name == 'Restaurants' if params[:category] != 'all') || params[:category] == 'all'
+                          true
+                        else
+                          false
+                        end
   end
 
   def new

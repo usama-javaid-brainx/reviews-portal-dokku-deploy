@@ -1,4 +1,4 @@
-<div class="row align-items-end pb_50" data-controller="guest">
+<div class="row align-items-end pb_50" >
   <div class="col-lg-6">
     <div class="public_review">
       <div class="mode-switch d-flex flex-row align-items-center">
@@ -22,10 +22,9 @@
         <li><%= @review.state + ', ' %> <%= @review.country %></li>
       <% end %>
       <li>
-        <span>$</span>
-        <span>$</span>
-        <span>$</span>
-        <span>$</span>
+        <% for count in 1..5 %>
+          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+        <% end %>
       </li>
     </ul>
   </div>
