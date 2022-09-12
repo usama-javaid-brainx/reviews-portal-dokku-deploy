@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="uploaded-files <%= "d-none" unless f.object.persisted? %>" id="js-uploaded-files">
+  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
       <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
     </div>
@@ -43,9 +43,7 @@
     })
     document.getElementById('js-thumbnails').prepend(image)
     const input = document.createElement('input')
-    input.value = data.url
-    input.hidden = true
-    input.name = 'review[images][]'
+    setAttributes(input, {value: data.url, hidden: true, name: 'review[images][]' });
     document.getElementById('image-inputs').append(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
