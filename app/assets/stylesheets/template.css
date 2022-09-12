@@ -87,32 +87,37 @@
     overflow: hidden;
 }
 
+#js-thumbnails .upload-button {
+    height: 70px;
+    width: 15%;
+}
+
+.thumbnail-wrap {
+    position: relative;
+    width: 15%;
+    margin-right: 3px;
+}
+
 .uploaded-files .thumbnail {
-    width: 16%;
+    width: 100%;
+    max-height: 70px;
     border-radius: 6px;
     object-fit: cover;
-    max-height: 70px;
-    margin-right: 3px;
-
 }
 
-.uploaded-files .delete{
+.delete {
     position: absolute;
-    background: none;
-    border: none;
-}
-
-.uploaded-files div.delete{
+    right: 10px;
+    top: 5px;
     display: none;
 }
 
-.uploaded-files div.delete:first-of-type{
+img.small-thumb:hover + .delete {
     display: block;
-    position: absolute;
-    background: none;
-    border: none;
-    top: 2px;
-    left: 5px;
+}
+
+.delete:hover {
+    display: block;
     cursor: pointer;
 }
 
@@ -190,6 +195,7 @@
     color: darkblue;
     transition: 0.2s;
 }
+
 #meal-photo {
     max-width: 100%;
     height: auto;
