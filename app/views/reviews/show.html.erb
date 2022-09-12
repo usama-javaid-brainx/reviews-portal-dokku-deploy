@@ -110,14 +110,13 @@
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
-                <% @review.images[1..].each_with_index do |image_src, idx| %>
+                <% imagesss = @review.images[1..4] %>
+                <% imagesss.each_with_index do |image_src, index| %>
                   <div class="col-lg-6 small position-relative">
-                    <% if idx <= 3 %>
-                      <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
-                        <%= image_tag(image_src) %>
-                      </a>
-                    <% end %>
-                    <% if image_src.equal?(@review.images[1..4].last) %>
+                    <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
+                      <%= image_tag(image_src) %>
+                    </a>
+                    <% if index == (imagesss.length) - 1 %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
                         See All Photos
