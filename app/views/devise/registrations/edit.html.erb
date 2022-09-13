@@ -1,52 +1,91 @@
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-    <h1>Edit <%= resource_name.to_s.humanize %></h1>
-    <hr>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= devise_error_messages! %>
+<div class="container" data-controller="user-validation">
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-6">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="review_area" id="review_area">
+          <div class="tabs_content_wrap">
 
-      <div class="form-group mt-4">
-        <%= f.text_field :first_name, placeholder: 'First Name', autofocus: false, class: 'form-control mt-2', required: true %>
-      </div>
-      <div class="form-group mt-4">
-        <%= f.text_field :last_name, placeholder: 'Last Name', autofocus: false, class: 'form-control mt-2', required: true %>
-      </div>
+            <div class="row align-items-center form_group  mb_50">
+              <div class="edit-heading">Profile Photo</div>
+              <div class="d-flex mt-5">
+                <div class="col-1">
+                  <% if resource.avatar.attached? %>
+                    <%= image_tag(resource.avatar, class: 'rounded-circle') %>
+                  <% else %>
+                    <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                  <% end %>
+                </div>
+                <div class="d-flex align-items-center col-11 flex-wrap">
+                  <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
+                  <a class="ml-14 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg">
+                    <%= image_tag("template/upload.svg", class: "mr-2 upload-svg") %>
+                    Upload New Picture
+                  </a>
+                  <%= link_to users_remove_avatar_path, class: "ml-24 btn-profile-pic edit-upload" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
+                    Delete Picture
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <hr class="edit-separator">
+            <div class="row align-items-center form_group  mb_50">
+              <div class="edit-heading mb-5 mt-4">Details</div>
+              <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label' %>
+              <%= f.text_field :first_name, class: "col-lg-7 edit-text-field", value: @user.first_name.titleize %>
+            </div>
+            <hr class="edit-separator">
 
-      <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class: 'form-control'  %>
-      </div>
+            <div class="edit-heading mb-5 mt-4">Password</div>
+            <div class="row align-items-center form_group  mb_50">
+              <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
+              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", required: true, autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            </div>
+            <div class="row align-items-center form_group  mb_50">
+              <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
+              <%= f.password_field :password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password" %>
+            </div>
+            <hr class="edit-separator">
+            <div class="row align-items-center form_group  mb_50">
+              <div class="edit-heading mb-5 mt-4">Account</div>
+              <label class="col-lg-5 edit-label">Delete Account</label>
+              <button type="button" class="btn-profile-pic edit-upload w-auto p-19" data-bs-toggle="modal" data-bs-target="#userDeleteModal">
+                Delete Account
+              </button>
+            </div>
+            <hr class="edit-separator  mb_50">
+            <div class="row align-items-center form_group">
+              <button class="w-auto edit-save p-19"> Save Changes</button>
+            </div>
+          </div>
+        </div>
       <% end %>
+    </div>
+  </div>
+</div>
 
-      <div class="form-group">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+<div class="modal fade" id="userDeleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-20">
+      <div class="modal-body bg-white p-5 rounded-20">
+        <div class="d-flex justify-content-center">
+          <%= image_tag("template/alert.svg") %>
+        </div>
+        <div class="d-flex justify-content-center align-items-center p-19 logout-heading">
+          Delete Account
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          Are you sure you want to delete your account?
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          You will lose all your reviews and records.
+        </div>
       </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
+      <div class="d-flex justify-content-evenly flex-wrap pb-5">
+        <button type="button" class="modal-cancel btn-modal bg-white" data-bs-dismiss="modal">Cancel</button>
+        <%= link_to "Delete Account", users_delete_user_path(resource_name), class: " delete-account btn-modal d-flex justify-content-center align-items-center" %>
       </div>
-
-      <div class="form-group">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "Update", class: 'btn btn-lg btn-block btn-primary' %>
-      </div>
-    <% end %>
-    <hr>
-
-    <h2>Cancel my account</h2>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure? You cannot undo this." }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
-    <hr>
+    </div>
   </div>
 </div>

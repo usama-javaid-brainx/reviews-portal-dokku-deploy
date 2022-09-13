@@ -1,5 +1,8 @@
 class Category < ApplicationRecord
-  has_many :review
 
   acts_as_list
-end
+
+  has_one_attached :icon
+  has_many :reviews
+
+  end

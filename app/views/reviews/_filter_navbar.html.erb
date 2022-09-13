@@ -8,18 +8,11 @@
             <div class="search">
               <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <button>
-                <%= image_tag("template/search.png") %>
+                <%= image_tag("template/search.svg") %>
               </button>
             </div>
-            <!--        <form class="search">-->
-            <!--          <input type="search" placeholder="Search reviews...">-->
-            <!--          <button>-->
-            <%#= image_tag("template/search.png") %>
-            <!--          </button>-->
-            <!--        </form>-->
-
             <button type="button" class="filter" data-bs-toggle="modal" data-bs-target="#filterModal">
-              <%= image_tag("template/filter.png") %>Filters<span data-filter-target="appliedFilter"></span>
+              <%= image_tag("template/filter.svg") %>Filters<span data-filter-target="appliedFilter"></span>
             </button>
           </div>
           <div class="col-lg-4">
@@ -64,7 +57,7 @@
             <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
           </div>
           <div class="modal-body" style="background: #FBFBFE;">
-            <% if params[:category] == 'Restaurants' %>
+            <% if @cuisine_presence %>
               <div class="card cuisine-card-h">
                 <div class="d-flex justify-content-between p-4">
                   <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>

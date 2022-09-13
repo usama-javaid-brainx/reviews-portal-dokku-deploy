@@ -2,8 +2,14 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
+    duplicate_review if session[:edit_review].present?
     reviews = review_filter(current_user.reviews.kept)
     @pagy, @reviews = pagy(reviews, items: 12)
+    @cuisine_presence = if (Category.find_by(id: params[:category]).name == 'Restaurants' if params[:category] != 'all') || params[:category] == 'all'
+                          true
+                        else
+                          false
+                        end
   end
 
   def new
@@ -17,6 +23,19 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path, notice: "Review created successfully!"
     else
       render :new
+    end
+  end
+
+  def duplicate_review
+    edit_review = session[:edit_review]
+    review_id = session[:review_id]
+    session.delete(:review_id)
+    session.delete(:edit_review)
+    new_review = Review.find_by(id: review_id).dup
+    if new_review.update(user_id: current_user.id, to_try: edit_review == 'true' ? new_review.to_try : true )
+      redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review)
+    else
+      redirect_to root_path, notice: "Review didn't created successfully please try again"
     end
   end
 
@@ -59,25 +78,5 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
-  end
-
-  def review_filter(reviews)
-    params[:to_try] = 'all' unless params[:to_try].present?
-    params[:category] = 'all' unless params[:category].present?
-    reviews = reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
-    reviews = params[:category] == 'all' ? reviews : reviews.where(category_id: Category.find_by(name: params[:category])) if params[:category].present?
-    @cuisines = reviews.select(:cuisine).distinct
-    @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
-    reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
-    if params[:to_try] != 'favourite'
-      reviews = params[:to_try] == 'all' ? reviews : reviews.where(to_try: params[:to_try] == 'true') if params[:to_try].present?
-    else
-      reviews = reviews.where(favourite: true) if params[:to_try].present?
-    end
-    reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
-    reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
-
-    reviews = reviews.order(average_score: params[:score].to_s) if params[:score].present?
-    reviews
   end
 end
