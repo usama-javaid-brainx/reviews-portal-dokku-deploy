@@ -17,4 +17,4 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit( :active, :position )
   end
-end 
+end
