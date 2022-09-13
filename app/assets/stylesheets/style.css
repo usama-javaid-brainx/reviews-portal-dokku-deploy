@@ -2243,32 +2243,28 @@ hitting-enter-submit
 
 .manage-categories {
     width: 672px;
-    border: 2px solid #EDEDFB;
+    border: 1px solid #EDEDFB;
     margin: 20px auto auto auto;
     padding: 30px;
     border-radius: 5px;
 }
 
 .manage-categories h3 {
-    font-size: 24px;
+    font-size: 20px;
     color: #00000A;
 }
 
-.active, .inactive {
-    margin: 20px 0px;
+.active,.inactive {
+    margin: 40px 0px;
 }
 
-.active, .inactive h4 {
-    font-size: 16px;
+.active h4,.inactive h4{
+    font-size: 15px;
     color: #636373;
 }
 
-.category-list {
-
-}
-
 li.category-list-item {
-    border: 2px solid #EDEDFB;
+    border: 1px solid #EDEDFB;
     border-radius: 7px;
     margin: 10px 0px;
     padding: 15px;
@@ -2320,8 +2316,8 @@ li.category-list-item {
 }
 
 .save-changes {
-    border: none;
-    padding: 10px 20px;
+    border: 1px solid #6E3EF7;
+    padding: 10px 30px;
     background-color: #6E3EF7;
     font-size: 16px;
     font-weight: 500;
@@ -2332,6 +2328,19 @@ li.category-list-item {
     background-color: #FFFFFF;
     color: #6E3EF7;
     border: 1px solid #6E3EF7;
+}
+.request-catagory{
+    font-size: 14px;
+    color: #424250;
+}
+.request-btn{
+    border: 2px solid #EDEDFB;
+    padding: 10px 30px;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6E3EF7;
+    border-radius: 8px;
 }
 
 @keyframes loader3 {

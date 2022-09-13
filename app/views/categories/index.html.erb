@@ -10,10 +10,11 @@
           <% if category.active? %>
             <li data-id="<%= category.id %>" class="category-list-item row">
               <div class="col-1"><%= image_tag('template/dollor.svg') %></div>
-              <span class="category-name col-9"><%= category.name %></span>
-              <div class="col-2 mode-switch d-flex flex-row align-items-center">
+              <span class="category-name col-8"><%= category.name %></span>
+              <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.name}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
                 <label for=<%= "#{category.name}-switch" %>></label>
+                <%= image_tag('template/reorder.svg') %>
               </div>
             </li>
           <% end %>
@@ -22,15 +23,16 @@
     </div>
     <div class="inactive">
       <h4>Inactive</h4>
-      <ul class="inactive-list category-list">
+      <ul class="inactive-list category-list" data-controller="category-reorder">
         <% @categories.each do |category| %>
           <% unless category.active? %>
             <li data-id="<%= category.id %>" class="category-list-item row">
               <div class="col-1"><%= image_tag('template/dollor.svg') %></div>
-              <span class="category-name col-9"><%= category.name %></span>
-              <div class="col-2 mode-switch d-flex flex-row align-items-center">
+              <span class="category-name col-8"><%= category.name %></span>
+              <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.name}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
                 <label for=<%= "#{category.name}-switch" %>></label>
+                <%= image_tag('template/reorder.svg') %>
               </div>
             </li>
           <% end %>
@@ -39,4 +41,37 @@
     </div>
     <%= form.submit "Save Changes", class: 'save-changes d-block ms-auto' %>
   <% end %>
+</div>
+
+<div class="manage-categories d-flex">
+  <div class="col-8">
+    <h3>
+      Don’t see categories for you?
+    </h3>
+    <p class="request-catagory">Let us know about that. We constantly develop our app and we're looking for new solutions.</p>
+  </div>
+  <div class="col-4 m-auto">
+    <button type="button" class="request-btn d-block ms-auto" data-bs-toggle="modal" data-bs-target="#requestModal">
+      Send Request
+    </button>
+
+    <!-- Request Modal -->
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Tell us more about your needs. Enter the name of the new category and describe a bit your requirements.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn white cancel" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
