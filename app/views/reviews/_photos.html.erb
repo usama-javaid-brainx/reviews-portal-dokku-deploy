@@ -1,7 +1,7 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
 
-  <% if !f.object.images? %>
+  <% unless f.object.images? %>
     <div class="file_upload_place" id="file_upload_place">
       <div class="content">
         <div class="upload_link">
@@ -12,9 +12,9 @@
     </div>
   <% end %>
 
-  <div class="uploaded-files <%= "d-none" if !f.object.images? %>" id="js-uploaded-files">
+  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
-      <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first if f.object.images? %>>
+      <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first %>>
     </div>
     <div class="d-flex position-relative" id="js-thumbnails" data-controller="sortable-images" data-delete-icon="<%= asset_path("template/image-delete.svg") %>">
       <% if f.object.images? %>
