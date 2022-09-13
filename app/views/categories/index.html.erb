@@ -5,12 +5,13 @@
   <%= form_with model: @category, url: categories_path, method: 'patch' do |form| %>
     <div class="active">
       <h4 class="mt-5 mb-4">Active</h4>
-      <ul class="active-list category-list" data-controller="category-reorder" data-category-reorder-url="/categories/:id/" >
+      <ul class="active-list category-list" data-controller="category-reorder" >
         <% @categories.each do |category| %>
           <li data-id="<%= category.id %>" class="category-list-item row">
             <div class="col-1"><%= image_tag('template/dollor.svg') %></div>
             <span class="category-name col-9"><%= category.name %></span>
             <div class="col-2 mode-switch d-flex flex-row align-items-center">
+              <% debugger %>
               <%= form.check_box :active, id: "#{category.name}-switch", class: "switch" %>
               <label for=<%= "#{category.name}-switch" %>></label>
             </div>
