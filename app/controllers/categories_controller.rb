@@ -2,17 +2,17 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
   end
-
-  def update_category
-    if @categories.update(category_params)
-      redirect_to root_path, notice: "Category updated successfully!"
+  def update_categories_status
+    if update_category?
+      redirect_to root_path, status: :see_other, notice: "Category updated successfully!"
+    else
+      redirect_to categories_path
     end
   end
-  def move
-    @category = Category.find(params[:id])
-    @category.insert_at(params[:position].to_i)
-  end
-  def category_params
-    params.require(:category).permit( :active )
+
+  def update_category?
+    params[:categories].each do |category|
+      Category.find_by(name: category.first).update(active: category.second)
+    end
   end
 end

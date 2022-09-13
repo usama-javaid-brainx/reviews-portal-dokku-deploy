@@ -13,13 +13,5 @@ export default class extends Controller {
     let id = event.item.dataset.id
     let data = new FormData()
     data.append("position", event.newIndex + 1)
-    $.ajax({
-      url: this.data.get("url").replace(":id", id),
-      processData: false,
-      contentType: false,
-      cache: false,
-      type: 'PATCH',
-      data: data
-    })
   }
 }
