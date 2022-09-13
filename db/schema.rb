@@ -64,6 +64,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
     t.integer "position"
   end
 
+  create_table "ck_editor_images", force: :cascade do |t|
+    t.string "file"
+    t.integer "user_id"
+    t.integer "parent_id"
+    t.string "parent_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "notes"
@@ -97,10 +117,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
+    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
-    t.text "images", default: [], array: true
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
