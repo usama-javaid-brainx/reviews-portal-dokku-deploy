@@ -120,8 +120,8 @@
           <!-- notes area start -->
           <div class="pt_50">
             <h3 class="pb_10">Review Body</h3>
-            <div class="notes_wrap position-relative list-style-unset">
-              <p><%= @review.notes %></p>
+            <div class="notes_wrap position-relative list-style-unset ck-content">
+              <%= raw @review.notes %>
             </div>
           </div>
 
