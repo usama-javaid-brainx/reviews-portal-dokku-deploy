@@ -1,7 +1,9 @@
 class GuestsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:show, :new_user]
+  skip_before_action :authenticate_user!, :only => [:show, :create_review]
 
-  def new_user
+  def create_review
+    session[:edit_review] = params[:edit_review]
+    redirect_to new_user_session_path
   end
 
   def show

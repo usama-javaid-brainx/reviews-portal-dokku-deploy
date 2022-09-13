@@ -1,5 +1,8 @@
 <main class="overflow-hidden position-relative" data-controller="guest">
-  <div class="d-flex justify-content-center position-absolute share-message-wraper d-none" data-guest-target="shareMsg"><span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>Link Copied To Clipboard</span></div>
+  <div class="d-flex justify-content-center position-absolute share-message-wraper d-none" data-guest-target="shareMsg">
+    <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
+      Link Copied To Clipboard</span>
+  </div>
 
   <a class="back" href="javascript:history.back()">
     <%= image_tag("template/left-arrow.svg") %>
@@ -23,7 +26,7 @@
     <div class="container custom">
       <div class="hero_header">
         <!--        render guest or owner or shared link header here d-->
-        <%= render owner == true ?  "reviews/owner_show_header" : 'guests/guest_show_header' %>
+        <%= render owner == true ? "reviews/owner_show_header" : 'guests/guest_show_header' %>
 
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">

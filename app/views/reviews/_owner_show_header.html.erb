@@ -81,7 +81,9 @@
       </div>
     </div>
     <div class="d-flex justify-content-between pt_30">
-      <button class="btn white" data-action="click->guest#copyLink"><%= image_tag("template/share.svg") %>Share</button>
+      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> data-action="click->guest#copyLink">
+        <%= image_tag("template/share.svg") %>Share
+      </button>
       <%= link_to edit_review_path(@review), class: 'btn' do %>
         <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
       <% end %>
