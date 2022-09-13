@@ -13,12 +13,14 @@
             <%= link_to "All", params[:profile].present? ? users_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all' || !params[:category].present?}" %>
           </li>
           <% Category.all.each do |category| %>
-            <li>
-              <%= link_to reviews_path(category: category.id), class: "nav_link #{'active' if params[:category].to_i == category.id}" do %>
+            <% if category.active? %>
+              <li>
+                <%= link_to reviews_path(category: category.id), class: "nav_link #{'active' if params[:category].to_i == category.id}" do %>
                   <%#= show_svg(category.icon) if category.icon.attached?%>
-                <%= category.name%>
-              <% end %>
-            </li>
+                  <%= category.name %>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
           <!-- TODO Adding Link -->
           <li class="dropdown ml_15">
@@ -59,7 +61,7 @@
               <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
                 <li><a class="dropdown-item" href="#">Other Category</a></li>
                 <hr>
-                <li><%= link_to "Manage categories", categories_path, class:"dropdown-item" %></li>
+                <li><%= link_to "Manage categories", categories_path, class: "dropdown-item" %></li>
               </ul>
             </li>
           </ul>
