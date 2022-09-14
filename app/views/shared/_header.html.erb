@@ -16,7 +16,7 @@
             <% if category.active? %>
               <li>
                 <%= link_to reviews_path(category: category.id), class: "nav_link #{'active' if params[:category].to_i == category.id}" do %>
-                  <%= show_svg(category.icon) if category.icon.attached?%>
+                  <%#= show_svg(category.icon) if category.icon.attached?%>
                   <span class="ml_5"><%= category.name %></span>
                 <% end %>
               </li>
