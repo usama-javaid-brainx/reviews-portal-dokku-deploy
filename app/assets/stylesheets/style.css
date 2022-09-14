@@ -2254,11 +2254,11 @@ hitting-enter-submit
     color: #00000A;
 }
 
-.active,.inactive {
+.manage-categories .active,.manage-categories .inactive {
     margin: 40px 0px;
 }
 
-.active h4,.inactive h4{
+.manage-categories .active h4,.manage-categories .inactive h4{
     font-size: 15px;
     color: #636373;
 }
