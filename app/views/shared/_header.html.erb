@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-lg-3 col-3">
         <%= link_to root_path, class: 'logo' do %>
-          <%= image_tag("template/logo.png", class: "d-lg-block d-none") %>
-          <%= image_tag("template/logo1.png", class: "d-lg-none d-block") %>
+          <%= image_tag("template/fullsite-logo.svg", class: "d-lg-block d-none") %>
+          <%= image_tag("template/smallsite-logo.svg", class: "d-lg-none d-block") %>
         <% end %>
       </div>
       <div class="col-lg-6 col-6 text-center">
-          <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
+        <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
               <%= link_to "All", reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
             </li>
@@ -17,64 +17,40 @@
                 <%= image_tag("template/nav-icon1.png") %>Restaurants
               <% end %>
             </li>
+          <!-- TODO Adding Link -->
+          <li class="dropdown ml_15">
+            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
+            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
+              <li><a class="dropdown-item" href="#">New Item 1</a></li>
+              <li><a class="dropdown-item" href="#">New Item 2</a></li>
+              <li><a class="dropdown-item" href="#">New Item 3</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- menu dropdown for mobile -->
+        <div class="d-lg-none dropdown menuItemDropdown">
+          <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
+            <span class="icon"><%= image_tag("template/cutlery.svg") %></span><span>Restaurants</span>
+          <% end %>
+          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+
             <li>
-              <%= link_to reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
-                <%= image_tag("template/nav-icon2.png") %>Games
+              <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
+                <span class="icon"> <%= image_tag("template/games.svg") %></span><span>Games</span>
               <% end %>
             </li>
             <li>
-              <%= link_to reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
-                <%= image_tag("template/nav-icon3.png") %>Books
+              <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "icon" do %>
+                <span class="icon"><%= image_tag("template/books.svg") %></span><span>Books</span>
               <% end %>
             </li>
             <li>
-              <%= link_to reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
-                <%= image_tag("template/nav-icon4.png") %>Movies
+              <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "icon" do %>
+                <span class="icon"><%= image_tag("template/videos.svg") %></span><span>Movies</span>
               <% end %>
-            </li>
-<!--            todo category will come form database then will remove above code-->
-            <%# Category.all.each do |ca| %>
-<!--              <li>-->
-                <%#= link_to reviews_path(category: ca.name), class: "nav_link #{'active' if params[:category] == ca.name}" do %>
-                  <%#= image_tag("template/nav-icon1.png") %><%#= ca.name %>
-                <%# end %>
-<!--              </li>-->
-            <%# end %>
-            <!-- TODO Adding Link -->
-            <li class="dropdown ml_15">
-              <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/nav-icon5.png") %></a>
-              <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
-                <li><a class="dropdown-item" href="#">New Item 1</a></li>
-                <li><a class="dropdown-item" href="#">New Item 2</a></li>
-                <li><a class="dropdown-item" href="#">New Item 3</a></li>
-              </ul>
             </li>
           </ul>
-
-          <!-- menu dropdown for mobile -->
-          <div class="d-lg-none dropdown menuItemDropdown">
-
-            <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
-              <span class="icon"><%= image_tag("template/nav-icon1.png") %></span><span>Restaurants</span>
-            <% end %>
-            <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
-              <li>
-                <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
-                  <span class="icon"> <%= image_tag("template/nav-icon2.png") %></span><span>Games</span>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "icon" do %>
-                  <span class="icon"><%= image_tag("template/nav-icon3.png") %></span><span>Books</span>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "icon" do %>
-                  <span class="icon"><%= image_tag("template/nav-icon4.png") %></span><span>Movies</span>
-                <% end %>
-              </li>
-            </ul>
-          </div>
+        </div>
       </div>
 
       <div class="col-lg-3 col-3 text-end">
@@ -82,10 +58,31 @@
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
-              <%= image_tag("template/avatar1.png", class: 'avatar') %>
+              <span class="header-img">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                        </span>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="sessionDropdown">
+            <ul class="dropdown-menu dropdown-w" aria-labelledby="sessionDropdown">
+              <li class="cursor-pointer">
+                <div class="dropdown-item dropdown-img">
+                  <div class="d-flex ">
+                      <span class="col-2">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                        </span>
+                    <div class="d-inline dropdown-info">
+                      <span class="d-block user-name"><%= current_user.first_name.titleize %></span>
+                      <span class="user-email"><%= current_user.email %></span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="cursor-pointer">
+                <%= link_to "My Profile", users_index_path(profile: 'true'), class: "dropdown-item" %>
+              </li>
+              <li class="cursor-pointer">
+                <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>
+              </li>
               <li class="dropdown-item pb-3 m-0 pr-2 pl-4 pt-3 cursor-pointer" data-bs-toggle="modal" data-bs-target="#logOutModal">
                 <a class="dropdown-item" href="#" onclick="event.preventDefault()">Log Out</a>
               </li>
@@ -98,18 +95,19 @@
 </header>
 
 <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you Sure</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-20">
+      <div class="modal-body bg-white p-5 rounded-20">
+        <div class="d-flex justify-content-center align-items-center p-19 logout-heading">
+          Log Out
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          Are you sure you want to logout?
+        </div>
       </div>
-      <div class="modal-body">
-        You want to logout.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'LOG OUT', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn btn-danger' %>
+      <div class="d-flex justify-content-evenly pb-5 flex-wrap">
+        <a type="button" class="modal-cancel btn-modal d-flex justify-content-center align-items-center" data-bs-dismiss="modal">Cancel</a>
+        <%= link_to 'Log Out', destroy_user_session_path, data: { "turbo-method": :delete }, class: 'btn-logout btn-modal d-flex justify-content-center align-items-center' %>
       </div>
     </div>
   </div>

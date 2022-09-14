@@ -1,0 +1,196 @@
+.dropdown-info {
+    margin: 0px 80px 0px 10px;
+}
+
+.user-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.user-email {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #848496;
+}
+
+.dropdown-img {
+    padding: 11px !important;
+}
+
+.profile-img-wraper {
+    max-width: 150px;
+    max-height: 142px;
+}
+
+.profile-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #21212D;
+}
+
+.edit-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px;
+    gap: 32px;
+    max-width: 672px;
+    background: #FFFFFF;
+    border: 1px solid #EDEDFB;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
+}
+
+.btn-profile-pic {
+    align-items: center;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #848496;
+    border-radius: 6px;
+    padding: 19px
+}
+
+.ml-14 {
+    margin-left: 14px;
+}
+
+.ml-24 {
+    margin-left: 24px;
+}
+
+.edit-upload {
+    color: #848496;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-upload:hover {
+    color: #6E3EF7;
+    border-color: #6E3EF7;
+}
+
+.edit-heading {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32px;
+    color: #00000A;
+}
+
+.edit-label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #11072C;
+}
+
+.edit-text-field {
+    align-items: center;
+    padding: 8px 12px 8px 16px;
+    width: 416px;
+    height: 40px;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+}
+
+.edit-save {
+    background-color: #6E3EF7;
+    color: #FFFFFF;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 6px;
+    padding: 19px;
+    border: 1px solid #848496;
+}
+
+.edit-separator {
+    color: #848496;
+}
+
+.p-19 {
+    padding: 19px;
+}
+
+.avatar-edit {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background: #6E3EF7;
+    top: 102px;
+    left: 115px;
+}
+
+.avatar-edit-icon {
+    margin-left: 9px;
+    margin-top: 4px;
+}
+
+.delete-account {
+    background: #F44336;
+    color: white;
+}
+
+.delete-account:hover{
+    background: #F44336;
+    color: white;
+}
+
+.header-img {
+    width: 25px;
+}
+
+.btn-logout {
+    background: #6E3EF7;
+    color: #FFFFFF;
+}
+
+.btn-logout:hover {
+    background: #6E3EF7;
+    color: #FFFFFF;
+}
+
+.btn-modal {
+    border-radius: 6px;
+    width: 160px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+}
+
+.modal-cancel {
+    border: 1px solid #CCCCE1;
+    color: #848496;
+}
+
+.modal-cancel:hover {
+    color: #6E3EF7;
+    border-color: #6E3EF7;
+}
+
+.logout-heading {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.rounded-20 {
+    border-radius: 20px !important;
+}
