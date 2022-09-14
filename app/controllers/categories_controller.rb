@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
   def update_categories_status
-    debugger
     if update_category?
       redirect_to root_path, status: :see_other, notice: "Category updated successfully!"
     else
