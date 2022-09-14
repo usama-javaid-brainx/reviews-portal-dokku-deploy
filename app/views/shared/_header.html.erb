@@ -9,29 +9,14 @@
       </div>
       <div class="col-lg-6 col-6 text-center">
         <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
-          <li>
-            <%= link_to "All", params[:profile].present? ? users_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
-          </li>
-          <li>
-            <%= link_to params[:profile].present? ? users_index_path(category: 'Restaurants', profile: 'true') : reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
-              <%= image_tag("template/cutlery.svg") %>Restaurants
-            <% end %>
-          </li>
-          <li>
-            <%= link_to params[:profile].present? ? users_index_path(category: 'Games', profile: 'true') : reviews_path(category: 'Games'), class: "nav_link #{'active' if params[:category] == 'Games'}" do %>
-              <%= image_tag("template/games.svg") %>Games
-            <% end %>
-          </li>
-          <li>
-            <%= link_to params[:profile].present? ? users_index_path(category: 'Books', profile: 'true') : reviews_path(category: 'Books'), class: "nav_link #{'active' if params[:category] == 'Books'}" do %>
-              <%= image_tag("template/books.svg") %>Books
-            <% end %>
-          </li>
-          <li>
-            <%= link_to params[:profile].present? ? users_index_path(category: 'Movies', profile: 'true') : reviews_path(category: 'Movies'), class: "nav_link #{'active' if params[:category] == 'Movies'}" do %>
-              <%= image_tag("template/videos.svg") %>Movies
-            <% end %>
-          </li>
+            <li>
+              <%= link_to "All", reviews_path(category: 'all'), class: "nav_link #{'active' if params[:category] == 'all'}" %>
+            </li>
+            <li>
+              <%= link_to reviews_path(category: 'Restaurants'), class: "nav_link #{'active' if params[:category] == 'Restaurants'}" do %>
+                <%= image_tag("template/nav-icon1.png") %>Restaurants
+              <% end %>
+            </li>
           <!-- TODO Adding Link -->
           <li class="dropdown ml_15">
             <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
@@ -42,14 +27,13 @@
             </ul>
           </li>
         </ul>
-
         <!-- menu dropdown for mobile -->
         <div class="d-lg-none dropdown menuItemDropdown">
-
           <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
             <span class="icon"><%= image_tag("template/cutlery.svg") %></span><span>Restaurants</span>
           <% end %>
           <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+
             <li>
               <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
                 <span class="icon"> <%= image_tag("template/games.svg") %></span><span>Games</span>

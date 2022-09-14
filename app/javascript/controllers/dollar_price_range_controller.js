@@ -5,9 +5,10 @@ export default class extends Controller {
 
   priceRange(event) {
     this.dollarTargets.forEach((element) => {
-      element.firstChild.classList.remove('bg-blue')
-      if (element.firstChild.value <= event.currentTarget.firstChild.value) {
-        element.firstChild.classList.add('bg-blue')
+      let childElement = element.firstChild
+      childElement.classList.remove('bg-blue')
+      if (childElement.value <= event.currentTarget.firstChild.value) {
+        childElement.classList.add('bg-blue')
       }
     })
   }
