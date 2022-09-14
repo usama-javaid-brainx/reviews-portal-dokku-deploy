@@ -20,10 +20,8 @@
 }
 
 .profile-img-wraper {
-    width: 150px;
-    height: 142px;
-    /*max-width: 150px;*/
-    /*max-height: 142px;*/
+    max-width: 150px;
+    max-height: 142px;
 }
 
 .profile-name {
