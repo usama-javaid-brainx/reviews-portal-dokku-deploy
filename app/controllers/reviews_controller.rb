@@ -36,8 +36,9 @@ class ReviewsController < ApplicationController
     review_id = session[:review_id]
     session.delete(:review_id)
     session.delete(:edit_review)
-    new_review = Review.find_by(id: review_id).dup
-    if new_review.update(user_id: current_user.id, to_try: edit_review == 'true' ? new_review.to_try : true )
+    existing_review = Review.find_by(slug: review_id)
+    new_review = existing_review.dup
+    if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: SecureRandom.base58(32), to_try: edit_review == 'true' ? new_review.to_try : true )
       redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review)
     else
       redirect_to root_path, notice: "Review didn't created successfully please try again"
@@ -45,7 +46,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-
+    @parent_id = Review.find_by(id: params[:id]).parent_id
   end
 
   def edit
