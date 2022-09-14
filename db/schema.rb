@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_130853) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_14_091516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_130853) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+    t.integer "position"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -119,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_130853) do
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
+    t.integer "parent_id"
+    t.string "slug"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
