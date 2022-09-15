@@ -11,7 +11,7 @@ export default class extends Controller {
 
   reorderingInputs(event) {
     let inputs = this.element.getElementsByClassName("image-inputs")
-    let imageTags = this.element.getElementsByTagName("img")
+    let imageTags = this.element.getElementsByClassName("small-thumb")
     for (let i = 0; imageTags.length > i; i++) {
       inputs[i].value = imageTags[i].src
     }

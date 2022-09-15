@@ -31,5 +31,8 @@ application.register("filter", FilterController)
 import FavouriteController from "./favourite_controller.js"
 application.register("favourite", FavouriteController)
 
+import PhotosController from "./photos_controller.js"
+application.register("photos", PhotosController)
+
 import SortableImagesController from "./sortable_images_controller.js"
 application.register("sortable-images", SortableImagesController)
