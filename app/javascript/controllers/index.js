@@ -38,4 +38,7 @@ import SortableImagesController from "./sortable_images_controller.js"
 application.register("sortable-images", SortableImagesController
 
 import UserValidationController from "./user_validation_controller.js"
-application.register("user-validation", UserValidationController
+application.register("user-validation", UserValidationController)
+
+import GuestController from "./guest_controller.js"
+application.register("guest", GuestController)

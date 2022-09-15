@@ -2,8 +2,14 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
-    reviews = review_filter(current_user.reviews.kept)
+    duplicate_review if session[:edit_review].present?
+    reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
+    @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all') || params[:category_id] == 'all'
+                          true
+                        else
+                          false
+                        end
   end
 
   def new
@@ -21,8 +27,23 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show
+  def duplicate_review
+    edit_review = session[:edit_review]
+    review_id = session[:review_id]
+    session.delete(:review_id)
+    session.delete(:edit_review)
+    existing_review = Review.find_by(slug: review_id)
+    new_review = existing_review.dup
+    if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: SecureRandom.base58(32), to_try: edit_review == 'true' ? new_review.to_try : true )
+      redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review)
+    else
+      redirect_to root_path, notice: "Review didn't created successfully please try again"
+    end
+  end
 
+  def show
+    @parent_id = @review.parent_id
+    @review_user = User.find_by(id: @review.user_id)
   end
 
   def edit
