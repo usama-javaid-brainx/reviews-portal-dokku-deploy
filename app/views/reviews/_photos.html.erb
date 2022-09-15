@@ -1,7 +1,7 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
 
-  <% if !f.object.persisted? %>
+  <% unless f.object.persisted? %>
     <div class="file_upload_place" id="file_upload_place">
       <div class="content">
         <div class="upload_link">
@@ -12,7 +12,7 @@
     </div>
   <% end %>
 
-  <div class="uploaded-files <%= "d-none" if !f.object.persisted? %>" id="js-uploaded-files">
+  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
       <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
     </div>
@@ -25,7 +25,7 @@
       <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
     </div>
   </div>
-  <div id="image_inputs">
+  <div id="image-inputs">
 
   </div>
 </div>
@@ -43,10 +43,8 @@
     })
     document.getElementById('js-thumbnails').prepend(image)
     const input = document.createElement('input')
-    input.value = data.url
-    input.hidden = true
-    input.name = 'review[images][]'
-    document.getElementById('image_inputs').append(input)
+    setAttributes(input, {value: data.url, hidden: true, name: 'review[images][]' });
+    document.getElementById('image-inputs').append(input)
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
     document.getElementById('file_upload_place').classList.add('d-none')
