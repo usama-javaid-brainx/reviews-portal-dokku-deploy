@@ -22,7 +22,6 @@ class ApplicationController < ActionController::Base
     else
       reviews = reviews.where(favourite: true) if params[:to_try].present?
     end
-    # reviews = reviews.where(cuisine: params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('cuisine ilike any (array[?])', params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
     reviews = reviews.order("average_score #{params[:score]} NULLS LAST") if params[:score].present?
