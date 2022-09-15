@@ -14,40 +14,52 @@
 
   <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
-      <img id="mainThumbnail" data-photos-target="mainThumbnail" src=<%= f.object.images.first if f.object.images? %>>
+      <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first %>>
     </div>
-    <div class="d-flex" id="js-thumbnails">
+    <div class="d-flex position-relative" id="js-thumbnails" data-controller="sortable-images" data-delete-icon="<%= asset_path("template/image-delete.svg") %>">
       <% if f.object.images? %>
-        <% f.object.images[1..].each do |image_src| %>
-          <img class="thumbnail px-0" src=<%= image_src %>>
+        <% f.object.images.each do |image_src| %>
+          <div class="thumbnail-wrap" data-photos-target="thumbnailSection">
+            <img class="small-thumb thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
+            <%= image_tag("template/image-delete.svg", class: "delete-icon", "data-action": "click->photos#deleteImage") %>
+            <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
+          </div>
         <% end %>
       <% end %>
-      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { onFileUploadFinished: 'callbackOnFileUploadFinished' } %>
+      <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
     </div>
-  </div>
-  <div id="image-inputs">
-
   </div>
 </div>
 
 <script>
   function callbackOnFileUploadFinished(data) {
+    const imageDiv = document.createElement('div');
+    const deleteIconUrl = document.getElementById('js-thumbnails').dataset.deleteIcon
+    imageDiv.classList.add('thumbnail-wrap')
+    imageDiv.setAttribute("data-photos-target", "thumbnailSection");
+
     const image = document.createElement('img');
-    image.classList.add('thumbnail', 'px-0')
-    image.setAttribute(
-      'src',
-      data.url
-    );
-    image.addEventListener("click", () => {
-      updateImage(image)
-    })
-    document.getElementById('js-thumbnails').prepend(image)
+    image.classList.add('thumbnail', 'px-0', 'small-thumb')
+    image.setAttribute('src', data.url);
+    image.setAttribute("data-action", "click->photos#clickImage");
+
+    const deleteImage = document.createElement('img');
+    deleteImage.classList.add('delete-icon')
+    deleteImage.setAttribute('src', deleteIconUrl);
+    deleteImage.setAttribute("data-action", "click->photos#deleteImage");
+
     const input = document.createElement('input')
-    setAttributes(input, {value: data.url, hidden: true, name: 'review[images][]' });
-    document.getElementById('image-inputs').append(input)
+    input.type = "hidden"
+    input.classList.add("image-inputs")
+    input.name = 'review[images][]'
+    input.value = data.url
+
+    document.getElementById('js-thumbnails').prepend(imageDiv)
+    imageDiv.append(image, deleteImage, input)
+
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
-    document.getElementById('file_upload_place').classList.add('d-none')
+    document.getElementById('file-upload-place').classList.add('d-none')
   }
 
   function updateImage(that) {
