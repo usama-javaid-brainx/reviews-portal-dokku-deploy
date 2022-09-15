@@ -37,7 +37,7 @@
         <% end %>
         <% if !review.city.present? and !review.country.present? and review.date? %>
           <li>
-            <%= review.date.strftime("%b/%e/%Y") %>
+            <%= review.date.strftime("%b %e,%Y") %>
           </li>
         <% end %>
         <li class="ml-1">

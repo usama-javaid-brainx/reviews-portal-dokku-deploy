@@ -28,12 +28,12 @@
     </div>
   <% end %>
 
-  <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
       <%= f.label "Score", class: "col-lg-5" %>
       <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
     </div>
 
+  <% if @curr_category.price? %>
     <div class="row form_group">
       <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
       <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">

@@ -87,13 +87,38 @@
     overflow: hidden;
 }
 
+#js-thumbnails .upload-button {
+    height: 70px;
+    width: 15%;
+}
+
+.thumbnail-wrap {
+    position: relative;
+    width: 15%;
+    margin-right: 3px;
+}
+
 .uploaded-files .thumbnail {
-    width: 16%;
+    width: 100%;
+    max-height: 70px;
     border-radius: 6px;
     object-fit: cover;
-    max-height: 70px;
-    margin-right: 3px;
+}
 
+.delete-icon  {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    display: none;
+}
+
+img.small-thumb:hover + .delete-icon {
+    display: block;
+}
+
+.delete-icon:hover {
+    display: block;
+    cursor: pointer;
 }
 
 .meal-modal .img-wrapper {
@@ -170,6 +195,7 @@
     color: darkblue;
     transition: 0.2s;
 }
+
 #meal-photo {
     max-width: 100%;
     height: auto;
@@ -189,14 +215,6 @@
     border-radius: 4px;
     text-align: center;
     line-height: 2rem;
-}
-
-.share_btn:hover {
-    background: #6E3EF7;
-}
-
-.share_btn:hover img {
-    filter: brightness(0) invert(1);
 }
 
 .bg-blue {
