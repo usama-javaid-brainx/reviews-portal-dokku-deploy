@@ -26,8 +26,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
-  has_many :reviews, dependent: :delete_all
+  has_many :reviews, dependent: :destroy
 
   #validation
   validates :first_name, :last_name, presence: true

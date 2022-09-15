@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
 
   def index
     duplicate_review if session[:edit_review].present?
-    reviews = review_filter(current_user.reviews.kept)
+    reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
-    @cuisine_presence = if (Category.find_by(id: params[:category]).name == 'Restaurants' if params[:category] != 'all') || params[:category] == 'all'
+    @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || !params[:category_id].present?
                           true
                         else
                           false
@@ -14,11 +14,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = current_user.reviews.new
-    @curr_category = if params[:category_id].present?
-                       Category.find_by(id: params[:category_id])
-                     else
-                       params[:category] != 'all' ? Category.find_by(name: params[:category]) : Category.find_by(name: 'Restaurants')
-                     end
+    @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
   end
 
   def create
@@ -26,7 +22,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, notice: "Review created successfully!"
     else
-      @curr_category = Category.find_by(id: params[:review][:category_id]) if params[:review][:category_id].present?
+      @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
     end
   end
@@ -46,7 +42,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @parent_id = Review.find_by(id: params[:id]).parent_id
+    @parent_id = @review.parent_id
+    @review_user = User.find_by(id: @review.user_id)
   end
 
   def edit
@@ -73,7 +70,7 @@ class ReviewsController < ApplicationController
   end
 
   def update_favourite
-    Review.find_by(id: params[:review_id].to_s).update(favourite: params[:favourite].to_s)
+    Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
   private

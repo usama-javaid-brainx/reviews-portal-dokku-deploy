@@ -45,9 +45,11 @@
           <%= form_for @review do |form| %>
             <div data-controller="places"
                  data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
-                 data-places-latitude-value="<%= @review.latitude %>"
-                 data-places-longitude-value="<%= @review.longitude %>"
-                 data-places-place-id-value="<%= @review.place_id %>">
+
+                 data-places-latitude-value="<%= review.latitude %>"
+                 data-places-longitude-value="<%= review.longitude %>"
+                 data-places-place-id-value="<%= review.place_id %>">
+
 
               <!-- category area -->
               <div class="category_area pt_30" id="category_area">

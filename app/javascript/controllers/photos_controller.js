@@ -10,7 +10,7 @@ export default class extends Controller {
   deleteImage(event) {
     event.currentTarget.parentElement.remove()
     if(!this.hasThumbnailSectionTarget){
-      document.getElementById('file_upload_place').classList.remove('d-none')
+      document.getElementById('file-upload-place').classList.remove('d-none')
       document.getElementById('js-uploaded-files').classList.add('d-none')
     }
   }
