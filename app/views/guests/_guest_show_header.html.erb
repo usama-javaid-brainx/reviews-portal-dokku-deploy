@@ -1,4 +1,4 @@
-<% session[:review_id] = Review.find_by(id: params[:id]).slug %>
+<% session[:review_id] = @review.slug %>
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
     <h1><%= @review.name %></h1>

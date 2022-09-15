@@ -7,7 +7,7 @@ class GuestsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
-    @parent_id = Review.find_by(id: params[:id]).parent_id
+    @review = Review.find_by(slug: params[:slug])
+    @parent_id = @review.parent_id
   end
 end

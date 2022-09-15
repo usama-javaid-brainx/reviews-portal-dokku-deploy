@@ -14,7 +14,7 @@
   </header>
 <% end %>
 
-  <main class="overflow-hidden position-relative" data-controller="guest">
+  <main class="overflow-hidden position-relative" data-controller="guest" data-guest-slug-value="<%= @review.slug %>">
     <div class="d-flex justify-content-center position-absolute share-message-wraper d-none" data-guest-target="shareMsg">
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
