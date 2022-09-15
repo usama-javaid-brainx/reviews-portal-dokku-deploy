@@ -6,11 +6,11 @@
           <div class="col-lg-4">
             <ul class="nav">
               <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
-              <%= f.hidden_field :category, :value => "#{params[:category]}" %>
-              <li><%= link_to 'All', users_index_path(to_try: 'all', category: params[:category], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'all'}" %></li>
-              <li><%= link_to 'Reviews', users_index_path(to_try: false, category: params[:category], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'false'}" %></li>
-              <li><%= link_to 'Wish List', users_index_path(to_try: true, category: params[:category], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'true'}" %></li>
-              <li><%= link_to 'Favorites', users_index_path(to_try: 'favourite', category: params[:category], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
+              <%= f.hidden_field :category_id, :value => "#{params[:category_id]}" %>
+              <li><%= link_to 'All', users_index_path(to_try: 'all', category_id: params[:category_id], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'all'}" %></li>
+              <li><%= link_to 'Reviews', users_index_path(to_try: false, category_id: params[:category_id], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'false'}" %></li>
+              <li><%= link_to 'Wish List', users_index_path(to_try: true, category_id: params[:category_id], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'true'}" %></li>
+              <li><%= link_to 'Favorites', users_index_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], profile: 'true'), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
           </div>
           <div class="<%= 'col-lg-8' %> d-flex justify-content-end">

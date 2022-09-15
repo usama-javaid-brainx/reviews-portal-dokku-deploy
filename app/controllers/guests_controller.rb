@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:show, :create_review]
+  skip_before_action :authenticate_user!, only: [:show, :create_review]
 
   def create_review
     session[:edit_review] = params[:edit_review]
@@ -9,5 +9,6 @@ class GuestsController < ApplicationController
   def show
     @review = Review.find_by(slug: params[:slug])
     @parent_id = @review.parent_id
+    @review_user = User.find_by(id: @review.user_id)
   end
 end
