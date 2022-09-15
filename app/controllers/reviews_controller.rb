@@ -41,7 +41,9 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @parent_id = Review.find_by(id: params[:id]).parent_id
+    review = Review.find_by(id: params[:id])
+    @parent_id = review.parent_id
+    @review_user = User.find_by(id: review.user_id)
   end
 
   def edit
