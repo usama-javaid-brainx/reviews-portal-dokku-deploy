@@ -21,7 +21,7 @@
         <% f.object.images.each do |image_src| %>
           <div class="thumbnail-wrap" data-photos-target="thumbnailSection">
             <img class="small-thumb thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
-            <%= image_tag("template/image-delete.svg", class: "deleteIcon", "data-action": "click->photos#deleteImage") %>
+            <%= image_tag("template/image-delete.svg", class: "delete-icon", "data-action": "click->photos#deleteImage") %>
             <input type="hidden" class="image-inputs" name="review[images][]" value=<%= image_src %>>
           </div>
         <% end %>
@@ -44,7 +44,7 @@
     image.setAttribute("data-action", "click->photos#clickImage");
 
     const deleteImage = document.createElement('img');
-    deleteImage.classList.add('deleteIcon')
+    deleteImage.classList.add('delete-icon')
     deleteImage.setAttribute('src', deleteIconUrl);
     deleteImage.setAttribute("data-action", "click->photos#deleteImage");
 

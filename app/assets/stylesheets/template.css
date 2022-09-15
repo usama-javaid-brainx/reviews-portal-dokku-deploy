@@ -105,18 +105,18 @@
     object-fit: cover;
 }
 
-.deleteIcon  {
+.delete-icon  {
     position: absolute;
     right: 10px;
     top: 5px;
     display: none;
 }
 
-img.small-thumb:hover + .deleteIcon {
+img.small-thumb:hover + .delete-icon {
     display: block;
 }
 
-.deleteIcon:hover {
+.delete-icon:hover {
     display: block;
     cursor: pointer;
 }
