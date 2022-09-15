@@ -1212,22 +1212,6 @@ header {
 }
 
 
-/* Hero area start */
-.wishlist-toggle {
-    margin-top: 5rem;
-    display: flex;
-    align-items: center;
-}
-
-.wishlist-toggle span {
-    text-transform: uppercase;
-    color: #21212D;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1;
-    margin-left: 10px;
-}
-
 /*toggle butn for wishlist*/
 .mode-toggle #toggle[type=checkbox] {
     height: 0;
@@ -2321,4 +2305,14 @@ hitting-enter-submit
     .add_review_area .title {
         padding-bottom: 0;
     }
+}
+
+.price-sz {
+    width: 20px !important;
+    height: 20px !important;
+    padding-top: 3px;
+}
+
+.bg-price {
+    background: #848496;
 }

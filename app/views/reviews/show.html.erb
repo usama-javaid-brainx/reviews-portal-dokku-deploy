@@ -1,7 +1,7 @@
 <main class="overflow-hidden position-relative">
 
   <a class="back" href="javascript:history.back()">
-    <%= image_tag("template/left-arrow.png") %>
+    <%= image_tag("template/left-arrow.svg") %>
   </a>
 
   <!--========== Hero area start ===========-->
@@ -12,7 +12,7 @@
       <div class="owl-carousel owl-theme card_carousel">
         <% @review.images[0..5].each do |image_src| %>
           <div class="item">
-            <img src=<%= image_src %>>
+            <%= image_tag(image_src) %>
           </div>
         <% end %>
       </div>
@@ -28,7 +28,7 @@
                 <input type="checkbox" id="switch"/>
                 <label for="switch"></label>
               </div>
-              <%= image_tag("template/icon4.png", class: 'mr_5') %>
+              <%= image_tag("template/users.svg", class: 'mr_5') %>
               <span>Public REVIEW</span>
             </div>
             <h1><%= @review.name %></h1>
@@ -45,10 +45,9 @@
                 <li><%= @review.state + ', ' %> <%= @review.country %></li>
               <% end %>
               <li>
-                <span>$</span>
-                <span>$</span>
-                <span>$</span>
-                <span>$</span>
+                <% for count in 1..5 %>
+                  <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -58,19 +57,23 @@
                 <p class="reviewer">Reviewer</p>
                 <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
               </div>
-              <%= image_tag("template/avatar1.png") %>
+              <% if User.find_by(id: @review.user_id).avatar.attached? %>
+                <%= image_tag(User.find_by(id: @review.user_id).avatar, class: 'rounded-circle h-auto') %>
+              <% else %>
+                <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
+              <% end %>
             </div>
             <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(@review) %>">
               <a href="#" data-action="click->favourite#updateFavourite" class="<%= 'checked' if @review.favourite == true %>">
-                <%= image_tag("template/favourites1.png") %>
+                <%= image_tag("template/favourites1.svg") %>
                 <span>Save as Favourite</span></a>
               <p class="rating">
-                <%= image_tag("template/star.png") %><span><%= @review.average_score %></span></p>
+                <%= image_tag("template/star.svg") %><span><%= @review.average_score %></span></p>
             </div>
             <div>
-              <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
+              <a class="btn white" href="#"><%= image_tag("template/share.svg") %><span>Share</span></a>
               <%= link_to edit_review_path(@review), class: 'btn' do %>
-                <%= image_tag("template/icon7.png") %><span>Edit</span>
+                <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
               <% end %>
             </div>
           </div>
@@ -79,21 +82,25 @@
           <div class="col-12 d-lg-none">
             <div class="d-flex justify-content-between align-items-center pt_30">
               <div class="d-flex align-items-center avatar">
-                <%= image_tag("template/avatar1.png") %>
+                <% if User.find_by(id: @review.user_id).avatar.attached? %>
+                  <%= image_tag(User.find_by(id: @review.user_id).avatar, class: 'rounded-circle h-auto') %>
+                <% else %>
+                  <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
+                <% end %>
                 <div class="pl_10">
                   <p class="reviewer">Reviewer</p>
                   <p class="name"><%= @review.name %></p>
                 </div>
               </div>
               <div class="rating_box">
-                <p class="rating"><%= image_tag("template/star.png") %>
+                <p class="rating"><%= image_tag("template/star.svg") %>
                   <span><%= @review.average_score %></span></p>
               </div>
             </div>
             <div class="d-flex justify-content-between pt_30">
-              <a class="btn white" href="#"><%= image_tag("template/icon5.png") %><span>Share</span></a>
+              <a class="btn white" href="#"><%= image_tag("template/share.svg") %><span>Share</span></a>
               <%= link_to edit_review_path(@review), class: 'btn' do %>
-                <%= image_tag("template/icon7.png") %><span>Edit</span>
+                <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
               <% end %>
             </div>
           </div>
@@ -105,19 +112,20 @@
           <% if @review.images? %>
             <div class="col-lg-6 large ">
               <a href=<%= @review.images.first %> data-toggle="lightbox" data-gallery="first-gallery">
-                <img src=<%= @review.images.first %>>
+                <%= image_tag(@review.images.first) %>
               </a>
             </div>
             <div class="col-lg-6">
               <div class="row g-3">
-                <% @review.images[1..].each_with_index do |image_src, idx| %>
+                <% imagesss = @review.images[1..4] %>
+                <% imagesss.each_with_index do |image_src, index| %>
                   <div class="col-lg-6 small position-relative">
                     <a href=<%= image_src %> data-toggle="lightbox" data-gallery="first-gallery">
-                      <img src=<%= image_src %> class="<%= 'd-none' if idx > 3 %>">
+                      <%= image_tag(image_src) %>
                     </a>
-                    <% if image_src.equal?(@review.images[1..4].last) %>
+                    <% if index == (imagesss.length) - 1 %>
                       <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <%= image_tag("template/icon10.png", class: 'gallery-icon mr-2') %>
+                        <%= image_tag("template/eye.svg", class: 'gallery-icon mr-2') %>
                         See All Photos
                       </button>
                     <% end %>
@@ -145,7 +153,7 @@
             <% @review.images.each do |image_src| %>
               <div class="col-3 mb-3 ">
                 <a href=<%= image_src %> data-toggle="lightbox" data-gallery="full-gallery">
-                  <img class="rounded img-fluid" src=<%= image_src %>>
+                  <%= image_tag(image_src) %>
                 </a>
               </div>
             <% end %>
@@ -188,7 +196,7 @@
             <ul class="favorite_dishes_list">
               <% @review.meals.each do |meal| %>
                 <li>
-                  <img class="main_img" src=<%= meal.image_url %>>
+                  <%= image_tag(meal.image_url, class: "main_img") %>
                   <div class="d-flex justify-content-between align-items-center w-100 ml_15">
                     <div>
                       <h4><%= meal.name %></h4>
@@ -212,11 +220,11 @@
             <div id="map">
             </div>
             <div class="position-relative mt-3 pt_15 pb_15">
-              <% if @review.country.present? and @review.state.present? %>
+              <% if @review.country.present? && @review.state.present? %>
                 <h4><%= @review.country %>, <%= @review.state %></h4>
               <% end %>
-              <% if @review.address.present? or @review.zip_code.present? %>
-                <p><%= @review.address + ',' if @review.address.present? %>   <%= @review.zip_code if @review.zip_code.present? %></p>
+              <% if @review.address.present? || @review.zip_code.present? %>
+                <p><%= @review.address %><%= ", #{@review.zip_code}" if @review.zip_code.present? %></p>
               <% end %>
             </div>
           </div>

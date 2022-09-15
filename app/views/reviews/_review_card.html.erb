@@ -5,7 +5,7 @@
       <% if review.images.present? %>
         <%= link_to review_path(review) do %>
           <div class="owl-carousel owl-theme card_carousel">
-            <% review.images.each do |image| %>
+            <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
@@ -21,10 +21,10 @@
     <div class="card-body">
       <div class="top">
         <div>
-          <span class='<%= review.to_try? ? 'wishlist-btn' : 'review_btn' %>'><%= review.to_try? ? "Wishlist" : "Review" %> </span>
-          <span class="share_btn"><%= review.shareable ? image_tag("template/add.png") : image_tag("template/lock.svg") %></span>
+          <span class='review_btn'><%= review.to_try ? "Wishlist" : "Review" %> </span>
+          <span class="share_btn"><%= image_tag( review.shareable ? "template/add.png" : "template/lock.svg")  %></span>
         </div>
-        <p class="product_rating"><%= image_tag("template/star.png") if review.average_score? %>
+        <p class="product_rating"><%= image_tag("template/star.svg") if review.average_score? %>
           <span><%= review.average_score %></span></p>
       </div>
       <h3><%= review.name %></h3>
@@ -40,7 +40,11 @@
             <%= review.date.strftime("%b %e,%Y") %>
           </li>
         <% end %>
-        <li class="ml-1"><span>$</span><span>$</span><span>$</span><span>$</span></li>
+        <li class="ml-1">
+          <% for count in 1..5 %>
+            <span class="price-sz fs-5 pe-none <%= ('text-white bg-price' if review.price_range >= count) if review.price_range.present? %>">$</span>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
