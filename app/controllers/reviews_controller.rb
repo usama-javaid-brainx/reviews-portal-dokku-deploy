@@ -2,8 +2,9 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
   def index
+
     duplicate_review if session[:edit_review].present?
-    reviews = review_filter(current_user.reviews.kept)
+    reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
     @cuisine_presence = if (Category.find_by(id: params[:category]).name == 'Restaurants' if params[:category] != 'all') || params[:category] == 'all'
                           true
@@ -22,6 +23,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, notice: "Restaurant created successfully!"
     else
+      @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
     end
   end
@@ -71,7 +73,7 @@ class ReviewsController < ApplicationController
   end
 
   def update_favourite
-    Review.find_by(id: params[:review_id].to_s).update(favourite: params[:favourite].to_s)
+    Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
   private

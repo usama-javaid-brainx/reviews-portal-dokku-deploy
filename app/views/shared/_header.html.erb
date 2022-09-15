@@ -30,14 +30,13 @@
             </ul>
           </li>
         </ul>
-
         <!-- menu dropdown for mobile -->
         <div class="d-lg-none dropdown menuItemDropdown">
-
           <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
             <span class="icon"><%= image_tag("template/cutlery.svg") %></span><span>Restaurants</span>
           <% end %>
           <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+
             <li>
               <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
                 <span class="icon"> <%= image_tag("template/games.svg") %></span><span>Games</span>
@@ -62,30 +61,18 @@
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
-              <% if current_user.avatar.attached? %>
-                      <span class="header-img">
-                      <%= image_tag(current_user.avatar, class: 'rounded-circle') %>
+              <span class="header-img">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
                         </span>
-              <% else %>
-                      <span class="header-img">
-                        <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
-                      </span>
-              <% end %>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
             <ul class="dropdown-menu dropdown-w" aria-labelledby="sessionDropdown">
               <li class="cursor-pointer">
                 <div class="dropdown-item dropdown-img">
                   <div class="d-flex ">
-                    <% if current_user.avatar.attached? %>
                       <span class="col-2">
-                      <%= image_tag(current_user.avatar, class: 'rounded-circle') %>
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
                         </span>
-                    <% else %>
-                      <span class="col-2">
-                        <%= image_tag("template/avatarplaceholder.jpg", class: 'rounded-circle') %>
-                      </span>
-                    <% end %>
                     <div class="d-inline dropdown-info">
                       <span class="d-block user-name"><%= current_user.first_name.titleize %></span>
                       <span class="user-email"><%= current_user.email %></span>
