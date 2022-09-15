@@ -15,8 +15,10 @@
           <% Category.all.each do |category| %>
             <li>
               <%= link_to reviews_path(category: category.id), class: "nav_link #{'active' if params[:category].to_i == category.id}" do %>
-                  <%#= show_svg(category.icon) if category.icon.attached?%>
-                <%= category.name%>
+                <%= show_svg(category.icon) if category.icon.attached? %>
+                <span class="ml_5">
+                <%= category.name %>
+                </span>
               <% end %>
             </li>
           <% end %>
@@ -33,26 +35,22 @@
 
         <!-- menu dropdown for mobile -->
         <div class="d-lg-none dropdown menuItemDropdown">
+          <%= link_to "Categories", params[:profile].present? ? users_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category] == 'all' || !params[:category].present?} toggler w-auto" %>
 
-          <%= link_to reviews_path(category: 'Restaurants', to_try: params[:to_try]), class: "toggler", "data-bs-toggle": "dropdown", "aria-expanded": "false" do %>
-            <span class="icon"><%= image_tag("template/cutlery.svg") %></span><span>Restaurants</span>
-          <% end %>
           <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
             <li>
-              <%= link_to reviews_path(category: 'Games', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"> <%= image_tag("template/games.svg") %></span><span>Games</span>
-              <% end %>
+              <%= link_to "All", params[:profile].present? ? users_index_path(category: 'all', profile: 'true') : reviews_path(category: 'all'), class: "icon" %>
             </li>
-            <li>
-              <%= link_to reviews_path(category: 'Books', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"><%= image_tag("template/books.svg") %></span><span>Books</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to reviews_path(category: 'Movies', to_try: params[:to_try]), class: "icon" do %>
-                <span class="icon"><%= image_tag("template/videos.svg") %></span><span>Movies</span>
-              <% end %>
-            </li>
+            <% Category.all.each do |category| %>
+              <li>
+                <%= link_to reviews_path(category: category.id), class: "icon" do %>
+                  <span class="icon">
+                  <%= show_svg(category.icon) if category.icon.attached? %>
+                    </span>
+                  <%= category.name %>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
