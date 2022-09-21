@@ -23,7 +23,8 @@
 
   <% if @curr_category.cuisine? %>
     <div class="row align-items-center form_group">
-      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
+      <%# debugger %>
+      <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
       <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
     </div>
   <% end %>

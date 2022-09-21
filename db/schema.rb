@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_091516) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_091516) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.integer "position"
+    t.string "sub_category_title"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -117,15 +118,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_091516) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
+    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
-    t.text "images", default: [], array: true
     t.integer "parent_id"
     t.string "slug"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
