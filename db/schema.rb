@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_120144) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,26 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.integer "position"
-  end
-
-  create_table "ck_editor_images", force: :cascade do |t|
-    t.string "file"
-    t.integer "user_id"
-    t.integer "parent_id"
-    t.string "parent_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "data_fingerprint"
-    t.string "type", limit: 30
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -92,6 +74,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
     t.datetime "updated_at", null: false
     t.bigint "review_id"
     t.index ["review_id"], name: "index_meals_on_review_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "description", null: false
+    t.string "category_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -121,6 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_12_181730) do
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
     t.text "images", default: [], array: true
+    t.integer "parent_id"
+    t.string "slug"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
