@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'guests/show'
   get 'guests/create_review'
 
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
     get :update_favourite
   end
 
+  post 'upload', to: 'file_uploads#upload'
 end
