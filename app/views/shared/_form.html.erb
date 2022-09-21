@@ -1,0 +1,133 @@
+<main class="position-relative">
+  <a class="back" href="javascript:history.back()"><%= image_tag("template/left-arrow.svg") %></a>
+  <div class="add_review_area pt_30">
+    <!-- page header start-->
+    <div class="add_review_area_header sticky-top">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h2 class="title"><%= head_name %> Review</h2>
+            <!-- add review nav start -->
+            <ul class="nav nav-pills" id="add-restaurant-review-nav">
+              <li class="nav-item">
+                <a href="#review_area" class="nav-link active">Review</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#photo_area" class="nav-link">Photos</a>
+              </li>
+
+              <% if @curr_category.address? %>
+                <li class="nav-item">
+                  <a href="#localization_area" class="nav-link">Localization</a>
+                </li>
+              <% end %>
+              <li class="nav-item">
+                <a href="#tags_area" class="nav-link">Tags</a>
+              </li>
+              <% if @curr_category.address? %>
+                <li class="nav-item">
+                  <a href="#favourite_dishes_area" class="nav-link">Highlights</a>
+                </li>
+              <% end %>
+            </ul>
+            <!-- add review nav end -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- page header end-->
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <%= form_for review do |form| %>
+            <div data-controller="places"
+                 data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
+                 data-places-latitude-value="<%= review.latitude %>"
+                 data-places-longitude-value="<%= review.longitude %>"
+                 data-places-place-id-value="<%= review.place_id %>">
+
+              <!-- category area -->
+              <div class="category_area pt_30" id="category_area">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <%= render 'reviews/category', review: review, f: form %>
+                  </div>
+                </div>
+              </div>
+
+              <!-- review area start -->
+              <div class="review_area" id="review_area">
+                <%= render 'reviews/review', review: review, f: form, curr_category: @curr_category %>
+              </div>
+
+              <!-- photo area start -->
+              <div class="photo_area pt_30" id="photo_area">
+                <%= render 'reviews/photos', review: review, f: form %>
+              </div>
+
+              <!-- localization area start -->
+              <% if @curr_category.address? %>
+                <div class="localization_area pt_30" id="localization_area">
+                  <%= render 'reviews/localization', review: review, f: form %>
+                </div>
+              <% end %>
+
+              <!-- tags area start -->
+              <div class="tags_area pt_30" id="tags_area">
+                <%= render 'reviews/tags', review: review, f: form %>
+              </div>
+              <% if @curr_category.cuisine? %>
+                <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
+                  <%= render 'reviews/favourite_dishes', review: review, f: form %>
+                </div>
+              <% end %>
+              <div class="row pt_50 align-items-center">
+                <div class="col-3 col-sm-4">
+                  <a class="btn white cancel" href="#">Cancel</a>
+
+                  <% if form.object.persisted? %>
+                    <button type="button" class="btn delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                      Delete
+                    </button>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h2 class="modal-title" id="deleteModalLabel">Delete Review</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Are you sure you want to delete review?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn white cancel" data-bs-dismiss="modal">Cancel</button>
+                            <%= link_to "Delete", review_path(review), data: { turbo_method: :delete }, class: "btn delete" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-9 col-sm-8 d-flex justify-content-end">
+                  <div class="public_review">
+                    <div class="mode-switch d-flex flex-row align-items-center">
+                      <%= form.check_box :shareable, id: 'switch' %>
+                      <label for="switch"></label>
+                    </div>
+                    <%= image_tag('template/users.svg', class: 'mr_5') %>
+                    <span>Public REVIEW</span>
+                  </div>
+                  <%= form.submit form.object.persisted? ? "Update Review" : "Add Review" , class: 'btn white add_review ml_25' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

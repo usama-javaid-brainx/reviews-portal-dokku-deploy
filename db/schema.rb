@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_095046) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_095046) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+    t.integer "position"
+    t.string "sub_category_title"
+  end
+
+  create_table "ck_editor_images", force: :cascade do |t|
+    t.string "file"
+    t.integer "user_id"
+    t.integer "parent_id"
+    t.string "parent_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "data_fingerprint"
+    t.string "type", limit: 30
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -98,8 +121,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_095046) do
     t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
+    t.datetime "discarded_at"
+    t.integer "parent_id"
+    t.string "slug"
     t.index ["category_id"], name: "index_reviews_on_category_id"
+    t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.integer "category_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -117,6 +151,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_095046) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

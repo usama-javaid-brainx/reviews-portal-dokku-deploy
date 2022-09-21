@@ -664,12 +664,23 @@ header {
     border-radius: 4px;
     text-align: center;
     margin-right: 4px;
+    cursor: default;
     font-size: 1.4rem;
 }
 
-.review_btn:hover {
+.wishlist-btn {
     background: #6E3EF7;
     color: #FFFFFF;
+    display: inline-block;
+    width: 7rem;
+    height: 2.4rem;
+    line-height: 2.2rem;
+    border: 1px solid #6E3EF7;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 4px;
+    cursor: default;
+    font-size: 1.4rem;
 }
 
 .add_btn {
@@ -1200,22 +1211,6 @@ header {
     z-index: 900;
 }
 
-
-/* Hero area start */
-.wishlist-toggle {
-    margin-top: 5rem;
-    display: flex;
-    align-items: center;
-}
-
-.wishlist-toggle span {
-    text-transform: uppercase;
-    color: #21212D;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1;
-    margin-left: 10px;
-}
 
 /*toggle butn for wishlist*/
 .mode-toggle #toggle[type=checkbox] {
@@ -2310,4 +2305,14 @@ hitting-enter-submit
     .add_review_area .title {
         padding-bottom: 0;
     }
+}
+
+.price-sz {
+    width: 20px !important;
+    height: 20px !important;
+    padding-top: 3px;
+}
+
+.bg-price {
+    background: #848496;
 }
