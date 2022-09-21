@@ -62,24 +62,41 @@
     <div class="modal fade" id="request-modal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header d-block">
-            <div class="header-title d-flex align-items-center">
-              <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <%= form_for :request, url: requests_path, method: :post do |req_form| %>
+            <div class="modal-header d-block">
+              <div class="header-title d-flex align-items-center">
+                <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <p class="header-para">Tell us more about your needs. Enter the name of the new category and describe a
+                bit
+                your requirements.</p>
             </div>
-            <p class="header-para">Tell us more about your needs. Enter the name of the new category and describe a bit
-              your requirements.</p>
-          </div>
-          <div class="modal-body">
-            
-          </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="cancel" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="save-changes" data-bs-dismiss="modal">Send Request</button>
-          </div>
+            <div class="modal-body">
+              <div class="mb-4 request">
+                <%= req_form.label :name, "Your Name", class: "form-label" %>
+                <%= req_form.text_field :name, class: "form-control", placeholder: "Enter your name", type: "text" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :email, "Email", class: "form-label" %>
+                <%= req_form.email_field :email, class: "form-control", placeholder: "Enter your email" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :category_name, "Category Name", class: "form-label" %>
+                <%= req_form.text_field :category_name, class: "form-control", placeholder: "Enter category name", type: "text" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :description, "Category Description", class: "form-label" %>
+                <%= req_form.text_area :description, class: "form-control", placeholder: "Describe your request about the new category...", type: "text", rows: 10 %>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="cancel" data-bs-dismiss="modal">Cancel</button>
+              <%= req_form.submit "Send Request", class: 'save-changes' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-
   </div>
 </div>
