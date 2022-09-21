@@ -2334,12 +2334,48 @@ li.category-list-item {
     color: #424250;
 }
 .request-btn{
-    border: 2px solid #EDEDFB;
+    border: 1px solid #EDEDFB;
     padding: 10px 30px;
     background-color: #FFFFFF;
     font-size: 16px;
     font-weight: 500;
     color: #6E3EF7;
+    border-radius: 8px;
+}
+
+/*request modal*/
+
+#request-modal .modal-header{
+    padding: 20px 20px;
+}
+#request-modal .modal-header .header-title{
+    margin-bottom: 10px;
+}
+
+#request-modal .modal-header .header-title h2{
+    font-size: 24px;
+    color: #00000A;
+    font-weight: 500;
+}
+
+#request-modal .modal-header .header-para{
+    font-size: 16px;
+    color: #424250;
+}
+
+#request-modal .modal-footer{
+    padding: 15px 20px;
+}
+#request-modal .modal-body{
+    background-color: #FBFBFE;
+}
+#request-modal .modal-footer .cancel{
+    border: 1px solid #EDEDFB;
+    background-color: #FFFFFF;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #848496;
     border-radius: 8px;
 }
 
