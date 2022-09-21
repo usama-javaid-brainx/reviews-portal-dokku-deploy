@@ -23,18 +23,17 @@
 
   <% if @curr_category.cuisine? %>
     <div class="row align-items-center form_group">
-      <%# debugger %>
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
+      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
       <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
     </div>
   <% end %>
 
+  <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
       <%= f.label "Score", class: "col-lg-5" %>
       <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
     </div>
 
-  <% if @curr_category.price? %>
     <div class="row form_group">
       <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
       <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
@@ -49,7 +48,7 @@
   <div class="row form_group">
     <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
     <div class='list-style-unset'>
-      <%= f.text_area :notes, placeholder: "Write your reviews...", type: "text", cols: '30', rows: '5' %>
+      <%= f.text_area :notes, :class => 'anyclas', :ckeditor => {:language => 'en', :uiColor => '#AADC6E', :toolbar => 'classic'}, class:"w-100" %>
     </div>
 
   </div>
