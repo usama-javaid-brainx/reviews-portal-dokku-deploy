@@ -2316,3 +2316,13 @@ hitting-enter-submit
 .bg-price {
     background: #848496;
 }
+
+.review-dropdown{
+    height: 4rem;
+    padding: 1rem 1.2rem 1rem 1.2rem;
+    background: #FFFFFF;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+    color: #00000A;
+    font-size: 1.4rem;
+}

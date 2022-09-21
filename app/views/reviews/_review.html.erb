@@ -22,9 +22,9 @@
   </div>
 
   <% if @curr_category.cuisine? %>
-    <div class="row align-items-center form_group">
-      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
-      <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
+    <div class="row align-items-center form_group" data-controller="tags">
+      <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name)), { include_blank: false }, class: 'col-lg-7 review-dropdown p-0' %>
     </div>
   <% end %>
 
@@ -48,7 +48,7 @@
   <div class="row form_group">
     <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
     <div class='list-style-unset'>
-      <%= f.text_area :notes, :class => 'anyclas', :ckeditor => {:language => 'en', :uiColor => '#AADC6E', :toolbar => 'classic'}, class:"w-100" %>
+      <%= f.text_area :notes, :class => 'anyclas', :ckeditor => { :language => 'en', :uiColor => '#AADC6E', :toolbar => 'classic' }, class: "w-100" %>
     </div>
 
   </div>
