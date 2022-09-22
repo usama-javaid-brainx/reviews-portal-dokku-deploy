@@ -32,6 +32,9 @@
 #
 class Review < ApplicationRecord
   include Discard::Model
+  before_save :generate_slug, if: -> { slug.blank? }
+
+  default_scope -> { kept }
 
   attr_accessor :images_input
   store_accessor :images, []
@@ -47,5 +50,10 @@ class Review < ApplicationRecord
 
   def google_maps_link
     "http://maps.google.com/?q=#{latitude},#{longitude}"
+  end
+
+
+  def generate_slug
+    self.slug = SecureRandom.base58(32)
   end
 end

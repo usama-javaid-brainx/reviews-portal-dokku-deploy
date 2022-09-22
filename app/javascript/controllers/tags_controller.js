@@ -7,8 +7,8 @@ export default class extends Controller {
     let input_val = this.tagInputTarget.value.trim();
     let no_comma_val = input_val.replace(/,/g, "");
     if ((input_val.slice(-1) === "," || event.key === "Enter") && no_comma_val.length > 0) {
-      var new_tag = this.compile_tag(no_comma_val);
-      this.tagsTarget.appendChild(new_tag);
+      var newTag = this.compile_tag(no_comma_val);
+      this.tagsTarget.appendChild(newTag);
       this.selectedTagsTarget.value = this.selectedTagsTarget.value.concat(",", no_comma_val);
       this.tagInputTarget.value = "";
     }
@@ -32,8 +32,7 @@ export default class extends Controller {
 
   removeTag(event){
     let removeText = ','.concat( event.currentTarget.parentElement.innerText)
-    let tagsValue = this.selectedTagsTarget.value
-    this.selectedTagsTarget.value = tagsValue.replace(removeText, '')
+    this.selectedTagsTarget.value = this.selectedTagsTarget.value.replace(removeText, '')
     event.currentTarget.parentElement.remove()
   }
 }

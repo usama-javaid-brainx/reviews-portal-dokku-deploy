@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
 
   def review_filter(reviews)
     params[:to_try] = 'all' unless params[:to_try].present?
-    params[:category] = 'all' unless params[:category].present?
+    params[:category_id] = 'all' unless params[:category_id].present?
     reviews = reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
-    reviews = params[:category] == 'all' ? reviews : reviews.where(category_id: params[:category]) if params[:category].present?
+    reviews = params[:category_id] == 'all' ? reviews : reviews.where(category_id: params[:category_id]) if params[:category_id].present?
     @cuisines = reviews.select(:cuisine).distinct
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.uniq.reject(&:empty?)
     if params[:to_try] != 'favourite'
