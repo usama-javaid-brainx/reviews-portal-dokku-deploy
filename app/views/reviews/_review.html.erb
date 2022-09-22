@@ -1,56 +1,54 @@
-<h2>Review</h2>
+<h2>Description</h2>
 <div class="tabs_content_wrap">
 
   <% if @curr_category.google_places? %>
     <div class="form_group row align-items-center">
-      <label for="search" class="col-lg-5">Location</label>
+      <label for="search">Location</label>
 
-      <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
+      <input id="search" type="text" placeholder="Search location" autofocus
              data-action="keydown->places#keydown"
              data-places-target="field"/>
     </div>
   <% end %>
 
   <div class="row align-items-center form_group">
-    <%= f.label :name, "Name", class: 'col-lg-5' %>
-    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
-  </div>
-
-  <div class="row align-items-center form_group">
-    <%= f.label :date, "Date", class: 'col-lg-5' %>
-    <%= f.date_field :date, class: "col-lg-7" %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
   <% if @curr_category.cuisine? %>
     <div class="row align-items-center form_group">
-      <%= f.label :cuisine, "Cuisine", class: 'col-lg-5' %>
-      <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
+      <%= f.label :cuisine, "Cuisine" %>
+      <%= f.text_field :cuisine, placeholder: "Enter cuisine", type: "text" %>
     </div>
   <% end %>
 
-    <div class="form_group align-items-center row">
-      <%= f.label "Score", class: "col-lg-5" %>
-      <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-    </div>
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "Date" %>
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Score" %>
+    <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
+    <span class="score-text col-lg-2"> /10</span>
+  </div>
 
   <% if @curr_category.price? %>
     <div class="row form_group">
-      <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
-      <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
+      <%= f.label :price_range, 'Price', class: 'indent' %>
+      <div class="align-items-center rating d-flex p-0" data-controller="dollar-price-range">
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 1 }" %></span>
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
-        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 5 }" %></span>
+        <span class="price-range-text"> Select price range</span>
       </div>
     </div>
   <% end %>
   <div class="row form_group">
-    <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
-    <div class='list-style-unset'>
-      <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class:"w-100" %>
-    </div>
-
+    <%= f.label :notes, "Description", class: '' %>
+    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", cols: '60', rows: '5' %>
   </div>
 
 </div>
