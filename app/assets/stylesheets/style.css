@@ -1873,9 +1873,6 @@ hitting-enter-submit
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
     border-radius: 6px;
 }
-.category_content_wrap label{
-
-}
 
 .category_content_wrap select {
     height: 4rem;
@@ -1885,11 +1882,6 @@ hitting-enter-submit
     border-radius: 6px;
     color: #A5A5B9;
     font-size: 1.4rem;
-}
-
-.category_content_wrap select img{
-    background-color: #0a58ca;
-
 }
 
 .category_content_wrap select:focus {
