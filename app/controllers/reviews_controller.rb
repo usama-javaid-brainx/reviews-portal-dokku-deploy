@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
 
   def index
     duplicate_review if session[:edit_review].present?
-    reviews = review_filter(current_user.reviews.kept)
+    reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
-    @cuisine_presence = if (Category.find_by(id: params[:category]).name == 'Restaurants' if params[:category] != 'all') || params[:category] == 'all'
+    @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all') || params[:category_id] == 'all'
                           true
                         else
                           false
@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to reviews_path, notice: "Review created successfully!"
     else
+      @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
     end
   end
@@ -31,8 +32,9 @@ class ReviewsController < ApplicationController
     review_id = session[:review_id]
     session.delete(:review_id)
     session.delete(:edit_review)
-    new_review = Review.find_by(id: review_id).dup
-    if new_review.update(user_id: current_user.id, to_try: edit_review == 'true' ? new_review.to_try : true )
+    existing_review = Review.find_by(slug: review_id)
+    new_review = existing_review.dup
+    if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: SecureRandom.base58(32), to_try: edit_review == 'true' ? new_review.to_try : true )
       redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review)
     else
       redirect_to root_path, notice: "Review didn't created successfully please try again"
@@ -40,7 +42,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-
+    @parent_id = @review.parent_id
+    @review_user = User.find_by(id: @review.user_id)
   end
 
   def edit
@@ -67,7 +70,7 @@ class ReviewsController < ApplicationController
   end
 
   def update_favourite
-    Review.find_by(id: params[:review_id].to_s).update(favourite: params[:favourite].to_s)
+    Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
   private

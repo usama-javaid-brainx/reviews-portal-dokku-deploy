@@ -5,31 +5,16 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-["Restaurants", "Games", "Books", "Movies"].each do |name|
+categories = ["Movies", "Books", "Games", "Restaurants"]
+categories.each do |name|
   Category.create(name: name, address: name == 'Restaurants', google_places: name == 'Restaurants', price: true, cuisine: name == 'Restaurants')
 end
 
-Category.find_by(name: "Movies").icon.attach(
-  io: File.open(Rails.root.join("app/assets/images/template/videos.svg")),
-  filename: "videos.svg",
-  content_type: 'image/svg+xml'
-)
-
-Category.find_by(name: "Books").icon.attach(
-  io: File.open(Rails.root.join("app/assets/images/template/books.svg")),
-  filename: "books.svg",
-  content_type: 'image/svg+xml'
-)
-
-Category.find_by(name: "Games").icon.attach(
-  io: File.open(Rails.root.join("app/assets/images/template/games.svg")),
-  filename: "games.svg",
-  content_type: 'image/svg+xml'
-)
-
-Category.find_by(name: "Restaurants").icon.attach(
-  io: File.open(Rails.root.join("app/assets/images/template/cutlery.svg")),
-  filename: "cutlery.svg",
-  content_type: 'image/svg+xml'
-)
+categories_images = ['videos', 'books', 'games', 'cutlery']
+categories.zip(categories_images).each do |category, category_img|
+  Category.find_by(name: category).icon.attach(
+    io: File.open(Rails.root.join("app/assets/images/template/#{category_img}.svg")),
+    filename: "#{category_img}.svg",
+    content_type: 'image/svg+xml'
+  )
+end
