@@ -18,13 +18,25 @@ document.addEventListener('turbo:load', () => {
   lightbox.init();
 })
 
+window.markerConfig = {
+  destination: '62f7c831ea66067c8549b9fa',
+  source: 'snippet'
+};
+
+window.initAutocomplete = () => {
+  const event = new Event('google-maps-callback', {
+    bubbles: true,
+    cancelable: true,
+  })
+  window.dispatchEvent(event)
+}
+
 window.initMap = function (...args) {
   const event = new Event('google-maps-callback', {
     bubbles: true, cancelable: true, ...args
   })
   window.dispatchEvent(event)
 }
-
 
 var $fileInput = $('.file_input');
 var $droparea = $('.file_droparea');
