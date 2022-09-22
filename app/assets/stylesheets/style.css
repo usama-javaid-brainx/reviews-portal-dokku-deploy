@@ -1887,6 +1887,11 @@ hitting-enter-submit
     font-size: 1.4rem;
 }
 
+.category_content_wrap select img{
+    background-color: #0a58ca;
+
+}
+
 .category_content_wrap select:focus {
     border-color: #6E3EF7
 }
@@ -1966,7 +1971,7 @@ hitting-enter-submit
     margin-right: .35rem;
 }
 .price-range-text{
-    margin-left: 15px;
+    margin-left: 10px;
     margin-top: -7px;
     font-weight: 500;
     font-size: 1.3rem;

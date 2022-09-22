@@ -5,7 +5,7 @@
     <div class="form_group row align-items-center">
       <label for="search">Location</label>
 
-      <input id="search" type="text" placeholder="Search a location" autofocus
+      <input id="search" type="text" placeholder="Search location" autofocus
              data-action="keydown->places#keydown"
              data-places-target="field"/>
     </div>
@@ -30,7 +30,8 @@
 
   <div class="form_group align-items-center row">
     <%= f.label "Score" %>
-    <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-4', step: "0.01", max: "10", min: "0" %> <span class="score-text col-lg-2"> /10</span>
+    <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
+    <span class="score-text col-lg-2"> /10</span>
   </div>
 
   <% if @curr_category.price? %>
@@ -41,14 +42,13 @@
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
         <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
-        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 5 }" %></span>
         <span class="price-range-text"> Select price range</span>
       </div>
     </div>
   <% end %>
   <div class="row form_group">
     <%= f.label :notes, "Description", class: '' %>
-      <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", cols: '60', rows: '5' %>
+    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", cols: '60', rows: '5' %>
   </div>
 
 </div>
