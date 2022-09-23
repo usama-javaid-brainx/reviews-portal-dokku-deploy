@@ -21,12 +21,10 @@
     <%= f.date_field :date, class: "col-lg-7" %>
   </div>
 
-  <% if @curr_category.cuisine? %>
-    <div class="row align-items-center form_group" data-controller="tags">
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
       <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name)), { include_blank: false }, class: 'col-lg-7 review-dropdown p-0' %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false }, class: 'col-lg-7' %>
     </div>
-  <% end %>
 
   <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
