@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   def review_filter(reviews)
     reviews = reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
     reviews = params[:category_id] == 'all' ? reviews : reviews.where(category_id: params[:category_id]) if params[:category_id].present?
-    debugger
     @cuisines = reviews.pluck(:cuisine).compact.collect { |e| e.strip.downcase }.uniq
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.collect { |e| e.strip.downcase }.uniq.reject(&:empty?)
     if params[:to_try] != 'favourite'
