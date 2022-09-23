@@ -65,8 +65,8 @@
                 <div class="tag-card-h overflow-auto">
                   <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
                   <% cuisines.each do |cuisine| %>
-                    <% if cuisine.cuisine.present? %>
-                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.cuisine.titleize %></span>
+                    <% if cuisine.present? %>
+                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
                     <% end %>
                   <% end %>
                 </div>
