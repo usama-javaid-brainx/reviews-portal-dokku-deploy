@@ -2,6 +2,8 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
+import { application } from "./application"
+
 import PlacesController from "./places_controller.js"
 application.register("places", PlacesController)
 
@@ -37,7 +39,6 @@ application.register("sortable-images", SortableImagesController)
 
 import CategoryReorderController from "./category_reorder_controller.js"
 application.register("category-reorder", CategoryReorderController)
-
 
 import GuestController from "./guest_controller.js"
 application.register("guest", GuestController)
