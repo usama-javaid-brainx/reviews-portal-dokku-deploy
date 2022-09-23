@@ -8,6 +8,7 @@
     "dropzone": "^6.0.0-beta.2",
     "esbuild": "^0.14.36",
     "photoswipe": "^5.2.4",
+    "sortablejs": "^1.15.0",
     "trix": "^2.0.0-beta.0"
   },
   "scripts": {
