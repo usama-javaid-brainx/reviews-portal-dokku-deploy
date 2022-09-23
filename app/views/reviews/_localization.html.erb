@@ -2,40 +2,44 @@
 <div class="tabs_content_wrap">
   <div class="tab-content">
     <!-- enterManually tab -->
-        <div class="enterManually_form">
-          <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
-          <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>
-          <%= f.hidden_field :latitude, data: { 'places-target': 'latitude' } %>
+    <div class="enterManually_form">
+      <%= f.hidden_field :place_id, data: { 'places-target': 'placeId' } %>
+      <%= f.hidden_field :longitude, data: { 'places-target': 'longitude' } %>
+      <%= f.hidden_field :latitude, data: { 'places-target': 'latitude' } %>
 
-          <div class="p-4 d-none">
-            <div data-places-target="map" style="height:400px;width:400px"></div>
-          </div>
+      <div class="p-4 d-none">
+        <div data-places-target="map" style="height:400px;width:400px"></div>
+      </div>
 
-          <div class="row align-items-center form_group">
-            <%= f.label :address, "Address", class: 'col-lg-5' %>
-            <%= f.text_field :address, class: "col-lg-7", placeholder: "Enter address", data: { 'places-target': 'address' }  %>
-          </div>
+      <div class="row align-items-center form_group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address, placeholder: "Enter Address", data: { 'places-target': 'address' } %>
+      </div>
 
-          <div class="row align-items-center form_group">
-            <%= f.label :city, "City", class: 'col-lg-5' %>
-            <%= f.text_field :city, class: "col-lg-7", placeholder: "Enter city", data: { 'places-target': 'city' } %>
-          </div>
+      <div class="row align-items-center form_group">
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city, placeholder: "Enter City", data: { 'places-target': 'city' } %>
+      </div>
 
-          <div class="row align-items-center form_group">
-            <%= f.label :state, "State", class: 'col-lg-5' %>
-            <%= f.text_field :state, class: "col-lg-7", placeholder: "Enter state", data: { 'places-target': 'state' } %>
-          </div>
+      <div class="row align-items-center justify-content-between pb_35">
 
-          <div class="row align-items-center zipCode form_group taxt-capitalize">
-              <%= f.label :zip_code, "Zip Code", class: 'col-lg-5' %>
-              <%= f.text_field :zip_code, class: "col-lg-7", placeholder: "37208", data: { 'places-target': 'postCode' } %>
-          </div>
-
-          <div class="row align-items-center form_group">
-            <%= f.label :country, "Country", class: "col-lg-5" %>
-            <%= f.text_field :country, class: "col-lg-7", placeholder: "Enter country", data: { 'places-target': 'country' } %>
-          </div>
-
+        <div class="col-lg-6 gx-0">
+          <%= f.label :state, "State", class: "d-block" %>
+          <%= f.text_field :state, placeholder: "Enter State", class: "col-lg-11", data: { 'places-target': 'state' } %>
         </div>
+
+        <div class="col-lg-6 gx-0 taxt-capitalize">
+          <%= f.label :zip_code, "Zip Code", class: "d-block" %>
+          <%= f.text_field :zip_code, placeholder: "37208", class: "col-lg-12", data: { 'places-target': 'postCode' } %>
+        </div>
+
+      </div>
+
+      <div class="row align-items-center form_group">
+        <%= f.label :country, "Country" %>
+        <%= f.text_field :country, placeholder: "Enter Country", data: { 'places-target': 'country' } %>
+      </div>
+
+    </div>
   </div>
 </div>

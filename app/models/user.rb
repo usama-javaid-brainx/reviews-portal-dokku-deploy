@@ -27,6 +27,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews, dependent: :destroy
+  has_many :requests, dependent: :destroy
+
 
   #validation
   validates :first_name, :last_name, presence: true

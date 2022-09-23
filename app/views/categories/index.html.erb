@@ -8,9 +8,9 @@
       <ul class="active-list category-list" data-controller="category-reorder">
         <% @categories.each do |category| %>
           <% if category.active? %>
-            <li class="category-list-item row">
+            <li class="drag-field category-list-item row">
               <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!-- <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
+              <!-- TODO    Have to show SVGs when provided by client  <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
               <span class="category-name col-9"><%= category.name %></span>
               <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
@@ -27,9 +27,9 @@
       <ul class="inactive-list category-list" data-controller="category-reorder">
         <% @categories.each do |category| %>
           <% unless category.active? %>
-            <li class="category-list-item row">
+            <li class="drag-field category-list-item row">
               <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!-- <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
+              <!--  TODO    Have to show SVGs when provided by client    <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div> -->
               <span class="category-name col-9"><%= category.name %></span>
               <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
@@ -54,27 +54,49 @@
       solutions.</p>
   </div>
   <div class="col-4 m-auto">
-    <button type="button" class="request-btn d-block ms-auto" data-bs-toggle="modal" data-bs-target="#requestModal">
+    <button type="button" class="request-btn d-block ms-auto" data-bs-toggle="modal" data-bs-target="#request-modal">
       Send Request
     </button>
 
     <!-- Request Modal -->
-    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+    <div class="modal fade" id="request-modal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Tell us more about your needs. Enter the name of the new category and describe a bit your requirements.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn white cancel" data-bs-dismiss="modal">Cancel</button>
-          </div>
+          <%= form_for :request, url: requests_path, method: :post do |req_form| %>
+            <div class="modal-header d-block">
+              <div class="header-title d-flex align-items-center">
+                <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <p class="header-para">Tell us more about your needs. Enter the name of the new category and describe a
+                bit
+                your requirements.</p>
+            </div>
+            <div class="modal-body">
+              <div class="mb-4 request">
+                <%= req_form.label :name, "Your Name", class: "form-label" %>
+                <%= req_form.text_field :name, class: "form-control", placeholder: "Enter your name", type: "text" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :email, "Email", class: "form-label" %>
+                <%= req_form.email_field :email, class: "form-control", placeholder: "Enter your email" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :category_name, "Category Name", class: "form-label" %>
+                <%= req_form.text_field :category_name, class: "form-control", placeholder: "Enter category name", type: "text" %>
+              </div>
+              <div class="mb-4 request">
+                <%= req_form.label :description, "Category Description", class: "form-label" %>
+                <%= req_form.text_area :description, class: "form-control", placeholder: "Describe your request about the new category...", type: "text", rows: 10 %>
+              </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="cancel" data-bs-dismiss="modal">Cancel</button>
+              <%= req_form.submit "Send Request", class: 'save-changes' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
-
 import PlacesController from "./places_controller.js"
 application.register("places", PlacesController)
 
@@ -31,10 +28,8 @@ application.register("filter", FilterController)
 import FavouriteController from "./favourite_controller.js"
 application.register("favourite", FavouriteController)
 
-
 import UserValidationController from "./user_validation_controller.js"
 application.register("user-validation", UserValidationController)
-
 
 import PhotosController from "./photos_controller.js"
 application.register("photos", PhotosController)
@@ -42,9 +37,8 @@ application.register("photos", PhotosController)
 import SortableImagesController from "./sortable_images_controller.js"
 application.register("sortable-images", SortableImagesController)
 
+import CategoryReorderController from "./category_reorder_controller.js"
+application.register("category-reorder", CategoryReorderController)
 
 import GuestController from "./guest_controller.js"
 application.register("guest", GuestController)
-
-import CategoryReorderController from "./category_reorder_controller.js"
-application.register("category-reorder", CategoryReorderController)
