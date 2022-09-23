@@ -35,7 +35,10 @@ import PhotosController from "./photos_controller.js"
 application.register("photos", PhotosController)
 
 import SortableImagesController from "./sortable_images_controller.js"
-application.register("sortable-images", SortableImagesController
+application.register("sortable-images", SortableImagesController)
+
+import CategoryReorderController from "./category_reorder_controller.js"
+application.register("category-reorder", CategoryReorderController)
 
 import UserValidationController from "./user_validation_controller.js"
 application.register("user-validation", UserValidationController)
