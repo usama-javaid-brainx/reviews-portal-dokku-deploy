@@ -84,3 +84,4 @@ end
 
 gem "jsbundling-rails", "~> 1.0"
 gem 'new_ckeditor'
+gem "select2-rails"

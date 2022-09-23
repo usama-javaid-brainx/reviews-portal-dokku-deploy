@@ -6,3 +6,4 @@
 //= require template/main
 //= require template/index.bundle.min
 //= require template/ckeditor.js
+//= require select2
