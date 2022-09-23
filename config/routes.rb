@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   patch :update_categories_status, to: 'categories#update_categories_status'
 
+  resources :requests, only: :create
 end

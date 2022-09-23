@@ -2349,7 +2349,7 @@ li.category-list-item {
     padding: 20px 20px;
 }
 #request-modal .modal-header .header-title{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #request-modal .modal-header .header-title h2{
@@ -2377,6 +2377,19 @@ li.category-list-item {
     font-weight: 500;
     color: #848496;
     border-radius: 8px;
+}
+.request label{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.request input{
+    padding: 10px;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+}
+.request input::-webkit-input-placeholder,.request textarea::-webkit-input-placeholder  {
+    font-size: 13px;
+    color: #A5A5B9;
 }
 
 @keyframes loader3 {
