@@ -8,9 +8,9 @@
       <ul class="active-list category-list" data-controller="category-reorder">
         <% @categories.each do |category| %>
           <% if category.active? %>
-            <li class="category-list-item row">
+            <li class="drag-field category-list-item row">
               <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!-- <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
+              <!-- TODO    Have to show SVGs when provided by client  <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
               <span class="category-name col-9"><%= category.name %></span>
               <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
@@ -27,9 +27,9 @@
       <ul class="inactive-list category-list" data-controller="category-reorder">
         <% @categories.each do |category| %>
           <% unless category.active? %>
-            <li class="category-list-item row">
+            <li class="drag-field category-list-item row">
               <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!-- <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
+              <!--  TODO    Have to show SVGs when provided by client    <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div> -->
               <span class="category-name col-9"><%= category.name %></span>
               <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
                 <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
