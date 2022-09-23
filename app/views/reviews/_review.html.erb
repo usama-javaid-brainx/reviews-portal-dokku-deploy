@@ -16,12 +16,10 @@
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
-  <% if @curr_category.cuisine? %>
-    <div class="row align-items-center form_group" data-controller="tags">
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
       <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name)), { include_blank: false }, class: 'col-lg-7 review-dropdown' %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false }, class: 'col-lg-7' %>
     </div>
-  <% end %>
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>

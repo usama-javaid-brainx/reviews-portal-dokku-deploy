@@ -37,6 +37,7 @@ export default class extends Controller {
   }
 
   connect() {
+    debugger
     $('#review_cuisine').select2()
   }
 
