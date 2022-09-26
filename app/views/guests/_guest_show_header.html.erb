@@ -11,7 +11,7 @@
       <% if @review.city.present? %>
         <li><%= @review.city %></li>
       <% end %>
-      <% if @review.state.present? and @review.country.present? %>
+      <% if @review.state.present? && @review.country.present? %>
         <li><%= @review.state + ', ' %> <%= @review.country %></li>
       <% end %>
       <li>

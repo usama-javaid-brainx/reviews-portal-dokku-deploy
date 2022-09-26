@@ -21,19 +21,17 @@
     <%= f.date_field :date, class: "col-lg-7" %>
   </div>
 
-  <% if @curr_category.cuisine? %>
-    <div class="row align-items-center form_group">
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
       <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
-      <%= f.text_field :cuisine, class: "col-lg-7", placeholder: "Enter cuisine", type: "text" %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false }, class: 'col-lg-7' %>
     </div>
-  <% end %>
 
+  <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
       <%= f.label "Score", class: "col-lg-5" %>
       <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
     </div>
 
-  <% if @curr_category.price? %>
     <div class="row form_group">
       <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
       <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
@@ -50,7 +48,5 @@
     <div class='list-style-unset'>
       <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class:"w-100" %>
     </div>
-
   </div>
-
 </div>

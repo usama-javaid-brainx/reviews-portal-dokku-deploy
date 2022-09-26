@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :ck_editor_images, dependent: :destroy
+  has_many :requests, dependent: :destroy
 
   #validation
   validates :first_name, :last_name, presence: true

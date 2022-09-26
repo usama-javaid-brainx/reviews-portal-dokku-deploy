@@ -1,6 +1,6 @@
 <header class="d-flex align-items-center sticky-top">
   <div class="container">
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-lg-3 col-3">
         <%= link_to root_path, class: 'logo' do %>
           <%= image_tag("template/fullsite-logo.svg", class: "d-lg-block d-none") %>
@@ -15,6 +15,7 @@
           <% Category.all.each do |category| %>
             <li>
               <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
+                <!--      TODO will uncomment when S3 will configure-->
                 <%#= show_svg(category.icon) if category.icon.attached? %>
                 <span class="ml_5">
                 <%= category.name %>
@@ -26,9 +27,9 @@
           <li class="dropdown ml_15">
             <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
             <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
-              <li><a class="dropdown-item" href="#">New Item 1</a></li>
-              <li><a class="dropdown-item" href="#">New Item 2</a></li>
-              <li><a class="dropdown-item" href="#">New Item 3</a></li>
+              <li><a class="dropdown-item" href="#">Other Category</a></li>
+              <hr>
+              <li><%= link_to "Manage categories", categories_path, class: "dropdown-item" %></li>
             </ul>
           </li>
         </ul>
@@ -44,7 +45,8 @@
               <li>
                 <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
-                  <%#= show_svg(category.icon) if category.icon.attached? %>
+                    <!--      TODO will uncomment when S3 will configure-->
+                    <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
                   <%= category.name %>
                 <% end %>
