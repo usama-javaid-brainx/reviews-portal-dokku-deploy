@@ -15,4 +15,9 @@ Rails.application.routes.draw do
     get :update_favourite
   end
 
+  resources :categories, only: :index
+
+  patch :update_categories_status, to: 'categories#update_categories_status'
+
+  resources :requests, only: :create
 end
