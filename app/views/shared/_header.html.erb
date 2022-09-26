@@ -16,6 +16,7 @@
             <% if category.active? %>
               <li>
                 <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
+                  <!--      TODO will uncomment when S3 will configure-->
                   <%#= show_svg(category.icon) if category.icon.attached?%>
                   <span class="ml_5"><%= category.name %></span>
                 <% end %>
@@ -44,7 +45,8 @@
               <li>
                 <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
-                  <%#= show_svg(category.icon) if category.icon.attached? %>
+<!--                          TODO will uncomment when S3 will configure-->
+                    <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
                   <%= category.name %>
                 <% end %>

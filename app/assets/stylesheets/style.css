@@ -2498,3 +2498,11 @@ li.category-list-item {
 .cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow{
     margin: 4px;
 }
+
+.ck-editor__editable_inline {
+   min-height: 150px;
+}
+
+div.ck ul{
+    list-style: inside !important;
+}

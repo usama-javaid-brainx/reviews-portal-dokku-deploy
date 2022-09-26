@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'guests/show'
   get 'guests/create_review'
+  resources :guests, only: [:show]
 
   get 'users/index'
   get 'users/remove_avatar'
@@ -15,9 +15,12 @@ Rails.application.routes.draw do
     get :update_favourite
   end
 
+  post 'upload', to: 'file_uploads#upload'
+
   resources :categories, only: :index
 
   patch :update_categories_status, to: 'categories#update_categories_status'
 
   resources :requests, only: :create
+
 end

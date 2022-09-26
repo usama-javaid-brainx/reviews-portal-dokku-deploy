@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.2.2/dist/photoswipe.css" integrity="sha256-PWZ5T/Tr5E5OnK6FkaURy3VdK7K5uezyoQ/h7jXrdR8=" crossorigin="anonymous">
 
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= javascript_include_tag 'dashboard' %>
 
   <%= yield(:head_content) if content_for?(:head_content) %>
   <script
@@ -48,7 +49,6 @@
 
   <%= render 'shared/flash_messages' %>
   <%= yield %>
-  <%= javascript_include_tag 'dashboard' %>
 </body>
 
 

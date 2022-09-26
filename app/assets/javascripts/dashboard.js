@@ -5,5 +5,5 @@
 //= require template/plugins
 //= require template/main
 //= require template/index.bundle.min
-//= require template/ckeditor.js
+//= require new_ckeditor/classic/ckeditor
 //= require select2
