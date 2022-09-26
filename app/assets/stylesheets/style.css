@@ -2470,17 +2470,25 @@ li.category-list-item {
     background: #848496;
 }
 
-.cuisine-group .select2 {
-    padding: unset;
-}
-
-.cuisine-group .select2-selection {
-    display: block;
-    padding: 1px;
-    height: 4rem;
-    border: 1px solid #EDEDFB;
+.selection .select2-selection {
+    display: block !important;
+    padding: 1px !important;
+    height: 4rem !important;
+    border: 1px solid #EDEDFB !important;
 }
 
 .cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow{
     margin: 4px;
+}
+
+.cuisine-group .select2-container{
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul{
+    list-style: inside !important;
 }
