@@ -46,9 +46,7 @@
   <div class="row form_group">
     <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
     <div class='list-style-unset'>
-      <%= f.text_area :notes, :class => 'anyclas', :ckeditor => { :language => 'en', :uiColor => '#AADC6E', :toolbar => 'classic' }, class: "w-100" %>
+      <%= f.text_area :notes, placeholder: "Write your reviews...", type: "text", cols: '30', rows: '5' %>
     </div>
-
   </div>
-
 </div>
