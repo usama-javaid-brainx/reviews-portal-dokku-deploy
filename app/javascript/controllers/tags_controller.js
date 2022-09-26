@@ -30,9 +30,14 @@ export default class extends Controller {
     return tag;
   }
 
-  removeTag(event){
-    let removeText = ','.concat( event.currentTarget.parentElement.innerText)
+  removeTag(event) {
+    let removeText = ','.concat(event.currentTarget.parentElement.innerText)
     this.selectedTagsTarget.value = this.selectedTagsTarget.value.replace(removeText, '')
     event.currentTarget.parentElement.remove()
   }
+
+  connect() {
+    $('#review_cuisine').select2()
+  }
+
 }

@@ -16,7 +16,6 @@
               <li class="nav-item">
                 <a href="#photo_area" class="nav-link">Photos</a>
               </li>
-
               <% if @curr_category.address? %>
                 <li class="nav-item">
                   <a href="#localization_area" class="nav-link">Localization</a>
@@ -59,7 +58,7 @@
 
               <!-- review area start -->
               <div class="review_area" id="review_area">
-                <%= render 'reviews/review', review: review, f: form %>
+                <%= render 'reviews/review', review: review, f: form, curr_category: @curr_category %>
               </div>
 
               <!-- photo area start -->
