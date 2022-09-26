@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-categories = ["Movies", "Books", "Games", "Restaurants"]
+categories = ["Restaurants", "Games", "Books", "Movies"]
 categories.each do |name|
   Category.create(name: name, address: name == 'Restaurants', google_places: name == 'Restaurants', price: true, cuisine: name == 'Restaurants')
 end
 
-categories_images = ['videos', 'books', 'games', 'cutlery']
+categories_images = ['cutlery', 'games', 'books', 'videos']
 categories.zip(categories_images).each do |category, category_img|
   Category.find_by(name: category).icon.attach(
     io: File.open(Rails.root.join("app/assets/images/template/#{category_img}.svg")),
@@ -19,7 +19,7 @@ categories.zip(categories_images).each do |category, category_img|
   )
 end
 
-categorys = ['Genres', 'Genres', 'Genres', 'Cuisine']
+categorys = [ 'Cuisine', 'Genres', 'Genres', 'Genres']
 categorys.each_with_index do |category, index|
   Category.find_by(id: index + 1).update(sub_category_title: category)
 end
