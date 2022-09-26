@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :show, :update, :destroy]
 
+  def homepage
+    reviews = review_filter(current_user.reviews)
+    @pagy, @reviews = pagy(reviews, items: 12)
+  end
+
   def index
     duplicate_review if session[:edit_review].present?
     reviews = review_filter(current_user.reviews)

@@ -1,49 +1,55 @@
-<div data-controller="filter">
+<div class="filter-bar" data-controller="filter">
   <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-    <div class="middle_nav">
+    <div class="middle-nav">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4 d-flex justify-content-between justify-content-lg-start">
+        <div class="row align-items-center">
+          <div class="col-lg-4 d-flex justify-content-between align-items-center">
 
-            <div class="search">
-              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
+            <div class="col-lg-6 dropdown category-dropdown">
+              <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
+              <ul class="dropdown-menu" aria-labelledby="category-dropdown">
+                <li>
+                  <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
+                </li>
+                <% Category.all.each do |category| %>
+                  <li>
+                    <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
+                  <span class="icon">
+                  <%= show_svg(category.icon) if category.icon.attached? %>
+                    </span>
+                      <%= category.name %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+
+            <div class="col-lg-3">
+              <button type="button" class="filter" data-bs-toggle="modal" data-bs-target="#filterModal">
+                <%= image_tag("template/filter.svg") %>Filters<span data-filter-target="appliedFilter"></span>
+              </button>
+            </div>
+            <div class="col-lg-2 navbar-search">
+              <%#= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <button>
                 <%= image_tag("template/search.svg") %>
               </button>
             </div>
-            <button type="button" class="filter" data-bs-toggle="modal" data-bs-target="#filterModal">
-              <%= image_tag("template/filter.svg") %>Filters<span data-filter-target="appliedFilter"></span>
-            </button>
           </div>
           <div class="col-lg-4">
-            <ul class="nav">
+            <ul class="nav justify-content-evenly">
               <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
               <%= f.hidden_field :category_id, :value => "#{params[:category_id]}" %>
-              <li><%= link_to 'All', reviews_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'all'}" %></li>
-              <li><%= link_to 'Reviews', reviews_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
-              <li><%= link_to 'Wishlist', reviews_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
-              <li><%= link_to 'Favorites', reviews_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
+              <li><%= link_to 'All', reviews_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'all'}" %></li>
+              <li><%= link_to 'Reviews', reviews_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'false'}" %></li>
+              <li><%= link_to 'Wishlist', reviews_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'true'}" %></li>
+              <li><%= link_to 'Favorites', reviews_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
-            <%= link_to "Switch", homepage_path , class: "ml_5 btn btn-primary"%>
           </div>
-          <div class="col-lg-4 d-flex justify-content-end">
-            <!-- Top Rating -->
-            <%= f.select(:score, [["Top Rated", "desc"], ["Low Rated", "asc"]], selected: params[:score]) %>
-            <ul class="layout_changer nav nav-tabs d-none" role="tablist">
-              <li>
-                <a href="#grid_layout1" class="active" data-bs-toggle="tab" role="tab" aria-controls="grid_layout1" aria-selected="true">
-                  <%= image_tag("template/icon1.svg") %>
-                </a>
-              </li>
-              <li>
-                <a href="#list_layout1" data-bs-toggle="tab" role="tab" aria-controls="list_layout1" aria-selected="false">
-                  <%= image_tag("template/icon2.svg") %>
-                </a>
-              </li>
-            </ul>
-            <!-- map_enable_btn -->
-            <a class="map_enable_btn d-none" href="grid-view-map-enabled.html"><%= image_tag("template/icon3.svg") %>
-              <span class="text">Show Map</span><span class="switch"></span></a>
+          <div class="col-lg-4 text-end">
+            <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-btn' do %>
+              <%= image_tag("template/plus.svg") %><span> Add New</span>
+            <% end %>
           </div>
         </div>
       </div>
@@ -94,5 +100,6 @@
         </div>
       </div>
     </div>
+
   <% end %>
 </div>

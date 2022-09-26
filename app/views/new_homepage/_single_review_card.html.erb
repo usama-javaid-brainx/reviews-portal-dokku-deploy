@@ -1,0 +1,45 @@
+<!-- single card -->
+<div class="col-lg-3 col-md-6">
+  <div class="card">
+    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
+      <% if review.images.present? %>
+        <%= link_to review_path(review) do %>
+          <div class="owl-carousel owl-theme card_carousel">
+            <% review.images[..5].each do |image| %>
+              <div class="item"><%= image_tag(image) %></div>
+            <% end %>
+          </div>
+        <% end %>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
+      <% else %>
+        <%= link_to review_path(review) do %>
+          <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
+        <% end %>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <div class="card-body-name top">
+        <h3 class="review-name"><%= review.name %></h3>
+        <% if review.average_score.present? %>
+          <p class="product_rating"><%= image_tag("template/star.svg") if review.average_score? %>
+            <span><%= review.average_score %></span>
+          </p>
+        <% else %>
+          <span class='review_btn'><%= review.to_try ? "Wishlist" : "Review" %> </span>
+        <% end %>
+      </div>
+      <% if review.state.present? and review.country.present? %>
+        <span class="state-name"><%= review.state %> <%=', ' + review.country %></span>
+      <% end %>
+      <div class="d-flex align-items-center">
+        <% if review.cuisine? %>
+        <span class="cuisine-tag">
+         <%= review.cuisine %>
+        </span>
+        <% end %>
+        <span class="share_btn"><%= image_tag(review.shareable ? "template/add.png" : "template/lock.svg") %></span>
+      </div>
+    </div>
+  </div>
+</div>

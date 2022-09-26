@@ -2406,6 +2406,77 @@ li.category-list-item {
     color: #A5A5B9;
 }
 
+/*new homepage*/
+
+.filter-bar .middle-nav{
+    background: #FFFFFF;
+    padding: 30px 0px;
+    border-bottom: 1px solid #EDEDFB;
+}
+.filter-bar .add-new-btn{
+    border: 1px solid #6E3EF7;
+    background-color: #6E3EF7;
+    color:white;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+.filter-bar .add-new-btn:hover{
+    background: #FFFFFF;
+    color: #6E3EF7;
+    border-color: #6E3EF7;
+}
+.filter-bar ul.nav li a{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: black;
+    padding-bottom: 10px;
+}
+.filter-bar ul.nav li a.new-active{
+    color: #6E3EF7;
+    border-bottom: 3px solid #6E3EF7;
+}
+.add-new-btn:hover img {
+    filter: brightness(0) saturate(100%) invert(28%) sepia(63%) saturate(6978%) hue-rotate(251deg) brightness(101%) contrast(94%);
+}
+.card-body-name{
+    margin-bottom: 5px;
+}
+.cuisine-tag{
+    font-size: 14px;
+    border: 1px solid #6E3EF7;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 2px 7px;
+    color: #6E3EF7;
+    background: #F7F5FC;
+}
+h3.review-name{
+    padding: 0px;
+}
+.state-name{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.navbar-search button{
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+    background: #FFFFFF;
+    padding: 6px 10px;
+    box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
+}
+.category-dropdown .toggler{
+    padding: 1rem 9rem;
+    color: #6E3EF7;
+    font-size: 1.4rem;
+    font-weight: 500;
+    background: #FFFFFF;
+    border: 1px solid #6E3EF7;
+    border-radius: 5px;
+    line-height: 1;
+}
+
 @keyframes loader3 {
     0% {
         transform: scale(0, 0);
