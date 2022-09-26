@@ -54,6 +54,7 @@ gem 'filestack-rails', '~> 5.5'
 gem "sassc-rails"
 
 gem 'discard', '~> 1.2'
+gem 'acts_as_list'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
