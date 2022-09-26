@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'guests/show'
   get 'guests/create_review'
+  resources :guests, only: [:show]
 
   get 'users/index'
   get 'users/remove_avatar'
