@@ -15,7 +15,7 @@
                   <li>
                     <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
-                  <%= show_svg(category.icon) if category.icon.attached? %>
+                  <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
                       <%= category.name %>
                     <% end %>
