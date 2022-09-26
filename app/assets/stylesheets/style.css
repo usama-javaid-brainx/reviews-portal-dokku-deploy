@@ -2488,7 +2488,7 @@ li.category-list-item {
     padding: unset;
 }
 
-.cuisine-group .select2-selection {
+.cuisine-group .select2-selection--single {
     display: block;
     padding: 1px;
     height: 4rem;
