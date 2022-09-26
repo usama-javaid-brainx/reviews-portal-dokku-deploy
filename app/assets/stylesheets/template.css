@@ -217,7 +217,7 @@ img.small-thumb:hover + .delete-icon {
     width: 2.8rem;
     height: 2.4rem;
     background: #F7F5FC;
-    border: 1px solid #6E3EF7;
+    border: 1px solid gray;
     border-radius: 4px;
     text-align: center;
     line-height: 2rem;
