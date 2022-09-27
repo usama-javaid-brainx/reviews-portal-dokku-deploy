@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_09_27_090723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,29 +60,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
-    t.string "sub_category_title"
+    t.boolean "start_date"
+    t.boolean "end_date"
+    t.boolean "author"
+    t.boolean "platform"
+    t.boolean "url"
+    t.boolean "google_url"
+    t.boolean "foursquare_url"
+    t.boolean "yelp_url"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
-    t.string "file"
-    t.integer "user_id"
-    t.integer "parent_id"
-    t.string "parent_type"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "data_fingerprint"
-    t.string "type", limit: 30
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
+    t.index ["user_id"], name: "index_ck_editor_images_on_user_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -136,6 +130,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
     t.datetime "discarded_at"
     t.integer "parent_id"
     t.string "slug"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "author"
+    t.text "platform"
+    t.string "url"
+    t.string "google_url"
+    t.string "foursquare_url"
+    t.string "yelp_url"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -171,6 +173,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_081340) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "ck_editor_images", "users"
   add_foreign_key "meals", "reviews"
   add_foreign_key "reviews", "users"
 end
