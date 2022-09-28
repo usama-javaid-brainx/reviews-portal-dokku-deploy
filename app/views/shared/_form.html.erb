@@ -1,16 +1,20 @@
 <main class="position-relative">
   <a class="back" href="javascript:history.back()"><%= image_tag("template/left-arrow.svg") %></a>
-  <div class="add_review_area pt_30">
+  <div class="add_review_area">
     <!-- page header start-->
-    <div class="add_review_area_header sticky-top">
+    <div class="add_review_area_header sticky-top pt_20">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <h2 class="title"><%= head_name %> Review</h2>
             <!-- add review nav start -->
-            <ul class="nav nav-pills" id="add-restaurant-review-nav">
+            <ul class="nav nav-pills justify-content-between" id="add-restaurant-review-nav">
               <li class="nav-item">
-                <a href="#review_area" class="nav-link active">Review</a>
+                <a href="#category_area" class="active nav-link">Category</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#description_area" class="nav-link">Description</a>
               </li>
 
               <li class="nav-item">
@@ -21,14 +25,17 @@
                   <a href="#localization_area" class="nav-link">Localization</a>
                 </li>
               <% end %>
-              <li class="nav-item">
-                <a href="#tags_area" class="nav-link">Tags</a>
-              </li>
+
               <% if @curr_category.address? %>
                 <li class="nav-item">
                   <a href="#favourite_dishes_area" class="nav-link">Highlights</a>
                 </li>
               <% end %>
+
+              <li class="nav-item">
+                <a href="#tags_area" class="nav-link">Tags</a>
+              </li>
+
             </ul>
             <!-- add review nav end -->
           </div>
@@ -48,12 +55,8 @@
                  data-places-place-id-value="<%= review.place_id %>">
 
               <!-- category area -->
-              <div class="category_area pt_30" id="category_area">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <%= render 'reviews/category', review: review, f: form %>
-                  </div>
-                </div>
+              <div class="category_area pt_35" id="category_area">
+                <%= render 'reviews/category', review: review, f: form %>
               </div>
 
               <!-- review area start -->
@@ -62,26 +65,28 @@
               </div>
 
               <!-- photo area start -->
-              <div class="photo_area pt_30" id="photo_area">
+              <div class="photo_area pt_35" id="photo_area">
                 <%= render 'reviews/photos', review: review, f: form %>
               </div>
 
               <!-- localization area start -->
               <% if @curr_category.address? %>
-                <div class="localization_area pt_30" id="localization_area">
+                <div class="localization_area pt_35" id="localization_area">
                   <%= render 'reviews/localization', review: review, f: form %>
                 </div>
               <% end %>
 
-              <!-- tags area start -->
-              <div class="tags_area pt_30" id="tags_area">
-                <%= render 'reviews/tags', review: review, f: form %>
-              </div>
               <% if @curr_category.cuisine? %>
-                <div class="favourite_dishes_area pt_30" id="favourite_dishes_area">
+                <div class="favourite_dishes_area pt_35" id="favourite_dishes_area">
                   <%= render 'reviews/favourite_dishes', review: review, f: form %>
                 </div>
               <% end %>
+
+              <!-- tags area start -->
+              <div class="tags_area pt_35" id="tags_area">
+                <%= render 'reviews/tags', review: review, f: form %>
+              </div>
+
               <div class="row pt_50 align-items-center">
                 <div class="col-3 col-sm-4">
                   <a class="btn white cancel" href="#">Cancel</a>
@@ -120,7 +125,7 @@
                     <%= image_tag('template/users.svg', class: 'mr_5') %>
                     <span>Public REVIEW</span>
                   </div>
-                  <%= form.submit form.object.persisted? ? "Update Review" : "Add Review" , class: 'btn white add_review ml_25' %>
+                  <%= form.submit form.object.persisted? ? "Update Review" : "Add Review", class: 'add-review-btn ml_25' %>
                 </div>
               </div>
             </div>
