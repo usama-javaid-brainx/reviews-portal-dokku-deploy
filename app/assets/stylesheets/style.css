@@ -2554,3 +2554,18 @@ h3.review-name{
 .bg-price {
     background: #848496;
 }
+
+.cuisine-group .select2 {
+    padding: unset;
+}
+
+.cuisine-group .select2-selection {
+    display: block;
+    padding: 1px;
+    height: 4rem;
+    border: 1px solid #EDEDFB;
+}
+
+.cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow{
+    margin: 4px;
+}

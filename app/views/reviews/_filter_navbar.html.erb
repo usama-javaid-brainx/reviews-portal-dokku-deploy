@@ -2,7 +2,7 @@
   <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
     <div class="middle_nav">
       <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
           <div class="col-lg-4 d-flex justify-content-between justify-content-lg-start">
 
             <div class="search">
@@ -66,8 +66,8 @@
                 <div class="tag-card-h overflow-auto">
                   <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
                   <% cuisines.each do |cuisine| %>
-                    <% if cuisine.cuisine.present? %>
-                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.cuisine).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.cuisine %></span>
+                    <% if cuisine.present? %>
+                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
                     <% end %>
                   <% end %>
                 </div>
@@ -80,7 +80,7 @@
               <div class="tag-card-h overflow-auto">
                 <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
                 <% tags.each do |tag| %>
-                  <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag %></span>
+                  <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag.titleize).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag.titleize %></span>
                 <% end %>
               </div>
             </div>
