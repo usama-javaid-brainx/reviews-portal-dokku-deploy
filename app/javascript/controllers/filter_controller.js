@@ -25,10 +25,10 @@ export default class extends Controller {
     $(e.currentTarget).toggleClass(clearClass)
     let selectedTag = $(e.currentTarget).toggleClass('cuisine-select cuisine-unselect');
     if (selectedTag.hasClass('cuisine-select')) {
-      filterType.push(e.currentTarget.innerHTML)
+      filterType.push(e.currentTarget.innerHTML.replace(/&amp;/g, '&'))
       this.filterCount = this.filterCount + 1
     } else {
-      filterType = filterType.filter(item => item !== e.currentTarget.innerHTML)
+      filterType = filterType.filter(item => item !== e.currentTarget.innerHTML.replace(/&amp;/g, '&'))
       if (this.filterCount - 1 >= 0) {
         this.filterCount = this.filterCount - 1
       }
