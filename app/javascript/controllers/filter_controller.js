@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter']
 
   connect() {
+    $('#category_id').select2()
     this.filterCount = 0
     this.cuisines = [];
     this.filters = [];
