@@ -13,15 +13,17 @@
             <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
           </li>
           <% Category.all.each do |category| %>
-            <li>
-              <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
-                <!--      TODO will uncomment when S3 will configure-->
-                <%#= show_svg(category.icon) if category.icon.attached? %>
-                <span class="ml_5">
+            <% if category.active? %>
+              <li>
+                <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
+                  <!--      TODO will uncomment when S3 will configure-->
+                  <%#= show_svg(category.icon) if category.icon.attached? %>
+                  <span class="ml_5">
                 <%= category.name %>
                 </span>
-              <% end %>
-            </li>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
           <!-- TODO Adding Link -->
           <li class="dropdown ml_15">
