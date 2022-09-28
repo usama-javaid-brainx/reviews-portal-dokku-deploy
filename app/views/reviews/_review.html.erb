@@ -1,54 +1,93 @@
-<h2>Description</h2>
+<h2>Review</h2>
 <div class="tabs_content_wrap">
 
   <% if @curr_category.google_places? %>
     <div class="form_group row align-items-center">
-      <label for="search">Location</label>
+      <label for="search" class="col-lg-5">Location</label>
 
-      <input id="search" type="text" placeholder="Search location" autofocus
+      <input class="col-lg-7" id="search" type="text" placeholder="Search a location" autofocus
              data-action="keydown->places#keydown"
              data-places-target="field"/>
     </div>
   <% end %>
 
   <div class="row align-items-center form_group">
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
-  </div>
-
-  <div class="row align-items-center form_group cuisine-group" data-controller="tags">
-    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
+    <%= f.label :name, "Name", class: 'col-lg-5' %>
+    <%= f.text_field :name, class: "col-lg-7", placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
   <div class="row align-items-center form_group">
-    <%= f.label :date, "Date" %>
-    <%= f.date_field :date %>
+    <%= f.label :date, "Date", class: 'col-lg-5' %>
+    <%= f.date_field :date, class: "col-lg-7" %>
   </div>
 
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+      <%= f.label :cuisine, curr_category.sub_category_title.titleize, class: 'col-lg-5' %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false }, class: 'col-lg-7' %>
+    </div>
+<!------TODO check will be add after clint provide requer------------>
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "Start Date", class: 'col-lg-5' %>
+    <%= f.date_field :start_date, class: "col-lg-7" %>
+  </div>
+
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "End Date", class: 'col-lg-5' %>
+    <%= f.date_field :end_date, class: "col-lg-7" %>
+  </div>
 
   <div class="form_group align-items-center row">
-    <%= f.label "Score" %>
-    <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
-    <span class="score-text col-lg-2"> /10</span>
+    <%= f.label "Author", class: "col-lg-5" %>
+    <%= f.text_field :author, placeholder: 'Author', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
   </div>
 
+  <div class="form_group align-items-center row">
+    <%= f.label "Platform", class: "col-lg-5" %>
+    <%= f.text_field :platform, placeholder: 'Platform', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+  </div>
 
-  <div class="row form_group">
-    <%= f.label :price_range, 'Price', class: 'indent' %>
-    <div class="align-items-center rating d-flex p-0" data-controller="dollar-price-range">
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 1 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
-      <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
-      <span class="price-range-text"> Select price range</span>
+  <div class="form_group align-items-center row">
+    <%= f.label "Url", class: "col-lg-5" %>
+    <%= f.text_field :url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Google Url", class: "col-lg-5" %>
+    <%= f.text_field :google_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Foursquare Url", class: "col-lg-5" %>
+    <%= f.text_field :foursquare_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Yelp Url", class: "col-lg-5" %>
+    <%= f.text_field :yelp_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
+  </div>
+<!--  TODO end--------------->
+
+  <% if @curr_category.price? %>
+    <div class="form_group align-items-center row">
+      <%= f.label "Score", class: "col-lg-5" %>
+      <%= f.number_field :average_score, placeholder: 'Score', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
     </div>
-  </div>
 
+    <div class="row form_group">
+      <%= f.label :price_range, 'Price range', class: 'indent col-lg-5' %>
+      <div class="rating d-flex col-lg-7 p-0" data-controller="dollar-price-range">
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '1', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 1 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '2', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 2 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '3', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 3 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '4', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 4 }" %></span>
+        <span data-action="click->dollar-price-range#priceRange" data-dollar-price-range-target="dollar" class="radio-button"><%= f.radio_button :price_range, '5', class: "#{ 'bg-blue' if review.price_range.present? && review.price_range > 5 }" %></span>
+      </div>
+    </div>
+  <% end %>
   <div class="row form_group">
     <%= f.label :notes, "Review Body", class: 'col-lg-5' %>
     <div class='list-style-unset'>
-      <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class:"w-100" %>
+      <%= f.text_area :notes, placeholder: "Write your reviews...", type: "text", cols: '30', rows: '5' %>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_21_101921) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_27_090723) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_101921) do
     t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
+    t.boolean "start_date"
+    t.boolean "end_date"
+    t.boolean "author"
+    t.boolean "platform"
+    t.boolean "url"
+    t.boolean "google_url"
+    t.boolean "foursquare_url"
+    t.boolean "yelp_url"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -122,6 +130,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_101921) do
     t.datetime "discarded_at"
     t.integer "parent_id"
     t.string "slug"
+    t.date "start_date"
+    t.date "end_date"
+    t.text "author"
+    t.text "platform"
+    t.string "url"
+    t.string "google_url"
+    t.string "foursquare_url"
+    t.string "yelp_url"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
