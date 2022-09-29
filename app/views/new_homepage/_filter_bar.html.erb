@@ -1,4 +1,4 @@
-<div class="filter-bar" data-controller="filter">
+<div class="filter-bar">
   <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
     <div class="middle-nav">
       <div class="container">
@@ -8,7 +8,7 @@
               <%= f.select :category_id, Category.all.collect { |c| [c.name, c.id] } %>
             </div>
 
-            <div class="col-lg-3">
+            <div class="col-lg-3" data-controller="filter">
               <button type="button" class="filter" data-bs-toggle="modal" data-bs-target="#filterModal">
                 <%= image_tag("template/filter.svg") %>Filters<span data-filter-target="appliedFilter"></span>
               </button>
@@ -61,10 +61,10 @@
 
             </div>
             <div class="col-lg-2 navbar-search">
-              <%#= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
-              <button>
+              <button data-action="click->filter#displaySearch">
                 <%= image_tag("template/search.svg") %>
               </button>
+              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class:"d-none" %>
             </div>
           </div>
           <div class="col-lg-4">

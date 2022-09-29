@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter']
 
   connect() {
-    $('#category_id').select2()
     this.filterCount = 0
     this.cuisines = [];
     this.filters = [];
@@ -84,12 +83,6 @@ export default class extends Controller {
         this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')
       }
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
-    }
-  }
-
-  search(event) {
-    if (event.key === "Enter") {
-      this.filtersFormTarget.submit()
     }
   }
 }
