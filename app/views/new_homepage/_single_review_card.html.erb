@@ -10,12 +10,12 @@
             <% end %>
           </div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
       <% else %>
         <%= link_to review_path(review) do %>
           <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
       <% end %>
     </div>
     <div class="card-body">
