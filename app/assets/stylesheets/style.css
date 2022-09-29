@@ -2554,7 +2554,6 @@ h3.review-name{
     background: #848496;
 }
 
-
 .cuisine-group .select2 {
     padding: unset;
 }
@@ -2570,14 +2569,12 @@ h3.review-name{
     margin: 4px;
 }
 
-
 .cuisine-group .select2-container{
     padding: 0px;
 }
 
 .ck-editor__editable_inline {
     min-height: 150px;
-
 }
 
 div.ck ul{

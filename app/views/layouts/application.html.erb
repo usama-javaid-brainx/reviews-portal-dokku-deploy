@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.2.2/dist/photoswipe.css" integrity="sha256-PWZ5T/Tr5E5OnK6FkaURy3VdK7K5uezyoQ/h7jXrdR8=" crossorigin="anonymous">
 
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  <%= javascript_include_tag 'dashboard' %>
 
   <%= yield(:head_content) if content_for?(:head_content) %>
   <script
@@ -37,7 +36,7 @@
 </head>
 
 <body aria-colcount="position-relative" data-bs-spy="scroll" data-bs-target="#add-restaurant-review-nav" data-bs-offset="190" tabindex="0" >
-
+  <%= javascript_include_tag 'dashboard' %>
   <!-- Preloader Start -->
   <div id="preloader" class="d-none">
     <div class="loader3">
@@ -63,5 +62,4 @@
     }
   });
 </script>
-
 </html>
