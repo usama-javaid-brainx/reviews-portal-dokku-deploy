@@ -2500,3 +2500,8 @@ li.category-list-item {
         margin-top: 35.520px;
     }
 }
+
+.totry-all {
+    border-width: 1px 1px 1px 1px;
+    border-radius: 6px 0 0 6px;
+}
