@@ -2510,7 +2510,7 @@ h3.review-name {
     width: 100%;
     cursor: pointer;
     padding: 10px;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
+    /*box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);*/
     border: 1px solid #6E3EF7;
     border-radius: 6px;
     background: #FFFFFF;
