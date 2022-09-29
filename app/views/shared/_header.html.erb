@@ -1,64 +1,65 @@
 <header class="d-flex align-items-center sticky-top">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-lg-3 col-3">
+      <div class="col-3 <%= current_user.second_view ? "col-lg-6" : "col-lg-3" %>" >
         <%= link_to root_path, class: 'logo' do %>
           <%= image_tag("template/fullsite-logo.svg", class: "d-lg-block d-none") %>
           <%= image_tag("template/smallsite-logo.svg", class: "d-lg-none d-block") %>
         <% end %>
       </div>
-      <div class="col-lg-6 col-6 text-center">
-        <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
-          <li>
-            <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
-          </li>
-          <% Category.all.each do |category| %>
-            <% if category.active? %>
-              <li>
-                <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
-                  <!--      TODO will uncomment when S3 will configure-->
-                  <%#= show_svg(category.icon) if category.icon.attached? %>
-                  <span class="ml_5">
-                <%= category.name %>
-                </span>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
-          <!-- TODO Adding Link -->
-          <li class="dropdown ml_15">
-            <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
-            <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
-              <li><a class="dropdown-item" href="#">Other Category</a></li>
-              <hr>
-              <li><%= link_to "Manage categories", categories_path, class: "dropdown-item" %></li>
-            </ul>
-          </li>
-        </ul>
-        <!-- menu dropdown for mobile -->
-        <div class="d-lg-none dropdown menuItemDropdown">
-          <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
-          <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
-
+      <% if !current_user.second_view? %>
+        <div class="col-lg-6 col-6 text-center">
+          <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
-              <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
+              <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
             </li>
             <% Category.all.each do |category| %>
+              <% if category.active? %>
+                <li>
+                  <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
+                    <!--      TODO will uncomment when S3 will configure-->
+                    <%#= show_svg(category.icon) if category.icon.attached? %>
+                    <span class="ml_5">
+                <%= category.name %>
+                </span>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+            <!-- TODO Adding Link -->
+            <li class="dropdown ml_15">
+              <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
+              <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
+                <li><a class="dropdown-item" href="#">Other Category</a></li>
+                <hr>
+                <li><%= link_to "Manage categories", categories_path, class: "dropdown-item" %></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- menu dropdown for mobile -->
+          <div class="d-lg-none dropdown menuItemDropdown">
+            <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
+            <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
+
               <li>
-                <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
+                <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
+              </li>
+              <% Category.all.each do |category| %>
+                <li>
+                  <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
                     <!--      TODO will uncomment when S3 will configure-->
                     <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
-                  <%= category.name %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+                    <%= category.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
-
-      <div class="col-lg-3 col-3 text-end">
+      <% end %>
+      <div class="col-3 <%= current_user.second_view ? "col-lg-6" : "col-lg-3" %> text-end">
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">

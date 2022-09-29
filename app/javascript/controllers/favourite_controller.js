@@ -6,7 +6,6 @@ export default class extends Controller {
   }
 
   updateFavourite(event) {
-    debugger
     let favouriteReview = $(event.currentTarget).toggleClass('checked')
     this.request(`favourite=${favouriteReview.hasClass('checked')}`)
   }

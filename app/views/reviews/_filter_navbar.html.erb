@@ -24,7 +24,7 @@
               <li><%= link_to 'Wishlist', reviews_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
               <li><%= link_to 'Favorites', reviews_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
-            <%= link_to "Switch", homepage_path , class: "ml_5 btn btn-primary"%>
+            <%= link_to "Switch", homepage_path(second_view: true) , class: "ml_5 btn btn-primary"%>
           </div>
           <div class="col-lg-4 d-flex justify-content-end">
             <!-- Top Rating -->
