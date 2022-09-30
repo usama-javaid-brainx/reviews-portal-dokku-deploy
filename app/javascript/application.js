@@ -59,8 +59,6 @@ $fileInput.on('change', function () {
   }
 });
 
-$('#category_id').select2()
-
 function callbackOnOpen1() {
   console.log(data);
 }
