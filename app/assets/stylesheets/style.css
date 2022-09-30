@@ -1981,7 +1981,7 @@ hitting-enter-submit
 
 
 /* photo tabs */
-.file_upload_place {
+.file-upload-place {
     position: relative;
     height: 20rem;
     background: #FBFBFE;
@@ -1989,7 +1989,7 @@ hitting-enter-submit
     border-radius: 6px;
 }
 
-.file_upload_place .content {
+.file-upload-place .content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1998,14 +1998,14 @@ hitting-enter-submit
     text-align: center;
 }
 
-.file_upload_place .content .upload_link {
+.file-upload-place .content .upload-link {
     font-size: 1.4rem;
     color: #00000A;
     line-height: 1.42;
     padding-bottom: 1.2rem;
 }
 
-.file_upload_place .content .upload_link a {
+.file-upload-place .content .upload-link a {
     color: #6E3EF7;
 }
 

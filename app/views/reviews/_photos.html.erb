@@ -1,17 +1,14 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
-
-  <% unless f.object.images? %>
-    <div class="file_upload_place" id="file_upload_place">
+    <div class="file-upload-place <%= "d-none" if f.object.images? %>" id="file-upload-place">
       <div class="content">
-        <div class="upload_link">
+        <div class="upload-link">
           <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
           <span>or drag and drop</span>
           <div class="photos-jpg-text">PNG, JGP (max 10MB)</div>
         </div>
       </div>
     </div>
-  <% end %>
 
   <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
