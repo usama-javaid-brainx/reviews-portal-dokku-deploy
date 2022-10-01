@@ -1211,47 +1211,6 @@ header {
     z-index: 900;
 }
 
-
-/*toggle butn for wishlist*/
-.mode-toggle #toggle[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
-.mode-toggle label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 3rem;
-    height: 1.6rem;
-    background: #CCCCE1;
-    display: block;
-    border-radius: 4rem;
-    position: relative;
-}
-
-.mode-toggle label::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: .2rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    background: #fff;
-    border-radius: 50%;
-    transition: 0.2s;
-    transform: translateY(-50%);
-}
-
-.mode-toggle #toggle:checked + label {
-    background: #6E3EF7;
-}
-
-.mode-toggle #toggle:checked + label:after {
-    left: calc(100% - .2rem);
-    transform: translateX(-100%) translateY(-50%);
-}
-
 .public_review {
     display: flex;
     align-items: center;
@@ -2554,6 +2513,72 @@ h3.review-name {
 /*.filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{*/
 /*    margin-top: 5px;*/
 /*}*/
+
+/*settings style*/
+
+.settings{
+    width: 672px;
+    margin: 20px auto auto auto;
+    padding: 30px;
+}
+.settings-title{
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.25;
+    color: #00000A;
+}
+.settings-title{
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.25;
+    color: #00000A;
+}
+.view-settings-wrapper{
+    width: 672px;
+    border: 1px solid #EDEDFB;
+    margin: 20px auto auto auto;
+    padding: 30px;
+    border-radius: 5px;
+}
+/* view-switch settings */
+.mode-switch #setting-switch[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.mode-switch label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 3rem;
+    height: 1.6rem;
+    background: #CCCCE1;
+    display: block;
+    border-radius: 4rem;
+    position: relative;
+}
+
+.mode-switch label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: .2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.2s;
+    transform: translateY(-50%);
+}
+
+.mode-switch #setting-switch:checked + label {
+    background: #6E3EF7;
+}
+
+.mode-switch #setting-switch:checked + label:after {
+    left: calc(100% - .2rem);
+    transform: translateX(-100%) translateY(-50%);
+}
 
 @keyframes loader3 {
     0% {
