@@ -60,10 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
-    t.bigint "user_id"
-    t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -72,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.boolean "google_url"
     t.boolean "foursquare_url"
     t.boolean "yelp_url"
-    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -126,16 +124,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
+    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
-    t.text "images", default: [], array: true
     t.integer "parent_id"
     t.string "slug"
     t.date "start_date"
     t.date "end_date"
-    t.text "author"
-    t.text "platform"
+    t.string "author"
+    t.string "platform"
     t.string "url"
     t.string "google_url"
     t.string "foursquare_url"
