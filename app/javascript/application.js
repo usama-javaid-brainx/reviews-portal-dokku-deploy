@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import './add_jquery'
+// import * as bootstrap from "bootstrap"
 import PhotoSwipeLightbox from "photoswipe/lightbox"
 import PhotoSwipe from "photoswipe"
 
@@ -63,3 +64,9 @@ $fileInput.on('change', function () {
 function callbackOnOpen1() {
   console.log(data);
 }
+
+$('form').on('keypress', event => {
+  if (event.keyCode == 13) {
+    return false;
+  }
+});
