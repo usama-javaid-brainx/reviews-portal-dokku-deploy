@@ -63,9 +63,3 @@ $fileInput.on('change', function () {
 function callbackOnOpen1() {
   console.log(data);
 }
-
-$('form').on('keypress', event => {
-  if (event.keyCode == 13) {
-    return false;
-  }
-});
