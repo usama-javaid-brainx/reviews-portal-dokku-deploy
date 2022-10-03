@@ -2498,3 +2498,19 @@ li.category-list-item {
 .cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow{
     margin: 4px;
 }
+
+.card-load {
+    animation-duration: 1.5s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: 0;
+    }
+
+    to {
+        margin-top: 35.520px;
+    }
+}
