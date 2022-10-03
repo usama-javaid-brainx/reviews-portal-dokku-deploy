@@ -2467,6 +2467,10 @@ h3.review-name {
     top: 110%;
 }
 
+.navbar-search .input-mobile{
+    right: 0px;
+}
+
 .filter-bar .category-dropdown select {
     height: 4rem;
     cursor: pointer;

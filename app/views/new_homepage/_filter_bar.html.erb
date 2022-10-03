@@ -93,11 +93,11 @@
           </div>
           <div class="col-lg-3" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-              <button type="button" class="filter filter-mobile" data-bs-toggle="modal" data-bs-target="#filterModal">
+              <button type="button" class="filter filter-mobile" data-bs-toggle="modal" data-bs-target="#filterModalSmall">
                 <%= image_tag("template/filter.svg") %><span class="d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
               </button>
               <!--filter modal-->
-              <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="filterModalSmall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header" style="height: 72px; padding: 20px 24px;">
@@ -148,7 +148,7 @@
             <span data-action="click->filter#fieldDisplay">
                 <%= image_tag("template/search.svg") %>
               </span>
-              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "d-none search-input-field", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
+              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "d-none search-input-field input-mobile", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
           </div>
         </div>
