@@ -20,53 +20,52 @@
       <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
       <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false } %>
     </div>
-<!------TODO check will be add after clint provide requer------------>
-  <div class="row align-items-center form_group">
-    <%= f.label :date, "Start Date", class: 'col-lg-5' %>
-    <%= f.date_field :start_date, class: "col-lg-7" %>
-  </div>
-
-  <div class="row align-items-center form_group">
-    <%= f.label :date, "End Date", class: 'col-lg-5' %>
-    <%= f.date_field :end_date, class: "col-lg-7" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Author", class: "col-lg-5" %>
-    <%= f.text_field :author, placeholder: 'Author', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Platform", class: "col-lg-5" %>
-    <%= f.text_field :platform, placeholder: 'Platform', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Url", class: "col-lg-5" %>
-    <%= f.text_field :url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Google Url", class: "col-lg-5" %>
-    <%= f.text_field :google_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Foursquare Url", class: "col-lg-5" %>
-    <%= f.text_field :foursquare_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Yelp Url", class: "col-lg-5" %>
-    <%= f.text_field :yelp_url, placeholder: 'Url', class: 'col-lg-7', step: "0.01", max: "10", min: "0" %>
-  </div>
-<!--  TODO end--------------->
-
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
     <%= f.date_field :date %>
   </div>
+<!------TODO check will be add after clint provide requer------------>
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "Start Date"%>
+    <%= f.date_field :start_date%>
+  </div>
+
+  <div class="row align-items-center form_group">
+    <%= f.label :date, "End Date" %>
+    <%= f.date_field :end_date %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Author" %>
+    <%= f.text_field :author, placeholder: 'Author', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Platform" %>
+    <%= f.text_field :platform, placeholder: 'Platform', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Url" %>
+    <%= f.text_field :url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Google Url" %>
+    <%= f.text_field :google_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Foursquare Url" %>
+    <%= f.text_field :foursquare_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
+  </div>
+
+  <div class="form_group align-items-center row">
+    <%= f.label "Yelp Url" %>
+    <%= f.text_field :yelp_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
+  </div>
+<!--  TODO end--------------->
 
   <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
