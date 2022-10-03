@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     existing_review = Review.find_by(slug: review_id)
     new_review = existing_review.dup
     if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: SecureRandom.base58(32), to_try: edit_review == 'true' ? new_review.to_try : true )
-      redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review)
+      redirect_to edit_review == 'true' ? edit_review_path(new_review.slug) : review_path(new_review.slug)
     else
       redirect_to root_path, notice: "Review didn't created successfully please try again"
     end
