@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
+    t.bigint "user_id"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -71,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.boolean "google_url"
     t.boolean "foursquare_url"
     t.boolean "yelp_url"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
