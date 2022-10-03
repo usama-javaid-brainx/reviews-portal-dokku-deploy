@@ -7,9 +7,7 @@ export default class extends Controller {
   }
 
   copyLink() {
-    let url = window.location.origin
-    let parsedUrl = window.location.href.split('/')
-    navigator.clipboard.writeText(`${url}/guests/${this.slugValue}`)
+    navigator.clipboard.writeText(window.location.href)
     $(this.shareMsgTarget).toggleClass('d-none')
     setTimeout(
       ()=> {
