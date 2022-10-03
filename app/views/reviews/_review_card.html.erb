@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
       <% if review.images.present? %>
-        <%= link_to review_path(review) do %>
+        <%= link_to review_path(review.slug) do %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
@@ -12,7 +12,7 @@
         <% end %>
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
       <% else %>
-        <%= link_to review_path(review) do %>
+        <%= link_to review_path(review.slug) do %>
           <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
         <% end %>
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
