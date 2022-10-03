@@ -16,10 +16,11 @@
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
-    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false } %>
-    </div>
+  <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
+  </div>
+
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
@@ -27,8 +28,8 @@
   </div>
   <!------TODO check will be add after clint provide requer------------>
   <div class="row align-items-center form_group">
-    <%= f.label :start_date, "Start Date"%>
-    <%= f.date_field :start_date%>
+    <%= f.label :start_date, "Start Date" %>
+    <%= f.date_field :start_date %>
   </div>
 
   <div class="row align-items-center form_group">
@@ -47,7 +48,7 @@
   </div>
 
   <div class="form_group align-items-center row">
-    <%= f.label :url, "Url"%>
+    <%= f.label :url, "Url" %>
     <%= f.text_field :url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
   </div>
 
@@ -57,7 +58,7 @@
   </div>
 
   <div class="form_group align-items-center row">
-    <%= f.label :foursquare_url, "Foursquare Url"%>
+    <%= f.label :foursquare_url, "Foursquare Url" %>
     <%= f.text_field :foursquare_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
   </div>
 
