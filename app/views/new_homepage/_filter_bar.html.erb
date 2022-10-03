@@ -148,7 +148,7 @@
             <span data-action="click->filter#fieldDisplay">
                 <%= image_tag("template/search.svg") %>
               </span>
-              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "d-none search-input-field input-mobile", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
+              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "d-none input-mobile", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
           </div>
         </div>

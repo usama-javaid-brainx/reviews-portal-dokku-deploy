@@ -2467,7 +2467,15 @@ h3.review-name {
 }
 
 .navbar-search .input-mobile{
+    width: 330px;
     right: 0px;
+    position: absolute;
+    padding: 8px 10px;
+    color: grey;
+    border: 1px solid #EDEDFB;
+    background: #FFFFFF;
+    border-radius: 5px;
+    top: 110%;
 }
 
 .filter-bar .category-dropdown select {
