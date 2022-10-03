@@ -484,7 +484,7 @@ header {
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     background: #FFFFFF;
-    padding: 1rem 1.6rem;
+    padding: 2rem 1rem 2rem 1rem;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
     margin-left: 1rem;
 }
@@ -2442,11 +2442,12 @@ h3.review-name {
 
 .navbar-search span {
     display: block;
-    width: 45px;
+    height: 4rem;
+    width: 4rem;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     background: #FFFFFF;
-    padding: 9px;
+    padding: 0.7rem;
     cursor: pointer;
     box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
 }
@@ -2466,10 +2467,14 @@ h3.review-name {
     top: 110%;
 }
 
+.navbar-search .input-mobile{
+    right: 0px;
+}
+
 .filter-bar .category-dropdown select {
-    width: 100%;
+    height: 4rem;
     cursor: pointer;
-    padding: 10px;
+    padding: 1rem 9rem 1rem 1rem;
     box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
     border: 1px solid #6E3EF7;
     border-radius: 6px;
@@ -2482,7 +2487,7 @@ h3.review-name {
     padding: 50px;
 }
 
-.small-btn{
+.small-btn {
     padding: 2px;
 }
 
@@ -2517,30 +2522,34 @@ h3.review-name {
 
 /*settings style*/
 
-.settings{
+.settings {
     width: 672px;
     margin: 20px auto auto auto;
     padding: 30px;
 }
-.settings-title{
+
+.settings-title {
     font-weight: 600;
     font-size: 3rem;
     line-height: 1.25;
     color: #00000A;
 }
-.settings-title{
+
+.settings-title {
     font-weight: 500;
     font-size: 2rem;
     line-height: 1.25;
     color: #00000A;
 }
-.view-settings-wrapper{
+
+.view-settings-wrapper {
     width: 672px;
     border: 1px solid #EDEDFB;
     margin: 20px auto auto auto;
     padding: 30px;
     border-radius: 5px;
 }
+
 /* view-switch settings */
 .mode-switch #setting-switch[type=checkbox] {
     height: 0;
@@ -2579,6 +2588,18 @@ h3.review-name {
 .mode-switch #setting-switch:checked + label:after {
     left: calc(100% - .2rem);
     transform: translateX(-100%) translateY(-50%);
+}
+
+.filter-bar .filter-mobile {
+    width: 100%;
+}
+
+.position-add-button {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    z-index: 1111;
 }
 
 @keyframes loader3 {
@@ -2672,4 +2693,25 @@ h3.review-name {
 
 .cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow {
     margin: 4px;
+}
+
+.card-load {
+    animation-duration: 1.5s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: 0;
+    }
+
+    to {
+        margin-top: 35.520px;
+    }
+}
+
+.to-try-all {
+    border-width: 1px 1px 1px 1px;
+    border-radius: 6px 0 0 6px;
 }

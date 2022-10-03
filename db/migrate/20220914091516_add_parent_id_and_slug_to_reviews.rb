@@ -4,13 +4,11 @@ class AddParentIdAndSlugToReviews < ActiveRecord::Migration[7.0]
     add_column :reviews, :slug, :string
 
     Review.all.each do |review|
-      review.update(slug: SecureRandom.base58(32))
+      review.update(slug: "#{SecureRandom.base58(32)}#{review.id}")
     end
   end
   def down
     remove_column :reviews, :slug, :string
     remove_column :reviews, :parent_id, :integer
   end
-
-
 end
