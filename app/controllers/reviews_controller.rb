@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edit, :show, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:show]
+  before_action :set_review, only: [:edit, :update, :destroy]
 
   def index
     duplicate_review if session[:edit_review].present?
@@ -42,8 +43,13 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @parent_id = @review.parent_id
-    @review_user = User.find_by(id: @review.user_id)
+    if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
+      redirect_to guest_path
+    else
+      @review = current_user.reviews.find_by(slug: params[:id])
+      @parent_id = @review.parent_id
+      @review_user = User.find_by(id: @review.user_id)
+    end
   end
 
   def edit
