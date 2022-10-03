@@ -77,8 +77,13 @@
 
 .file_upload_place .upload_link button {
     background: transparent;
+    font-weight: 600;
     border: none;
-    color: #0d6efd;
+    color: #6E3EF7;
+}
+
+.photos-jpg-text{
+    color: #636373;
 }
 
 .uploaded-files .main-thumbnail {
