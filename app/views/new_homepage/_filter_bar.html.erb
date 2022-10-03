@@ -79,7 +79,6 @@
           <% end %>
         </div>
         <div class="col-lg-4 text-end">
-          <%= link_to "Switch", root_path(second_view: false), class: "ml_5 btn small-btn btn-primary" %>
           <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-btn' do %>
             <%= image_tag("template/plus.svg") %><span> Add New</span>
           <% end %>
