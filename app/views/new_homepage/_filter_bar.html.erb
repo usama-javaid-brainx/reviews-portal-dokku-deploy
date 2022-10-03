@@ -70,12 +70,12 @@
         </div>
         <div class="col-lg-4" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-            <ul class="nav justify-content-evenly">
+            <ul class="nav new-nav">
               <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
-              <li><%= link_to 'All', homepage_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'all' || params[:to_try].blank? }" %></li>
-              <li><%= link_to 'Reviews', homepage_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'false'}" %></li>
-              <li><%= link_to 'Wishlist', homepage_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'true'}" %></li>
-              <li><%= link_to 'Favorites', homepage_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'favourite'}" %></li>
+              <li><%= link_to 'All', homepage_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "to-try-all #{'active' if params[:to_try] == 'all' || params[:to_try].blank?}" %></li>
+              <li><%= link_to 'Reviews', homepage_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'false'}" %></li>
+              <li><%= link_to 'Wishlist', homepage_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'true'}" %></li>
+              <li><%= link_to 'Favorites', homepage_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
           <% end %>
         </div>
