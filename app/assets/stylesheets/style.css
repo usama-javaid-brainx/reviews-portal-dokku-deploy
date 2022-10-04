@@ -2691,6 +2691,10 @@ h3.review-name {
     .add_review_area .title {
         padding-bottom: 0;
     }
+
+    .review-card{
+        height: 355px;
+    }
 }
 
 .price-sz {

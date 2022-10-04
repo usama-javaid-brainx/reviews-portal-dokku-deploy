@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   before_action :home_data, only: [:homepage, :index]
 
   def homepage
+    @categories = Category.all.order("name asc")
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
   end
 
