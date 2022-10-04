@@ -93,10 +93,6 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.find(params[:id])
   end
 
-  def set_categories
-    @categories = Category.where(active: true)
-  end
-
   def review_params
     params[:review][:images] = [] if params[:review][:images] == [""]
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
