@@ -6,11 +6,13 @@ class ReviewsController < ApplicationController
     duplicate_review if session[:edit_review].present?
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
+    @categories = Category.where(active: true)
     @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
                           true
                         else
                           false
                         end
+
   end
 
   def new
