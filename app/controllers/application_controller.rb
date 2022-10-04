@@ -35,4 +35,8 @@ class ApplicationController < ActionController::Base
               end
     reviews
   end
+
+  def set_categories
+    @categories = Category.where(active: true)
+  end
 end

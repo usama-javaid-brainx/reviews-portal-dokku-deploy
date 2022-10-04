@@ -4,11 +4,11 @@
     <div class="category_content_wrap">
       <div data-controller="category" class="form_group row align-items-center">
         <label for="search">Category</label>
-        <%= f.select :category_id, Category.all.collect { |c| [c.name, c.id] }, { selected: @curr_category.id }, { data: { "action": "change->category#categorySelect", "category-target": "category" }, class:"border-dark text-black"  } %>
+        <%= f.select :category_id, Category.all.collect { |c| [c.name, c.id] }, { selected: @curr_category.id }, { data: { "action": "change->category#categorySelect", "category-target": "category" }, class:"text-black"  } %>
       </div>
       <div data-controller="category" class="form_group row align-items-center">
         <label for="search">Type</label>
-          <%= f.select :to_try, [["Review", false], ["Wishlist", true]], { include_blank: false }, class:"border-dark text-black" %>
+          <%= f.select :to_try, [["Review", false], ["Wishlist", true]], { include_blank: false }, class:"text-black" %>
       </div>
     </div>
   </div>

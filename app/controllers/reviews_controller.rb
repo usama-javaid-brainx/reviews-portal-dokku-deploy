@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index]
+  before_action :set_categories, only: [:index, :new, :show, :edit]
 
   def homepage
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
@@ -90,6 +91,10 @@ class ReviewsController < ApplicationController
 
   def set_review
     @review = current_user.reviews.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.where(active: true)
   end
 
   def review_params

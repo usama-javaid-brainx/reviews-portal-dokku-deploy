@@ -13,25 +13,36 @@
             <li>
               <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
             </li>
-            <% Category.all.each do |category| %>
-              <% if category.active? %>
-                <li>
-                  <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
-                    <!--      TODO will uncomment when S3 will configure-->
-                    <%#= show_svg(category.icon) if category.icon.attached? %>
-                    <span class="ml_5">
-                <%= category.name %>
+            <% @categories[0..3]&.each do |category| %>
+              <li>
+                <%= link_to reviews_path(category_id: category.id), class: "nav_link #{'active' if params[:category_id].to_i == category.id}" do %>
+                  <!--      TODO will uncomment when S3 will configure-->
+                  <%#= show_svg(category.icon) if category.icon.attached? %>
+                  <span class="ml_5">
+                <%= category.name.titleize %>
                 </span>
-                  <% end %>
-                </li>
-              <% end %>
+                  </li>
+                <% end %>
             <% end %>
             <!-- TODO Adding Link -->
-            <li class="dropdown ml_15">
-              <a class="bars" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
-              <ul class="dropdown-menu" aria-labelledby="menu_dropdown">
-                <li><a class="dropdown-item" href="#">Other Category</a></li>
-                <hr>
+            <li class="dropdown-center ml_15">
+              <a class="" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
+              <ul class="dropdown-menu">
+                <% @categories[4..]&.each do |category| %>
+                  <li>
+                    <%= link_to reviews_path(category_id: category.id), class: "dropdown-item #{'active' if params[:category_id].to_i == category.id}" do %>
+                      <!--      TODO will uncomment when S3 will configure-->
+                      <%#= show_svg(category.icon) if category.icon.attached? %>
+                      <span class="ml_5">
+                        <%= category.name.titleize %>
+                      </span>
+                    <% end %>
+                  </li>
+                <% end %>
+
+                <% if @categories.count > 4 %>
+                  <hr class="m-auto">
+                <% end %>
                 <li><%= link_to "Manage categories", categories_path, class: "dropdown-item" %></li>
               </ul>
             </li>
@@ -40,11 +51,10 @@
           <div class="d-lg-none dropdown menuItemDropdown">
             <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
             <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
-
               <li>
                 <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
               </li>
-              <% Category.all.each do |category| %>
+              <% @categories.each do |category| %>
                 <li>
                   <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
