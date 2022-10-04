@@ -2461,14 +2461,22 @@ h3.review-name {
 }
 
 .filter-bar .category-dropdown select {
-    height: 4rem;
+    height: 4.2rem;
     cursor: pointer;
-    padding: 1rem 9rem 1rem 1rem;
+    padding: 1rem 9.5rem 1rem 1rem;
     box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
     border: 1px solid #6E3EF7;
     border-radius: 6px;
     background: #FFFFFF;
     color: #6E3EF7;
+    -webkit-appearance: none;
+}
+
+.filter-bar .category-dropdown .dropdown-svg{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
 }
 
 .filter-bar .category-dropdown select option {
