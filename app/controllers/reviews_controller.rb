@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
                         else
                           false
                         end
-
   end
 
   def new
@@ -84,7 +83,6 @@ class ReviewsController < ApplicationController
   private
 
   def set_review
-    @categories = Category.where(active: true)
     @review = current_user.reviews.find(params[:id])
   end
 
