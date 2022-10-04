@@ -48,7 +48,7 @@
         </ul>
         <!-- menu dropdown for mobile -->
         <div class="d-lg-none dropdown menuItemDropdown">
-          <%= link_to params[:category_id] != "all" ? Category.find(params[:category_id]).name : "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
+          <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
           <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">
 
             <li>
