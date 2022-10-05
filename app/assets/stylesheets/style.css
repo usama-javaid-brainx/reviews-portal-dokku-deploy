@@ -2482,32 +2482,32 @@ h3.review-name {
 
 /*TODO Select 2 not added*/
 
-/*.filter-bar span.select2{*/
-/*    display: block;*/
-/*    width: 300px !important;*/
-/*    height: 40px;*/
-/*}*/
-/*.filter-bar span.select2 .selection{*/
-/*    display: block;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*}*/
-/*.filter-bar span.select2 .selection .select2-selection__rendered{*/
-/*    padding: 5px 0px 5px 20px;*/
-/*    margin-top: 3px;*/
-/*    color: #6E3EF7 !important;*/
-/*}*/
-/*.filter-bar span.select2 .selection .select2-selection--single{*/
-/*    display: block;*/
-/*    width: 100%;*/
-/*    height: 40px;*/
-/*    border: 1px solid #6E3EF7 !important;*/
-/*    border-radius: 5px;*/
-/*    background: #F7F5FC;*/
-/*}*/
-/*.filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{*/
-/*    margin-top: 5px;*/
-/*}*/
+.filter-bar span.select2{
+    display: block;
+    width: 23rem !important;
+    height: 4.2rem;
+}
+.filter-bar span.select2 .selection{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.filter-bar span.select2 .selection .select2-selection__rendered{
+    padding: 5px 0px 5px 20px;
+    margin-top: 6px;
+    color: #6E3EF7 !important;
+}
+.filter-bar span.select2 .selection .select2-selection--single{
+    display: block;
+    width: 100%;
+    height: 4.2rem;
+    border: 1px solid #6E3EF7 !important;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+.filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{
+    margin-top: 8px;
+}
 
 /*settings style*/
 
