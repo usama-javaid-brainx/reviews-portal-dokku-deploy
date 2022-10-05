@@ -2,4 +2,3 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
-//= link_tree ../javascripts

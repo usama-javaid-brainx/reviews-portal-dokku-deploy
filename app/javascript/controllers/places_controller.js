@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["field", "map", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount" , "name"]
+  static targets = ["field", "map", "placeId", "latitude", "longitude", "address", "city", "state", "country", "postCode", "reviews", "rating", "ratingCount", "name"]
   static values = {
     latitude: String,
     longitude: String,
@@ -19,6 +19,10 @@ export default class extends Controller {
   }
 
   initMap() {
+    if (!this.hasMapTarget) {
+      return
+    }
+
     this.postion = new google.maps.LatLng(this.latitudeValue, this.longitudeValue)
     this.map = new google.maps.Map(this.mapTarget, {
       center: this.postion, zoom: (this.latitudeValue == null ? 4 : 15)

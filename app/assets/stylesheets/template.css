@@ -1,11 +1,3 @@
-@import "select2.min.css";
-@import "helper.css";
-@import "nice-select.css";
-@import "simplebar.css";
-@import "style.css";
-@import "responsive.css";
-
-
 .form-control:focus {
     color: #00000A;
     background-color: #fff;
