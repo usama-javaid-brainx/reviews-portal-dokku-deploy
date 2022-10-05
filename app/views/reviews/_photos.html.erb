@@ -1,6 +1,6 @@
 <h2>Photos</h2>
 <div class="tabs_content_wrap" data-controller="photos">
-    <div class="file-upload-place <%= "d-none" if f.object.images? %>" id="file-upload-place">
+    <div class="file-upload-place  <%= "d-none" if f.object.images? %>" data-photos-target="fileUploadPlace" id="file-upload-place">
       <div class="content">
         <div class="upload-link">
           <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" id="js-uploaded-files">
+  <div class="uploaded-files <%= "d-none" unless f.object.images? %>" data-photos-target="jsUploadedFiles" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
       <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first %>>
     </div>

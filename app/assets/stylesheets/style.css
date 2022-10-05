@@ -2429,30 +2429,73 @@ h3.review-name {
     font-weight: 400;
 }
 
-.navbar-search span {
-    display: block;
-    height: 4rem;
-    width: 4rem;
+.filter-bar .category-dropdown select {
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #6E3EF7;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #6E3EF7;
+    padding: 1.2rem;
+}
+
+.filter-bar .category-dropdown select option {
+    color: gray;
+    padding: 50px;
+}
+
+.filter-bar .new-filter-button{
+    width: 100%;
+    padding: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #21212D;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     background: #FFFFFF;
-    padding: 0.7rem;
+}
+
+.navbar-search {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-right: 1px solid #EDEDFB;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
     cursor: pointer;
 }
-
-.navbar-search span:hover {
-    border: 1px solid #6E3EF7;
+.navbar-search input {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 1rem 0.2rem 1rem 4rem;
 }
 
-.navbar-search .search-input-field {
-    width: 400px;
+.navbar-search input:focus {
+    border-color: #6E3EF7;
+}
+
+.filter-bar .large-add-new-btn{
+    display: none;
+}
+
+.filter-bar .small-add-new-btn{
+    display: block;
+}
+
+.navbar-search span {
     position: absolute;
-    padding: 8px 10px;
-    color: grey;
-    border: 1px solid #EDEDFB;
-    background: #FFFFFF;
-    border-radius: 5px;
-    top: 110%;
+    top: 50%;
+    left: 20px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
 }
 
 .navbar-search .input-mobile{
@@ -2477,9 +2520,17 @@ h3.review-name {
     color: #6E3EF7;
 }
 
-.filter-bar .category-dropdown select option {
-    color: gray;
-    padding: 50px;
+.filter-bar .modal .modal-header{
+    height: 72px;
+    padding: 20px 24px;
+}
+
+.filter-bar .modal .modal-body{
+    background: #FBFBFE;
+}
+
+.filter-bar .modal .modal-footer button{
+    margin-left: unset;
 }
 
 .small-btn {
