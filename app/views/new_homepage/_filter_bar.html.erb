@@ -27,7 +27,7 @@
                             <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
                           </div>
                           <div class="tag-card-h overflow-auto">
-                            <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
+                            <%= f.hidden_field :cuisines_filter, value: "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
                             <% cuisines.each do |cuisine| %>
                               <% if cuisine.present? %>
                                 <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
@@ -41,7 +41,7 @@
                           <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
                         </div>
                         <div class="tag-card-h overflow-auto">
-                          <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
+                          <%= f.hidden_field :tags_filter, value: "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
                           <% tags.each do |tag| %>
                             <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag.titleize).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag.titleize %></span>
                           <% end %>
@@ -61,7 +61,7 @@
           </div>
           <div class="col-lg-1 col-4 navbar-search" data-controller="filter" data-action="click->filter#fieldDisplay">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-              <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
+              <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
               <span><%= image_tag("template/search.svg") %></span>
           </div>
@@ -69,7 +69,7 @@
         <div class="col-lg-4 mt-5 mt-lg-0" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
             <ul class="nav justify-content-evenly">
-              <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
+              <%= f.hidden_field :to_try, value: "#{params[:to_try]}" %>
               <li><%= link_to 'All', homepage_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'all' || params[:to_try].blank? }" %></li>
               <li><%= link_to 'Reviews', homepage_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'false'}" %></li>
               <li><%= link_to 'Wishlist', homepage_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'new-active' if params[:to_try] == 'true'}" %></li>
