@@ -89,13 +89,19 @@
 
 @media (max-width: 2600px) {
 	.filter-bar .category-dropdown .dropdown-svg{
-		right: 85px;
+		right: 140px;
 	}
 }
 
 @media (max-width: 2000px) {
 	.filter-bar .category-dropdown .dropdown-svg{
-		right: 60px;
+		right: 100px;
+	}
+}
+
+@media (max-width: 1800px) {
+	.filter-bar .category-dropdown .dropdown-svg{
+		right: 70px;
 	}
 }
 
@@ -106,13 +112,13 @@
 }
 @media (max-width: 1400px) {
 	.filter-bar .category-dropdown .dropdown-svg{
-		right: 30px;
+		right: 10px;
 	}
 }
 
 @media (max-width: 1199px) {
 	.filter-bar .category-dropdown .dropdown-svg{
-		right: 20px;
+		right: -5px;
 	}
 }
 

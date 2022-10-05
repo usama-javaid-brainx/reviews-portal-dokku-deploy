@@ -2482,7 +2482,6 @@ h3.review-name {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10px;
 }
 
 .filter-bar .category-dropdown select option {
