@@ -40,5 +40,4 @@ class ApplicationController < ActionController::Base
   def set_categories
     @categories = Category.where(active: true)
   end
-
 end

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :set_categories, only: [:index, :settings]
   def index
     reviews = review_filter(current_user.reviews.kept)
