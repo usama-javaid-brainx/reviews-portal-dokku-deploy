@@ -2,9 +2,9 @@ class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index]
+  before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    @categories = Category.all.order("name asc")
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
   end
 
@@ -99,6 +99,10 @@ class ReviewsController < ApplicationController
 
   def update_favourite
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
+  end
+
+  def category_order
+    @ordered_categories = Category.all.order("name asc")
   end
 
   private
