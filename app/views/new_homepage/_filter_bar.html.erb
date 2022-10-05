@@ -66,7 +66,7 @@
               <span><%= image_tag("template/search.svg") %></span>
           </div>
         </div>
-        <div class="col-lg-4 mt-5 mt-lg-0" data-controller="filter">
+        <div class="col-lg-4 mt-5 mt-lg-0 d-flex justify-content-center" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
             <ul class="nav new-nav">
               <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
