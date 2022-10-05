@@ -23,6 +23,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Discard::Model
   has_one_attached :avatar
+  default_scope -> { kept }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
