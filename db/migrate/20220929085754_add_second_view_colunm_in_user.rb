@@ -2,7 +2,5 @@ class AddSecondViewColunmInUser < ActiveRecord::Migration[7.0]
   def up
     add_column :users, :second_view, :boolean, default: false
   end
-  def down
-    remove_column :users, :second_view, :boolean, default: false
-  end
+
 end

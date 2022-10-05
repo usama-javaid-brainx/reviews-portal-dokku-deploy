@@ -2487,6 +2487,19 @@ h3.review-name {
     padding: 50px;
 }
 
+.filter-bar .modal .modal-header{
+    height: 72px;
+    padding: 20px 24px;
+}
+
+.filter-bar .modal .modal-body{
+    background: #FBFBFE;
+}
+
+.filter-bar .modal .modal-footer button{
+    margin-left: unset;
+}
+
 .small-btn {
     padding: 2px;
 }

@@ -5,7 +5,7 @@
       <div class="row d-none d-lg-flex align-items-center">
         <div class="col-lg-4 d-flex justify-content-between align-items-center">
           <div class="col-lg-6 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", :selected => @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
+            <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", selected: @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
           </div>
           <div class="col-lg-3" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
@@ -16,11 +16,11 @@
               <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
-                    <div class="modal-header" style="height: 72px; padding: 20px 24px;">
+                    <div class="modal-header">
                       <h5 class="modal-title filter-h" id="filterModalLabel">Filters</h5>
                       <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
                     </div>
-                    <div class="modal-body" style="background: #FBFBFE;">
+                    <div class="modal-body">
                       <% if @cuisine_presence %>
                         <div class="card cuisine-card-h">
                           <div class="d-flex justify-content-between p-4">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="modal-footer">
                       <div class="d-flex justify-content-between w-100">
-                        <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal" style=" margin-left: unset;">Cancel</button>
+                        <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal">Cancel</button>
                         <span type="button" class="filter-btn filter-apply" data-filter-target="applyBtn" data-action="click->filter#applyFilter">Apply</span>
                       </div>
                     </div>
@@ -85,11 +85,12 @@
           <% end %>
         </div>
       </div>
+
       <!--mobile view-->
       <div class="row d-flex d-lg-none align-items-center">
         <div class="d-flex justify-content-between align-items-center">
           <div class="col-lg-6 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", :selected => @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
+            <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", selected: @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
           </div>
           <div class="col-lg-3" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
@@ -100,11 +101,11 @@
               <div class="modal fade" id="filterModalSmall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
-                    <div class="modal-header" style="height: 72px; padding: 20px 24px;">
+                    <div class="modal-header">
                       <h5 class="modal-title filter-h" id="filterModalLabel">Filters</h5>
                       <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
                     </div>
-                    <div class="modal-body" style="background: #FBFBFE;">
+                    <div class="modal-body">
                       <% if @cuisine_presence %>
                         <div class="card cuisine-card-h">
                           <div class="d-flex justify-content-between p-4">
@@ -134,7 +135,7 @@
                     </div>
                     <div class="modal-footer">
                       <div class="d-flex justify-content-between w-100">
-                        <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal" style=" margin-left: unset;">Cancel</button>
+                        <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal">Cancel</button>
                         <span type="button" class="filter-btn filter-apply" data-filter-target="applyBtn" data-action="click->filter#applyFilter">Apply</span>
                       </div>
                     </div>
