@@ -2469,14 +2469,6 @@ h3.review-name {
     border-radius: 6px;
     background: #FFFFFF;
     color: #6E3EF7;
-    -webkit-appearance: none;
-}
-
-.filter-bar .category-dropdown .dropdown-svg{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 10px;
 }
 
 .filter-bar .category-dropdown select option {
