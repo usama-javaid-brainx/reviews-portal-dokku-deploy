@@ -1,9 +1,17 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :home_data, only: [:homepage, :index]
+
+  def homepage
+    @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
+  end
 
   def index
     duplicate_review if session[:edit_review].present?
+  end
+
+  def home_data
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
     @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
@@ -35,22 +43,21 @@ class ReviewsController < ApplicationController
     session.delete(:edit_review)
     existing_review = Review.find_by(slug: review_id)
     new_review = existing_review.dup
-    if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: "#{SecureRandom.base58(32)}#{Review.last.id+1}", to_try: edit_review == 'true' ? new_review.to_try : true )
+    if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: "#{SecureRandom.base58(32)}#{Review.last.id + 1}", to_try: edit_review == 'true' ? new_review.to_try : true)
       redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review.slug)
     else
       redirect_to root_path, notice: "Review didn't created successfully please try again"
     end
   end
-
-  def show
-    if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
-      redirect_to guest_path
-    else
-      @review = current_user.reviews.find_by(slug: params[:id])
-      @parent_id = @review.parent_id
-      @review_user = User.find_by(id: @review.user_id)
+    def show
+      if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
+        redirect_to guest_path
+      else
+        @review = current_user.reviews.find_by(slug: params[:id])
+        @parent_id = @review.parent_id
+        @review_user = User.find_by(id: @review.user_id)
+      end
     end
-  end
 
   def edit
     @curr_category = @review.category
@@ -86,6 +93,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+    params[:review][:images] = [] if params[:review][:images] == [""]
+    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 end
