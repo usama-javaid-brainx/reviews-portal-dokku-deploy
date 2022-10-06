@@ -89,11 +89,11 @@
 
 @media (min-width: 992px) {
 	.filter-bar .large-add-new-btn{
-		display: none;
+		display: block !important;
 	}
 
 	.filter-bar .small-add-new-btn{
-		display: block;
+		display: none !important;
 	}
 
 	.navbar-search span {
