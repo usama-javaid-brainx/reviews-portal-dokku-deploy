@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_categories
   include Pagy::Backend
 
   def configure_permitted_parameters
@@ -34,5 +35,9 @@ class ApplicationController < ActionController::Base
                 reviews.order("created_at desc")
               end
     reviews
+  end
+
+  def set_categories
+    @categories = Category.where(active: true)
   end
 end
