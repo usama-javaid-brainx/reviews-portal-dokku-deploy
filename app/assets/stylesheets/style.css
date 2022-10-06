@@ -2483,11 +2483,11 @@ h3.review-name {
 }
 
 .filter-bar .large-add-new-btn{
-    display: none;
+    display: block;
 }
 
 .filter-bar .small-add-new-btn{
-    display: block;
+    display: none;
 }
 
 .navbar-search span {
