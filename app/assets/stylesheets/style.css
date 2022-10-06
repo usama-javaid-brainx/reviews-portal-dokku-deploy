@@ -2524,7 +2524,7 @@ h3.review-name {
 
 .filter-bar span.select2{
     display: block;
-    width: 23rem !important;
+    width: 100% !important;
     height: 4.2rem;
 }
 .filter-bar span.select2 .selection{
