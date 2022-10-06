@@ -30,11 +30,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     if @review.save
-      if current_user.second_view?
-        redirect_to homepage_path, notice: "Review created successfully!"
-      else
-        redirect_to root_path, notice: "Review created successfully!"
-      end
+      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
@@ -71,11 +67,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      if current_user.second_view?
-        redirect_to homepage_path, notice: "Review updated successfully!"
-      else
-        redirect_to root_path, notice: "Review updated successfully!"
-      end
+      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review updated successfully!"
     else
       render :new
     end
@@ -83,12 +75,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      if current_user.second_view?
-        redirect_to homepage_path, status: :see_other, notice: "Review removed successfully!"
-      else
-        redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
-      end
-
+      redirect_to current_user.second_view? ? homepage_path : root_path, status: :see_other, notice: "Review deleted successfully!"
     end
   end
 
@@ -112,6 +99,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+    params[:review][:images] = [] if params[:review][:images] == [""]
+    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])   
   end
 end

@@ -1944,7 +1944,7 @@ hitting-enter-submit
 
 
 /* photo tabs */
-.file_upload_place {
+.file-upload-place {
     position: relative;
     height: 20rem;
     background: #FBFBFE;
@@ -1952,7 +1952,7 @@ hitting-enter-submit
     border-radius: 6px;
 }
 
-.file_upload_place .content {
+.file-upload-place .content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1961,14 +1961,14 @@ hitting-enter-submit
     text-align: center;
 }
 
-.file_upload_place .content .upload_link {
+.file-upload-place .content .upload-link {
     font-size: 1.4rem;
     color: #00000A;
     line-height: 1.42;
     padding-bottom: 1.2rem;
 }
 
-.file_upload_place .content .upload_link a {
+.file-upload-place .content .upload-link a {
     color: #6E3EF7;
 }
 
@@ -2429,51 +2429,91 @@ h3.review-name {
     font-weight: 400;
 }
 
-.navbar-search span {
-    display: block;
-    height: 4rem;
-    width: 4rem;
-    border: 1px solid #EDEDFB;
-    border-radius: 6px;
-    background: #FFFFFF;
-    padding: 0.7rem;
-    cursor: pointer;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
-}
-
-.navbar-search span:hover {
-    border: 1px solid #6E3EF7;
-}
-
-.navbar-search .search-input-field {
-    width: 400px;
-    position: absolute;
-    padding: 8px 10px;
-    color: grey;
-    border: 1px solid #EDEDFB;
-    background: #FFFFFF;
-    border-radius: 5px;
-    top: 110%;
-}
-
-.navbar-search .input-mobile{
-    right: 0px;
-}
-
 .filter-bar .category-dropdown select {
-    height: 4.2rem;
+    width: 100%;
     cursor: pointer;
-    padding: 1rem 9.5rem 1rem 1rem;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 4%);
     border: 1px solid #6E3EF7;
     border-radius: 6px;
     background: #FFFFFF;
     color: #6E3EF7;
+    padding: 1.2rem;
 }
 
 .filter-bar .category-dropdown select option {
     color: gray;
     padding: 50px;
+}
+
+.filter-bar .new-filter-button{
+    width: 100%;
+    padding: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #21212D;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+    background: #FFFFFF;
+}
+
+.navbar-search {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-right: 1px solid #EDEDFB;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    cursor: pointer;
+}
+.navbar-search input {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #EDEDFB;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 1rem 0.2rem 1rem 4rem;
+}
+
+.navbar-press{
+    overflow: unset !important;
+}
+
+.navbar-search input:focus {
+    border-color: #6E3EF7;
+}
+
+.filter-bar .large-add-new-btn{
+    display: none;
+}
+
+.filter-bar .small-add-new-btn{
+    display: block;
+}
+
+.navbar-search span {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+}
+
+
+.filter-bar .modal .modal-header{
+    height: 72px;
+    padding: 20px 24px;
+}
+
+.filter-bar .modal .modal-body{
+    background: #FBFBFE;
+}
+
+.filter-bar .modal .modal-footer button{
+    margin-left: unset;
 }
 
 .small-btn {
@@ -2591,17 +2631,17 @@ h3.review-name {
     z-index: 1111;
 }
 
-.middle-nav .new-nav{
+.middle-nav .homepage-nav{
     font-size: 0;
     display: inline-block;
     border-radius: 6px;
 }
 
-.middle-nav .new-nav li{
+.middle-nav .homepage-nav li{
     display: inline-block;
 }
 
-.middle-nav .new-nav li a{
+.middle-nav .homepage-nav li a{
     display: inline-flex;
     align-items: center;
     font-size: 1.4rem;
@@ -2614,13 +2654,13 @@ h3.review-name {
     background: #FFFFFF;
 }
 
-.middle-nav .new-nav li a.active{
+.middle-nav .homepage-nav li a.active{
     border-width: 1px 1px 1px 1px;
     border-color: #6E3EF7;
     background: #F7F5FC;
 }
 
-.middle-nav .new-nav li:last-child a {
+.middle-nav .homepage-nav li:last-child a {
     border-width: 1px 1px 1px 1px;
     border-radius: 0 6px 6px 0;
 }

@@ -83,8 +83,8 @@ export default class extends Controller {
     }
   }
 
-  fieldDisplay(){
-    this.inputTarget.classList.remove("d-none")
+  fieldDisplay(event){
+    event.currentTarget.classList.add("navbar-press")
   }
 
   search(event) {
