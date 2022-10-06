@@ -63,13 +63,8 @@ $fileInput.on('change', function () {
   }
 });
 
-$(document).ready(function () {
-  $("#category_id").select2()
-});
-
-$(document).ready(function () {
-  $("#review_category_id").select2()
-});
+$("#category_id").select2()
+$("#review_category_id").select2()
 
 function callbackOnOpen1() {
   console.log(data);
