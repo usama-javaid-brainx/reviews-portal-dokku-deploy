@@ -5,7 +5,7 @@
       <div class="row align-items-center">
         <div class="col-lg-4 d-flex justify-content-between align-items-center">
           <div class="col-lg-7 col-5 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", selected: @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
+            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: params[:category_id] == "all"? "all" : @curr_category.id), data: {"action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
           <div class="d-flex justify-content-center col-lg-3 col-2" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
@@ -77,7 +77,6 @@
             </ul>
           <% end %>
         </div>
-
         <div class="col-lg-4 text-end small-add-new-btn">
           <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'addNew' do %>
             <%= image_tag("template/plus.svg") %><span> Add New</span>
@@ -88,7 +87,6 @@
             <%= image_tag("template/plus.svg") %><span> Add New</span>
           <% end %>
         </div>
-
       </div>
     </div>
   </div>
