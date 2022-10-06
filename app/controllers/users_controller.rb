@@ -11,9 +11,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    debugger
     if params[:user][:current_password].present?
-      devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :password, :avatar])
+      # devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :password, :avatar])
+      if @user.update(password: params[:user][:password])
+        debugger
+        bypass_sign_in(@user)
+        redirect_to reviews_path, notice: "User profile updated successfully"
+      else
+        redirect_to users_edit_path, alert: "password did not updated try again"
+      end
     else
       if @user.update(user_params)
         redirect_to reviews_path, notice: "User profile updated successfully"
