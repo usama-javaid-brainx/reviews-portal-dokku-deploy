@@ -7,10 +7,10 @@
           <div class="col-lg-7 col-5 category-dropdown" data-controller="category">
             <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name", selected: @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" } %>
           </div>
-          <div class="col-lg-3 col-2" data-controller="filter">
+          <div class="d-flex justify-content-center col-lg-3 col-2" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <button type="button" class="new-filter-button" data-bs-toggle="modal" data-bs-target="#filterModal">
-                <%= image_tag("template/filter.svg") %><span class="d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
+                <%= image_tag("template/filter.svg") %><span class="pl_5 d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
               </button>
               <!--filter modal-->
               <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
