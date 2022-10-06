@@ -581,7 +581,7 @@ header {
     overflow: hidden;
 }
 
-.review-card{
+.review-card {
     height: 380px;
 }
 
@@ -2444,7 +2444,7 @@ h3.review-name {
     padding: 50px;
 }
 
-.filter-bar .new-filter-button{
+.filter-bar .new-filter-button {
     width: 100%;
     padding: 1.2rem;
     display: inline-flex;
@@ -2465,6 +2465,7 @@ h3.review-name {
     border-top-right-radius: 6px;
     cursor: pointer;
 }
+
 .navbar-search input {
     width: 100%;
     background: #FFFFFF;
@@ -2474,7 +2475,7 @@ h3.review-name {
     padding: 1rem 0.2rem 1rem 4rem;
 }
 
-.navbar-press{
+.navbar-press {
     overflow: unset !important;
 }
 
@@ -2482,11 +2483,11 @@ h3.review-name {
     border-color: #6E3EF7;
 }
 
-.filter-bar .large-add-new-btn{
+.filter-bar .large-add-new-btn {
     display: none;
 }
 
-.filter-bar .small-add-new-btn{
+.filter-bar .small-add-new-btn {
     display: block;
 }
 
@@ -2503,16 +2504,16 @@ h3.review-name {
 }
 
 
-.filter-bar .modal .modal-header{
+.filter-bar .modal .modal-header {
     height: 72px;
     padding: 20px 24px;
 }
 
-.filter-bar .modal .modal-body{
+.filter-bar .modal .modal-body {
     background: #FBFBFE;
 }
 
-.filter-bar .modal .modal-footer button{
+.filter-bar .modal .modal-footer button {
     margin-left: unset;
 }
 
@@ -2522,22 +2523,25 @@ h3.review-name {
 
 /*TODO Select 2 not added*/
 
-.filter-bar span.select2{
+.filter-bar span.select2 {
     display: block;
     width: 100% !important;
     height: 4.2rem;
 }
-.filter-bar span.select2 .selection{
+
+.filter-bar span.select2 .selection {
     display: block;
     width: 100%;
     height: 100%;
 }
-.filter-bar span.select2 .selection .select2-selection__rendered{
+
+.filter-bar span.select2 .selection .select2-selection__rendered {
     padding: 5px 0px 5px 20px;
     margin-top: 6px;
     color: #6E3EF7 !important;
 }
-.filter-bar span.select2 .selection .select2-selection--single{
+
+.filter-bar span.select2 .selection .select2-selection--single {
     display: block;
     width: 100%;
     height: 4.2rem;
@@ -2545,8 +2549,10 @@ h3.review-name {
     border-radius: 5px;
     background: #FFFFFF;
 }
-.filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{
+
+.filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
     margin-top: 8px;
+    margin-left: -10px;
 }
 
 /*settings style*/
@@ -2631,17 +2637,17 @@ h3.review-name {
     z-index: 1111;
 }
 
-.middle-nav .homepage-nav{
+.middle-nav .homepage-nav {
     font-size: 0;
     display: inline-block;
     border-radius: 6px;
 }
 
-.middle-nav .homepage-nav li{
+.middle-nav .homepage-nav li {
     display: inline-block;
 }
 
-.middle-nav .homepage-nav li a{
+.middle-nav .homepage-nav li a {
     display: inline-flex;
     align-items: center;
     font-size: 1.4rem;
@@ -2654,7 +2660,7 @@ h3.review-name {
     background: #FFFFFF;
 }
 
-.middle-nav .homepage-nav li a.active{
+.middle-nav .homepage-nav li a.active {
     border-width: 1px 1px 1px 1px;
     border-color: #6E3EF7;
     background: #F7F5FC;
@@ -2732,7 +2738,7 @@ h3.review-name {
         padding-bottom: 0;
     }
 
-    .review-card{
+    .review-card {
         height: 355px;
     }
 }
@@ -2747,19 +2753,28 @@ h3.review-name {
     background: #848496;
 }
 
-.cuisine-group .select2 {
+.cuisine-group .select2, .category-group .select2 {
     padding: unset;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    color: #A5A5B9
 }
 
-.cuisine-group .select2-selection {
+.cuisine-group .select2-selection, .category-group .select2-selection {
     display: block;
     padding: 1px;
     height: 4rem;
     border: 1px solid #EDEDFB;
 }
 
-.cuisine-group .select2-selection__rendered, .cuisine-group .select2-selection__arrow {
-    margin: 4px;
+.cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+    margin-top: 8px;
+    padding-left: 15px;
+}
+
+.cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 10px !important;
+    right: 10px !important;
 }
 
 .card-load {
