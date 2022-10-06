@@ -20,4 +20,16 @@ class UsersController < ApplicationController
       redirect_to edit_user_registration_path
     end
   end
+
+  def settings
+    if params[:second_view].present?
+      current_user.update(second_view: params[:second_view])
+      if current_user.second_view?
+        redirect_to homepage_path
+      else
+        redirect_to root_path
+      end
+    end
+  end
+
 end
