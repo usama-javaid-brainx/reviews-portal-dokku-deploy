@@ -2485,6 +2485,10 @@ h3.review-name {
     padding: 1rem 0.2rem 1rem 4rem;
 }
 
+.navbar-press{
+    overflow: unset !important;
+}
+
 .navbar-search input:focus {
     border-color: #6E3EF7;
 }

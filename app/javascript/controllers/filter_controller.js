@@ -84,7 +84,7 @@ export default class extends Controller {
   }
 
   fieldDisplay(event){
-    event.currentTarget.style.overflow = "unset"
+    event.currentTarget.classList.add("navbar-press")
   }
 
   search(event) {
