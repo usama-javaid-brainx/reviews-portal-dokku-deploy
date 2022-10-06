@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/remove_avatar'
   get 'users/delete_user'
-  # get 'users/edit'
   patch 'users/update'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
