@@ -2,10 +2,9 @@ class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index]
-  before_action :set_categories, only: [:index, :new, :show, :edit]
+  before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    @categories = Category.all.order("name asc")
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
   end
 
@@ -31,11 +30,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     if @review.save
-      if current_user.second_view?
-        redirect_to homepage_path, notice: "Review created successfully!"
-      else
-        redirect_to root_path, notice: "Review created successfully!"
-      end
+      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
@@ -72,11 +67,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      if current_user.second_view?
-        redirect_to homepage_path, notice: "Review updated successfully!"
-      else
-        redirect_to root_path, notice: "Review updated successfully!"
-      end
+      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review updated successfully!"
     else
       render :new
     end
@@ -84,12 +75,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      if current_user.second_view?
-        redirect_to homepage_path, status: :see_other, notice: "Review removed successfully!"
-      else
-        redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
-      end
-
+      redirect_to current_user.second_view? ? homepage_path : root_path, status: :see_other, notice: "Review deleted successfully!"
     end
   end
 
@@ -100,6 +86,10 @@ class ReviewsController < ApplicationController
 
   def update_favourite
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
+  end
+
+  def category_order
+    @ordered_categories = Category.all.order("name asc")
   end
 
   private

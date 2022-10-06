@@ -26,7 +26,7 @@
             <% end %>
             <!-- TODO Adding Link -->
             <li class="dropdown-center ml_15">
-              <a class="" href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
+              <a href="#" id="menu_dropdown" data-bs-toggle="dropdown" aria-expanded="false"><%= image_tag("template/more-horiz.svg") %></a>
               <ul class="dropdown-menu">
                 <% @categories[4..]&.each do |category| %>
                   <li>
@@ -39,7 +39,6 @@
                     <% end %>
                   </li>
                 <% end %>
-
                 <% if @categories.count > 4 %>
                   <hr class="m-auto">
                 <% end %>
@@ -47,7 +46,7 @@
               </ul>
             </li>
           </ul>
-          <!-- menu dropd own for mobile -->
+          <!-- menu dropdown for mobile -->
           <div class="d-lg-none dropdown menuItemDropdown">
             <%= link_to "Categories", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), "aria-expanded": "false", "data-bs-toggle": "dropdown", class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?} toggler w-auto" %>
             <ul class="dropdown-menu" aria-labelledby="menuItemDropdown">

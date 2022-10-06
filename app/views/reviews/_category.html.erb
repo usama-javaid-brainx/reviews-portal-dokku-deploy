@@ -2,9 +2,9 @@
   <div class="col-lg-12">
     <h2>Category</h2>
     <div class="category_content_wrap">
-      <div data-controller="category" class="form_group row align-items-center">
+      <div data-controller="category" class="category-group form_group row align-items-center">
         <label for="search">Category</label>
-        <%= f.select :category_id, Category.all.collect { |c| [c.name, c.id] }, { selected: @curr_category.id }, { data: { "action": "change->category#categorySelect", "category-target": "category" }, class:"text-black"  } %>
+        <%= f.select :category_id, @ordered_categories.collect { |c| [c.name, c.id] }, { selected: @curr_category.id }, { data: { "action": "change->category#categorySelect", "category-target": "category" } } %>
       </div>
       <div data-controller="category" class="form_group row align-items-center">
         <label for="search">Type</label>

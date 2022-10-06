@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_categories, only: [:index, :settings, :edit]
   before_action :set_user, only: [:update]
-
   def index
     reviews = review_filter(current_user.reviews.kept)
     @pagy, @reviews = pagy(reviews, items: 12)
