@@ -16,19 +16,19 @@
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
-    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected:@review.cuisine), { include_blank: false } %>
-    </div>
+  <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
+  </div>
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
     <%= f.date_field :date %>
   </div>
-<!------TODO check will be add after clint provide requer------------>
+  <!------TODO check will be add after clint provide requer------------>
   <div class="row align-items-center form_group">
-    <%= f.label :date, "Start Date"%>
-    <%= f.date_field :start_date%>
+    <%= f.label :date, "Start Date" %>
+    <%= f.date_field :start_date %>
   </div>
 
   <div class="row align-items-center form_group">
@@ -65,7 +65,7 @@
     <%= f.label "Yelp Url" %>
     <%= f.text_field :yelp_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
   </div>
-<!--  TODO end--------------->
+  <!--  TODO end--------------->
 
   <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
@@ -86,6 +86,6 @@
   <% end %>
   <div class="row form_group">
     <%= f.label :notes, "Description" %>
-    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", cols: '60', rows: '5' %>
+    <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class: "w-100" %>
   </div>
 </div>
