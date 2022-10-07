@@ -2439,14 +2439,9 @@ h3.review-name {
     padding: 1.2rem;
 }
 
-.filter-bar .category-dropdown select option {
-    color: gray;
-    padding: 50px;
-}
-
 .filter-bar .new-filter-button {
     width: 100%;
-    padding: 1.2rem;
+    padding: 1.2rem 2rem 1.2rem 2rem;
     display: inline-flex;
     align-items: center;
     font-size: 1.4rem;
@@ -2456,31 +2451,35 @@ h3.review-name {
     background: #FFFFFF;
 }
 
-.navbar-search {
-    max-width: 100%;
-    overflow: hidden;
+.navbar-search{
     position: relative;
-    border-right: 1px solid #EDEDFB;
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
-    cursor: pointer;
 }
 
-.navbar-search input {
-    width: 100%;
-    background: #FFFFFF;
+.search-input{
+    padding: 0.6rem 0rem 0.6rem 3.5rem;
+    width: 0px;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
-    box-sizing: border-box;
-    padding: 1rem 0.2rem 1rem 4rem;
 }
 
-.navbar-press {
-    overflow: unset !important;
+.navbar-search input::placeholder{
+    opacity: 1;
+    font-size: 1.4rem;
+    color: #848496;
 }
 
-.navbar-search input:focus {
-    border-color: #6E3EF7;
+.search-input-expand{
+    width: 300px;
+    border: 1px solid #6E3EF7;
+    transition: 0.25s ease-out;
+}
+
+.search-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    cursor: pointer;
 }
 
 .filter-bar .large-add-new-btn {
@@ -2490,19 +2489,6 @@ h3.review-name {
 .filter-bar .small-add-new-btn {
     display: block;
 }
-
-.navbar-search span {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    outline: none;
-}
-
 
 .filter-bar .modal .modal-header {
     height: 72px;

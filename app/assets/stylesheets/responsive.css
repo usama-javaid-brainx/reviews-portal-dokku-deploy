@@ -89,21 +89,11 @@
 
 @media (min-width: 992px) {
 	.filter-bar .large-add-new-btn{
-		display: block;
+		display: flex;
 	}
 
 	.filter-bar .small-add-new-btn{
 		display: none;
-	}
-
-	.navbar-search span {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	.navbar-search input {
-		width: 300px !important;
 	}
 }
 
