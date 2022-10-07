@@ -8,9 +8,9 @@
   <div class="tags d-flex flex-wrap" data-tags-target="tags">
     <% if f.object.persisted? && f.object.tags? %>
       <% f.object.tags.split(",")[1..].each do |tag| %>
-      <div class="tag-badge d-flex align-items-center mt-4 mr-2">
+        <div class="tag-badge d-flex align-items-center mt-4 mr-2">
           <span><%= tag %></span><i class="fa fa-remove ml_10 mt-1" id="remove1" data-action="click->tags#removeTag"></i>
-      </div>
+        </div>
       <% end %>
     <% end %>
   </div>
