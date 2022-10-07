@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel"]
@@ -13,7 +13,9 @@ export default class extends Controller {
   }
 
   saveChanges(event) {
+    debugger
     if (event.currentTarget.id !== "") {
+      debugger
       let favourite_dish = {id: event.currentTarget.id}
       favourite_dish["name"] = this.mealNameTarget.value
       favourite_dish["notes"] = this.mealNotesTarget.value
@@ -36,6 +38,7 @@ export default class extends Controller {
   }
 
   updateCard(favDish) {
+    debugger
     let id = favDish["id"]
     document.getElementById(`image-${id}`).src = favDish["image"]
     document.getElementById(`review_meals_attributes_${id}_image_url`).value = favDish["image"]
@@ -46,6 +49,7 @@ export default class extends Controller {
   }
 
   editMeal(event) {
+    debugger
     let id = event.currentTarget.id
     this.modalLabelTarget.innerText = "Edit Meal"
     this.mealNameTarget.value = document.getElementById(`review_meals_attributes_${id}_name`).value
@@ -63,12 +67,17 @@ export default class extends Controller {
   }
 
   makeNewMeal() {
+    debugger
     let randomId = Math.floor(Math.random() * 1000) * 3243;
+    let imgSrc = ""
+    if (this.imageTarget.getAttribute('src')) {
+      imgSrc = this.imageTarget.src
+    }
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
-       <img id = "image-${randomId}" class='main_img' src='${this.imageTarget.src}'>
-       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
-       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden>
-       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden>
+       <img id = "image-${randomId}" class='main_img' src='${imgSrc}'>
+       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden id = "review_meals_attributes_${randomId}_image_url">
+       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden id = "review_meals_attributes_${randomId}_name">
+       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden id = "review_meals_attributes_${randomId}_notes">
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
         <div class="text-left">
           <h4 id="name-${randomId}"> ${this.mealNameTarget.value}</h4>
@@ -85,6 +94,7 @@ export default class extends Controller {
       </div>
     </li>`
     this.favouriteMealsTarget.innerHTML = this.favouriteMealsTarget.innerHTML + dish
+    debugger
   }
 
   resetModal(event) {
