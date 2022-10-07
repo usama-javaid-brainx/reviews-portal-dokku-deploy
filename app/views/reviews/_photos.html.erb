@@ -9,6 +9,7 @@
       </div>
     </div>
   </div>
+
   <div class="uploaded-files <%= "d-none" unless f.object.images? %>" data-photos-target="jsUploadedFiles" id="js-uploaded-files">
     <div class="mb-3 main-thumbnail">
       <img id="mainThumbnail" data-photos-target="mainImage" src=<%= f.object.images.first %>>
@@ -56,7 +57,7 @@
 
     updateImage(image)
     document.getElementById('js-uploaded-files').classList.remove('d-none')
-    // document.getElementById('file-upload-place').classList.add('d-none')
+    document.getElementById('file-upload-place').classList.add('d-none')
   }
 
   function updateImage(that) {
