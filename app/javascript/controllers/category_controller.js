@@ -4,6 +4,8 @@ export default class extends Controller {
   static targets = ["category"]
 
   connect() {
+      $("#category_id").select2()
+      $("#review_category_id").select2()
     $(this.categoryTarget).on('select2:select select2:unselect', this.categorySelect.bind(this))
   }
 
