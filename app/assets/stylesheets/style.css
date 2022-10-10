@@ -582,7 +582,7 @@ header {
 }
 
 .review-card {
-    height: 400px;
+    height: 380px;
 }
 
 .card_carousel {
@@ -611,8 +611,7 @@ header {
 }
 
 .card .card-header .item img {
-    height: 250px;
-    object-fit: cover;
+    aspect-ratio: 16/9;
 }
 
 .card_carousel .owl-dot.active {
