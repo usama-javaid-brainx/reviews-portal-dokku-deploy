@@ -2439,6 +2439,21 @@ h3.review-name {
     padding: 1.2rem;
 }
 
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border-radius: 4px;
+    border: 1px solid #6E3EF7 !important;
+}
+
+.select2-container--open .select2-dropdown--below {
+    border-radius: 5px;
+    border: 1px solid #E2DBF4 !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+    background-color: #EDEDFB;
+    color: #6E3EF7;
+}
+
 .filter-bar .new-filter-button {
     width: 100%;
     padding: 1.2rem 2rem 1.2rem 2rem;
@@ -2451,30 +2466,30 @@ h3.review-name {
     background: #FFFFFF;
 }
 
-.navbar-search{
+.navbar-search {
     position: relative;
 }
 
-.search-input{
+.search-input {
     padding: 0.6rem 3.2rem 0.6rem 0.5rem;
     width: 0px;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
 }
 
-.navbar-search input::placeholder{
+.navbar-search input::placeholder {
     opacity: 1;
     font-size: 1.4rem;
     color: #848496;
 }
 
-.search-input-expand{
+.search-input-expand {
     width: 300px;
     border: 1px solid #6E3EF7;
     transition: 0.25s ease-out;
 }
 
-.search-icon{
+.search-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
