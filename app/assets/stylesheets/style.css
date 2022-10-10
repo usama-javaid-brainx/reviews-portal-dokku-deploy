@@ -2392,7 +2392,7 @@ li.category-list-item {
     border: 1px solid #6E3EF7;
     background-color: #6E3EF7;
     color: white;
-    padding: 10px 25px;
+    padding: 1rem 2rem 1rem 2rem;
     border-radius: 6px;
     font-size: 1.6rem;
     font-weight: 500;
@@ -2470,7 +2470,7 @@ h3.review-name {
 }
 
 .search-input {
-    padding: 0.6rem 3.2rem 0.6rem 0.5rem;
+    padding: 1rem 3.2rem 1rem 0.5rem;
     width: 0px;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
@@ -2483,7 +2483,7 @@ h3.review-name {
 }
 
 .search-input-expand {
-    width: 300px;
+    width: 200px;
     border: 1px solid #6E3EF7;
     transition: 0.25s ease-out;
 }
@@ -2492,7 +2492,7 @@ h3.review-name {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10px;
+    right: 0.8rem;
     cursor: pointer;
 }
 
@@ -2521,8 +2521,6 @@ h3.review-name {
     padding: 2px;
 }
 
-/*TODO Select 2 not added*/
-
 .filter-bar span.select2 {
     display: block;
     width: 100% !important;
@@ -2536,8 +2534,7 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection__rendered {
-    padding: 5px 0px 5px 20px;
-    margin-top: 6px;
+    margin-top: 4px;
     color: #6E3EF7 !important;
 }
 
@@ -2551,7 +2548,7 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
-    margin-top: 8px;
+    margin-top: 3px;
     margin-left: -10px;
 }
 
@@ -2768,7 +2765,7 @@ h3.review-name {
 }
 
 .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
-    margin-top: 8px;
+    margin-top: 6px;
     padding-left: 15px;
 }
 

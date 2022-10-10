@@ -59,7 +59,16 @@
               </div>
             <% end %>
           </div>
+          <div class="col-lg-7 col-4 d-flex d-lg-none justify-content-end navbar-search" data-controller="filter">
+            <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
+              <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
+            <% end %>
+            <%= image_tag("template/search.svg", class: "search-icon", "data-action": "click->filter#fieldDisplay") %>
+          </div>
         </div>
+
+
+
         <div class="col-lg-4 mt-5 d-flex justify-content-center mt-lg-0" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
             <ul class="nav homepage-nav">
