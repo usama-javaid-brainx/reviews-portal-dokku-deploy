@@ -13,13 +13,11 @@ export default class extends Controller {
   }
 
   saveChanges(event) {
-    debugger
     if (event.currentTarget.id !== "") {
-      debugger
       let favourite_dish = {id: event.currentTarget.id}
       favourite_dish["name"] = this.mealNameTarget.value
       favourite_dish["notes"] = this.mealNotesTarget.value
-      favourite_dish["image"] = this.imageTarget.src
+      favourite_dish["image"] = this.imageTarget.getAttribute('src')
       event.currentTarget.id = ""
       this.updateCard(favourite_dish)
     } else {
@@ -38,7 +36,6 @@ export default class extends Controller {
   }
 
   updateCard(favDish) {
-    debugger
     let id = favDish["id"]
     document.getElementById(`image-${id}`).src = favDish["image"]
     document.getElementById(`review_meals_attributes_${id}_image_url`).value = favDish["image"]
@@ -49,7 +46,6 @@ export default class extends Controller {
   }
 
   editMeal(event) {
-    debugger
     let id = event.currentTarget.id
     this.modalLabelTarget.innerText = "Edit Meal"
     this.mealNameTarget.value = document.getElementById(`review_meals_attributes_${id}_name`).value
@@ -60,22 +56,43 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
+
     document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
     }
   }
 
+
+  // deleteMeal(event) {
+  //   let currentMeal = document.getElementById(event.currentTarget.id)
+  //
+  //   $.ajax({
+  //     type: "GET",
+  //     url: document.getElementById(event.currentTarget.id).getAttribute('data-url'),
+  //     data: `meal_id=${document.getElementById(event.currentTarget.id).getAttribute('data-value')}`,
+  //     dataType: 'json',
+  //     success(){
+  //       currentMeal.remove()
+  //     }
+  //   })
+  //
+  //   if (!this.hasMealCardTarget) {
+  //     this.noMealDivTarget.classList.remove('d-none')
+  //   }
+  // }
+
+
   makeNewMeal() {
-    debugger
     let randomId = Math.floor(Math.random() * 1000) * 3243;
     let imgSrc = ""
     if (this.imageTarget.getAttribute('src')) {
       imgSrc = this.imageTarget.src
+
     }
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
        <img id = "image-${randomId}" class='main_img' src='${imgSrc}'>
-       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden id = "review_meals_attributes_${randomId}_image_url">
+       <input name="review[meals_attributes][${randomId}][image_url]" value="${imgSrc}" hidden id = "review_meals_attributes_${randomId}_image_url">
        <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden id = "review_meals_attributes_${randomId}_name">
        <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden id = "review_meals_attributes_${randomId}_notes">
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
@@ -94,7 +111,6 @@ export default class extends Controller {
       </div>
     </li>`
     this.favouriteMealsTarget.innerHTML = this.favouriteMealsTarget.innerHTML + dish
-    debugger
   }
 
   resetModal(event) {

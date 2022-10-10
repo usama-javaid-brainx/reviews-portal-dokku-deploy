@@ -8,7 +8,7 @@
       </div>
       <% index = 0 %>
       <%= f.fields_for :meals do |meal_form| %>
-        <li data-meals-target="mealCard" id="<%= index %>">
+        <li data-meals-target="mealCard" id="<%= index %>" data-value= "<%= meal_form.object.id %>" data-url="<%= review_delete_meal_path(review)%>">
           <img id="image-<%= index %>" class='main_img' src='<%= meal_form.object.image_url %>'>
           <%= meal_form.hidden_field :image_url %>
           <%= meal_form.hidden_field :name %>
@@ -24,7 +24,7 @@
                 <%= image_tag('template/pen.png') %>
             </span>
             <span>
-            <img style="background-color: red" id="<%= index %>" data-action="click->meals#deleteMeal" src="<%= asset_path('template/icon9.png') %>">
+              <%= image_tag("template/delete.svg", id: "#{index}", "data-action": "click->meals#deleteMeal", class: "h-17") %>
             </span>
         </span>
           </div>
