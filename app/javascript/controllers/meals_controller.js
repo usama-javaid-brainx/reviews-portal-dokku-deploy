@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel"]
@@ -17,7 +17,7 @@ export default class extends Controller {
       let favourite_dish = {id: event.currentTarget.id}
       favourite_dish["name"] = this.mealNameTarget.value
       favourite_dish["notes"] = this.mealNotesTarget.value
-      favourite_dish["image"] = this.imageTarget.src
+      favourite_dish["image"] = this.imageTarget.getAttribute('src')
       event.currentTarget.id = ""
       this.updateCard(favourite_dish)
     } else {
@@ -56,19 +56,45 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
+
     document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
     }
   }
 
+
+  // deleteMeal(event) {
+  //   let currentMeal = document.getElementById(event.currentTarget.id)
+  //
+  //   $.ajax({
+  //     type: "GET",
+  //     url: document.getElementById(event.currentTarget.id).getAttribute('data-url'),
+  //     data: `meal_id=${document.getElementById(event.currentTarget.id).getAttribute('data-value')}`,
+  //     dataType: 'json',
+  //     success(){
+  //       currentMeal.remove()
+  //     }
+  //   })
+  //
+  //   if (!this.hasMealCardTarget) {
+  //     this.noMealDivTarget.classList.remove('d-none')
+  //   }
+  // }
+
+
   makeNewMeal() {
     let randomId = Math.floor(Math.random() * 1000) * 3243;
+    let imgSrc = ""
+    if (this.imageTarget.getAttribute('src')) {
+      imgSrc = this.imageTarget.src
+
+    }
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
-       <img id = "image-${randomId}" class='main_img' src='${this.imageTarget.src}'>
-       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
-       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden>
-       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden>
+       <img id = "image-${randomId}" class='main_img' src='${imgSrc}'>
+       <input name="review[meals_attributes][${randomId}][image_url]" value="${imgSrc}" hidden id = "review_meals_attributes_${randomId}_image_url">
+       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden id = "review_meals_attributes_${randomId}_name">
+       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden id = "review_meals_attributes_${randomId}_notes">
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
         <div class="text-left">
           <h4 id="name-${randomId}"> ${this.mealNameTarget.value}</h4>

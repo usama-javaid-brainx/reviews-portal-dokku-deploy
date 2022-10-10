@@ -2439,6 +2439,12 @@ h3.review-name {
     padding: 1.2rem;
 }
 
+
+.filter-bar .category-dropdown select option {
+    color: gray;
+    padding: 50px;
+}
+
 .filter-bar .new-filter-button {
     width: 100%;
     padding: 1.2rem 2rem 1.2rem 2rem;
@@ -2451,35 +2457,32 @@ h3.review-name {
     background: #FFFFFF;
 }
 
-.navbar-search{
+.navbar-search {
     position: relative;
 }
 
-.search-input{
+.search-input {
     padding: 0.6rem 0rem 0.6rem 3.5rem;
-    width: 0px;
+    width: 0;
+    background: #FFFFFF;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
 }
 
-.navbar-search input::placeholder{
+.navbar-search input::placeholder {
     opacity: 1;
     font-size: 1.4rem;
     color: #848496;
 }
 
-.search-input-expand{
+.search-input-expand {
     width: 300px;
     border: 1px solid #6E3EF7;
     transition: 0.25s ease-out;
 }
 
-.search-icon{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
-    cursor: pointer;
+.navbar-search input:focus {
+    border-color: #6E3EF7;
 }
 
 .filter-bar .large-add-new-btn {
@@ -2488,6 +2491,14 @@ h3.review-name {
 
 .filter-bar .small-add-new-btn {
     display: block;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    cursor: pointer;
 }
 
 .filter-bar .modal .modal-header {
@@ -2763,7 +2774,8 @@ h3.review-name {
     right: 10px !important;
 }
 
-.cuisine-group .select2-container{
+
+.cuisine-group .select2-container {
     padding: 0px;
 }
 
@@ -2771,7 +2783,7 @@ h3.review-name {
     min-height: 150px;
 }
 
-div.ck ul{
+div.ck ul {
     list-style: inside !important;
 }
 
@@ -2794,4 +2806,24 @@ div.ck ul{
 .to-try-all {
     border-width: 1px 1px 1px 1px;
     border-radius: 6px 0 0 6px;
+}
+
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
+.ck-rounded-corners {
+    width: 100% !important;
+}
+
+.h-17 {
+    height: 17px;
 }
