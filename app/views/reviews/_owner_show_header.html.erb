@@ -1,4 +1,4 @@
-<div class="row align-items-end pb_50" >
+<div class="row align-items-end pb_50">
   <div class="col-lg-6">
     <div class="public_review">
       <div class="mode-switch d-flex flex-row align-items-center">
@@ -23,7 +23,7 @@
       <% end %>
       <li>
         <% for count in 1..5 %>
-          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present? %>">$</span>
         <% end %>
       </li>
     </ul>
@@ -34,12 +34,13 @@
         <p class="reviewer">Reviewer</p>
         <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
       </div>
-      <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box')%>
+      <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box') %>
     </div>
     <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(@review) %>">
-      <a href="#" data-action="click->favourite#updateFavourite" class="<%= 'checked' if @review.favourite == true %>">
-        <%= image_tag("template/favourites1.svg") %>
-        <span>Save as Favourite</span></a>
+      <%= link_to nil, data: { action: "click->favourite#updateFavourite", "favourite-target": "favoriteLink" }, class: "#{'checked' if @review.favourite == true}" do %>
+        <%= image_tag(@review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %>
+        <span class=<%= @review.favourite ? "" : "text-black-50" %>>Save as Favorite</span>
+      <% end %>
       <% if @review.average_score.present? %>
         <p class="rating">
           <%= image_tag("template/star.svg") %><span><%= @review.average_score %></span></p>
@@ -59,7 +60,7 @@
   <div class="col-12 d-lg-none">
     <div class="d-flex justify-content-between align-items-center pt_30">
       <div class="d-flex align-items-center avatar">
-        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto')%>
+        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
           <p class="name"><%= @review.name %></p>

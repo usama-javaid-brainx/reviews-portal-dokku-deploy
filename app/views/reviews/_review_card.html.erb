@@ -13,7 +13,7 @@
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
       <% else %>
         <%= link_to review_path(review.slug) do %>
-          <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
+          <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag("template/favourites.png") %></button>
       <% end %>
