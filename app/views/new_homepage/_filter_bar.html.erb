@@ -77,7 +77,7 @@
           <% end %>
         </div>
         <div class="col-lg-4 justify-content-between align-items-center large-add-new-btn">
-          <div class="col-lg-7 col-4 navbar-search" data-controller="filter">
+          <div class="col-lg-7 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
