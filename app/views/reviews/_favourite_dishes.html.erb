@@ -8,7 +8,7 @@
       </div>
       <% index = 0 %>
       <%= f.fields_for :meals do |meal_form| %>
-        <li data-meals-target="mealCard" id="<%= index %>" data-value= "<%= meal_form.object.id %>" data-url="<%= review_delete_meal_path(review)%>">
+        <li data-meals-target="mealCard" id="<%= index %>">
           <img id="image-<%= index %>" class='main_img' src='<%= meal_form.object.image_url %>'>
           <%= meal_form.hidden_field :image_url %>
           <%= meal_form.hidden_field :name %>
