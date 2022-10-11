@@ -2838,6 +2838,15 @@ div.ck ul {
     height: 17px;
 }
 
-.image-resizing {
-    aspect-ratio: 2.2/2.3;
+.image-resizing{
+    max-width: 200px;
+    height: 210px;
+}
+
+.image-resizing a{
+    display: inline-block;
+}
+
+.image-resizing a img{
+    height: 200px;
 }

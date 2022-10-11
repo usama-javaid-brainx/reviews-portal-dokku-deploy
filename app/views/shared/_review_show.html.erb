@@ -87,9 +87,9 @@
         <div class="modal-body">
           <div class="row">
             <% @review.images.each do |image_src| %>
-              <div class="col-3 mb-3 text-center ">
+              <div class="image-resizing col-3 mb-3 text-center ">
                 <a href="<%= image_src %>" data-toggle="lightbox" data-gallery="full-gallery" data-type="image">
-                  <img class="image-resizing img-fluid" src=<%= image_src %>>
+                  <img src=<%= image_src %>>
                 </a>
               </div>
             <% end %>
