@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :set_categories, only: [:index, :new, :show, :edit]
 
   def index
     duplicate_review if session[:edit_review].present?

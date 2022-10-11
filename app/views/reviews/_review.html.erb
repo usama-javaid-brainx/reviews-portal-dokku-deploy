@@ -1,3 +1,4 @@
+<% more_review_fields = { author: 'Author', platform: 'Platform', url: 'Url', google_url: "Google Url", foursquare_url: "Foursquare Url", yelp_url: "Yelp Url" } %>
 <h2>Description</h2>
 <div class="tabs_content_wrap">
 
@@ -40,46 +41,13 @@
     </div>
   <% end %>
 
-  <% if @curr_category.author %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Author" %>
-      <%= f.text_field :author, placeholder: 'Author', step: "0.01", max: "10", min: "0" %>
-    </div>
-  <% end %>
-
-  <% if @curr_category.platform %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Platform" %>
-      <%= f.text_field :platform, placeholder: 'Platform', step: "0.01", max: "10", min: "0" %>
-    </div>
-  <% end %>
-
-  <% if @curr_category.url %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Url" %>
-      <%= f.text_field :url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-    </div>
-  <% end %>
-
-  <% if @curr_category.google_url %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Google Url" %>
-      <%= f.text_field :google_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-    </div>
-  <% end %>
-
-  <% if @curr_category.foursquare_url %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Foursquare Url" %>
-      <%= f.text_field :foursquare_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-    </div>
-  <% end %>
-
-  <% if @curr_category.yelp_url %>
-    <div class="form_group align-items-center row">
-      <%= f.label "Yelp Url" %>
-      <%= f.text_field :yelp_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-    </div>
+  <% more_review_fields.each do |key, value| %>
+    <% if @curr_category.send(key) %>
+      <div class="form_group align-items-center row">
+        <%= f.label value %>
+        <%= f.text_field key, placeholder: value, step: "0.01", max: "10", min: "0" %>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="form_group align-items-center row">
