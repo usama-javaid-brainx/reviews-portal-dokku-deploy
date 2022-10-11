@@ -49,15 +49,16 @@ class ReviewsController < ApplicationController
       redirect_to root_path, notice: "Review didn't created successfully please try again"
     end
   end
-    def show
-      if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
-        redirect_to guest_path
-      else
-        @review = current_user.reviews.find_by(slug: params[:id])
-        @parent_id = @review.parent_id
-        @review_user = User.find_by(id: @review.user_id)
-      end
+
+  def show
+    if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
+      redirect_to guest_path
+    else
+      @review = current_user.reviews.find_by(slug: params[:id])
+      @parent_id = @review.parent_id
+      @review_user = User.find_by(id: @review.user_id)
     end
+  end
 
   def edit
     @curr_category = @review.category
@@ -65,10 +66,18 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to root_path, notice: "Review updated successfully!"
+      if !meal_delete?
+        redirect_to edit_review_path(@review), notice: "Meal did not deleted try again"
+      else
+        redirect_to root_path, notice: "Review updated successfully!"
+      end
     else
       render :new
     end
+  end
+
+  def meal_delete?
+    params[:review][:deleted_meals].present? ? Meal.where(id: params[:review][:deleted_meals].split(',')).destroy_all : true
   end
 
   def destroy
