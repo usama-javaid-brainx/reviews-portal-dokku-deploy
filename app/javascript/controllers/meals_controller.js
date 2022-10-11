@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel"]
+  static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel", "deletedMeals"]
 
   static get values() {
     return {editIcon: String, deleteIcon: String}
@@ -10,6 +10,7 @@ export default class extends Controller {
   connect() {
     super.connect();
     this.favourite_dishes = [];
+
   }
 
   saveChanges(event) {
@@ -56,32 +57,23 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
+    if (document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`) != null){
+      let mealId = document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`).value
+      let deletedMeals = [];
 
+      if (this.deletedMealsTarget.value != '') {
+        deletedMeals.push(this.deletedMealsTarget.value)
+        deletedMeals.push(mealId)
+      } else {
+        deletedMeals.push(mealId)
+      }
+      this.deletedMealsTarget.value = deletedMeals
+    }
     document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
     }
   }
-
-
-  // deleteMeal(event) {
-  //   let currentMeal = document.getElementById(event.currentTarget.id)
-  //
-  //   $.ajax({
-  //     type: "GET",
-  //     url: document.getElementById(event.currentTarget.id).getAttribute('data-url'),
-  //     data: `meal_id=${document.getElementById(event.currentTarget.id).getAttribute('data-value')}`,
-  //     dataType: 'json',
-  //     success(){
-  //       currentMeal.remove()
-  //     }
-  //   })
-  //
-  //   if (!this.hasMealCardTarget) {
-  //     this.noMealDivTarget.classList.remove('d-none')
-  //   }
-  // }
-
 
   makeNewMeal() {
     let randomId = Math.floor(Math.random() * 1000) * 3243;

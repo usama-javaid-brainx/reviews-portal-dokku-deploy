@@ -6,6 +6,7 @@
         <h2>No Highlights yet</h2>
         <div>Add your Highlights</div>
       </div>
+      <%= f.hidden_field :deleted_meals, value: "", 'data-meals-target': "deletedMeals"%>
       <% index = 0 %>
       <%= f.fields_for :meals do |meal_form| %>
         <li data-meals-target="mealCard" id="<%= index %>">
