@@ -2801,3 +2801,19 @@ h3.review-name {
     border-width: 1px 1px 1px 1px;
     border-radius: 6px 0 0 6px;
 }
+
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
+.ck-rounded-corners {
+    width: 100% !important;
+}
