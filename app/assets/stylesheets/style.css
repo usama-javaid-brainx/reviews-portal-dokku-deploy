@@ -582,7 +582,7 @@ header {
 }
 
 .review-card {
-    height: 380px;
+    height: 360px;
 }
 
 .card_carousel {
@@ -611,6 +611,7 @@ header {
 }
 
 .card .card-header .item img {
+    object-fit: cover;
     aspect-ratio: 16/9;
 }
 
@@ -732,6 +733,9 @@ header {
 }
 
 .card h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #00000A;
     font-weight: 500;
     font-size: 1.9rem;
@@ -2419,6 +2423,9 @@ li.category-list-item {
 }
 
 h3.review-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 0px;
 }
 
