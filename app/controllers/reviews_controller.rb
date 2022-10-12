@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     if @review.save
-      FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name])
+      FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name]) if params[:review][:city].present? && params[:review][:name].present?
       redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
