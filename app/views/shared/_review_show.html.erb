@@ -13,17 +13,14 @@
     </div>
   </header>
 <% end %>
-
 <main class="overflow-hidden position-relative" data-controller="guest" data-guest-slug-value="<%= @review.slug %>">
   <div class="d-flex justify-content-center position-absolute share-message-wraper d-none" data-guest-target="shareMsg">
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
   </div>
-
   <a class="back" href="javascript:history.back()">
     <%= image_tag("template/left-arrow.svg") %>
   </a>
-
   <!--========== Hero area start ===========-->
   <section class="hero_area pt_50">
     <!-- this carousel area for mobile -->
@@ -47,35 +44,100 @@
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
           <% if @review.images? %>
-            <div class="col-lg-6 large ">
-              <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
-                <img src=<%= @review.images.first %>>
-              </a>
-            </div>
-            <div class="col-lg-6">
-              <div class="row g-3">
-                <% @review.images[1..].each_with_index do |image_src, idx| %>
-                  <div class="col-lg-6 small position-relative">
-                    <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery">
-                      <img src="<%= image_src %>" class="<%= 'd-none' if idx > 3 %>">
+            <% if @review.images.count == 1 %>
+              <div class="col-lg-12 large ">
+                <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
+                  <img src=<%= @review.images.first %>>
+                </a>
+              </div>
+            <% end %>
+            <% if @review.images.count == 2 %>
+              <div class="col-lg-12 d-flex justify-content-between">
+                <div class="col-lg-6 large-half ">
+                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
+                    <img src=<%= @review.images.first %>>
+                  </a>
+                </div>
+                <div class="col-lg-6 large-half ">
+                  <a href="<%= @review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery">
+                    <img src=<%= @review.images.second %>>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            <% if @review.images.count == 3 %>
+              <div class="col-lg-12 d-flex justify-content-between">
+                <div class="col-lg-6 large-half ">
+                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
+                    <img src=<%= @review.images.first %>>
+                  </a>
+                </div>
+                <div class="col-lg-6 d-flex flex-column justify-content-between">
+                  <div class="col-lg-12 large-slice ">
+                    <a href="<%= @review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery">
+                      <img src=<%= @review.images.second %>>
                     </a>
-                    <% if image_src.equal?(@review.images[1..4].last) %>
-                      <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <%= image_tag("template/eye.svg", class: 'gallery-icon mr-2') %>
-                        See All Photos
-                      </button>
+                  </div>
+                  <div class="col-lg-12 large-slice ">
+                    <a href="<%= @review.images.third %>" data-toggle="lightbox" data-gallery="first-gallery">
+                      <img src=<%= @review.images.third %>>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <% if @review.images.count == 4 %>
+              <div class="col-lg-12 d-flex justify-content-between">
+                <div class="col-lg-6 large-half ">
+                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
+                    <img src=<%= @review.images.first %>>
+                  </a>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-between">
+                  <div class="row g-3">
+                    <% @review.images[1..].each_with_index do |image_src, idx| %>
+                      <div class="col-lg-6 small position-relative">
+                        <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery">
+                          <img src="<%= image_src %>" class="<%= 'd-none' if idx > 3 %>">
+                        </a>
+                      </div>
                     <% end %>
                   </div>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
+            <% if @review.images.count >= 5 %>
+              <div class="col-lg-12 d-flex justify-content-between">
+                <div class="col-lg-6 large-half ">
+                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery">
+                    <img src=<%= @review.images.first %>>
+                  </a>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-between">
+                  <div class="row g-3">
+                    <% @review.images[1..].each_with_index do |image_src, idx| %>
+                      <div class="col-lg-6 small position-relative">
+                        <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery">
+                          <img src="<%= image_src %>" class="<%= 'd-none' if idx > 3 %>">
+                        </a>
+                        <% if image_src.equal?(@review.images[1..4].last) %>
+                          <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <%= image_tag("template/eye.svg", class: 'gallery-icon mr-2') %>
+                            See All Photos
+                          </button>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <!-- gallery end-->
       </div>
     </div>
   </section>
-
   <!-- images gallery Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" style="max-height: 600px; max-width: 800px;">
@@ -98,73 +160,106 @@
       </div>
     </div>
   </div>
-
-
   <div class="container custom pb_50">
     <div class="row g-lg-5">
       <div class="col-lg-8">
-
-        <!-- tags area start -->
-        <div class="pt_50">
-          <h3 class="pb_10">Tags</h3>
-          <div class="tags_wrap position-relative">
-            <ul class="tags_list">
-              <% @review.tags.split(",").drop(1).each do |res_tag| %>
-                <li><%= image_tag("template/check.png") if @review.tags? %><span><%= res_tag %></span>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-
-        <!-- notes area start -->
-        <div class="pt_50">
-          <h3 class="pb_10">Review Body</h3>
-          <div class="notes_wrap position-relative list-style-unset ck-content">
-            <%= raw @review.notes %>
-          </div>
-        </div>
-
-        <!-- Favorite Dishes area start -->
-        <div class="pt_50">
-          <h3 class="pb_10">Favorite Dishes</h3>
-          <div class="favorite_dishes_wrap">
-            <ul class="favorite_dishes_list">
-              <% @review.meals.each do |meal| %>
-                <li>
-                  <img class="main_img" src=<%= meal.image_url %>>
-                  <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                    <div>
-                      <h4><%= meal.name %></h4>
-                      <p><%= meal.notes %></p>
+        <h3 class="review-detail-head mt_50 mb-3">Review</h3>
+        <div class="review_details_wrap">
+          <% if @review.notes.present? %>
+            <div class="review-notes position-relative list-style-unset ck-content">
+              <%= raw @review.notes %>
+            </div>
+          <% end %>
+          <% if @review.meals.present? %>
+            <div class="review-highlight mt-5">
+              <h3 class="mb-3">Highlights</h3>
+              <ul class="favorite_dishes_list">
+                <% @review.meals.each do |meal| %>
+                  <li>
+                    <img class="main_img" src=<%= meal.image_url %>>
+                    <div class="d-flex justify-content-between align-items-center w-100 ml_15">
+                      <div>
+                        <h4><%= meal.name %></h4>
+                        <p><%= meal.notes %></p>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <% if @review.tags.present? %>
+            <div class="review-tag mt-5 mb-3">
+              <ul class="tags_list">
+                <% @review.tags.split(",").drop(1).each do |res_tag| %>
+                  <li><%= res_tag %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col-lg-4">
-
-        <!-- map area start -->
-        <div class="pt_30">
-          <h3 class="pb_10">Localization</h3>
-          <div class="map_wrap">
-            <span id="lat" data-latitude=<%= @review.latitude %>> </span>
-            <span id="long" data-longitude=<%= @review.longitude %>> </span>
-            <div id="map">
-            </div>
-            <div class="position-relative mt-3 pt_15 pb_15">
-              <% if @review.country.present? and @review.state.present? %>
-                <h4><%= @review.country %>, <%= @review.state %></h4>
-              <% end %>
-              <% if @review.address.present? or @review.zip_code.present? %>
-                <p><%= @review.address + ',' if @review.address.present? %>   <%= @review.zip_code if @review.zip_code.present? %></p>
+        <div class="pt_50">
+          <h3 class="pb_10">Score</h3>
+          <div class="review_wrap">
+            <ul>
+              <li>
+                <%= image_tag("template/Yelp.svg") %>
+                <div>
+                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
+                  <p class="totel_review">409 reviews</p>
+                </div>
+              </li>
+              <li>
+                <%= image_tag("template/Google.svg") %>
+                <div>
+                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
+                  <p class="totel_review">409 reviews</p>
+                </div>
+              </li>
+              <li>
+                <%= image_tag("template/Foursquare.svg") %>
+                <div>
+                  <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
+                  <p class="totel_review">2453 reviews</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <% if @review.city.present? and @review.country.present? %>
+          <div class="pt_30">
+            <h3 class="pb_10">Localization</h3>
+            <div class="map_wrap">
+              <span id="lat" data-latitude=<%= @review.latitude %>> </span>
+              <span id="long" data-longitude=<%= @review.longitude %>> </span>
+              <div id="map">
+              </div>
+              <div class="position-relative mt-3 pt_15 pb_15">
+                <% if @review.country.present? %>
+                  <h4><%= @review.country %>, <%= @review.state %></h4>
+                <% end %>
+                <% if @review.address.present? or @review.zip_code.present? %>
+                  <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
+                <% end %>
+              </div>
+              <%= link_to nil, class: "map-button" do %>
+                <%= image_tag("template/map.svg") %>
+                <span> Show on map </span>
               <% end %>
             </div>
           </div>
-        </div>
+        <% end %>
+        <% if @review.author.present? %>
+          <div class="pt_30">
+            <h3 class="pb_10">Author</h3>
+            <div class="review-author">
+              <h4><%= @review.author %></h4>
+              <p><%= @review.address %> <%= @review.zip_code %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
