@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <% if !current_user.second_view? %>
-        <div class="col-6 text-center">
+        <div class="col-5 col-sm-6 text-center">
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
               <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
@@ -69,7 +69,7 @@
           </div>
         </div>
       <% end %>
-      <div class="<%= current_user.second_view ? "col-6" : "col-3" %> text-end">
+      <div class="<%= current_user.second_view ? "col-6" : "col-4 col-sm-3" %> text-end">
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">

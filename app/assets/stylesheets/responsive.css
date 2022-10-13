@@ -118,9 +118,6 @@
 	.content_wrap{
 		min-height: 100%;
 	}
-	.user .name{
-		display: none;
-	}
 	.user .arrow{
 		display: none;
 	}
