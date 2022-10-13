@@ -572,17 +572,13 @@ header {
     border-bottom-right-radius: 0.75rem !important;
 }
 
-/* card desing */
+/* card designing */
 
 .card {
     background: #FFFFFF;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     overflow: hidden;
-}
-
-.review-card {
-    height: 360px;
 }
 
 .card_carousel {
@@ -1559,7 +1555,7 @@ header {
     color: #21212D;
 }
 
-.review-highlight h3{
+.review-highlight h3 {
     font-size: 16px;
     font-weight: 500;
     color: #00000A;
@@ -1595,12 +1591,12 @@ header {
     color: #636373;
 }
 
-.tags_list{
+.tags_list {
     display: flex;
     flex-wrap: wrap;
 }
 
-.tags_list li{
+.tags_list li {
     border: 1px solid #6E3EF7;
     color: #6E3EF7;
     padding: 5px 14px;
@@ -1709,7 +1705,7 @@ header {
     padding: 1.1rem;
 }
 
-.map-button{
+.map-button {
     display: block;
     text-align: center;
     width: 100%;
@@ -1718,7 +1714,7 @@ header {
     border-radius: 6px;
 }
 
-.map-button span{
+.map-button span {
     font-weight: 500;
     font-size: 16px;
     color: #6E3EF7;
@@ -2708,6 +2704,10 @@ h3.review-name {
     animation-iteration-count: 1;
 }
 
+.review-card {
+    height: 390px;
+}
+
 @keyframes slidein {
     from {
         margin-top: 0;
@@ -2763,42 +2763,109 @@ div.ck ul {
     }
 }
 
-@media (max-width: 575px) {
-    .back {
-        top: 1rem;
-        left: .8rem;
-    }
-
-    .add_review_area .nav-pills .nav-item {
-        margin-right: 1.7rem;
-    }
-
-    .add_review_area .nav-pills .nav-item a {
-        font-size: 1.2rem;
+@media (max-width: 1999px) {
+    .review-card {
+        height: 355px;
     }
 }
 
-@media (max-width: 575px) {
-    .back {
-        top: 1rem;
-        left: .8rem;
+@media (max-width: 1799px) {
+    .review-card {
+        height: 325px;
     }
 
-    .add_review_area .nav-pills .nav-item {
-        margin-right: 1.7rem;
-    }
-
-    .add_review_area .nav-pills .nav-item a {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 1800px) {
     .add_review_area .title {
         padding-bottom: 0;
     }
+}
+
+@media (max-width: 1599px) {
+    .review-card {
+        height: 290px;
+    }
+}
+
+@media (max-width: 1399px) {
+    .review-card {
+        height: 255px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .review-card {
+        height: 220px;
+    }
+}
+
+@media (max-width: 991px) {
+    .review-card {
+        height: 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    .review-card {
+        height: 405px;
+    }
+}
+
+@media (max-width: 575px) {
 
     .review-card {
-        height: 320px;
+        height: 420px;
+    }
+
+    .back {
+        top: 1rem;
+        left: .8rem;
+    }
+
+    .add_review_area .nav-pills .nav-item {
+        margin-right: 1.7rem;
+    }
+
+    .add_review_area .nav-pills .nav-item a {
+        font-size: 1.2rem;
+    }
+
+    .back {
+        top: 1rem;
+        left: .8rem;
+    }
+
+    .add_review_area .nav-pills .nav-item {
+        margin-right: 1.7rem;
+    }
+
+    .add_review_area .nav-pills .nav-item a {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 520px) {
+
+    .review-card {
+        height: 380px;
+    }
+}
+
+@media (max-width: 470px) {
+
+    .review-card {
+        height: 350px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .review-card {
+        height: 325px;
+    }
+}
+
+@media (max-width: 370px) {
+
+    .review-card {
+        height: 295px;
     }
 }
