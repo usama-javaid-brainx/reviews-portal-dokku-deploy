@@ -33,7 +33,7 @@
       <% if review.state.present? and review.country.present? %>
         <div class="state-name"><%= review.state %>, <%= review.country %></div>
         <% else %>
-        <div class="state-name"><%= review.date.strftime("%b/%e/%Y") if review.date? %></div>
+        <div class="state-name"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
       <% end %>
 
       <div class="d-flex mt-2 align-items-center">
