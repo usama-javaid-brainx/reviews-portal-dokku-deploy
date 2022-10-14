@@ -2580,10 +2580,7 @@ h3.review-name {
 }
 
 .view-settings-wrapper {
-    width: 672px;
     border: 1px solid #EDEDFB;
-    margin: 20px auto auto auto;
-    padding: 30px;
     border-radius: 5px;
 }
 
