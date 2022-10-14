@@ -66,18 +66,14 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      if !meal_delete?
-        redirect_to edit_review_path(@review), notice: "Meal did not deleted try again"
-      else
+      if params[:review][:deleted_meals].blank? || params[:review][:deleted_meals].present? && Meal.where(id: params[:review][:deleted_meals].split(',')).destroy_all
         redirect_to root_path, notice: "Review updated successfully!"
+      else
+        redirect_to edit_review_path(@review), notice: "Meal did not deleted try again"
       end
     else
       render :new
     end
-  end
-
-  def meal_delete?
-    params[:review][:deleted_meals].present? ? Meal.where(id: params[:review][:deleted_meals].split(',')).destroy_all : true
   end
 
   def destroy
