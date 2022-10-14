@@ -37,7 +37,7 @@
       <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box') %>
     </div>
     <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(@review) %>">
-      <%= link_to nil, data: { action: "click->favourite#updateFavourite", "favourite-target": "favoriteLink" }, class: "#{'checked' if @review.favourite == true}" do %>
+      <%= link_to nil, data: { action: "click->favourite#updateFavourite", "favourite-target": "favoriteLink" }, class: "#{'checked' if @review.favourite} #{ 'm-0' if @review.average_score.blank?}" do %>
         <%= image_tag(@review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %>
         <span class=<%= @review.favourite ? "" : "text-black-50" %>>Save as Favorite</span>
       <% end %>
