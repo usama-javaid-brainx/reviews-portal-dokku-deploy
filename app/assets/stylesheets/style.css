@@ -2817,3 +2817,7 @@ div.ck ul {
 .ck-rounded-corners {
     width: 100% !important;
 }
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
+}
