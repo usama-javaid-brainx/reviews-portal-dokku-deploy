@@ -749,7 +749,7 @@ header {
     align-items: center;
     color: #424250;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 12px;
     line-height: 1.428;
     position: relative;
     padding-right: 1.1rem;
@@ -760,36 +760,10 @@ header {
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
     text-align: center;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
     color: #CCCCE1;
-    font-size: .8rem;
-    transition: .2s;
-    margin-right: 2px;
-}
-
-.card .list_group li span:hover {
-    cursor: pointer;
-    color: #FFFFFF;
-    background: #CCCCE1;
-}
-
-.card .list_group li span {
-    display: inline-block;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #CCCCE1;
-    color: #CCCCE1;
-    font-size: .8rem;
     transition: .2s;
     margin-right: 2px;
 }
@@ -1881,7 +1855,7 @@ hitting-enter-submit
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     color: #00000A;
-    font-size: 1.4rem;
+    font-size: 17px;
 }
 
 .add_review_area textarea {
@@ -2487,6 +2461,10 @@ h3.review-name {
     transition: 0.25s ease-out;
 }
 
+.navbar-search input:focus {
+    border-color: #6E3EF7;
+}
+
 .search-icon {
     position: absolute;
     top: 50%;
@@ -2533,7 +2511,7 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection__rendered {
-    margin-top: 4px;
+    margin-top: 12px;
     color: #6E3EF7 !important;
 }
 
@@ -2547,7 +2525,7 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
-    margin-top: 3px;
+    margin-top: 10px;
     margin-left: -10px;
 }
 
@@ -2574,10 +2552,7 @@ h3.review-name {
 }
 
 .view-settings-wrapper {
-    width: 672px;
     border: 1px solid #EDEDFB;
-    margin: 20px auto auto auto;
-    padding: 30px;
     border-radius: 5px;
 }
 
@@ -2670,7 +2645,6 @@ h3.review-name {
 .price-sz {
     width: 20px !important;
     height: 20px !important;
-    padding-top: 3px;
 }
 
 .bg-price {
@@ -2701,6 +2675,19 @@ h3.review-name {
     right: 10px !important;
 }
 
+
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
 .card-load {
     animation-duration: 1.5s;
     animation-name: slidein;
@@ -2710,7 +2697,8 @@ h3.review-name {
 .review-card {
     height: 390px;
 }
-.log-in-text{
+
+.log-in-text {
     font-size: 3.5rem;
 }
 
@@ -2743,6 +2731,23 @@ div.ck ul {
 
 .ck-rounded-corners {
     width: 100% !important;
+}
+
+.h-17 {
+    height: 17px;
+}
+
+.image-resizing {
+    max-width: 200px;
+    height: 210px;
+}
+
+.image-resizing a {
+    display: inline-block;
+}
+
+.image-resizing a img {
+    height: 200px;
 }
 
 @keyframes loader3 {
@@ -2783,14 +2788,31 @@ div.ck ul {
     .add_review_area .title {
         padding-bottom: 0;
     }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered {
+        margin-top: 7px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+        margin-top: 6px;
+    }
 }
 
 @media (max-width: 1599px) {
     .review-card {
         height: 290px;
     }
+
     .search-icon {
         right: 12px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered {
+        margin-top: 7px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+        margin-top: 6px;
     }
 }
 
@@ -2798,8 +2820,17 @@ div.ck ul {
     .review-card {
         height: 255px;
     }
+
     .search-icon {
         right: 9px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered {
+        margin-top: 5px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+        margin-top: 2px;
     }
 }
 
@@ -2807,8 +2838,17 @@ div.ck ul {
     .review-card {
         height: 220px;
     }
+
     .search-icon {
         right: 5px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered {
+        margin-top: 0px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+        margin-top: 0px;
     }
 }
 
@@ -2816,8 +2856,17 @@ div.ck ul {
     .review-card {
         height: 300px;
     }
+
     .search-icon {
         right: 15px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered {
+        margin-top: 5px;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+        margin-top: 3px;
     }
 }
 
@@ -2867,7 +2916,18 @@ div.ck ul {
     }
 }
 
+
 @media (max-width: 470px) {
+    .price-sz {
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+    }
+
+    .bg-price {
+        background: #848496;
+    }
+
 
     .review-card {
         height: 350px;
@@ -2882,8 +2942,12 @@ div.ck ul {
 }
 
 @media (max-width: 370px) {
-
     .review-card {
         height: 295px;
     }
 }
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
+}
+
