@@ -2907,6 +2907,16 @@ div.ck ul {
     .add_review_area .nav-pills .nav-item a {
         font-size: 1.2rem;
     }
+
+    .filter-bar .new-filter-button {
+        padding: 1rem 1.5rem 1rem 1.5rem;
+    }
+    .search-input {
+        padding: 8px 20px 8px 20px;
+    }
+    .search-icon {
+        right: 9px;
+    }
 }
 
 @media (max-width: 520px) {
