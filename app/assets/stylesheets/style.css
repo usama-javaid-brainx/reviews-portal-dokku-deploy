@@ -749,7 +749,7 @@ header {
     align-items: center;
     color: #424250;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 12px;
     line-height: 1.428;
     position: relative;
     padding-right: 1.1rem;
@@ -760,36 +760,10 @@ header {
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
     text-align: center;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
     color: #CCCCE1;
-    font-size: .8rem;
-    transition: .2s;
-    margin-right: 2px;
-}
-
-.card .list_group li span:hover {
-    cursor: pointer;
-    color: #FFFFFF;
-    background: #CCCCE1;
-}
-
-.card .list_group li span {
-    display: inline-block;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #CCCCE1;
-    color: #CCCCE1;
-    font-size: .8rem;
     transition: .2s;
     margin-right: 2px;
 }
@@ -2574,10 +2548,7 @@ h3.review-name {
 }
 
 .view-settings-wrapper {
-    width: 672px;
     border: 1px solid #EDEDFB;
-    margin: 20px auto auto auto;
-    padding: 30px;
     border-radius: 5px;
 }
 
@@ -2670,7 +2641,6 @@ h3.review-name {
 .price-sz {
     width: 20px !important;
     height: 20px !important;
-    padding-top: 3px;
 }
 
 .bg-price {
@@ -2881,7 +2851,18 @@ div.ck ul {
     }
 }
 
+
 @media (max-width: 470px) {
+.price-sz {
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+}
+
+.bg-price {
+    background: #848496;
+}
+
 
     .review-card {
         height: 350px;
@@ -2896,8 +2877,12 @@ div.ck ul {
 }
 
 @media (max-width: 370px) {
-
     .review-card {
         height: 295px;
     }
 }
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
+}
+
