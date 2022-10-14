@@ -1,4 +1,4 @@
-<% more_review_fields = { author: 'Author', platform: 'Platform', url: 'Url', google_url: "Google Url", foursquare_url: "Foursquare Url", yelp_url: "Yelp Url" } %>
+<% more_review_fields = [ "author", "platform", "url", "google_url", "foursquare_url", "yelp_url" ] %>
 <h2>Description</h2>
 <div class="tabs_content_wrap">
 
@@ -41,11 +41,11 @@
     </div>
   <% end %>
 
-  <% more_review_fields.each do |key, value| %>
-    <% if @curr_category.send(key) %>
+  <% more_review_fields.each do |field| %>
+    <% if @curr_category.send(field) %>
       <div class="form_group align-items-center row">
-        <%= f.label value %>
-        <%= f.text_field key, placeholder: value, step: "0.01", max: "10", min: "0" %>
+        <label><%= field.titleize %></label>
+        <%= f.text_field field, placeholder: field.titleize, step: "0.01", max: "10", min: "0" %>
       </div>
     <% end %>
   <% end %>
