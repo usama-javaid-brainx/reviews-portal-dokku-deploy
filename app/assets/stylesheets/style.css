@@ -2868,4 +2868,7 @@ div.ck ul {
     .review-card {
         height: 295px;
     }
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
 }
