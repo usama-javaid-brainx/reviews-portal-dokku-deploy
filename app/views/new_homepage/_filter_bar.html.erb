@@ -5,7 +5,7 @@
       <div class="row align-items-center">
         <div class="col-lg-4 d-flex justify-content-xl-start justify-content-evenly align-items-center">
           <div class="col-lg-7 col-5 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: params[:category_id] == "all"? "all" : @curr_category.id), data: {"action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: {"action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
           <div class="d-flex justify-content-center col-lg-3 col-2" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>

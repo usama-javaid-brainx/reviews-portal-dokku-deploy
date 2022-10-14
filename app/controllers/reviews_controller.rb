@@ -5,7 +5,11 @@ class ReviewsController < ApplicationController
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
+    if params[:category_id].present?
+      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
+    else
+      @curr_category = "all"
+    end
   end
 
   def index
@@ -100,6 +104,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params[:review][:images] = [] if params[:review][:images] == [""]
-    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])   
+    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 end
