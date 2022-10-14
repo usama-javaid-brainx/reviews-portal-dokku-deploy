@@ -2707,6 +2707,9 @@ h3.review-name {
 .review-card {
     height: 390px;
 }
+.log-in-text{
+    font-size: 3.5rem;
+}
 
 @keyframes slidein {
     from {
