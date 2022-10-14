@@ -2381,23 +2381,26 @@ li.category-list-item {
     border-bottom: 1px solid #EDEDFB;
 }
 
-.filter-bar .add-new-btn {
+.filter-bar .large-add-new-btn .add-new-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
     border: 1px solid #6E3EF7;
     background-color: #6E3EF7;
     color: white;
-    padding: 1rem 2rem 1rem 2rem;
     border-radius: 6px;
     font-size: 1.6rem;
     font-weight: 500;
+    padding: 1rem 0rem;
 }
 
-.filter-bar .add-new-btn:hover {
+.filter-bar large-add-new-btn .add-new-btn:hover {
     background: #FFFFFF;
     color: #6E3EF7;
     border-color: #6E3EF7;
 }
 
-.add-new-btn:hover img {
+large-add-new-btn .add-new-btn:hover img {
     filter: brightness(0) saturate(100%) invert(28%) sepia(63%) saturate(6978%) hue-rotate(251deg) brightness(101%) contrast(94%);
 }
 
@@ -2466,7 +2469,7 @@ h3.review-name {
 }
 
 .search-input {
-    padding: 1rem 3rem 1rem 0.5rem;
+    padding: 10px 25px 10px 25px;
     width: 0px;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
@@ -2488,7 +2491,7 @@ h3.review-name {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0.8rem;
+    right: 15px;
     cursor: pointer;
 }
 
@@ -2786,11 +2789,17 @@ div.ck ul {
     .review-card {
         height: 290px;
     }
+    .search-icon {
+        right: 12px;
+    }
 }
 
 @media (max-width: 1399px) {
     .review-card {
         height: 255px;
+    }
+    .search-icon {
+        right: 9px;
     }
 }
 
@@ -2798,11 +2807,17 @@ div.ck ul {
     .review-card {
         height: 220px;
     }
+    .search-icon {
+        right: 5px;
+    }
 }
 
 @media (max-width: 991px) {
     .review-card {
         height: 300px;
+    }
+    .search-icon {
+        right: 15px;
     }
 }
 
