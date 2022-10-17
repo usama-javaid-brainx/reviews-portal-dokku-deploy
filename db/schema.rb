@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_072416) do
     t.boolean "google_url"
     t.boolean "foursquare_url"
     t.boolean "yelp_url"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -125,10 +126,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_072416) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
-    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
+    t.text "images", default: [], array: true
     t.integer "parent_id"
     t.string "slug"
     t.date "start_date"
