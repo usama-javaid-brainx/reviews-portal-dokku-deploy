@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   get :homepage, to: 'reviews#homepage'
 
   namespace :api do
-    namespace :v1, defaults: { format: :json } do
-      post 'api_reviews/jj'
+    namespace :v1 do
+      get 'reviews/create_review'
     end
   end
 

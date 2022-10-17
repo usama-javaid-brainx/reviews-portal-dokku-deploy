@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :create_review, :jj]
+  skip_before_action :authenticate_user!, only: [:show, :create_review]
 
   def create_review
     session[:edit_review] = params[:edit_review]
