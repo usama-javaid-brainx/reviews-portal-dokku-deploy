@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:update]
+
   def index
     reviews = review_filter(current_user.reviews.kept)
     @pagy, @reviews = pagy(reviews, items: 12)
@@ -54,7 +55,9 @@ class UsersController < ApplicationController
   def set_user
     @user = current_user
   end
+
   def user_params
     params.require(:user).permit(:first_name, :avatar)
   end
 end
+

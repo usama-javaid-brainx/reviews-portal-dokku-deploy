@@ -57,16 +57,14 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
-    if (document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`) != null){
+    if (document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`) != null) {
       let mealId = document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`).value
       let deletedMeals = [];
 
       if (this.deletedMealsTarget.value != '') {
         deletedMeals.push(this.deletedMealsTarget.value)
-        deletedMeals.push(mealId)
-      } else {
-        deletedMeals.push(mealId)
       }
+      deletedMeals.push(mealId)
       this.deletedMealsTarget.value = deletedMeals
     }
     document.getElementById(event.currentTarget.id).remove()
@@ -80,7 +78,6 @@ export default class extends Controller {
     let imgSrc = ""
     if (this.imageTarget.getAttribute('src')) {
       imgSrc = this.imageTarget.src
-
     }
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
        <img id = "image-${randomId}" class='main_img' src='${imgSrc}'>
@@ -112,4 +109,3 @@ export default class extends Controller {
     this.mealNotesTarget.value = ""
   }
 }
-
