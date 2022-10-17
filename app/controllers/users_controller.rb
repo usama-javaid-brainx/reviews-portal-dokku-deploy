@@ -40,18 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-  private
-
-  def set_user
-    @user = current_user
-  end
-
-  def user_params
-    params.require(:user).permit(:first_name, :avatar)
-  end
-end
-
   def settings
     if params[:second_view].present?
       current_user.update(second_view: params[:second_view])
@@ -63,5 +51,12 @@ end
     end
   end
 
-end
+  private
+  def set_user
+    @user = current_user
+  end
 
+  def user_params
+    params.require(:user).permit(:first_name, :avatar)
+  end
+end
