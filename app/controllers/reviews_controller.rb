@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
   end
 
+
   def index
     duplicate_review if session[:edit_review].present?
   end
