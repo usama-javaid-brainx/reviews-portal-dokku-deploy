@@ -2991,3 +2991,7 @@ div.ck ul {
     aspect-ratio: 2.2/2.3;
 }
 
+button.favourite img{
+    height: 22px;
+}
+

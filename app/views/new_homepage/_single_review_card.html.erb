@@ -10,12 +10,14 @@
             <% end %>
           </div>
         <% end %>
+        <!--        <button data-action="click->favourite#updateFavourite" class="favourite <%#= 'checked' if review.favourite? %>"><%#= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>-->
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
         <% end %>
         <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
+        <!--        <button data-action="click->favourite#updateFavourite" class="favourite <%#= 'checked' if review.favourite? %>"><%#= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>-->
       <% end %>
     </div>
     <div class="card-body">
@@ -32,7 +34,7 @@
 
       <% if review.state.present? and review.country.present? %>
         <div class="state-name"><%= review.state %>, <%= review.country %></div>
-        <% else %>
+      <% else %>
         <div class="state-name"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
       <% end %>
 
