@@ -1,8 +1,9 @@
 class Api::V1::ReviewsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create_review]
+  skip_before_action :authenticate_user!, only: [:create]
+  skip_before_action :verify_authenticity_token
 
-  def create_review
-    if "9669e8488b0728d430ed1ce463097484" == request.headers["x-api-key"]    #secret_key = params { 'secret_key' }
+  def create
+    if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
       if User.find_by(phone_number: params[:phone_number]).present?
         review = User.find_by(phone_number: params[:phone_number]).reviews.new(name: "new_review", category_id: 13, to_try: true, url: params[:url])
         if review.save

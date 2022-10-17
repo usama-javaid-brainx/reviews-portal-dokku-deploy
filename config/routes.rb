@@ -27,8 +27,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'reviews/create_review'
+      resources :reviews, only: :create
     end
   end
-
 end
