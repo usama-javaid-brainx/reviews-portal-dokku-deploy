@@ -1716,7 +1716,7 @@ hitting-enter-submit
 }
 
 .add_review_area {
-    padding-bottom: 50rem;
+    padding-bottom: 10rem;
 }
 
 .add_review_area_header {
@@ -1844,6 +1844,7 @@ hitting-enter-submit
 }
 
 .score-text {
+    width: unset;
     font-weight: 600;
     font-size: 1.3rem;
 }
@@ -1855,7 +1856,7 @@ hitting-enter-submit
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     color: #00000A;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .add_review_area textarea {
@@ -2666,7 +2667,7 @@ h3.review-name {
 }
 
 .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
-    margin-top: 6px;
+    margin-top: 8px;
     padding-left: 15px;
 }
 
@@ -2814,6 +2815,14 @@ div.ck ul {
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 6px;
     }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 5px;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 7px !important;
+    }
 }
 
 @media (max-width: 1399px) {
@@ -2831,6 +2840,14 @@ div.ck ul {
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 2px;
+    }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 2px;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 4px !important;
     }
 }
 
@@ -2850,6 +2867,14 @@ div.ck ul {
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 0px;
     }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: -2px;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 2px !important;
+    }
 }
 
 @media (max-width: 991px) {
@@ -2867,6 +2892,14 @@ div.ck ul {
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 3px;
+    }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 4px;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 5px !important;
     }
 }
 
@@ -2892,30 +2925,27 @@ div.ck ul {
     }
 
     .add_review_area .nav-pills .nav-item a {
-        font-size: 1.2rem;
-    }
-
-    .back {
-        top: 1rem;
-        left: .8rem;
-    }
-
-    .add_review_area .nav-pills .nav-item {
-        margin-right: 1.7rem;
-    }
-
-    .add_review_area .nav-pills .nav-item a {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .filter-bar .new-filter-button {
         padding: 1rem 1.5rem 1rem 1.5rem;
     }
+
     .search-input {
         padding: 8px 20px 8px 20px;
     }
+
     .search-icon {
         right: 9px;
+    }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 2px;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 5px !important;
     }
 }
 
