@@ -4,7 +4,6 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
-      debugger
       puts params
       puts params[:phone_number]
       puts params[:url]
