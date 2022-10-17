@@ -4,9 +4,9 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
-      log "params: #{params}"
-      log "params: #{params[:phone_number]}"
-      log "params: #{params[:url]}"
+      logger.debug "params: #{params}"
+      logger.debug "params: #{params[:phone_number]}"
+      logger.debug "params: #{params[:url]}"
       if User.find_by(phone_number: params[:phone_number]).present?
         review = User.find_by(phone_number: params[:phone_number]).reviews.new(name: "new_review", category_id: Category.find_by(name: "Others").id, to_try: true, url: params[:url])
         if review.save
