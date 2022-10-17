@@ -8,6 +8,7 @@ export default class extends Controller {
   updateFavourite(event) {
     let favouriteReview = $(event.currentTarget).toggleClass('checked')
     this.request(`favourite=${favouriteReview.hasClass('checked')}`)
+    window.location.reload();
   }
 
   request(data) {
