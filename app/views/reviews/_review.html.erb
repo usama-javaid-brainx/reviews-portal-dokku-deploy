@@ -50,12 +50,6 @@
     <% end %>
   <% end %>
 
-  <div class="form_group align-items-center row">
-    <%= f.label "Score" %>
-    <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
-    <span class="score-text col-lg-2"> /10</span>
-  </div>
-
   <% if @curr_category.price? %>
     <div class="form_group align-items-center row">
       <%= f.label "Score" %>
