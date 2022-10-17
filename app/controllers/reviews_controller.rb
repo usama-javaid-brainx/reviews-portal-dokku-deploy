@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index]
+  before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
     @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
@@ -29,7 +30,8 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params)
     if @review.save
-      redirect_to reviews_path, notice: "Review created successfully!"
+      FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name]) if params[:review][:city].present? && params[:review][:name].present?
+      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
@@ -67,7 +69,7 @@ class ReviewsController < ApplicationController
   def update
     if @review.update(review_params)
       if params[:review][:deleted_meals].blank? || params[:review][:deleted_meals].present? && Meal.where(id: params[:review][:deleted_meals].split(',')).destroy_all
-        redirect_to root_path, notice: "Review updated successfully!"
+        redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review updated successfully!"
       else
         redirect_to edit_review_path(@review), notice: "Meal did not deleted try again"
       end
@@ -78,7 +80,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      redirect_to root_path, status: :see_other, notice: "Review removed successfully!"
+      redirect_to current_user.second_view? ? homepage_path : root_path, status: :see_other, notice: "Review deleted successfully!"
     end
   end
 
@@ -91,6 +93,10 @@ class ReviewsController < ApplicationController
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
+  def category_order
+    @ordered_categories = Category.all.order("name asc")
+  end
+
   private
 
   def set_review
@@ -99,6 +105,6 @@ class ReviewsController < ApplicationController
 
   def review_params
     params[:review][:images] = [] if params[:review][:images] == [""]
-    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+    params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 end
