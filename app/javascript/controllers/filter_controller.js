@@ -1,15 +1,12 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter']
+  static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
 
   connect() {
     this.filterCount = 0
     this.cuisines = [];
     this.filters = [];
-    $(document).on('change', 'select', (e) => {
-      this.filtersFormTarget.submit()
-    })
     this.appliedFilters()
   }
 
@@ -85,6 +82,10 @@ export default class extends Controller {
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
     }
   }
+
+  fieldDisplay(event) {
+    this.inputTarget.classList.contains("search-input-expand") ? this.inputTarget.classList.remove("search-input-expand") : this.inputTarget.classList.add("search-input-expand")
+    }
 
   search(event) {
     if (event.key === "Enter") {

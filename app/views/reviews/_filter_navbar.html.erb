@@ -4,7 +4,6 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-4 d-flex justify-content-between justify-content-lg-start">
-
             <div class="search">
               <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <button>
@@ -47,7 +46,6 @@
         </div>
       </div>
     </div>
-
     <!--filter modal-->
     <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">

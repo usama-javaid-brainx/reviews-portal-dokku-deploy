@@ -1,13 +1,3 @@
-@import "owl-carousel.min.css";
-@import "bootstrap.css";
-@import "bootstrap.min.css";
-@import "helper.css";
-@import "nice-select.css";
-@import "simplebar.css";
-@import "style.css";
-@import "responsive.css";
-
-
 .form-control:focus {
     color: #00000A;
     background-color: #fff;
@@ -75,7 +65,7 @@
     color: white;
 }
 
-.file_upload_place .upload_link button {
+.file-upload-place .upload-link button {
     background: transparent;
     font-weight: 600;
     border: none;
@@ -217,7 +207,7 @@ img.small-thumb:hover + .delete-icon {
     width: 2.8rem;
     height: 2.4rem;
     background: #F7F5FC;
-    border: 1px solid #6E3EF7;
+    border: 1px solid gray;
     border-radius: 4px;
     text-align: center;
     line-height: 2rem;

@@ -16,17 +16,17 @@
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
-  <% if @curr_category.sub_category_title %>
-    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
-    </div>
-  <% end %>
+
+  <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
+  </div>
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
     <%= f.date_field :date %>
   </div>
+
   <% if @curr_category.start_date %>
     <div class="row align-items-center form_group">
       <%= f.label :date, "Start Date" %>
@@ -55,7 +55,14 @@
     <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
     <span class="score-text col-lg-2"> /10</span>
   </div>
-  <% if @curr_category.price %>
+
+  <% if @curr_category.price? %>
+    <div class="form_group align-items-center row">
+      <%= f.label "Score" %>
+      <%= f.number_field :average_score, class: 'col-lg-4', step: "0.01", max: "10", min: "0" %>
+      <span class="score-text col-lg-2"> /10</span>
+    </div>
+
     <div class="row form_group">
       <%= f.label :price_range, 'Price', class: 'indent' %>
       <div class="align-items-center rating d-flex p-0" data-controller="dollar-price-range">
@@ -68,6 +75,6 @@
   <% end %>
   <div class="row form_group">
     <%= f.label :notes, "Description" %>
-    <%= f.text_area :notes, placeholder: "Write your notes...", type: "text", cols: '60', rows: '5' %>
+    <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class: "w-100" %>
   </div>
 </div>

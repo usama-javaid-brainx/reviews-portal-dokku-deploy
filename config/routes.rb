@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'users/remove_avatar'
   get 'users/delete_user'
   patch 'users/update'
+  get 'users/settings'
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,9 +18,11 @@ Rails.application.routes.draw do
     get :update_favourite
   end
 
+  post 'upload', to: 'file_uploads#upload'
+
   resources :categories, only: :index
 
   patch :update_categories_status, to: 'categories#update_categories_status'
-
   resources :requests, only: :create
+  get :homepage, to: 'reviews#homepage'
 end

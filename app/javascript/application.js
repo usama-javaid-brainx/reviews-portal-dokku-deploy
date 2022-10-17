@@ -1,6 +1,10 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "./controllers"
+import './src/jquery'
+import * as bootstrap from "bootstrap"
+require('select2')();
+import './src/main'
 
 import PhotoSwipeLightbox from "photoswipe/lightbox"
 import PhotoSwipe from "photoswipe"
@@ -58,7 +62,6 @@ $fileInput.on('change', function () {
     $textContainer.text(filesCount + ' uploaded files');
   }
 });
-
 
 function callbackOnOpen1() {
   console.log(data);
