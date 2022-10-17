@@ -5,7 +5,8 @@ class Api::V1::ReviewsController < ApplicationController
   def create
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
       if User.find_by(phone_number: params[:phone_number]).present?
-        review = User.find_by(phone_number: params[:phone_number]).reviews.new(name: "new_review", category_id: 13, to_try: true, url: params[:url])
+        debugger
+        review = User.find_by(phone_number: params[:phone_number]).reviews.new(name: "new_review", category_id: Category.find_by(name: "Others"), to_try: true, url: params[:url])
         if review.save
           message("#{request.env['rack.url_scheme']}://#{request.host_with_port}/reviews/#{review.id}/edit")
         else
