@@ -18,11 +18,10 @@
 
   <% if @curr_category.sub_category_title %>
     <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+      <%= f.label :cuisine, curr_category.sub_category_title.present? ? curr_category.sub_category_title.titleize: "Subcategory" %>
       <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
     </div>
   <% end %>
-
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
