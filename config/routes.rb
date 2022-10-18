@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get :homepage, to: 'reviews#homepage'
 
   namespace :api do
-    namespace :v1 do
+    namespace :v1, defaults: { format: :json } do
       resources :reviews, only: :create
     end
   end
