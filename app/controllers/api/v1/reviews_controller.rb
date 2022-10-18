@@ -7,8 +7,9 @@ class Api::V1::ReviewsController < ApplicationController
     puts "jjjj"
     logger.debug "****test****"
     puts "params: #{params}"
-    puts "params: #{params[:phone_number]}"
-    puts "params: #{params[:url]}"
+    puts "params: #{request.request_parameters}"
+    puts "params: #{request.request_parameters[:phone_number]}"
+    puts "params: #{request.request_parameters[:url]}"
     puts "****test****"
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
       logger.debug "****test****"
