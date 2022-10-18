@@ -3,11 +3,13 @@ class Api::V1::ReviewsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    # debugger
     puts "jjjj"
     logger.debug "****test****"
-    logger.debug "params: #{params}"
-    logger.debug "params: #{params[:phone_number]}"
-    logger.debug "params: #{params[:url]}"
+    puts "params: #{params}"
+    puts "params: #{params[:phone_number]}"
+    puts "params: #{params[:url]}"
+    puts "****test****"
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
       logger.debug "****test****"
       logger.debug "params: #{params}"
