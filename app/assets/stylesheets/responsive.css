@@ -309,6 +309,11 @@
     .hero_area .card_carousel .owl-dots .owl-dot {
         width: 14.5%;
     }
+
+    .profile-img {
+        width: 48px !important;
+        height: 49px !important;
+    }
 }
 
 @media (max-width: 400px) {

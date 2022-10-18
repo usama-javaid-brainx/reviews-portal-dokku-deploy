@@ -203,7 +203,7 @@
     margin-right:auto;
 }
 
-.user-img {
+.user-img-wrapper {
     overflow: hidden;
     border-radius: 50%;
 }
@@ -217,3 +217,9 @@
     width: 35px;
     height: 35px;
 }
+
+.profile-img {
+    width: 61px;
+    height: 64px;
+}
+
