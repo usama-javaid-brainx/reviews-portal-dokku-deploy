@@ -4,18 +4,14 @@ class Api::V1::ReviewsController < ApplicationController
 
   def create
     # debugger
-    puts "jjjj"
-    logger.debug "****test****"
+    puts "****test****"
     puts "params: #{params}"
-    puts "params: #{request.request_parameters}"
-    puts "params: #{request.request_parameters[:phone_number]}"
-    puts "params: #{request.request_parameters[:url]}"
+    puts "request.raw_post: #{request.raw_post}"
+    puts "request.request_parameters: #{request.request_parameters}"
+    puts "request.request_parameters[:phone_number]: #{request.request_parameters[:phone_number]}"
+    puts "request.request_parameters[:url]: #{request.request_parameters[:url]}"
     puts "****test****"
     if Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
-      logger.debug "****test****"
-      logger.debug "params: #{params}"
-      logger.debug "params: #{params[:phone_number]}"
-      logger.debug "params: #{params[:url]}"
       if User.find_by(phone_number: params[:phone_number]).present?
         review = User.find_by(phone_number: params[:phone_number]).reviews.new(name: "new_review", category_id: Category.find_by(name: "Others").id, to_try: true, url: params[:url])
         if review.save
