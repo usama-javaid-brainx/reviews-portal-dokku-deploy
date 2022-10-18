@@ -73,17 +73,17 @@
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
-              <span class="header-img">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+              <span class="header-img user-img">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
                         </span>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
             <ul class="dropdown-menu dropdown-w" aria-labelledby="sessionDropdown">
               <li class="cursor-pointer">
-                <div class="dropdown-item dropdown-img">
+                <div class="dropdown-item p-3">
                   <div class="d-flex ">
-                      <span class="col-2">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                      <span class="col-2 user-img dropdown-img">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
                         </span>
                     <div class="d-inline dropdown-info">
                       <span class="d-block user-name"><%= current_user.first_name.titleize %></span>

@@ -1,5 +1,5 @@
 .dropdown-info {
-    margin: 0px 80px 0px 10px;
+    margin: 0px 40px 0px 10px;
 }
 
 .user-name {
@@ -13,10 +13,6 @@
     font-size: 12px;
     line-height: 16px;
     color: #848496;
-}
-
-.dropdown-img {
-    padding: 11px !important;
 }
 
 .profile-img-wraper {
@@ -151,10 +147,6 @@
     color: white;
 }
 
-.header-img {
-    width: 25px;
-}
-
 .btn-logout {
     background: #6E3EF7;
     color: #FFFFFF;
@@ -210,4 +202,19 @@
     right:0;
     margin-left:auto;
     margin-right:auto;
+}
+
+.user-img {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.header-img {
+    width: 27px;
+    height: 28px;
+}
+
+.dropdown-img {
+    width: 35px;
+    height: 35px;
 }
