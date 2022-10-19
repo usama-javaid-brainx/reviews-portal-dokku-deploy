@@ -1283,7 +1283,7 @@ header {
     font-size: 11px;
     color: #CCCCE1;
     transition: .2s;
-    margin-right: -3px;
+    margin-right: -2px;
 }
 
 .show-price:hover {
@@ -1308,12 +1308,12 @@ header {
     display: none;
 }
 
-.avatar img {
-    width: 4rem;
-    height: 4rem;
-    margin-left: .8rem;
-    border-radius: 50%;
-}
+/*.avatar img {*/
+/*    width: 4rem;*/
+/*    height: 4rem;*/
+/*    margin-left: .8rem;*/
+/*    border-radius: 50%;*/
+/*}*/
 
 .avatar .reviewer {
     text-transform: uppercase;
@@ -2795,6 +2795,15 @@ div.ck ul {
     aspect-ratio: 2.2/2.3;
 }
 
-.jj {
+.show-subcategory {
     text-transform: uppercase;
+    color: #6E3EF7;
+}
+
+.show-user-img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin-left: 8px;
 }
