@@ -2,25 +2,23 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
     <h1><%= @review.name %></h1>
-    <% if !@review.city.present? && @review.date.present? %>
-      <p class="date">
-        <%= @review.date.strftime("%b %e, %Y") %>
-      </p>
+    <span class="show-subcategory"><%= @review.category.sub_category_title %></span>
+    <% if @review.state.present? and @review.country.present? %>
+      .
+      <span><%= @review.state + ', ' %> <%= @review.country %></span>
     <% end %>
-    <ul class="list_group">
-      <% if @review.city.present? %>
-        <li><%= @review.city %></li>
-      <% end %>
-      <% if @review.state.present? && @review.country.present? %>
-        <li><%= @review.state + ', ' %> <%= @review.country %></li>
-      <% end %>
-      <% if @review.price_range.present? %>
-        <li>
-          <% for count in 1..4 %>
-            <span class="price-sz pe-none <%= ('text-white bg-price' if @review.price_range >= count) %>">$</span>
-          <% end %>
-        </li>
-      <% end %>
+    <% if @review.date.present? %>
+      .
+      <span class="date"><%= @review.date.strftime("%b %e,%Y") %></span>
+    <% end %>
+    <% if @review.price_range.present? %>
+      .
+      <span>
+        <% for count in 1..4 %>
+          <span class="price-sz pe-none show-price <%= ('text-white bg-price' if @review.price_range >= count) %>">$</span>
+        <% end %>
+      </span>
+    <% end %>
     </ul>
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
@@ -31,7 +29,9 @@
           <span class="align-items-center d-flex pt-2 rating"><%= @review.average_score %></span>
         </div>
       <% end %>
-      <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box') %>
+      <span class="show-user-img">
+        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+      </span>
       <div>
         <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: @review.user_id).first_name %> <%= User.find_by(id: @review.user_id).last_name %></span>
       </div>
@@ -49,7 +49,9 @@
   <div class="col-12 d-lg-none">
     <div class="d-flex justify-content-between align-items-center pt_30">
       <div class="d-flex align-items-center avatar">
-        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
+        <span class="show-user-img">
+          <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+        </span>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
           <p class="name"><%= User.find_by(id: @review.user_id).first_name %> <%= User.find_by(id: @review.user_id).last_name %></p>
