@@ -9,24 +9,42 @@
       <span>Public REVIEW</span>
     </div>
     <h1><%= @review.name %></h1>
-    <% if !@review.city.present? && @review.date? %>
-      <p class="date">
-        <%= @review.date.strftime("%b %e, %Y") %>
-      </p>
+    <span class="jj"><%= @review.category.sub_category_title %></span>
+    <% if @review.state.present? and @review.country.present? %>
+      .
+      <span><%= @review.state + ', ' %> <%= @review.country %></span>
     <% end %>
-    <ul class="list_group">
-      <% if @review.city.present? %>
-        <li><%= @review.city %></li>
-      <% end %>
-      <% if @review.state.present? and @review.country.present? %>
-        <li><%= @review.state + ', ' %> <%= @review.country %></li>
-      <% end %>
-      <li>
+    <% if @review.date.present? %>
+      .
+      <span class="date"><%= @review.date.strftime("%b %e,%Y") %></span>
+    <% end %>
+    <% if @review.price_range.present? %>
+      .
+      <span>
         <% for count in 1..4 %>
-          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+          <span class="price-sz pe-none show-price <%= ('text-white bg-price' if @review.price_range >= count) %>">$</span>
+
         <% end %>
-      </li>
-    </ul>
+      </span>
+    <% end %>
+
+
+
+<!--    <ul class="list_group">-->
+      <%# if @review.city.present? %>
+<!--        <li><%#= @review.city %></li>-->
+      <%# end %>
+      <%# if @review.state.present? and @review.country.present? %>
+<!--        <li><%#= @review.state + ', ' %> <%#= @review.country %></li>-->
+      <%# end %>
+      <%# if @review.price_range.present? %>
+<!--        <li>-->
+          <%# for count in 1..4 %>
+<!--            <span class="price-sz pe-none <%#= ('text-white bg-price' if @review.price_range >= count) %>">$</span>-->
+          <%# end %>
+<!--        </li>-->
+      <%# end %>
+<!--    </ul>-->
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
     <div class="d-flex align-items-center justify-content-end avatar">
@@ -63,7 +81,7 @@
         <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
-          <p class="name"><%= @review.name %></p>
+          <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
         </div>
       </div>
       <div class="rating_box">

@@ -757,14 +757,13 @@ header {
 }
 
 .card .list_group li span {
-    display: inline-block;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
     color: #CCCCE1;
-    transition: .2s;
     margin-right: 2px;
 }
 
@@ -1252,37 +1251,34 @@ header {
 
 .hero_header .date {
     color: #424250;
-    font-weight: 400;
-    font-size: 1.3rem;
+    font-weight: 500;
+    font-size: 1.5rem;
     line-height: 1.428
 }
 
 .hero_header .list_group li {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     color: #424250;
-    font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 1.428;
+    font-weight: 500;
+    font-size: 15px;
     position: relative;
-    padding-right: 1.1rem;
+    padding-right: 12px;
 }
 
-.hero_header .list_group li span {
-    width: 1.43rem;
-    height: 1.43rem;
+.show-price {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
+    font-size: 11px;
     color: #CCCCE1;
-    font-size: .8rem;
     transition: .2s;
-    margin-right: 1px;
+    margin-right: -3px;
 }
 
-.hero_header .list_group li span:hover {
+.show-price:hover {
     cursor: pointer;
     color: #FFFFFF;
     background: #CCCCE1;
@@ -2752,30 +2748,6 @@ div.ck ul {
     height: 200px;
 }
 
-.image-resizing {
-    aspect-ratio: 2.2/2.3;
-}
-
-@keyframes loader3 {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.8;
-    }
-
-    100% {
-        transform: scale(1, 1);
-        opacity: 0;
-    }
-}
-
-@-webkit-keyframes loader3 {
-    0% {
-        -webkit-transform: scale(0, 0);
-        opacity: 0.8;
-    }
-
-    100% {
-        -webkit-transform: scale(1, 1);
-        opacity: 0;
-    }
+.jj {
+    text-transform: uppercase;
 }
