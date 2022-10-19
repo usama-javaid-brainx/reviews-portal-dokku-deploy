@@ -192,7 +192,7 @@
             <div class="review-tag mt-5 mb-3">
               <ul class="tags_list">
                 <% @review.tags.split(",").drop(1).each do |res_tag| %>
-                  <li><%= res_tag %></li>
+                  <li><%= res_tag.split.map(&:capitalize).join(' ') %></li>
                 <% end %>
               </ul>
             </div>
