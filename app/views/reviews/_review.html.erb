@@ -19,7 +19,7 @@
 
   <div class="row cuisine-group align-items-center form_group" data-controller="tags">
     <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
+    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: true } %>
   </div>
 
   <div class="row align-items-center form_group">
