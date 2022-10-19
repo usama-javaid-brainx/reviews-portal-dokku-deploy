@@ -6,6 +6,9 @@ export default class extends Controller {
   connect() {
     $("#category_id").select2()
     $("#review_category_id").select2()
+    $("#review_to_try").select2({
+      minimumResultsForSearch: Infinity
+    });
     $(this.categoryTarget).on('select2:select select2:unselect', this.categorySelect.bind(this))
   }
 
