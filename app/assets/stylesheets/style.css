@@ -2868,7 +2868,8 @@ div.ck ul {
     .review-card {
         height: 295px;
     }
-
-.image-resizing {
-    aspect-ratio: 2.2/2.3;
+}
+.img-gallery-modal{
+    max-height: 600px;
+    max-width: 800px;
 }
