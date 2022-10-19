@@ -160,45 +160,48 @@
       </div>
     </div>
   </div>
+
   <div class="container custom pb_50">
     <div class="row g-lg-5">
-      <div class="col-lg-8">
-        <h3 class="review-detail-head mt_50 mb-3">Review</h3>
-        <div class="review_details_wrap">
-          <% if @review.notes.present? %>
-            <div class="review-notes position-relative list-style-unset ck-content">
-              <%= raw @review.notes %>
-            </div>
-          <% end %>
-          <% if @review.meals.present? %>
-            <div class="review-highlight mt-5">
-              <h3 class="mb-3">Highlights</h3>
-              <ul class="favorite_dishes_list">
-                <% @review.meals.each do |meal| %>
-                  <li>
-                    <img class="main_img" src=<%= meal.image_url %>>
-                    <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                      <div>
-                        <h4><%= meal.name %></h4>
-                        <p><%= meal.notes %></p>
+      <% if @review.notes.present? or @review.meals.present? or @review.tags.present? %>
+        <div class="col-lg-8">
+          <h3 class="review-detail-head mt_50 mb-3">Review</h3>
+          <div class="review_details_wrap">
+            <% if @review.notes.present? %>
+              <div class="review-notes position-relative list-style-unset ck-content">
+                <%= raw @review.notes %>
+              </div>
+            <% end %>
+            <% if @review.meals.present? %>
+              <div class="review-highlight mt-5">
+                <h3 class="mb-3">Highlights</h3>
+                <ul class="favorite_dishes_list">
+                  <% @review.meals.each do |meal| %>
+                    <li>
+                      <img class="main_img" src=<%= meal.image_url %>>
+                      <div class="d-flex justify-content-between align-items-center w-100 ml_15">
+                        <div>
+                          <h4><%= meal.name %></h4>
+                          <p><%= meal.notes %></p>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <% if @review.tags.present? %>
-            <div class="review-tag mt-5 mb-3">
-              <ul class="tags_list">
-                <% @review.tags.split(",").drop(1).each do |res_tag| %>
-                  <li><%= res_tag.split.map(&:capitalize).join(' ') %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if @review.tags.present? %>
+              <div class="review-tag mt-5 mb-3">
+                <ul class="tags_list">
+                  <% @review.tags.split(",").drop(1).each do |res_tag| %>
+                    <li><%= res_tag.split.map(&:capitalize).join(' ') %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="col-lg-4">
         <div class="pt_50">
           <h3 class="pb_10">Score</h3>
