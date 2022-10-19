@@ -142,6 +142,9 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     highline (2.0.3)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -161,10 +164,14 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
     msgpack (1.5.1)
+    multi_xml (0.6.0)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -295,6 +302,7 @@ DEPENDENCIES
   devise-bootstrapped (~> 0.1)
   discard (~> 1.2)
   filestack-rails (~> 5.5)
+  httparty (~> 0.20.0)
   image_processing (~> 1.12)
   jsbundling-rails (~> 1.0)
   new_ckeditor
