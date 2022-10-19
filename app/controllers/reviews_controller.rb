@@ -5,7 +5,11 @@ class ReviewsController < ApplicationController
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    @curr_category = params[:category_id].present? ? Category.find_by(id: params[:category_id]) : Category.find_by(name: 'Restaurants')
+    if params[:category_id].present?
+      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
+    else
+      @curr_category = "all"
+    end
   end
 
 
