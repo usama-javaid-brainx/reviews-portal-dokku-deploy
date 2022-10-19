@@ -734,7 +734,7 @@ header {
     text-overflow: ellipsis;
     color: #00000A;
     font-weight: 500;
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     line-height: 1.177;
     padding: 1rem 0 0.2rem;
 }
@@ -749,7 +749,7 @@ header {
     align-items: center;
     color: #424250;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 12px;
     line-height: 1.428;
     position: relative;
     padding-right: 1.1rem;
@@ -760,36 +760,10 @@ header {
     display: inline-block;
     margin-top: auto;
     margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
     text-align: center;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
     color: #CCCCE1;
-    font-size: .8rem;
-    transition: .2s;
-    margin-right: 2px;
-}
-
-.card .list_group li span:hover {
-    cursor: pointer;
-    color: #FFFFFF;
-    background: #CCCCE1;
-}
-
-.card .list_group li span {
-    display: inline-block;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-    line-height: 1.3rem;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #CCCCE1;
-    color: #CCCCE1;
-    font-size: .8rem;
     transition: .2s;
     margin-right: 2px;
 }
@@ -1742,7 +1716,7 @@ hitting-enter-submit
 }
 
 .add_review_area {
-    padding-bottom: 50rem;
+    padding-bottom: 10rem;
 }
 
 .add_review_area_header {
@@ -1870,6 +1844,7 @@ hitting-enter-submit
 }
 
 .score-text {
+    width: unset;
     font-weight: 600;
     font-size: 1.3rem;
 }
@@ -1881,7 +1856,7 @@ hitting-enter-submit
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     color: #00000A;
-    font-size: 1.4rem;
+    font-size: 14px;
 }
 
 .add_review_area textarea {
@@ -2381,23 +2356,26 @@ li.category-list-item {
     border-bottom: 1px solid #EDEDFB;
 }
 
-.filter-bar .add-new-btn {
+.filter-bar .large-add-new-btn .add-new-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
     border: 1px solid #6E3EF7;
     background-color: #6E3EF7;
     color: white;
-    padding: 1rem 2rem 1rem 2rem;
     border-radius: 6px;
     font-size: 1.6rem;
     font-weight: 500;
+    padding: 1rem 0rem;
 }
 
-.filter-bar .add-new-btn:hover {
+.filter-bar large-add-new-btn .add-new-btn:hover {
     background: #FFFFFF;
     color: #6E3EF7;
     border-color: #6E3EF7;
 }
 
-.add-new-btn:hover img {
+large-add-new-btn .add-new-btn:hover img {
     filter: brightness(0) saturate(100%) invert(28%) sepia(63%) saturate(6978%) hue-rotate(251deg) brightness(101%) contrast(94%);
 }
 
@@ -2466,7 +2444,7 @@ h3.review-name {
 }
 
 .search-input {
-    padding: 1rem 3rem 1rem 0.5rem;
+    padding: 10px 25px 10px 25px;
     width: 0px;
     border: 1px solid #EDEDFB;
     border-radius: 6px;
@@ -2484,11 +2462,15 @@ h3.review-name {
     transition: 0.25s ease-out;
 }
 
+.navbar-search input:focus {
+    border-color: #6E3EF7;
+}
+
 .search-icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0.8rem;
+    right: 15px;
     cursor: pointer;
 }
 
@@ -2530,7 +2512,8 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection__rendered {
-    margin-top: 4px;
+    margin-top: 12px;
+    padding-left: 20px;
     color: #6E3EF7 !important;
 }
 
@@ -2544,7 +2527,7 @@ h3.review-name {
 }
 
 .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
-    margin-top: 3px;
+    margin-top: 10px;
     margin-left: -10px;
 }
 
@@ -2571,10 +2554,7 @@ h3.review-name {
 }
 
 .view-settings-wrapper {
-    width: 672px;
     border: 1px solid #EDEDFB;
-    margin: 20px auto auto auto;
-    padding: 30px;
     border-radius: 5px;
 }
 
@@ -2664,58 +2644,12 @@ h3.review-name {
     border-radius: 0 6px 6px 0;
 }
 
-.price-sz {
-    width: 20px !important;
-    height: 20px !important;
-    padding-top: 3px;
+.image-resizing a {
+    display: inline-block;
 }
 
-.bg-price {
-    background: #848496;
-}
-
-.cuisine-group .select2, .category-group .select2 {
-    padding: unset;
-    border-radius: 6px;
-    font-size: 1.4rem;
-    color: #A5A5B9
-}
-
-.cuisine-group .select2-selection, .category-group .select2-selection {
-    display: block;
-    padding: 1px;
-    height: 4rem;
-    border: 1px solid #EDEDFB;
-}
-
-.cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
-    margin-top: 6px;
-    padding-left: 15px;
-}
-
-.cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
-    top: 10px !important;
-    right: 10px !important;
-}
-
-.card-load {
-    animation-duration: 1.5s;
-    animation-name: slidein;
-    animation-iteration-count: 1;
-}
-
-.review-card {
-    height: 390px;
-}
-
-@keyframes slidein {
-    from {
-        margin-top: 0;
-    }
-
-    to {
-        margin-top: 35.520px;
-    }
+.image-resizing a img {
+    height: 200px;
 }
 
 .to-try-all {
@@ -2737,6 +2671,68 @@ div.ck ul {
 
 .ck-rounded-corners {
     width: 100% !important;
+}
+
+.h-17 {
+    height: 17px;
+}
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
+}
+
+.price-sz {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.bg-price {
+    background: #848496;
+}
+
+.cuisine-group .select2, .category-group .select2 {
+    padding: unset;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    color: #A5A5B9
+}
+
+.cuisine-group .select2-selection, .category-group .select2-selection {
+    display: block;
+    padding: 1px;
+    height: 4rem;
+    border: 1px solid #EDEDFB;
+}
+
+.cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+    margin-top: 8px;
+    padding-left: 15px;
+}
+
+.cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 10px !important;
+    right: 10px !important;
+}
+
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
+.card-load {
+    animation-duration: 1.5s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+}
+.review-card {
+    height: 390px;
 }
 
 @keyframes loader3 {
@@ -2761,8 +2757,4 @@ div.ck ul {
         -webkit-transform: scale(1, 1);
         opacity: 0;
     }
-}
-
-.h-17 {
-    height: 17px;
-}
+    }
