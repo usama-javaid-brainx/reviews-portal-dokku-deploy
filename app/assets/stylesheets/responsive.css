@@ -125,6 +125,10 @@
         padding: 1rem 4rem 1rem 0.5rem;
     }
 
+    .modal-xl {
+        --bs-modal-width: 100% !important;
+    }
+
 }
 
 @media (min-width: 1200px) {
@@ -134,6 +138,10 @@
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 6px;
+    }
+
+    .modal-xl {
+        --bs-modal-width: 100% !important;
     }
 }
 
@@ -162,7 +170,11 @@
 }
 
 @media (max-width: 991px) {
-    .content_area {
+    .show-user-img {
+        margin: unset;
+    }
+
+   .content_area {
         max-height: 100%;
     }
 
@@ -283,6 +295,51 @@
 
 /*Small devices (landscape phones, 575px and down)*/
 @media (max-width: 575px) {
+    .review_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .category_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .photo_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .localization_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .favourite_dishes_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .content_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .first-view-filters {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .hero_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .mobile-show {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     html {
         font-size: 55%;
     }
