@@ -16,11 +16,12 @@
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
-
-  <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: true } %>
-  </div>
+  <% if curr_category.sub_category_title.present? %>
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: true } %>
+    </div>
+  <% end %>
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
