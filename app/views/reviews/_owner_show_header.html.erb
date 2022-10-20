@@ -12,15 +12,15 @@
     <span class="show-subcategory"><%= @review.category.sub_category_title %></span>
     <% if @review.state.present? and @review.country.present? %>
       .
-      <span><%= @review.state + ', ' %> <%= @review.country %></span>
+      <span class="review-show-detail"><%="#{@review.state}, #{@review.country}"%></span>
     <% end %>
     <% if @review.date.present? %>
       .
-      <span class="date"><%= @review.date.strftime("%b %e,%Y") %></span>
+      <span class="review-show-detail"><%= @review.date.strftime("%b %e,%Y") %></span>
     <% end %>
     <% if @review.price_range.present? %>
-      .
-      <span>
+      <span class="d-none d-lg-inline-block">.</span>
+      <span class="d-block d-lg-inline-block">
         <% for count in 1..4 %>
           <span class="price-sz pe-none show-price <%= ('text-white bg-price' if @review.price_range >= count) %>">$</span>
 

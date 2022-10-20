@@ -1249,7 +1249,7 @@ header {
     align-items: center;
 }
 
-.hero_header .date {
+.hero_header .review-show-detail {
     color: #424250;
     font-weight: 500;
     font-size: 1.5rem;
@@ -2760,3 +2760,44 @@ div.ck ul {
     overflow: hidden;
     margin-left: 8px;
 }
+
+.second-view-review-btn {
+    display: inline-block;
+    width: 7rem;
+    height: 2.4rem;
+    line-height: 2.2rem;
+    background: #6E3EF7;
+    border: 1px solid #6E3EF7;
+    color: #F7F5FC;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 4px;
+    cursor: default;
+    font-size: 1.4rem;
+}
+
+/*image gallery start*/
+.modal-xl .ratio-16x9 {
+    background-color: rgba(0,0,0,0.85) !important;
+}
+
+.modal-xl {
+    margin: 0 auto;
+    --bs-modal-width: 100% !important;
+}
+.modal-xl .modal-content {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner{
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9{
+    height: 100vh;
+}
+/*image gallery end*/

@@ -14,10 +14,10 @@
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
                   <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
-                  <a class="ml-14 ml-10 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg">
+                  <button class="ml-14 ml-10 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg" type="button">
                     <%= image_tag("template/upload.svg", class: "mr-2 upload-svg") %>
                     Upload <span class="d-none mx-1 d-sm-block"> New Picture</span>
-                  </a>
+                  </button>
                   <%= link_to users_remove_avatar_path, class: " btn-profile-pic edit-upload ml-14" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
                     Delete <span class="d-none mx-1 d-sm-block">Picture</span>
                   <% end %>
