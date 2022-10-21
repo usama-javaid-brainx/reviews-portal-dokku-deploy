@@ -1,9 +1,12 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
+  static values = {
+    latitude: String,
+    longitude: String
+  }
 
   openMap() {
-    window.open("https://maps.google.com/?q=25.2048493,55.2707828", '_blank')
+    window.open(`https://maps.google.com/?q=${this.latitudeValue},${this.longitudeValue}`, '_blank')
   }
 }

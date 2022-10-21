@@ -241,7 +241,7 @@
                   <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
                 <% end %>
               </div>
-              <button class="map-button bg-white" data-controller="map" data-action="click->map#openMap">
+              <button class="map-button bg-white" data-controller="map" data-map-latitude-value="<%= @review.latitude %>" data-map-longitude-value="<%= @review.longitude %>" data-action="click->map#openMap">
                 <%= image_tag("template/map.svg") %>
                 <span> Show on map </span>
               </button>
