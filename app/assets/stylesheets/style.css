@@ -2798,6 +2798,8 @@ div.ck ul {
 .show-subcategory {
     text-transform: uppercase;
     color: #6E3EF7;
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 
 .show-user-img {
