@@ -2640,6 +2640,43 @@ h3.review-name {
     border-radius: 0 6px 6px 0;
 }
 
+.image-resizing a {
+    display: inline-block;
+}
+
+.image-resizing a img {
+    height: 200px;
+}
+
+.to-try-all {
+    border-width: 1px 1px 1px 1px;
+    border-radius: 6px 0 0 6px;
+}
+
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
+.ck-rounded-corners {
+    width: 100% !important;
+}
+
+.h-17 {
+    height: 17px;
+}
+
+.image-resizing {
+    aspect-ratio: 2.2/2.3;
+}
+
 .price-sz {
     width: 20px !important;
     height: 20px !important;
@@ -2673,7 +2710,6 @@ h3.review-name {
     right: 10px !important;
 }
 
-
 .cuisine-group .select2-container {
     padding: 0px;
 }
@@ -2691,49 +2727,15 @@ div.ck ul {
     animation-name: slidein;
     animation-iteration-count: 1;
 }
-
 .review-card {
     height: 390px;
 }
 
-.log-in-text {
-    font-size: 3.5rem;
-}
-
-@keyframes slidein {
-    from {
-        margin-top: 0;
-    }
-
-    to {
-        margin-top: 35.520px;
-    }
-}
-
-.to-try-all {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
-}
-
-.cuisine-group .select2-container {
-    padding: 0px;
-}
-
-.ck-editor__editable_inline {
-    min-height: 150px;
-}
-
-div.ck ul {
-    list-style: inside !important;
-}
-
-.ck-rounded-corners {
-    width: 100% !important;
-}
 
 .h-17 {
     height: 17px;
 }
+
 
 .image-resizing {
     max-width: 200px;
@@ -2803,3 +2805,4 @@ div.ck ul {
     height: 100vh;
 }
 /*image gallery end*/
+

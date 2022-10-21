@@ -50,8 +50,7 @@
                   <img src=<%= @review.images.first %>>
                 </a>
               </div>
-            <% end %>
-            <% if @review.images.count == 2 %>
+            <% elsif @review.images.count == 2 %>
               <div class="col-lg-12 d-flex justify-content-between">
                 <div class="col-lg-6 large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
@@ -64,8 +63,7 @@
                   </a>
                 </div>
               </div>
-            <% end %>
-            <% if @review.images.count == 3 %>
+            <% elsif @review.images.count == 3 %>
               <div class="col-lg-12 d-flex justify-content-between">
                 <div class="col-lg-6 large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
@@ -85,8 +83,7 @@
                   </div>
                 </div>
               </div>
-            <% end %>
-            <% if @review.images.count == 4 %>
+            <% elsif @review.images.count == 4 %>
               <div class="col-lg-12 d-flex justify-content-between">
                 <div class="col-lg-6 large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
@@ -105,8 +102,7 @@
                   </div>
                 </div>
               </div>
-            <% end %>
-            <% if @review.images.count >= 5 %>
+            <% else %>
               <div class="col-lg-12 d-flex justify-content-between">
                 <div class="col-lg-6 large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
@@ -140,7 +136,7 @@
   </section>
   <!-- images gallery Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" style="max-height: 600px; max-width: 800px;">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered img-gallery-modal">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Photo Gallery</h5>
@@ -200,12 +196,14 @@
               </div>
             <% end %>
           </div>
+
         </div>
       <% end %>
       <div class="col-lg-4">
         <div class="pt_50">
           <h3 class="pb_10">Score</h3>
           <div class="review_wrap">
+            <!--TODO Have to configure these platforms with apis-->
             <ul>
               <li>
                 <%= image_tag("template/Yelp.svg") %>
@@ -247,10 +245,10 @@
                   <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
                 <% end %>
               </div>
-              <%= link_to nil, class: "map-button" do %>
+              <button class="map-button bg-white" data-controller="map" data-map-latitude-value="<%= @review.latitude %>" data-map-longitude-value="<%= @review.longitude %>" data-action="click->map#openMap">
                 <%= image_tag("template/map.svg") %>
                 <span> Show on map </span>
-              <% end %>
+              </button>
             </div>
           </div>
         <% end %>
