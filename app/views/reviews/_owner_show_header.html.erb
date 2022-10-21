@@ -11,7 +11,7 @@
     <h1><%= @review.name %></h1>
     <% if !@review.city.present? && @review.date? %>
       <p class="date">
-        <%= @review.date.strftime("%b/%e/%Y") %>
+        <%= @review.date.strftime("%b %e, %Y") %>
       </p>
     <% end %>
     <ul class="list_group">
@@ -22,8 +22,8 @@
         <li><%= @review.state + ', ' %> <%= @review.country %></li>
       <% end %>
       <li>
-        <% for count in 1..5 %>
-          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present? %>">$</span>
+        <% for count in 1..4 %>
+          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
         <% end %>
       </li>
     </ul>
