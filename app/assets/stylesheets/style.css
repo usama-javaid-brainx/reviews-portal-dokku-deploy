@@ -2731,6 +2731,7 @@ div.ck ul {
     animation-name: slidein;
     animation-iteration-count: 1;
 }
+
 .review-card {
     height: 390px;
 }
@@ -2762,4 +2763,4 @@ div.ck ul {
         -webkit-transform: scale(1, 1);
         opacity: 0;
     }
-    }
+}
