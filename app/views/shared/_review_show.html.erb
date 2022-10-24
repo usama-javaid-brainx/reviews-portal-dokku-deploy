@@ -18,9 +18,7 @@
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
   </div>
-  <a class="back" href="javascript:history.back()">
-    <%= image_tag("template/left-arrow.svg") %>
-  </a>
+  <button class="back" data-action="click->guest#back"><%= image_tag("template/left-arrow.svg") %></button>
   <!--========== Hero area start ===========-->
   <section class="hero_area pt_50">
     <!-- this carousel area for mobile -->
@@ -134,20 +132,21 @@
       </div>
     </div>
   </section>
+
   <!-- images gallery Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered img-gallery-modal">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered img-gallery-modal">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Photo Gallery</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="row">
+          <div class="modal-gallery">
             <% @review.images.each do |image_src| %>
-              <div class="image-resizing col-3 mb-3 text-center ">
+              <div class="grid-item">
                 <a href="<%= image_src %>" data-toggle="lightbox" data-gallery="full-gallery" data-type="image">
-                  <img src=<%= image_src %>>
+                  <img class=" img-fluid" src=<%= image_src %>>
                 </a>
               </div>
             <% end %>
