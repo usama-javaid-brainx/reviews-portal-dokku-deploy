@@ -7,7 +7,7 @@ export default class extends Controller {
   }
 
   copyLink() {
-    navigator.clipboard.writeText(window.location.href)
+    var copy =  navigator.clipboard.writeText(window.location.href)
     $(this.shareMsgTarget).toggleClass('d-none')
     setTimeout(
       () => {

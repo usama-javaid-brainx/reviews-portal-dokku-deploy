@@ -2856,4 +2856,37 @@ div.ck ul {
 .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9{
     height: 100vh;
 }
+
 /*image gallery end*/
+
+#shareModal .modal-body{
+    background-color: unset;
+}
+
+#shareModal .modal-footer{
+    background-color: lightgray;
+    border-top: none;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0px 10px 10px 10px;
+}
+
+#share .jssocials-shares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#share .jssocials-shares .jssocials-share{
+    width: 45%;
+}
+#share .jssocials-shares .jssocials-share .jssocials-share-link{
+    width: 100%;
+    background: unset;
+    border: 1px solid gray;
+    color: unset;
+}
+#share .jssocials-shares .jssocials-share .jssocials-share-label{
+    color: black;
+}
+
