@@ -10,12 +10,12 @@
             <% end %>
           </div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% end %>
     </div>
     <div class="card-body">
