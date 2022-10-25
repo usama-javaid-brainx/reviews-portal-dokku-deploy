@@ -196,33 +196,43 @@
       </div>
       <div class="col-lg-4">
         <div class="pt_50">
-          <h3 class="pb_10">Score</h3>
-          <div class="review_wrap">
-            <!--TODO Have to configure these platforms with apis-->
-            <ul>
-              <li>
-                <%= image_tag("template/Yelp.svg") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/Google.svg") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/Foursquare.svg") %>
-                <div>
-                  <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
-                  <p class="totel_review">2453 reviews</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <!--TODO Have to configure these platforms with apis-->
+          <% rating = false %>
+          <% if rating %>
+            <h3 class="pb_10">Score</h3>
+            <div class="review_wrap">
+
+              <ul>
+                <% if rating %>
+                  <li>
+                    <%= image_tag("template/Yelp.svg") %>
+                    <div>
+                      <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
+                      <p class="totel_review">409 reviews</p>
+                    </div>
+                  </li>
+                <% end %>
+                <% if rating %>
+                  <li>
+                    <%= image_tag("template/Google.svg") %>
+                    <div>
+                      <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
+                      <p class="totel_review">409 reviews</p>
+                    </div>
+                  </li>
+                <% end %>
+                <% if rating %>
+                  <li>
+                    <%= image_tag("template/Foursquare.svg") %>
+                    <div>
+                      <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
+                      <p class="totel_review">2453 reviews</p>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
         </div>
         <% if @review.city.present? and @review.country.present? %>
           <div class="pt_30">
