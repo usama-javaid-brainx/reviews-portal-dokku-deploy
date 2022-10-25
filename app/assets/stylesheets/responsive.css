@@ -480,18 +480,14 @@
         font-size: 3.2rem;
     }
 
-    /*.favourite {*/
-    /*    width: 4.5rem;*/
-    /*    height: 4.5rem;*/
-    /*} */
     .favourite {
-        width: 45px;
-        height: 45px;
+        width: 4.5rem;
+        height: 4.5rem;
     }
 
     .favourite img {
-        width: 35px;
-        /*width: 2.8rem;*/
+        /*width: 24px;*/
+        width: 2.8rem;
     }
 
     .tab_link {
