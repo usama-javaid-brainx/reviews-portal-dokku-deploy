@@ -50,15 +50,9 @@
       <% end %>
     </div>
     <div>
-
-      <!--      <button class="btn white <%#= 'text-black-50 border-secondary' if @review.shareable != true %>" <%#= 'disabled' if @review.shareable != true %> data-action="click->guest#copyLink">-->
-      <!--        <%#= image_tag("template/share.svg") %>Share-->
-      <!--      </button>-->
-
-      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal">
+      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
-
       <!--Share Modal-->
       <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -70,22 +64,13 @@
             <div class="modal-body">
               <div id="share"></div>
             </div>
-            <div class="modal-footer">
-              <span></span>
-              <button type="button" class="btn btn-primary">Copy Link</button>
+            <div class="modal-footer d-flex">
+              <p class="link-field col-lg-7" data-guest-target="urlField"> hello </p>
+              <button type="button" class="col-lg-4 btn white" data-action="click->guest#copyLink">Copy Link</button>
             </div>
           </div>
         </div>
       </div>
-
-
-      <script>
-        $("#share").jsSocials({
-          shareIn: "popup",
-          showLabel: true,
-          shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "whatsapp"]
-        });
-      </script>
 
       <%= link_to edit_review_path(@review), class: 'btn' do %>
         <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
