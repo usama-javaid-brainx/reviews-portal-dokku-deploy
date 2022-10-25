@@ -480,13 +480,17 @@
         font-size: 3.2rem;
     }
 
+    /*.favourite {*/
+    /*    width: 4.5rem;*/
+    /*    height: 4.5rem;*/
+    /*} */
     .favourite {
-        width: 4.5rem;
-        height: 4.5rem;
+        width: 60px;
+        height: 60px;
     }
 
     .favourite img {
-        width: 24px;
+        width: 35px;
         /*width: 2.8rem;*/
     }
 

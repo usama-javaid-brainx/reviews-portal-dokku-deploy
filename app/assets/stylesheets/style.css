@@ -632,8 +632,10 @@ header {
     position: absolute;
     top: .8rem;
     right: .8rem;
-    width: 4rem;
-    height: 4rem;
+    /*width: 4rem;*/
+    /*height: 4rem;*/
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -646,7 +648,7 @@ header {
 .favourite img {
     /*flex-shrink: 0;*/
     /*width: 2.3rem;*/
-    width: 25px;
+    width: 35px;
 }
 
 .favourite.checked {
