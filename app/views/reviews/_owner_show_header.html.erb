@@ -9,10 +9,12 @@
       <span>Public REVIEW</span>
     </div>
     <h1><%= @review.name %></h1>
-    <span class="show-subcategory"><%= @review.category.sub_category_title %></span>
-    <% if @review.state.present? and @review.country.present? %>
+    <% if @review.cuisine.present? %>
+      <span class="show-subcategory"><%= @review.cuisine %></span>
       .
-      <span class="review-show-detail"><%="#{@review.state}, #{@review.country}"%></span>
+    <% end %>
+    <% if @review.state.present? and @review.country.present? %>
+      <span class="review-show-detail"><%= "#{@review.state}, #{@review.country}" %></span>
     <% end %>
     <% if @review.date.present? %>
       .
