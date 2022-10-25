@@ -83,9 +83,9 @@ export default class extends Controller {
     }
   }
 
-  fieldDisplay(event){
-    event.currentTarget.style.overflow = "unset"
-  }
+  fieldDisplay(event) {
+    this.inputTarget.classList.contains("search-input-expand") ? this.inputTarget.classList.remove("search-input-expand") : this.inputTarget.classList.add("search-input-expand")
+    }
 
   search(event) {
     if (event.key === "Enter") {

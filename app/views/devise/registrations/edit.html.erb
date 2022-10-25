@@ -1,7 +1,7 @@
 <div class="container" data-controller="user-validation">
   <div class="row justify-content-center mb-5">
     <div class="col-lg-6">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: users_update_path, html: { method: :patch }) do |f| %>
         <%= devise_error_messages! %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
@@ -40,7 +40,7 @@
             <div class="edit-heading mb-5 mt-4">Password</div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", required: true, autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
+              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
             </div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
