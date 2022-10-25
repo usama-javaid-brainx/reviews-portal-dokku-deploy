@@ -1,6 +1,6 @@
 <!-- single card -->
 <div class="col-lg-3 col-md-6">
-  <div class="card">
+  <div class="card review-card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
       <% if review.images.present? %>
         <%= link_to review_path((review.slug)) do %>
@@ -10,12 +10,12 @@
             <% end %>
           </div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
-          <div class="image-placeholder item"><%= image_tag("template/placeholder-image.webp") %></div>
+          <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
+        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></button>
       <% end %>
     </div>
     <div class="card-body">
@@ -29,10 +29,14 @@
           <span class='review_btn'><%= review.to_try ? "Wishlist" : "Review" %> </span>
         <% end %>
       </div>
+
       <% if review.state.present? and review.country.present? %>
-        <span class="state-name"><%= review.state %> <%=', ' + review.country %></span>
+        <div class="state-name"><%= review.state %>, <%= review.country %></div>
+      <% else %>
+        <div class="state-name"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
       <% end %>
-      <div class="d-flex align-items-center">
+
+      <div class="d-flex mt-2 align-items-center">
         <% if review.cuisine? %>
         <span class="cuisine-tag">
          <%= review.cuisine %>
