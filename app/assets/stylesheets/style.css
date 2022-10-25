@@ -637,8 +637,9 @@ header {
 }
 
 .favourite img {
-    flex-shrink: 0;
-    width: 2.3rem;
+    /*flex-shrink: 0;*/
+    /*width: 2.3rem;*/
+    width: 25px;
 }
 
 .favourite.checked {
