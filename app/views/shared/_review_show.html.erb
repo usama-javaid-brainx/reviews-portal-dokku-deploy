@@ -204,7 +204,7 @@
           <% rating = false %>
           <% if rating %>
             <h3 class="pb_10">Score</h3>
-            <div class="review_wrap">
+            <div class="review_wrap pb_30">
 
               <ul>
                 <% if rating %>
@@ -239,7 +239,7 @@
           <% end %>
         </div>
         <% if @review.city.present? and @review.country.present? %>
-          <div class="pt_30">
+          <div>
             <h3 class="pb_10">Localization</h3>
             <div class="map_wrap">
               <span id="lat" data-latitude=<%= @review.latitude %>> </span>
