@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     $("#category_id").select2()
     $("#review_category_id").select2()
+    $("#category-id-mobile").select2()
     $("#review_to_try").select2({
       minimumResultsForSearch: Infinity
     });
