@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     reviews = reviews.where('cuisine ilike any (array[?])', params[:cuisines_filter].split(',')) if params[:cuisines_filter].present?
     reviews = reviews.where('tags ilike any (array[?])', params[:tags_filter].split(',').map { |str| "%,#{str}%" }) if params[:tags_filter].present?
     reviews = if params[:score].present?
-                reviews.order(params[:score]== "recent"? "created_at desc" : "average_score #{params[:score]} NULLS LAST")
+                reviews.order(params[:score] == "recent" ? "created_at desc" : "average_score #{params[:score]} NULLS LAST")
               else
                 reviews.order("created_at desc")
               end
