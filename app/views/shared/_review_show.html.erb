@@ -194,46 +194,42 @@
           <% end %>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="pt_50">
-          <!--TODO Have to configure these platforms with apis-->
-          <% rating = false %>
-          <% if rating %>
-            <h3 class="pb_10">Score</h3>
-            <div class="review_wrap pb_30">
-
-              <ul>
-                <% if rating %>
-                  <li>
-                    <%= image_tag("template/Yelp.svg") %>
-                    <div>
-                      <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                      <p class="totel_review">409 reviews</p>
-                    </div>
-                  </li>
-                <% end %>
-                <% if rating %>
-                  <li>
-                    <%= image_tag("template/Google.svg") %>
-                    <div>
-                      <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                      <p class="totel_review">409 reviews</p>
-                    </div>
-                  </li>
-                <% end %>
-                <% if rating %>
-                  <li>
-                    <%= image_tag("template/Foursquare.svg") %>
-                    <div>
-                      <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
-                      <p class="totel_review">2453 reviews</p>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
+      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= @review.latitude %>"  data-map-longitude-value="<%= @review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>">
+        <!--TODO Have to configure these platforms with apis-->
+          <div class="pt_50">
+            <div data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
+              <h3 class="pb_10">Score</h3>
+              <div class="review_wrap pb_30">
+                <div class="spinner-border text-secondary d-block m-auto" role="status" data-map-target="scoreLoading">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <ul>
+                    <li class="d-none" data-map-target="yelpScore">
+                      <%= image_tag("template/Yelp.svg") %>
+                      <div>
+                        <p><span class="left_point" data-map-target="yelpRating">4.6</span><span class="right_point">/ 5.0</span></p>
+                        <p class="totel_review" data-map-target="yelpReviews">409 reviews</p>
+                      </div>
+                    </li>
+                    <li class="d-none" data-map-target="googleScore">
+                      <%= image_tag("template/Google.svg") %>
+                      <div>
+                        <p><span class="left_point" data-map-target="googleRating">4.6</span><span class="right_point"> / 5.0</span></p>
+                        <p class="totel_review" data-map-target="googleReviews">409 reviews</p>
+                      </div>
+                    </li>
+                    <li class="d-none" class="" data-map-target="foursquareScore">
+                      <%= image_tag("template/Foursquare.svg") %>
+                      <div>
+                        <p><span class="left_point"data-map-target="foursquareRating">9.0</span><span class="right_point">/ 10.0</span></p>
+                        <p class="totel_review" data-map-target="foursquareReviews">2453 reviews</p>
+                      </div>
+                    </li>
+                </ul>
+              </div>
             </div>
-          <% end %>
-        </div>
+          </div>
+
         <% if @review.city.present? and @review.country.present? %>
           <div>
             <h3 class="pb_10">Localization</h3>
@@ -250,7 +246,7 @@
                   <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
                 <% end %>
               </div>
-              <button class="map-button bg-white" data-controller="map" data-map-latitude-value="<%= @review.latitude %>" data-map-longitude-value="<%= @review.longitude %>" data-action="click->map#openMap">
+              <button class="map-button bg-white" data-action="click->map#openMap">
                 <%= image_tag("template/map.svg") %>
                 <span> Show on map </span>
               </button>

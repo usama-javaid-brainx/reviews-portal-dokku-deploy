@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
   def index
     duplicate_review if session[:edit_review].present?
   end
@@ -100,6 +99,21 @@ class ReviewsController < ApplicationController
 
   def category_order
     @ordered_categories = Category.all.order("name asc")
+  end
+
+  def get_score
+    foursquare_values = get_ratings("foursquare", params[:foursquare_yelp_url])
+    yelp_values = get_ratings("yelp", params[:foursquare_yelp_url])
+    render json: [foursquare: foursquare_values, yelp: yelp_values]
+  end
+
+  def get_ratings(type, url)
+    options = { body: {
+      "url": url,
+      "type": type
+    } }
+    response = HTTParty.get('https://yelp-foursquare-api.herokuapp.com/api/v1/', options)
+    response["result"]
   end
 
   private
