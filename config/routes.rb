@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
+    get :get_score
   end
 
   post 'upload', to: 'file_uploads#upload'

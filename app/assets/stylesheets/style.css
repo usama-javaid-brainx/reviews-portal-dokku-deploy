@@ -1616,12 +1616,12 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 2.4rem 0;
-    border-top: 1px solid #EDEDFB;
+    border-bottom: 1px solid #EDEDFB;
 }
 
-.review_wrap li:first-child {
-    padding-top: 0;
-    border-top: none;
+.review_wrap li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 .review_wrap li:last-child {
@@ -2913,4 +2913,8 @@ div.ck ul {
     color: #373737;
     font-size: 16px;
     font-weight: 500;
+}
+
+.select2-results__option {
+    padding-left: 15px !important;
 }
