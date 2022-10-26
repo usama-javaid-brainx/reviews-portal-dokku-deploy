@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if current_user.second_view?
         redirect_to homepage_path
       else
-        redirect_to root_path
+        redirect_to reviews_path
       end
     end
   end

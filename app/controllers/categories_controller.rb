@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
   def update_categories_status
     if update_category?
-      redirect_to root_path, status: :see_other, notice: "Category updated successfully!"
+      redirect_to reviews_path, status: :see_other, notice: "Category updated successfully!"
     else
       redirect_to categories_path
     end
