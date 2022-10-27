@@ -1,13 +1,18 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
 
   connect() {
     this.filterCount = 0
     this.cuisines = [];
     this.filters = [];
+    this.location = [];
     this.appliedFilters()
+  }
+
+  selectLocation(event){
+    this.location = this.selectParam(event, 'clear-location', this.location)
   }
 
   selectCuisine(event) {
@@ -58,6 +63,7 @@ export default class extends Controller {
 
   applyFilter() {
     this.tagsFilterTarget.value = this.filters
+    this.locationFilterTarget.value = this.location
     if (this.hasCuisinesFilterTarget) {            //cuisines can be present or not in modal
       this.cuisinesFilterTarget.value = this.cuisines
     }

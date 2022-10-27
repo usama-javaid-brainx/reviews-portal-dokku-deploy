@@ -58,6 +58,20 @@
             <% if @cuisine_presence %>
               <div class="card cuisine-card-h">
                 <div class="d-flex justify-content-between p-4">
+                  <span class="cuisine-font cuisine-h">Location</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
+                </div>
+                <div class="tag-card-h overflow-auto">
+                  <%= f.hidden_field :location_filter, :value => "#{params[:location_filter]}", 'data-filter-target': "locationFilter" %>
+                  <% reviews.each do |review| %>
+                    <% if review.city.present? || review.state.present? %>
+                      <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:location_filter]&.split(',')&.index(location.titleize).present? ? 'cuisine-select clear-location' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectLocation"><%= "#{review.city.titleize}," if review.city.present?%> <%= review.state.titleize if review.state.present? %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="card cuisine-card-h mt-5">
+                <div class="d-flex justify-content-between p-4">
                   <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
                 </div>
                 <div class="tag-card-h overflow-auto">
