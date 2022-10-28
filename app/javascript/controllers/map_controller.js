@@ -10,9 +10,12 @@ export default class extends Controller {
   }
 
   connect() {
+    this.scoreBlock = 0
     let foursquareUrl = $('div[data-foursquareUrl]').attr('data-foursquareUrl')
     if (foursquareUrl != "") {
       this.getScore(foursquareUrl)
+    }else{
+      this.scoreTarget.classList.add('d-none')
     }
   }
 
@@ -36,18 +39,24 @@ export default class extends Controller {
   }
 
   displayScore(ratings) {
+
     this.displayScoreBlock(this.yelpScoreTarget, this.yelpRatingTarget, this.yelpReviewsTarget, 'yelp', ratings)
     this.displayScoreBlock(this.foursquareScoreTarget, this.foursquareRatingTarget, this.foursquareReviewsTarget, 'foursquare', ratings)
+    if( this.scoreBlock == 0){
+      this.scoreTarget.classList.add('d-none')
+    }else{
+      this.scoreTarget.classList.remove('d-none')
+    }
   }
 
   displayScoreBlock(scoreTarget, ratingTarget, reviewsTarget, scoreType, ratings) {
-
-    if (ratings[0][scoreType]['ratings'] != '') {
+    if (ratings[0][scoreType] != null && parseFloat(ratings[0][scoreType]['ratings']) >= 0 && parseFloat(ratings[0][scoreType]['ratings']) <= 10) {
       this.scoreTarget.classList.remove('d-none')
       this.scoreLoadingTarget.classList.add('d-none')
       scoreTarget.classList.remove('d-none')
       ratingTarget.innerHTML = ratings[0][scoreType]['ratings']
       reviewsTarget.innerHTML = `${ratings[0][scoreType]['reviews']} reviews`
+      this.scoreBlock = 1
     }
   }
 }
