@@ -19,11 +19,8 @@ class ReviewsController < ApplicationController
   def home_data
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy(reviews, items: 12)
-    @cuisine_presence = if (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
-                          true
-                        else
-                          false
-                        end
+    @addresses = locations(@reviews)
+    @cuisine_presence = (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
   end
 
   def new
@@ -59,11 +56,12 @@ class ReviewsController < ApplicationController
   def show
     if current_user.blank? || current_user.reviews.find_by(slug: params[:id]).blank?
       redirect_to guest_path
-    else
-      @review = current_user.reviews.find_by(slug: params[:id])
-      @parent_id = @review.parent_id
-      @review_user = User.find_by(id: @review.user_id)
+      return
     end
+
+    @review = current_user.reviews.find_by(slug: params[:id])
+    @parent_id = @review.parent_id
+    @review_user = User.find_by(id: @review.user_id)
   end
 
   def edit
@@ -102,21 +100,11 @@ class ReviewsController < ApplicationController
   end
 
   def get_score
-    foursquare_values = get_ratings("foursquare", params[:foursquare_yelp_url])
-    yelp_values = get_ratings("yelp", params[:foursquare_yelp_url])
-    render json: [foursquare: foursquare_values, yelp: yelp_values]
-
+    geolocations = Array.[]('foursquare', 'yelp')
+    foursquare_yelp = FetchRatingsService.new(geolocations, params[:foursquare_yelp_url])
+    foursquare_yelp = foursquare_yelp.call
+    render json: foursquare_yelp
   end
-
-  def get_ratings(type, url)
-    options = { body: {
-      "url": url,
-      "type": type
-    } }
-    response = HTTParty.get('https://yelp-foursquare-api.herokuapp.com/api/v1/', options)
-    response["result"]
-  end
-
   private
 
   def set_review
@@ -126,5 +114,19 @@ class ReviewsController < ApplicationController
   def review_params
     params[:review][:images] = [] if params[:review][:images] == [""]
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
+  end
+
+  def locations(reviews)
+    reviews.map do |review|
+      if review.city.present? && review.state.present?
+        "#{review.city} . #{review.state}"
+      elsif review.state.present?
+        review.state
+      elsif review.city.present?
+        review.city
+      else
+        ''
+      end
+    end.uniq.reject(&:empty?).sort
   end
 end

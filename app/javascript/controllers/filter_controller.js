@@ -39,6 +39,11 @@ export default class extends Controller {
     return filterType
   }
 
+  locationClearAll() {
+    this.clearAll('clear-location')
+    this.location = []
+  }
+
   cuisineClearAll() {
     this.clearAll('clear-cuisine')
     this.cuisines = []
@@ -72,19 +77,16 @@ export default class extends Controller {
 
   appliedFilters() {
     let appliedFilters = 0
-    if (this.hasCuisinesFilterTarget) {
-      appliedFilters = this.cuisinesFilterTarget.value.split(',').filter(x => x != '').length + this.tagsFilterTarget.value.split(',').filter(x => x != '').length
-    } else {
-      appliedFilters = this.tagsFilterTarget.value.split(',').filter(x => x != '').length
-    }
+    appliedFilters = this.locationFilterTarget.value.split(',').filter(x => x != '').length + this.cuisinesFilterTarget.value.split(',').filter(x => x != '').length + this.tagsFilterTarget.value.split(',').filter(x => x != '').length
+
     if (appliedFilters > 0) {
       this.appliedFilterTarget.innerHTML = appliedFilters
       this.appliedFilterTarget.classList.add('cuisine-select', 'ml-2', 'px-2', 'rounded-3')
       this.applyBtnTarget.innerHTML = `Apply(${appliedFilters.toString()})`
       this.filterCount = appliedFilters
-      if (this.hasCuisinesFilterTarget) {
-        this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')
-      }
+
+      this.location = this.locationFilterTarget.value.split(',').filter(x => x != '')
+      this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
     }
   }

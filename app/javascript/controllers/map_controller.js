@@ -39,7 +39,6 @@ export default class extends Controller {
   }
 
   displayScore(ratings) {
-
     this.displayScoreBlock(this.yelpScoreTarget, this.yelpRatingTarget, this.yelpReviewsTarget, 'yelp', ratings)
     this.displayScoreBlock(this.foursquareScoreTarget, this.foursquareRatingTarget, this.foursquareReviewsTarget, 'foursquare', ratings)
     if( this.scoreBlock == 0){

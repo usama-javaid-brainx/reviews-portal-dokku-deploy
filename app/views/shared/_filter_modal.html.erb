@@ -1,0 +1,57 @@
+<!--filter modal-->
+<div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="height: 72px; padding: 20px 24px;">
+        <h5 class="modal-title filter-h" id="filterModalLabel">Filters</h5>
+        <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
+      </div>
+      <div class="modal-body" style="background: #FBFBFE;">
+        <% if @cuisine_presence %>
+          <div class="card cuisine-card-h">
+            <div class="d-flex justify-content-between p-4">
+              <span class="cuisine-font cuisine-h">Location</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#locationClearAll ">X Clear All</span>
+            </div>
+            <div class="tag-card-h overflow-auto">
+              <%= f.hidden_field :location_filter, :value => "#{params[:location_filter]}", 'data-filter-target': "locationFilter" %>
+              <% @addresses.each do |address| %>
+                <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:location_filter]&.split(',')&.index(address.titleize).present? ? 'cuisine-select clear-location' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectLocation"><%= address.titleize %></span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="card cuisine-card-h mt-5">
+            <div class="d-flex justify-content-between p-4">
+              <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
+            </div>
+            <div class="tag-card-h overflow-auto">
+              <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
+              <% cuisines.each do |cuisine| %>
+                <% if cuisine.present? %>
+                  <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="card mt-5">
+          <div class="d-flex justify-content-between p-4">
+            <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
+          </div>
+          <div class="tag-card-h overflow-auto">
+            <%= f.hidden_field :tags_filter, :value => "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
+            <% tags.each do |tag| %>
+              <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag.titleize).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag.titleize %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="d-flex justify-content-between w-100">
+          <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal" style=" margin-left: unset;">Cancel</button>
+          <span type="button" class="filter-btn filter-apply" data-filter-target="applyBtn" data-action="click->filter#applyFilter">Apply</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
