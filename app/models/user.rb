@@ -27,6 +27,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews, dependent: :destroy
+  has_many :groups, dependent: :destroy
   has_many :ck_editor_images, dependent: :destroy
   has_many :requests, dependent: :destroy
 

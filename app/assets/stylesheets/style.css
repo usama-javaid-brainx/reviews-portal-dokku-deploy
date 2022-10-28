@@ -2898,3 +2898,14 @@ div.ck ul {
     font-weight: 500;
 
 }
+
+/*========================= groups style ===================*/
+
+.group-card {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.group-card .group-image{
+    border: 1px solid black;
+    border-radius: 6px;
+}
