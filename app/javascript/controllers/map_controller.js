@@ -11,7 +11,7 @@ export default class extends Controller {
 
   connect() {
     this.scoreBlock = 0
-    let foursquareUrl = $('div[data-foursquareUrl]').attr('data-foursquareUrl')
+    let foursquareUrl = $(this.scoreTarget).attr('data-foursquareUrl')
     if (foursquareUrl != "") {
       this.getScore(foursquareUrl)
     }else{
