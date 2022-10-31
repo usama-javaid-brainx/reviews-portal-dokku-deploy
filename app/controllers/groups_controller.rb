@@ -9,4 +9,9 @@ class GroupsController < ApplicationController
     reviews = current_user.groups.find(params[:id]).reviews
     @pagy, @reviews = pagy(reviews, items: 12)
   end
+
+  def create
+    debugger
+  end
+
 end
