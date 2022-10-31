@@ -18,7 +18,7 @@
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
   </div>
-  <%= link_to root_path, class:"back" do %>
+  <%= link_to root_path, class: "back" do %>
     <%= image_tag("template/left-arrow.svg") %>
   <% end %>
   <!--========== Hero area start ===========-->
@@ -199,8 +199,7 @@
           </div>
         </div>
       <% end %>
-
-      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= @review.latitude %>" data-map-longitude-value="<%= @review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>">
+      <div class="col-lg-4" data-controller="map" data-map-location-value="<%= @review.name %>, <%= @review.city %>, <%= @review.state %>, <%= @review.country %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>">
         <!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
           <div data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
@@ -274,6 +273,5 @@
         </div>
       <% end %>
     </div>
-  </div>
   </div>
 </main>
