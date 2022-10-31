@@ -6,11 +6,14 @@ export default class extends Controller {
   connect() {
     $("#category_id").select2()
     $("#review_category_id").select2()
+    $("#review_to_try").select2({
+      minimumResultsForSearch: Infinity
+    });
     $(this.categoryTarget).on('select2:select select2:unselect', this.categorySelect.bind(this))
   }
 
   categorySelect() {
-    if (this.categoryTarget.value == "") {
+    if (this.categoryTarget.value == "all") {
       window.location.href = `${window.location.href.split('?')[0]}?category_id=all`
     } else {
       window.location.href = `${window.location.href.split('?')[0]}?category_id=${this.categoryTarget.value}`
