@@ -5,7 +5,7 @@
     <% if @review.cuisine.present? %>
       <span class="show-subcategory"><%= @review.cuisine %></span>
     <% end %>
-    <% if @review.state.present? && @review.country.present? || @review.cuisine.present? && @review.date.present? %>
+    <% if @review.state.present? && @review.country.present? && @review.date.present? || @review.cuisine.present? && @review.date.present? %>
       .
     <% end %>
     <% if @review.state.present? and @review.country.present? %>
