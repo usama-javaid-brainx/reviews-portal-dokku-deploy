@@ -1,10 +1,5 @@
 <main class="overflow-hidden">
-  <div class="d-flex justify-content-center profile-img-wraper m-auto mt-5 position-relative">
-    <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
-    <%= link_to edit_user_registration_path, class: "rounded-circle avatar-edit" do %>
-      <%= image_tag "template/edit.svg", class: "avatar-edit-icon" %>
-    <% end %>
-  </div>
+  <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= current_user.first_name.titleize %></span>
   <%= render "filter_navbar", reviews: @reviews, cuisines: @cuisines, tags: @tags %>
   <%= render "reviews/review_cards", reviews: @reviews, pagy: @pagy %>

@@ -40,6 +40,7 @@ class Review < ApplicationRecord
   store_accessor :images, []
 
   belongs_to :user
+  has_and_belongs_to_many :groups
   belongs_to :category
   has_many :meals, dependent: :destroy
 

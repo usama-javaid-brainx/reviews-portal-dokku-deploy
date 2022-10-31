@@ -1,31 +1,25 @@
 Rails.application.routes.draw do
-  get 'guests/create_review'
-
-  resources :guests, only: [:show]
-
-  get 'users/index'
-  get 'users/remove_avatar'
-  get 'users/delete_user'
-  get 'users/settings'
-  patch 'users/update'
+  root "home#homepage_load"
 
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root "home#homepage_load"
+  resources :guests, only: [:show]
+  resources :categories, only: :index
+  resources :requests, only: :create
   resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
   end
-
+  scope :users do
+    resources :groups
+  end
+  get 'guests/create_review'
+  get 'users/index'
+  get 'users/remove_avatar'
+  get 'users/delete_user'
+  get 'users/settings'
   post 'upload', to: 'file_uploads#upload'
-
-  resources :categories, only: :index
-
   patch :update_categories_status, to: 'categories#update_categories_status'
-  resources :requests, only: :create
   get :homepage, to: 'reviews#homepage'
 
   namespace :api do
