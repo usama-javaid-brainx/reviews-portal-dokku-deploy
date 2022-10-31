@@ -10,7 +10,7 @@
               <div class="edit-heading">Profile Photo</div>
               <div class="d-flex mt-5">
                 <div class="col-1">
-                    <%= image_tag( resource.avatar.attached? ? resource.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                  <%= image_tag(resource.avatar.attached? ? resource.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
                 </div>
                 <div class="d-flex align-items-center col-11 flex-wrap">
                   <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
@@ -25,10 +25,15 @@
               </div>
             </div>
             <hr class="edit-separator">
+
+            <div class="edit-heading mb-5 mt-4">Details</div>
             <div class="row align-items-center form_group  mb_50">
-              <div class="edit-heading mb-5 mt-4">Details</div>
               <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label' %>
-              <%= f.text_field :first_name, class: "col-lg-7 edit-text-field", value: @user.first_name.titleize %>
+              <%= f.text_field :first_name, class: "col-lg-7 edit-text-field" %>
+            </div>
+            <div class="row align-items-center form_group  mb_50">
+              <%= f.label :phone_number, "Phone Number", class: 'col-lg-5 edit-label' %>
+              <%= f.text_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number" %>
             </div>
             <hr class="edit-separator">
 
@@ -36,7 +41,6 @@
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
               <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
-
             </div>
             <div class="row align-items-center form_group  mb_50">
               <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
