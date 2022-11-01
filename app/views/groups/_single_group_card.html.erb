@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-6" data-controller="group">
+<div class="col-lg-3 col-md-6">
   <div class="group-card">
     <%= link_to group_path(group), class: "group-link" do %>
       <% if group.reviews.pluck(:images).flatten.present? %>
@@ -41,18 +41,6 @@
     <span class="group-pen-icon" data-bs-toggle="modal" data-bs-target="#edit-group-modal">
       <%= image_tag("template/edit.svg") %>
     </span>
-    <!--Edit group Modal -->
-    <div class="modal fade" id="edit-group-modal" tabindex="-1" aria-labelledby="edit-group-modal-label" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="edit-group-modal-label">Edit Folder</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <%= render "group_form", group: group %>
-        </div>
-      </div>
-    </div>
-
+    <%= render "edit_group_modal", group: group %>
   </div>
 </div>
