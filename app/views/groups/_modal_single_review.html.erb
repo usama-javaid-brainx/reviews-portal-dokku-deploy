@@ -1,0 +1,44 @@
+<!-- single card -->
+<div class="col-lg-3 col-md-6">
+  <div class="card small-card-review" data-action="click->group#cardSelect">
+    <div class="card-header p-0 border-0 position-relative">
+      <% if review.images.present? %>
+          <div class="owl-carousel owl-theme card_carousel">
+            <% review.images[..5].each do |image| %>
+              <div class="item"><%= image_tag(image) %></div>
+            <% end %>
+          </div>
+      <% else %>
+          <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
+        <% end %>
+    </div>
+    <div class="small-card-body">
+      <div class="small-review-top">
+        <p class="small-name"><%= review.name %></p>
+        <% if review.average_score.present? %>
+          <p class="small-rating">
+            <%= image_tag("template/star.svg") if review.average_score? %>
+            <span><%= review.average_score %></span>
+          </p>
+        <% else %>
+          <span class='review_btn small-review-card'><%= review.to_try ? "Wishlist" : "Review" %> </span>
+        <% end %>
+      </div>
+
+      <% if review.state.present? and review.country.present? %>
+        <div class="small-review-state"><%= review.state %>, <%= review.country %></div>
+      <% else %>
+        <div class="small-review-state"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
+      <% end %>
+
+      <div class="d-flex align-items-center">
+        <% if review.cuisine? %>
+        <span class="cuisine-tag small-review-cuisine">
+         <%= review.cuisine %>
+        </span>
+        <% end %>
+        <span class=""><%= image_tag(review.shareable ? "template/add.png" : "template/lock.svg") %></span>
+      </div>
+    </div>
+  </div>
+</div>

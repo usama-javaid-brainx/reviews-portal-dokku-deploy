@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   scope :users do
     resources :groups
   end
+  get 'groups/search'
   get 'guests/create_review'
   get 'users/index'
   get 'users/remove_avatar'

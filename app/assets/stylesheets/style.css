@@ -2874,11 +2874,11 @@ div.ck ul {
     border-radius: 6px;
 }
 
-#share .jssocials-shares .jssocials-share:hover{
+#share .jssocials-shares .jssocials-share:hover {
     background-color: #6E3EF7;
 }
 
-#share .jssocials-shares .jssocials-share:hover .jssocials-share-label{
+#share .jssocials-shares .jssocials-share:hover .jssocials-share-label {
     color: white;
 }
 
@@ -2905,46 +2905,56 @@ div.ck ul {
     overflow: hidden;
     position: relative;
 }
-.group-card .group-image{
+
+.group-card .group-image {
     width: 100%;
     height: 250px;
     border-radius: 6px;
     border: 1px solid lightgray;
 }
+
 .group-half-thumbnail {
     width: 100%;
     height: 250px;
     object-fit: cover;
 }
-.group-quarter-thumbnail{
+
+.group-quarter-thumbnail {
     width: 100%;
     height: 124px;
 }
-.three-image-thumbnail .col-8 img{
+
+.three-image-thumbnail .col-8 img {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
 }
-.three-image-thumbnail .col-4 .top img{
+
+.three-image-thumbnail .col-4 .top img {
     border-top-right-radius: 6px;
 }
-.three-image-thumbnail .col-4 .bottom img{
+
+.three-image-thumbnail .col-4 .bottom img {
     border-bottom-right-radius: 6px;
 }
-.group-link{
+
+.group-link {
     display: inline-block;
 }
-.group-card .group-link h3{
+
+.group-card .group-link h3 {
     font-size: 20px;
     font-weight: 500;
 }
-.group-card .group-link span.text{
+
+.group-card .group-link span.text {
     display: block;
     margin-top: -5px;
     font-size: 16px;
     font-weight: 400;
     color: gray;
 }
-.group-pen-icon{
+
+.group-pen-icon {
     position: absolute;
     display: none;
     justify-content: center;
@@ -2959,10 +2969,83 @@ div.ck ul {
     opacity: 0.9;
 }
 
-.group-card:hover .group-pen-icon{
+.group-card:hover .group-pen-icon {
     display: flex;
 }
-.group-pen-icon:hover{
+
+.group-pen-icon:hover {
     display: block;
     cursor: pointer;
+}
+
+/*============================*/
+
+.small-card-review {
+    height: 160px;
+    cursor: pointer;
+}
+
+.small-card-body {
+    padding: 5px;
+}
+
+.small-review-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.small-review-top .small-name {
+    width: 8rem;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.small-rating {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.small-review-card {
+    width: 4rem;
+    font-size: 10px;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    margin-right: 0px;
+}
+
+.small-review-state {
+    font-size: 10px;
+}
+
+.small-review-cuisine {
+    font-size: 10px;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    padding: 0px 5px;
+    text-align: center;
+}
+
+.review-card-select {
+    border: 2px solid blue;
+}
+
+.input-height {
+height: 3.5rem;
+}
+
+.modal-cancel{
+    font-size: 1.4rem;
+    color: gray !important;
+    background: #FFFFFF;
+    border-color: gray !important;
+    padding: 1rem 2.4rem;
+}
+.modal-cancel:hover{
+    color: #FFFFFF !important;
+    background: gray !important;
 }
