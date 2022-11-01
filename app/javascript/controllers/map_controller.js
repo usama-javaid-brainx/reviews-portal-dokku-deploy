@@ -4,8 +4,7 @@ export default class extends Controller {
   static targets = ["score", 'yelpScore', 'yelpRating', 'yelpReviews', 'foursquareScore', 'foursquareRating', 'foursquareReviews', 'googleScore', 'googleRating', 'googleReviews', 'scoreLoading']
 
   static values = {
-    latitude: String,
-    longitude: String,
+    location: String,
     getscoreurl: String
   }
 
@@ -20,7 +19,7 @@ export default class extends Controller {
   }
 
   openMap() {
-    window.open(`https://maps.google.com/?q=${this.latitudeValue},${this.longitudeValue}`, '_blank')
+    window.open(`https://maps.google.com/?q=${this.locationValue}`, '_blank')
   }
 
   getScore(foursquareUrl) {
