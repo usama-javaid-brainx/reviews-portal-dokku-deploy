@@ -1,43 +1,27 @@
-<% session[:review_id] = @review.slug %>
+<% session[:review_id] = review.slug %>
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <h1><%= @review.name %></h1>
-    <% if !@review.city.present? && @review.date.present? %>
-      <p class="date">
-        <%= @review.date.strftime("%b %e, %Y") %>
-      </p>
-    <% end %>
-    <ul class="list_group">
-      <% if @review.city.present? %>
-        <li><%= @review.city %></li>
-      <% end %>
-      <% if @review.state.present? && @review.country.present? %>
-        <li><%= @review.state + ', ' %> <%= @review.country %></li>
-      <% end %>
-      <li>
-        <% for count in 1..5 %>
-          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
-        <% end %>
-      </li>
-    </ul>
+    <%= render "shared/show_header_title", review: review %>
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
     <div class="d-flex align-items-center justify-content-end avatar">
-      <% if @review.average_score.present? %>
+      <% if review.average_score.present? %>
         <div class="d-flex align-items-center justify-content-evenly rating_box">
           <%= image_tag("template/star.svg", class: "w-25 ") %>
-          <span class="align-items-center d-flex pt-2 rating"><%= @review.average_score %></span>
+          <span class="align-items-center d-flex pt-2 rating"><%= review.average_score %></span>
         </div>
       <% end %>
-      <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto rating_box') %>
+      <span class="show-user-img">
+        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+      </span>
       <div>
-        <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: @review.user_id).first_name %> <%= User.find_by(id: @review.user_id).last_name %></span>
+        <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: review.user_id).first_name %> <%= User.find_by(id: review.user_id).last_name %></span>
       </div>
     </div>
     <div>
-<!--      ToDo requerement did't clear yet-->
-      <%= link_to @review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
-        <%= image_tag("template/check.svg") %><span><%= @review.to_try ? "To Try" : "Mark To Try" %></span>
+      <!--      ToDo requerement did't clear yet-->
+      <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
+        <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
       <%= link_to "Write Your Review", guests_create_review_path(edit_review: true), class: 'btn' %>
     </div>
@@ -47,23 +31,25 @@
   <div class="col-12 d-lg-none">
     <div class="d-flex justify-content-between align-items-center pt_30">
       <div class="d-flex align-items-center avatar">
-        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle h-auto') %>
+        <span class="show-user-img">
+          <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+        </span>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
-          <p class="name"><%= @review.name %></p>
+          <p class="name"><%= User.find_by(id: review.user_id).first_name %></p>
         </div>
       </div>
-      <% if @review.average_score.present? %>
+      <% if review.average_score.present? %>
         <div class="rating_box">
           <p class="rating"><%= image_tag("template/star.svg") %>
-            <span><%= @review.average_score %></span></p>
+            <span><%= review.average_score %></span></p>
         </div>
       <% end %>
     </div>
     <div class="d-flex justify-content-between pt_30">
       <!--      todo-->
-      <%= link_to @review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
-        <%= image_tag("template/check.svg") %><span><%= @review.to_try ? "To Try" : "Mark To Try" %></span>
+      <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
+        <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
       <%= link_to "Write Your Review", guests_create_review_path(edit_review: true), class: 'btn' %>
     </div>
