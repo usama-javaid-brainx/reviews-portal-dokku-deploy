@@ -15,7 +15,6 @@
           <div class="mb-4">
             <%= group_frm.label "Add Reviews", class: "form-label" %>
             <%= group_frm.text_field :search, class: "form-control input-height", placeholder: "Search for reviews", type: "text", data: { "action": "keyup->group#search" } %>
-            <%= group_frm.hidden_field :search %>
           </div>
           <div>
             <%= render "modal_review_cards", reviews: @reviews %>
@@ -26,7 +25,7 @@
           <button type="button" class="btn white modal-cancel" data-bs-dismiss="modal">Cancel</button>
           <%= link_to "Delete", group_path(group), data: { turbo_method: :delete }, class: "btn delete" %>
           </div>
-            <%= group_frm.submit "Save Changes", class: 'save-changes' %>
+            <%= group_frm.submit "Save Changes", class: 'save-changes', "data-action": "click->group#reviews" %>
         </div>
       <% end %>
     </div>

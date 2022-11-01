@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select"]
+  static targets = ["card-select", "hiddenCheckbox"]
   static values = {search: String}
 
   search(event){
@@ -23,9 +23,11 @@ export default class extends Controller {
   cardSelect(event){
     if(event.currentTarget.classList.contains("review-card-select")){
       event.currentTarget.classList.remove("review-card-select")
+      event.currentTarget.querySelector("input").checked = false
     }
     else{
       event.currentTarget.classList.add("review-card-select")
+      event.currentTarget.querySelector("input").checked = true
     }
   }
 }

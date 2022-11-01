@@ -15,6 +15,10 @@ class GroupsController < ApplicationController
     debugger
   end
 
+  def update
+    debugger
+  end
+
   def search
     reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
     render json: [search_reviews: reviews]
