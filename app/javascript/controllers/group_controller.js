@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   searchRequest(searchData) {
-    let that = this
     $.ajax({
       type: "GET",
       url: this.searchValue,
@@ -33,7 +32,6 @@ export default class extends Controller {
   }
 
   newRequest(event) {
-    debugger
     let groupId = event.currentTarget.getAttribute("data-groupId")
     let finalUrl = !groupId ? this.newgroupValue : `${this.newgroupValue}?id=${groupId}`
     $.ajax({
