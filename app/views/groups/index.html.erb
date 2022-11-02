@@ -1,13 +1,13 @@
-<main class="container overflow-hidden">
+<main class="container overflow-hidden" data-controller="group" data-group-search-value="<%= groups_search_path %>" data-group-newgroup-value="<%= new_group_path %>">
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= current_user.first_name.titleize %></span>
   <div class="row justify-content-center pt_30">
     <button class="col-lg-2 col-md-3 col-8 btn white mx-2" type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
       <%= image_tag("template/share.svg") %>Share
     </button>
-     <span class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn' data-bs-toggle="modal" data-bs-target="#edit-group-modal">
+    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn' data-action="click->group#newRequest">
       <%= image_tag("template/plus.svg") %><span>Add New</span>
-    </span>
+    </button>
   </div>
-  <%= render "group_cards",groups: @groups, pagy: @pagy %>
+  <%= render "group_cards", groups: @groups, pagy: @pagy %>
 </main>
