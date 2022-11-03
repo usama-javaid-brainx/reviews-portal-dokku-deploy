@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   def index
     groups = current_user.groups.all
-
     @pagy, @groups = pagy(groups, items: 12)
   end
 
@@ -12,8 +11,14 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @reviews = current_user.reviews
-    @group = params[:id].present? ? current_user.groups.find(params[:id]) : current_user.groups.new
+    if params[:id].present?
+      @group = current_user.groups.find(params[:id])
+      @reviews = current_user.reviews
+      @selected_reviews = @group.reviews
+    else
+      @reviews = current_user.reviews
+      @group = current_user.groups.new
+    end
   end
 
   def create
@@ -26,13 +31,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-    debugger
-    @group = current_user.groups.find(params[:id])
-  end
-
   def update
     @group = current_user.groups.find(params[:id])
+    @group.review_ids = params[:group][:reviews] if params[:group][:reviews].present?
     if @group.update(group_params)
       redirect_to groups_path, notice: "Group updated successfully!"
     else
@@ -41,8 +42,7 @@ class GroupsController < ApplicationController
   end
 
   def search
-    reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
-    render json: [search_reviews: reviews]
+    @reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def destroy

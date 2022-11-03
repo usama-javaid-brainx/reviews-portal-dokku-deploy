@@ -33,7 +33,6 @@ export default class extends Controller {
   }
 
   newRequest(event) {
-    debugger
     let groupId = event.currentTarget.getAttribute("data-groupId")
     let finalUrl = !groupId ? this.newgroupValue : `${this.newgroupValue}?id=${groupId}`
     $.ajax({
@@ -41,17 +40,4 @@ export default class extends Controller {
       url: finalUrl
     })
   }
-
-  // editGroup(event) {
-  //   var editLocation = event.currentTarget.getAttribute("data-editgroup")
-  //   this.editRequest(editLocation)
-  // }
-  //
-  // editRequest(editLocation) {
-  //   let that = this
-  //   $.ajax({
-  //     type: "GET",
-  //     url: this.editLocation
-  //   })
-  // }
 }
