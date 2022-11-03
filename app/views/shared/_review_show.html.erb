@@ -196,7 +196,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= @review.latitude %>" data-map-longitude-value="<%= @review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>">
+      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= review.latitude %>" data-map-longitude-value="<%= review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(review) %>">
         <!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
           <div data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
