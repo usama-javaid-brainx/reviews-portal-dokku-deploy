@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%") if params[:search].present?
+    @reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%")
   end
 
   def destroy
