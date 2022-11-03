@@ -26,10 +26,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-    debugger
-    @group = current_user.groups.find(params[:id])
-  end
+  # def edit
+  #   @group = current_user.groups.find(params[:id])
+  # end
 
   def update
     @group = current_user.groups.find(params[:id])
