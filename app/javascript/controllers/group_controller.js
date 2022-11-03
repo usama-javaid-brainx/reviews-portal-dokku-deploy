@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {search: String, newgroup: String, editgroup: String }
 
   search(event) {
-    let searchData = `search=${event.currentTarget.value}`
+    let searchData = event.currentTarget.value
     this.searchRequest(searchData)
   }
 
@@ -13,8 +13,7 @@ export default class extends Controller {
     $.ajax({
       type: "GET",
       url: this.searchValue,
-      data: searchData,
-      dataType: 'json',
+      data: {search: searchData},
       success(response) {
         console.log(response[0].search_reviews)
       }
@@ -39,17 +38,4 @@ export default class extends Controller {
       url: finalUrl
     })
   }
-
-  // editGroup(event) {
-  //   var editLocation = event.currentTarget.getAttribute("data-editgroup")
-  //   this.editRequest(editLocation)
-  // }
-  //
-  // editRequest(editLocation) {
-  //   let that = this
-  //   $.ajax({
-  //     type: "GET",
-  //     url: this.editLocation
-  //   })
-  // }
 }
