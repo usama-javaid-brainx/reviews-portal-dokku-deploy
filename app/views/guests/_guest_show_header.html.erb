@@ -35,7 +35,7 @@
         </div>
       <% end %>
       <span class="show-user-img">
-        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+        <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatar-placeholder.jpg") %>
       </span>
       <div>
         <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: @review.user_id).first_name %> <%= User.find_by(id: @review.user_id).last_name %></span>
@@ -55,7 +55,7 @@
     <div class="d-flex justify-content-between align-items-center pt_30">
       <div class="d-flex align-items-center avatar">
         <span class="show-user-img">
-          <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+          <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatar-placeholder.jpg") %>
         </span>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>

@@ -139,6 +139,8 @@ GEM
     filestack-rails (5.5.2)
       filestack (~> 2.9, >= 2.9.3)
       rails (>= 4.0)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     highline (2.0.3)
@@ -189,6 +191,8 @@ GEM
     new_ckeditor (0.1.2)
       rails
     nio4r (2.5.8)
+    nokogiri (1.13.4-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.4-x86_64-linux)
@@ -287,6 +291,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  arm64-darwin-21
   x86_64-darwin-21
   x86_64-linux
 
@@ -302,6 +307,7 @@ DEPENDENCIES
   devise-bootstrapped (~> 0.1)
   discard (~> 1.2)
   filestack-rails (~> 5.5)
+  friendly_id (~> 5.4.0)
   httparty (~> 0.20.0)
   image_processing (~> 1.12)
   jsbundling-rails (~> 1.0)

@@ -32,7 +32,10 @@
 #
 class Review < ApplicationRecord
   include Discard::Model
-  before_save :generate_slug, if: -> { slug.blank? }
+  extend FriendlyId
+  friendly_id :slug_candidates
+
+  # before_save :generate_slug, if: -> { slug.blank? }
 
   default_scope -> { kept }
 
@@ -53,8 +56,17 @@ class Review < ApplicationRecord
     "http://maps.google.com/?q=#{latitude},#{longitude}"
   end
 
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
 
-  def generate_slug
-    self.slug = "#{SecureRandom.base58(32)}#{Review.last.id+1}"
+  def slug_candidates
+    [
+      :name,
+      [:name, :city],
+      [:name, :city, :state],
+      [:name, :city, :state, :country],
+      [:name, :id]
+    ]
   end
 end
