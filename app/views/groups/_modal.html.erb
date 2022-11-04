@@ -1,38 +1,38 @@
 <!--Edit group Modal -->
-<div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="group-modal-label" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="group-modal-label">Add Folder</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <%= form_with model: @group do |group_frm| %>
-        <div class="modal-body">
-          <div class="mb-4">
-            <%= group_frm.label :name, "Name", class: "form-label" %>
-            <%= group_frm.text_field :name, class: "form-control input-height", placeholder: "Name your folder", type: "text" %>
-          </div>
-          <div class="mb-4">
-            <%= group_frm.label "Add Reviews", class: "form-label" %>
-            <input name= "group[search]" class="form-control input-height" placeholder= "Search for reviews" type= "text" data-action="keyup->group#searchRequest" >
-          </div>
-          <div id="modalSearchReviewsAppend"></div>
-          <div id="modalReviewsAppend">
-            <% if @selected_reviews.present? %>
-              <%= render "modal_review_cards", reviews: @reviews , selected_reviews: @selected_reviews  %>
-            <% else %>
-              <%= render "modal_review_cards", reviews: @reviews %>
-            <% end %>
-          </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <div>
-          <button type="button" class="btn white modal-cancel" data-bs-dismiss="modal">Cancel</button>
+<!--<div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="group-modal-label" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered modal-lg">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="group-modal-label">Add Folder</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+      <%#= form_with model: @group do |group_frm| %>
+<!--        <div class="modal-body">-->
+<!--          <div class="mb-4">-->
+            <%#= group_frm.label :name, "Name", class: "form-label" %>
+            <%#= group_frm.text_field :name, class: "form-control input-height", placeholder: "Name your folder", type: "text" %>
+<!--          </div>-->
+<!--          <div class="mb-4">-->
+            <%#= group_frm.label "Add Reviews", class: "form-label" %>
+<!--            <input name= "group[search]" class="form-control input-height" placeholder= "Search for reviews" type= "text" data-action="keyup->group#searchRequest" >-->
+<!--          </div>-->
+<!--          <div id="modalSearchReviewsAppend"></div>-->
+<!--          <div id="modalReviewsAppend">-->
+            <%# if @selected_reviews.present? %>
+              <%#= render "modal_review_cards", reviews: @reviews , selected_reviews: @selected_reviews  %>
+            <%# else %>
+              <%#= render "modal_review_cards", reviews: @reviews %>
+            <%# end %>
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="modal-footer justify-content-between">-->
+<!--          <div>-->
+<!--          <button type="button" class="btn white modal-cancel" data-bs-dismiss="modal">Cancel</button>-->
           <%#= link_to "Delete", group_path(group), data: { turbo_method: :delete }, class: "btn delete" %>
-          </div>
-            <%= group_frm.submit "Save Changes", class: 'save-changes' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<!--          </div>-->
+            <%#= group_frm.submit "Save Changes", class: 'save-changes' %>
+<!--        </div>-->
+      <%# end %>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
