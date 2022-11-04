@@ -38,7 +38,7 @@
       <h3 class="mx-2 mt-2"><%= group.name %></h3>
       <span class="text mx-2"><%= group.reviews.count %> Folders</span>
     <% end %>
-    <span class="group-pen-icon" data-groupId="<%= group.id %>" data-action="click->group#newRequest">
+    <span class="group-pen-icon" data-groupId="<%= group.id %>" data-bs-toggle="modal" data-bs-target="#exampleModal" data-action="click->group#newRequest">
       <%= image_tag("template/edit.svg") %>
     </span>
       <div id="groupModalAppend"></div>
