@@ -1,23 +1,16 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select", "hiddenCheckbox"]
-  static values = {search: String, newgroup: String, editgroup: String }
+  static targets = ["card-select"]
+  static values = {search: String, newgroup: String }
 
-  search(event) {
+  searchRequest(event) {
     let searchData = event.currentTarget.value
-    this.searchRequest(searchData)
-  }
-
-  searchRequest(searchData) {
     let that = this
     $.ajax({
       type: "GET",
       url: this.searchValue,
-      data: {search: searchData},
-      success(response) {
-        console.log(response[0].search_reviews)
-      }
+      data: {search: searchData}
     })
   }
 
