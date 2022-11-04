@@ -2,9 +2,37 @@
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= current_user.first_name.titleize %></span>
   <div class="row justify-content-center pt_30">
-    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn' data-bs-toggle="modal" data-bs-target="#groupModal" data-action="click->group#newRequest">
+    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn' data-bs-target="#groupModal" data-action="click->group#newRequest">
       <%= image_tag("template/plus.svg") %><span>Add New</span>
     </button>
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
   <%= render "group_cards", groups: @groups, pagy: @pagy %>
 </main>
