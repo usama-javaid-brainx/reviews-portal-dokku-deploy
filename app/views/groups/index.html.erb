@@ -2,7 +2,7 @@
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= current_user.first_name.titleize %></span>
   <div class="row justify-content-center pt_30">
-    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 mx-2 btn add-new-btn' data-bs-toggle="modal" data-bs-target="#groupModal" data-action="click->group#newRequest">
+    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 mx-2 btn add-new-btn' data-bs-target="#groupModal" data-action="click->group#newRequest">
       <%= image_tag("template/plus.svg") %><span>Add New</span>
     </button>
   </div>
