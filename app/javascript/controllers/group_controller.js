@@ -1,8 +1,8 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select", "hiddenCheckbox"]
-  static values = {search: String, newgroup: String, editgroup: String }
+  static targets = ["card-select"]
+  static values = {search: String, newgroup: String }
 
   searchRequest(event) {
     let searchData = event.currentTarget.value
