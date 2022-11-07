@@ -64,7 +64,7 @@
           <div class="col-lg-7 col-8 d-block d-lg-none justify-content-end navbar-search" data-controller="filter">
             <div class="search-mobile">
               <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-                <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
+                <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <% end %>
               <button>
                 <%= image_tag("template/search.svg") %>
