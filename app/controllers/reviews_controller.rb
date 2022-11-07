@@ -108,6 +108,7 @@ class ReviewsController < ApplicationController
   private
 
   def set_review
+    debugger
     @review = current_user.reviews.find(params[:id])
   end
 
