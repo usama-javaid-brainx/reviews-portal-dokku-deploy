@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_072416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,7 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
-    t.bigint "user_id"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -72,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.boolean "google_url"
     t.boolean "foursquare_url"
     t.boolean "yelp_url"
-    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -126,10 +124,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
+    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
-    t.text "images", default: [], array: true
     t.integer "parent_id"
     t.string "slug"
     t.date "start_date"
@@ -169,6 +167,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.string "last_sign_in_ip"
     t.datetime "discarded_at"
     t.boolean "second_view", default: false
+    t.string "phone_number"
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -1,0 +1,27 @@
+class Api::V1::ReviewsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create]
+  skip_before_action :verify_authenticity_token
+  before_action :validate_key
+
+  def create
+    user = User.find_by(phone_number: params[:phone_number])
+    if params[:phone_number].present? && user.present?
+      review = user.reviews.new(name: "new_review", category_id: Category.find_by(name: "Others").id, to_try: true, url: params[:url])
+      review.save ? message("#{request.env['rack.url_scheme']}://#{request.host_with_port}/reviews/#{review.id}/edit") : message("review did not created please try again")
+    else
+      message("check content type or user dose not exit with this phone number")
+    end
+  end
+
+  def validate_key
+    message("invalid secret key") unless Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
+  end
+
+  private
+
+  def message(msg)
+    render json: {
+      message: msg
+    }
+  end
+end

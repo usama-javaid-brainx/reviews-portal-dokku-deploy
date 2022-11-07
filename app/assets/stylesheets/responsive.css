@@ -143,10 +143,17 @@
     .review-card {
         height: 325px;
     }
+    
+    .modal-xl {
+        --bs-modal-width: 100% !important;
+    }
+
+}
 
     .add_review_area .title {
         padding-bottom: 0;
     }
+
 
     .filter-bar span.select2 .selection .select2-selection__rendered {
         margin-top: 7px;
@@ -154,6 +161,10 @@
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 6px;
+    }
+
+    .modal-xl {
+        --bs-modal-width: 100% !important;
     }
 }
 
@@ -236,7 +247,11 @@
 }
 
 @media (max-width: 991px) {
-    .content_area {
+    .show-user-img {
+        margin: unset;
+    }
+
+   .content_area {
         max-height: 100%;
     }
 
@@ -419,6 +434,51 @@
 }
 
 @media (max-width: 575px) {
+    .review_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .category_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .photo_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .localization_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .favourite_dishes_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .content_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .review-filters {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .hero_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .mobile-show {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     html {
         font-size: 55%;
     }
@@ -542,6 +602,7 @@
         width: 14.6%;
     }
 }
+
 
 @media (max-width: 370px) {
     .review-card {
