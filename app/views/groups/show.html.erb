@@ -5,10 +5,10 @@
     <button class="col-lg-1 col-md-3 col-8 btn white mx-2" type="button" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
       <%= image_tag("template/share.svg") %>Share
     </button>
-    <button class='col-lg-1 col-md-3 col-8 mt-3 mt-md-0 btn mx-2'>
+    <button class='col-lg-1 col-md-3 col-8 mt-3 mt-md-0 btn mx-2' data-groupId="<%= @group.id %>" data-action="click->group#newRequest" >
       <%= image_tag("template/edit.svg") %><span>Edit</span>
     </button>
-    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn'>
+    <button class='col-lg-2 col-md-3 col-8 mt-3 mt-md-0 btn mx-2 add-new-btn' data-action="click->group#newRequest">
       <%= image_tag("template/plus.svg") %><span>Add New</span>
     </button>
   </div>

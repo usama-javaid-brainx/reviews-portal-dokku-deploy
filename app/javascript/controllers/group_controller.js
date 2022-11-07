@@ -1,24 +1,16 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select", "hiddenCheckbox"]
-  static values = {search: String, newgroup: String, editgroup: String }
+  static targets = ["card-select"]
+  static values = {search: String, newgroup: String }
 
-  search(event) {
-    let searchData = `search=${event.currentTarget.value}`
-    this.searchRequest(searchData)
-  }
-
-  searchRequest(searchData) {
+  searchRequest(event) {
+    let searchData = event.currentTarget.value
     let that = this
     $.ajax({
       type: "GET",
       url: this.searchValue,
-      data: searchData,
-      dataType: 'json',
-      success(response) {
-        console.log(response[0].search_reviews)
-      }
+      data: {search: searchData}
     })
   }
 
@@ -33,7 +25,6 @@ export default class extends Controller {
   }
 
   newRequest(event) {
-    debugger
     let groupId = event.currentTarget.getAttribute("data-groupId")
     let finalUrl = !groupId ? this.newgroupValue : `${this.newgroupValue}?id=${groupId}`
     $.ajax({
@@ -41,17 +32,4 @@ export default class extends Controller {
       url: finalUrl
     })
   }
-
-  // editGroup(event) {
-  //   var editLocation = event.currentTarget.getAttribute("data-editgroup")
-  //   this.editRequest(editLocation)
-  // }
-  //
-  // editRequest(editLocation) {
-  //   let that = this
-  //   $.ajax({
-  //     type: "GET",
-  //     url: this.editLocation
-  //   })
-  // }
 }
