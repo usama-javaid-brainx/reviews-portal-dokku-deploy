@@ -65,9 +65,9 @@
               <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
                 <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <% end %>
-              <button>
+              <span>
                 <%= image_tag("template/search.svg") %>
-              </button>
+              </span>
             </div>
           </div>
         </div>
