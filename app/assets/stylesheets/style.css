@@ -522,12 +522,6 @@ header {
     background: #FFFFFF;
 }
 
-
-.middle_nav .nav li:first-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
-}
-
 .middle_nav .nav li:last-child a {
     border-width: 1px 1px 1px 1px;
     border-radius: 0 6px 6px 0;
