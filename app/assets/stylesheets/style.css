@@ -2772,7 +2772,9 @@ div.ck ul {
 
 .modal-xl {
     margin: 0 auto;
+    --bs-modal-width: 100% !important;
 }
+
 .modal-xl .modal-content, .modal-xl .modal-content .modal-body .lightbox-carousel, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
     height: 100vh;
 }
