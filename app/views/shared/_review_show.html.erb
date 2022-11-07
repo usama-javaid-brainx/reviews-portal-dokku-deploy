@@ -18,9 +18,9 @@
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
   </div>
-  <a class="back" href="javascript:history.back()">
+  <%= link_to root_path, class:"back" do %>
     <%= image_tag("template/left-arrow.svg") %>
-  </a>
+  <% end %>
   <!--========== Hero area start ===========-->
   <section class="hero_area pt_50">
     <!-- this carousel area for mobile -->
@@ -134,20 +134,21 @@
       </div>
     </div>
   </section>
+
   <!-- images gallery Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-focus="false">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered img-gallery-modal">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered img-gallery-modal">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Photo Gallery</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="row">
+          <div class="modal-gallery">
             <% @review.images.each do |image_src| %>
-              <div class="col-3 mb-3 text-center ">
+              <div class="grid-item">
                 <a href="<%= image_src %>" data-toggle="lightbox" data-gallery="full-gallery" data-type="image">
-                  <img class="image-resizing img-fluid" src=<%= image_src %>>
+                  <img class=" img-fluid" src=<%= image_src %>>
                 </a>
               </div>
             <% end %>
@@ -196,38 +197,49 @@
           <% end %>
         </div>
       </div>
-      <div class="col-lg-4">
+
+      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= review.latitude %>" data-map-longitude-value="<%= review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(review) %>">
+        <!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
-          <h3 class="pb_10">Score</h3>
-          <div class="review_wrap">
-            <!--TODO Have to configure these platforms with apis-->
-            <ul>
-              <li>
-                <%= image_tag("template/Yelp.svg") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/Google.svg") %>
-                <div>
-                  <p><span class="left_point">4.6</span><span class="right_point">/ 5.0</span></p>
-                  <p class="totel_review">409 reviews</p>
-                </div>
-              </li>
-              <li>
-                <%= image_tag("template/Foursquare.svg") %>
-                <div>
-                  <p><span class="left_point">9.0</span><span class="right_point">/ 10.0</span></p>
-                  <p class="totel_review">2453 reviews</p>
-                </div>
-              </li>
-            </ul>
+          <div data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
+            <h3 class="pb_10">Score</h3>
+            <div class="review_wrap pb_30">
+              <div class="spinner-border text-secondary d-block m-auto" role="status" data-map-target="scoreLoading">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <ul>
+                <li class="d-none" data-map-target="yelpScore">
+                  <%= image_tag("template/Yelp.svg") %>
+                  <div>
+                    <p>
+                      <span class="left_point" data-map-target="yelpRating">4.6</span><span class="right_point">/ 5.0</span>
+                    </p>
+                    <p class="totel_review" data-map-target="yelpReviews">409 reviews</p>
+                  </div>
+                </li>
+                <li class="d-none" data-map-target="googleScore">
+                  <%= image_tag("template/Google.svg") %>
+                  <div>
+                    <p><span class="left_point" data-map-target="googleRating">4.6</span><span class="right_point"> / 5.0</span>
+                    </p>
+                    <p class="totel_review" data-map-target="googleReviews">409 reviews</p>
+                  </div>
+                </li>
+                <li class="d-none" class="" data-map-target="foursquareScore">
+                  <%= image_tag("template/Foursquare.svg") %>
+                  <div>
+                    <p><span class="left_point" data-map-target="foursquareRating">9.0</span><span class="right_point">/ 10.0</span>
+                    </p>
+                    <p class="totel_review" data-map-target="foursquareReviews">2453 reviews</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+
         <% if @review.city.present? and @review.country.present? %>
-          <div class="pt_30">
+          <div>
             <h3 class="pb_10">Localization</h3>
             <div class="map_wrap">
               <span id="lat" data-latitude=<%= @review.latitude %>> </span>
@@ -242,10 +254,10 @@
                   <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
                 <% end %>
               </div>
-              <%= link_to nil, class: "map-button" do %>
+              <button class="map-button bg-white" data-action="click->map#openMap">
                 <%= image_tag("template/map.svg") %>
                 <span> Show on map </span>
-              <% end %>
+              </button>
             </div>
           </div>
         <% end %>
