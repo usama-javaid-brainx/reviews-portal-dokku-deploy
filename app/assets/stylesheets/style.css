@@ -532,8 +532,8 @@ header {
 
 
 .middle_nav .nav li:first-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
+    border-width: 1px 1px 1px 1px !important;
+    border-radius: 6px 0 0 6px !important;
 }
 
 .middle_nav .nav li:last-child a {
@@ -1307,13 +1307,6 @@ header {
 .hero_header .list_group li:first-child::before {
     display: none;
 }
-
-/*.avatar img {*/
-/*    width: 4rem;*/
-/*    height: 4rem;*/
-/*    margin-left: .8rem;*/
-/*    border-radius: 50%;*/
-/*}*/
 
 .avatar .reviewer {
     text-transform: uppercase;
@@ -2842,23 +2835,18 @@ div.ck ul {
     margin: 0 auto;
     --bs-modal-width: 100% !important;
 }
-.modal-xl .modal-content {
+
+.modal-xl .modal-content, .modal-xl .modal-content .modal-body .lightbox-carousel, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
     height: 100vh;
 }
-
-.modal-xl .modal-content .modal-body .lightbox-carousel {
-    height: 100vh;
-}
-
-.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner{
-    height: 100vh;
-}
-
-.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9{
-    height: 100vh;
-}
-
 /*image gallery end*/
+
+@keyframes loader3 {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.8;
+    }
+}
 
 #shareModal .modal-body {
     background-color: unset;
@@ -2918,6 +2906,7 @@ div.ck ul {
 .select2-results__option {
     padding-left: 15px !important;
 }
+
 /*========================= groups style ===================*/
 
 .group-card {
@@ -3068,3 +3057,4 @@ height: 3.5rem;
     color: #FFFFFF !important;
     background: gray !important;
 }
+

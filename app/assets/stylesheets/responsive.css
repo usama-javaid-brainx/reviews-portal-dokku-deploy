@@ -382,6 +382,7 @@
 }
 
 @media (max-width: 767px) {
+
     .tags_list li{
         margin-top: 5px;
     }
@@ -457,7 +458,7 @@
         margin-right: 1rem;
     }
 
-    .first-view-filters {
+    .review-filters {
         margin-left: 1rem;
         margin-right: 1rem;
     }
@@ -465,6 +466,50 @@
     .hero_area {
         margin-left: 1rem;
         margin-right: 1rem;
+    }
+
+    .save-changes {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .tags_list li {
+        width: 50%;
+    }
+
+    .tags_list li:nth-child(3) {
+        padding-top: 1.5rem;
+    }
+
+    .card_carousel .owl-dot {
+        width: 15%;
+    }
+
+    .review-card {
+        height: 405px;
+    }
+
+    .add_review_area input {
+        height: 5rem;
+        font-size: 16px;
+    }
+
+    .cuisine-group .select2-selection, .category-group .select2-selection {
+        height: 5rem;
+    }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 9px;
+        font-size: 1.6rem;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 12px !important;
+    }
+
+    .add_review_area textarea::placeholder,
+    .add_review_area input::placeholder {
+        font-size: 1.6rem;
     }
 
     .mobile-show {
@@ -600,6 +645,7 @@
         width: 14.6%;
     }
 }
+
 
 @media (max-width: 370px) {
     .review-card {
