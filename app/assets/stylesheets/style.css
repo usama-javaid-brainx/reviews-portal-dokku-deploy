@@ -307,7 +307,7 @@ header {
     border-radius: 999px;
 }
 
-.menu li .nav_link.active,
+.menu li .nav_link.category-active,
 .menu li .nav_link:hover {
     border-color: #E2DBF4;
     color: #6E3EF7;
@@ -2801,4 +2801,10 @@ div.ck ul {
 
 .select2-results__option {
     padding-left: 15px !important;
+}
+
+.middle_nav .nav li a.middle-filter-active {
+    border-width: 1px 1px 1px 1px;
+    border-color: #6E3EF7;
+    background: #F7F5FC;
 }
