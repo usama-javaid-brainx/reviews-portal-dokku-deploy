@@ -47,9 +47,9 @@ class GroupsController < ApplicationController
 
   def destroy
     @group = current_user.groups.find(params[:id])
-    # if @group.discard
-    #   redirect_to groups_path, status: :see_other, notice: "Group deleted successfully!"
-    # end
+    if @group.discard
+      redirect_to groups_path, status: :see_other, notice: "Group deleted successfully!"
+    end
   end
 
   def group_params
