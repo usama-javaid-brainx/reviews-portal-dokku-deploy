@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'guests/create_review'
+
   resources :guests, only: [:show]
 
   get 'users/index'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
+    get :get_score
   end
 
   post 'upload', to: 'file_uploads#upload'
@@ -25,4 +27,10 @@ Rails.application.routes.draw do
   patch :update_categories_status, to: 'categories#update_categories_status'
   resources :requests, only: :create
   get :homepage, to: 'reviews#homepage'
+
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      resources :reviews, only: :create
+    end
+  end
 end

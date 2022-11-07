@@ -10,12 +10,12 @@
             <% end %>
           </div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <button data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag("template/favourites.png") %></button>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% end %>
     </div>
     <div class="card-body">
@@ -26,14 +26,14 @@
             <span><%= review.average_score %></span>
           </p>
         <% else %>
-          <span class='review_btn'><%= review.to_try ? "Wishlist" : "Review" %> </span>
+          <span class="second-view-review-btn"><%= review.to_try ? "Wishlist" : "Review" %> </span>
         <% end %>
       </div>
 
       <% if review.state.present? and review.country.present? %>
         <div class="state-name"><%= review.state %>, <%= review.country %></div>
-        <% else %>
-        <div class="state-name"><%= review.date.strftime("%b/%e/%Y") if review.date? %></div>
+      <% else %>
+        <div class="state-name"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
       <% end %>
 
       <div class="d-flex mt-2 align-items-center">

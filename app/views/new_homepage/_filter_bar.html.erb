@@ -5,58 +5,16 @@
       <div class="row align-items-center">
         <div class="col-lg-4 d-flex justify-content-xl-start justify-content-evenly align-items-center">
           <div class="col-lg-7 col-5 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: params[:category_id] == "all"? "all" : @curr_category.id), data: {"action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
           <div class="d-flex justify-content-center col-lg-3 col-2" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <button type="button" class="new-filter-button" data-bs-toggle="modal" data-bs-target="#filterModal">
-                <%= image_tag("template/filter.svg") %><span class="pl_5 d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
+                <%= image_tag("template/filter.svg") %>
+                <span class="pl_5 d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
               </button>
               <!--filter modal-->
-              <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title filter-h" id="filterModalLabel">Filters</h5>
-                      <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
-                    </div>
-                    <div class="modal-body">
-                      <% if @cuisine_presence %>
-                        <div class="card cuisine-card-h">
-                          <div class="d-flex justify-content-between p-4">
-                            <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
-                          </div>
-                          <div class="tag-card-h overflow-auto">
-                            <%= f.hidden_field :cuisines_filter, value: "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
-                            <% cuisines.each do |cuisine| %>
-                              <% if cuisine.present? %>
-                                <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
-                              <% end %>
-                            <% end %>
-                          </div>
-                        </div>
-                      <% end %>
-                      <div class="card mt-5">
-                        <div class="d-flex justify-content-between p-4">
-                          <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
-                        </div>
-                        <div class="tag-card-h overflow-auto">
-                          <%= f.hidden_field :tags_filter, value: "#{params[:tags_filter]}", 'data-filter-target': "tagsFilter" %>
-                          <% tags.each do |tag| %>
-                            <span class="mb-4 cuisine-badge d-inline-block cuisine-font <%= params[:tags_filter]&.split(',')&.index(tag.titleize).present? ? 'cuisine-select clear-tag' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectTag"><%= tag.titleize %></span>
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <div class="d-flex justify-content-between w-100">
-                        <button type="button" class="filter-btn filter-cancel" data-bs-dismiss="modal">Cancel</button>
-                        <span type="button" class="filter-btn filter-apply" data-filter-target="applyBtn" data-action="click->filter#applyFilter">Apply</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <%= render 'shared/filter_modal', f: f, cuisines: cuisines, tags: tags %>
             <% end %>
           </div>
           <div class="col-lg-7 col-4 d-flex d-lg-none justify-content-end navbar-search" data-controller="filter">
@@ -66,9 +24,6 @@
             <%= image_tag("template/search.svg", class: "search-icon", "data-action": "click->filter#fieldDisplay") %>
           </div>
         </div>
-
-
-
         <div class="col-lg-4 mt-5 d-flex justify-content-center mt-lg-0" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
             <ul class="nav homepage-nav">
@@ -85,17 +40,21 @@
             <%= image_tag("template/plus.svg") %><span> Add New</span>
           <% end %>
         </div>
-        <div class="col-lg-4 justify-content-between align-items-center large-add-new-btn">
+
+        <div class="col-lg-4 justify-content-evenly align-items-center large-add-new-btn">
           <div class="col-lg-7 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
             <%= image_tag("template/search.svg", class: "search-icon", "data-action": "click->filter#fieldDisplay") %>
           </div>
-          <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-btn' do %>
-            <%= image_tag("template/plus.svg") %><span> Add New</span>
-          <% end %>
+          <div class='col-lg-4'>
+            <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-btn' do %>
+              <%= image_tag("template/plus.svg") %><span> Add New</span>
+            <% end %>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

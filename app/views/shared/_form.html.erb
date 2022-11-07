@@ -1,5 +1,5 @@
 <main class="position-relative">
-  <a class="back" href="javascript:history.back()"><%= image_tag("template/left-arrow.svg") %></a>
+  <span class="back" data-controller="guest" data-action="click->guest#back"><%= image_tag("template/left-arrow.svg") %></span>
   <div class="add_review_area">
     <!-- page header start-->
     <div class="add_review_area_header sticky-top pt_20">
