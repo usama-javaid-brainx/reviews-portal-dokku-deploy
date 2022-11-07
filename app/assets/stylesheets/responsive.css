@@ -376,6 +376,11 @@
 }
 
 @media (max-width: 767px) {
+    .save-changes {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
     .tags_list li {
         width: 50%;
     }
@@ -568,6 +573,11 @@
 
     .hero_area .card_carousel .owl-dots .owl-dot {
         width: 14.5%;
+    }
+
+    .profile-img {
+        width: 48px !important;
+        height: 49px !important;
     }
 }
 
