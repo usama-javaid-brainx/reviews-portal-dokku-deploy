@@ -37,6 +37,48 @@
   object-fit: cover;
 }
 
+.grp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 1.2rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.edit-grp-btn {
+  background-color: #6E3EF7;
+  border: 1px solid #6E3EF7;
+  color: #FFFFFF;
+
+  &:hover {
+    color: #6E3EF7;
+    background-color: #FFFFFF;
+  }
+
+  &:hover img {
+    filter: brightness(0) saturate(100%) invert(28%) sepia(78%) saturate(5181%) hue-rotate(250deg) brightness(98%) contrast(98%);
+  }
+}
+
+.share-grp-btn {
+  background-color: #FFFFFF;
+  color: #6E3EF7;
+  border: 1px solid #6E3EF7;
+
+  &:hover {
+    background-color: #6E3EF7;
+    color: #FFFFFF;
+  }
+
+  &:hover img {
+    filter: brightness(0) saturate(100%) invert(96%) sepia(28%) saturate(0%) hue-rotate(140deg) brightness(105%) contrast(105%);
+  }
+}
+
 .group-quarter-thumbnail {
   width: 100%;
   height: 124px;
