@@ -49,6 +49,12 @@
   border: 1px solid transparent;
 }
 
+.outer-review-card-select{
+  .selected{
+    border: 2px solid blue;
+  }
+}
+
 .edit-grp-btn {
   background-color: #6E3EF7;
   border: 1px solid #6E3EF7;
