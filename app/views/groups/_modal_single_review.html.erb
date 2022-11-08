@@ -30,7 +30,6 @@
       <% else %>
         <div class="small-review-state"><%= review.date.strftime("%b %e, %Y") if review.date? %></div>
       <% end %>
-
       <div class="d-flex align-items-center">
         <% if review.cuisine? %>
         <span class="cuisine-tag small-review-cuisine">
