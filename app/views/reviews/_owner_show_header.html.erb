@@ -23,7 +23,7 @@
       <% end %>
       <li>
         <% for count in 1..4 %>
-          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present?%>">$</span>
+          <span class="<%= ('text-white bg-price' if @review.price_range >= count) if @review.price_range.present? %>">$</span>
         <% end %>
       </li>
     </ul>
@@ -47,9 +47,10 @@
       <% end %>
     </div>
     <div>
-      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> data-action="click->guest#copyLink">
+      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
+
       <%= link_to edit_review_path(@review), class: 'btn' do %>
         <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
       <% end %>
@@ -74,7 +75,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-between pt_30">
-      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> data-action="click->guest#copyLink">
+      <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
       <%= link_to edit_review_path(@review), class: 'btn' do %>
@@ -83,4 +84,23 @@
     </div>
   </div>
   <!-- mobile end-->
+
+  <!--Share Modal-->
+  <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareModalLabel">Share this review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="share"></div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <p class="link-field col-lg-7 col-12" data-guest-target="urlField"> hello </p>
+          <button type="button" class="col-lg-4 col-12 btn white" data-action="click->guest#copyLink">Copy Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

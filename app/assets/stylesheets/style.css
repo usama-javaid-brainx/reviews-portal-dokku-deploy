@@ -44,7 +44,8 @@ section {
 ul {
     list-style: none;
 }
-.flash-msg{
+
+.flash-msg {
     z-index: 2000;
     position: absolute;
     top: 50px;
