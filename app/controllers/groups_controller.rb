@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
     @pagy, @reviews = pagy(reviews, items: 12)
   end
 
-  def new
+  def edit_new
     if params[:id].present?           #case of edit
       @group = current_user.groups.find(params[:id])
       @selected_reviews = @group.reviews
