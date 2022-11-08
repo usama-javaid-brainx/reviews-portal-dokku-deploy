@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get :get_score
   end
   scope :users do
-    resources :groups
+    resources :groups, only: [:index, :create, :update, :destroy, :show]
   end
   get 'groups/search'
   get 'guests/create_review'
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'upload', to: 'file_uploads#upload'
   patch :update_categories_status, to: 'categories#update_categories_status'
   get :homepage, to: 'reviews#homepage'
+  get :edit_new, to: 'groups#edit_new'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do

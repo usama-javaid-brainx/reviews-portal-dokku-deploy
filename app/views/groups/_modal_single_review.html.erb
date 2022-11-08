@@ -1,6 +1,6 @@
 <!-- single card -->
 <div class="col-lg-3 col-md-6">
-  <div class="card small-card-review" data-action="click->group#cardSelect">
+  <div class="card small-card-review selected" data-action="click->group#cardSelect">
     <input type="checkbox" hidden="true" value=<%= review.id %> name="group[reviews][]">
     <div class="card-header p-0 border-0 position-relative">
       <% if review.images.present? %>
