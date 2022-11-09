@@ -1,4 +1,8 @@
 .img_gallery {
+  .gallery-aspect-ratio {
+    aspect-ratio: 16 / 9;
+  }
+
   .large {
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -11,8 +15,8 @@
     }
   }
 
+
   .large-half {
-    //aspect-ratio: 16 / 9;
     overflow: hidden;
     width: 49.7%;
 
@@ -36,7 +40,6 @@
   }
 
   .third-half {
-    //aspect-ratio: 16 / 9;
     overflow: hidden;
     width: 33.1%;
 
@@ -67,6 +70,7 @@
 .mobile-gallery-wrapper .owl-item {
   aspect-ratio: 2 / 3;
   overflow: hidden;
+  width: unset !important;
 
   img {
     display: block;
