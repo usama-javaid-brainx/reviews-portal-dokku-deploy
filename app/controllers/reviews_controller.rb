@@ -98,6 +98,10 @@ class ReviewsController < ApplicationController
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
+  def update_status
+    Review.find_by(id: params[:review_id]).update(shareable: params[:shareable])
+  end
+
   def category_order
     @ordered_categories = Category.all.order("name asc")
   end
