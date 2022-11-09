@@ -34,7 +34,7 @@ export default class extends Controller {
     $.ajax({
       type: "GET",
       url: this.statusPathValue,
-      data: {shareable: reviewStatus},
+      data: {share: reviewStatus},
       success() {
         window.location.reload()
       }
