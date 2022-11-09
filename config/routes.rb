@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
+    get :update_status
   end
   scope :users do
     resources :groups, only: [:index, :create, :update, :destroy, :show]

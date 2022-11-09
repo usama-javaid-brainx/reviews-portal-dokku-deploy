@@ -1,9 +1,9 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <div class="public_review">
+    <div class="public_review" data-controller="favourite" data-favourite-status-path-value="<%= review_update_status_path(@review) %>" >
       <div class="mode-switch d-flex flex-row align-items-center">
-        <input type="checkbox" id="switch" <%= 'checked' if review.shareable == true %>/>
-        <label for="switch"></label>
+        <input type="checkbox" id="switch" <%= 'checked' if @review.shareable? %> data-favourite-target="publicStatus">
+        <label for="switch" data-action="click->favourite#updateReviewStatus"></label>
       </div>
       <%= image_tag("template/users.svg", class: 'mr_5') %>
       <span>Public REVIEW</span>
