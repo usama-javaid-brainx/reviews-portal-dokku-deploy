@@ -32,9 +32,10 @@
 #
 class Review < ApplicationRecord
   include Discard::Model
-  before_save :generate_slug, if: -> { slug.blank? }
-
   default_scope -> { kept }
+
+  before_save :generate_slug, if: -> { slug.blank? }
+  scope :all_except, ->(review) { where.not(id: review) }
 
   attr_accessor :images_input
   store_accessor :images, []
