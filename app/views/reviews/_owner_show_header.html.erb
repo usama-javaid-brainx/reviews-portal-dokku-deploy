@@ -63,7 +63,7 @@
       <button class="btn white <%= 'text-black-50 border-secondary' if @review.shareable != true %>" <%= 'disabled' if @review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
-      <%= link_to edit_review_path(@review.id), class: 'btn' do %>
+      <%= link_to edit_review_path(@review), class: 'btn' do %>
         <%= image_tag("template/edit-fill.svg") %><span>Edit</span>
       <% end %>
     </div>

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :destroy]
   before_action :home_data, only: [:homepage, :index]
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
@@ -69,11 +69,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if @review.update(review_params)
+    review = current_user.reviews.find_by(slug: params[:id])
+    if review.update(review_params)
       if params[:review][:deleted_meals].blank? || params[:review][:deleted_meals].present? && Meal.where(id: params[:review][:deleted_meals].split(',')).destroy_all
-        redirect_to review_path(@review.slug), notice: "Review updated successfully!"
+        redirect_to review_path(review.slug), notice: "Review updated successfully!"
       else
-        redirect_to edit_review_path(@review), notice: "Meal did not deleted try again"
+        redirect_to edit_review_path(review), notice: "Meal did not deleted try again"
       end
     else
       render :new
