@@ -47,7 +47,7 @@
                 </a>
               </div>
             <% elsif @review.images.count == 2 %>
-              <div class="col-lg-12 d-flex justify-content-between">
+              <div class="col-lg-12 d-flex justify-content-between gallery-aspect-ratio">
                 <div class="col-lg-6 large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                     <img src=<%= @review.images.first %>>
@@ -60,7 +60,7 @@
                 </div>
               </div>
             <% elsif @review.images.count == 3 %>
-              <div class="col-lg-12 d-flex justify-content-between">
+              <div class="col-lg-12 d-flex justify-content-between gallery-aspect-ratio">
                 <div class="large-half">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                     <img src=<%= @review.images.first %>>
@@ -80,7 +80,7 @@
                 </div>
               </div>
             <% elsif @review.images.count == 4 %>
-              <div class="col-lg-12 d-flex justify-content-between">
+              <div class="col-lg-12 d-flex justify-content-between gallery-aspect-ratio">
                 <div class="third-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                     <img src=<%= @review.images.first %>>
@@ -102,7 +102,7 @@
                   </div>
               </div>
             <% else %>
-              <div class="col-lg-12 d-flex justify-content-between">
+              <div class="col-lg-12 d-flex justify-content-between gallery-aspect-ratio">
                 <div class="large-half ">
                   <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                     <img src=<%= @review.images.first %>>
