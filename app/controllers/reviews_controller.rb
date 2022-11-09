@@ -97,7 +97,7 @@ class ReviewsController < ApplicationController
   end
 
   def update_status
-    Review.find_by(id: params[:review_id]).update(shareable: params[:shareable])
+    Review.find_by(slug: params[:review_id]).update(shareable: params[:share])
   end
 
   def category_order
