@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'groups/search'
   get 'guests/create_review'
   get 'users/index'
+  patch 'users/update'
   get 'users/remove_avatar'
   get 'users/delete_user'
   get 'users/settings'
