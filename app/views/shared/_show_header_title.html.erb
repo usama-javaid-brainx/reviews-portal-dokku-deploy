@@ -1,20 +1,28 @@
 <h1><%= review.name %></h1>
-<% if review.cuisine.present? %>
-  <span class="show-subcategory"><%= review.cuisine %></span>
-<% end %>
-<% if review.state.present? && review.country.present? %>
-  <span class="review-show-detail"><%= "#{review.state}, #{review.country}" %></span>
-<% end %>
-<% if review.state.present? && review.country.present? && review.date.present? %>
-  .
-<% end %>
-<% if review.date.present? %>
-  <span class="review-show-detail"><%= review.date.strftime("%b %e, %Y") %></span>
-<% end %>
-<% if review.price_range.present? %>
+<ul class="show-list-group">
+
+  <% if review.cuisine.present? %>
+    <li>
+      <span class="show-subcategory"><%= review.cuisine %></span>
+    </li>
+  <% end %>
+  <% if review.state.present? && review.country.present? %>
+    <li>
+      <span class="review-show-detail"><%= "#{review.state}, #{review.country}" %></span>
+    </li>
+  <% end %>
+  <% if review.date.present? %>
+    <li>
+      <span class="review-show-detail"><%= review.date.strftime("%b %e, %Y") %></span>
+    </li>
+  <% end %>
+  <% if review.price_range.present? %>
+    <li>
   <span class="d-block d-lg-inline-block">
         <% for count in 1..4 %>
           <span class="price-sz pe-none show-price <%= ('text-white bg-price' if review.price_range >= count) %>">$</span>
         <% end %>
       </span>
-<% end %>
+  <% end %>
+  </li>
+</ul>
