@@ -644,6 +644,10 @@
     .card_carousel .owl-dot {
         width: 14.6%;
     }
+
+    .profile-pic-btn {
+        margin-left: 5px !important;
+    }
 }
 
 
