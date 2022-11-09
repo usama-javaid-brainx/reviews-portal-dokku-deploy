@@ -19,6 +19,8 @@ module RestaurantReviewsWeb
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.action_view.image_loading = "lazy"
+    
     config.active_storage.replace_on_assign_to_many = false
 
     config.filestack_rails.api_key = 'AHCvSX2RFTMmrAN9GLs3Qz'

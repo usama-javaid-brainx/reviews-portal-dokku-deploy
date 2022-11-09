@@ -1,4 +1,7 @@
 <main class="container overflow-hidden" data-controller="group" data-group-search-value="<%= groups_search_path %>" data-group-newgroup-value="<%= edit_new_path %>">
+  <%= link_to groups_path do %>
+    <span class="back grp-back"><%= image_tag("template/left-arrow.svg")%></span>
+  <% end %>
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= @group.name.titleize %></span>
   <div class="row justify-content-center pt_30" data-controller="guest">
