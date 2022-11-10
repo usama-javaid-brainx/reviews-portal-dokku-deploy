@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["score", 'yelpScore', 'yelpRating', 'yelpReviews', 'foursquareScore', 'foursquareRating', 'foursquareReviews', 'googleScore', 'googleRating', 'googleReviews', 'scoreLoading']
+  static targets = ["score", 'yelpScore', 'yelpRating', 'yelpReviews', 'foursquareScore', 'foursquareRating', 'foursquareReviews', 'googleScore', 'googleRating', 'googleReviews']
 
   static values = {
     location: String,
@@ -13,8 +13,6 @@ export default class extends Controller {
     let foursquareUrl = $(this.scoreTarget).attr('data-foursquareUrl')
     if (foursquareUrl != "") {
       this.getScore(foursquareUrl)
-    }else{
-      this.scoreTarget.classList.add('d-none')
     }
   }
 
@@ -50,7 +48,6 @@ export default class extends Controller {
   displayScoreBlock(scoreTarget, ratingTarget, reviewsTarget, scoreType, ratings) {
     if (ratings[0][scoreType] != null && parseFloat(ratings[0][scoreType]['ratings']) >= 0 && parseFloat(ratings[0][scoreType]['ratings']) <= 10) {
       this.scoreTarget.classList.remove('d-none')
-      this.scoreLoadingTarget.classList.add('d-none')
       scoreTarget.classList.remove('d-none')
       ratingTarget.innerHTML = ratings[0][scoreType]['ratings']
       reviewsTarget.innerHTML = `${ratings[0][scoreType]['reviews']} reviews`
