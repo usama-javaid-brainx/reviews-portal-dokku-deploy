@@ -27,20 +27,30 @@
           <div class="col-lg-4 d-flex justify-content-end">
             <!-- Top Rating -->
             <%= f.select(:score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], selected: params[:score]) %>
-            <ul class="layout_changer nav nav-tabs d-none" role="tablist">
-              <li>
-                <a href="#grid_layout1" class="active" data-bs-toggle="tab" role="tab" aria-controls="grid_layout1" aria-selected="true">
-                  <%= image_tag("template/icon1.svg") %>
+
+
+            <ul class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
+              <li class="nav-item" role="presentation">
+
+                <a href="#gridLayout" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
+                  <%= image_tag("template/grid_view.svg") %>
                 </a>
+
               </li>
               <li>
-                <a href="#list_layout1" data-bs-toggle="tab" role="tab" aria-controls="list_layout1" aria-selected="false">
-                  <%= image_tag("template/icon2.svg") %>
+
+                <a href="#listLayout" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
+                  <%= image_tag("template/list_view.svg") %>
                 </a>
+
               </li>
             </ul>
+
+
+
+
             <!-- map_enable_btn -->
-            <a class="map_enable_btn d-none" href="grid-view-map-enabled.html"><%= image_tag("template/map.svg") %>
+            <a class="map_enable_btn" href="grid-view-map-enabled.html"><%= image_tag("template/map.svg") %>
               <span class="text">Show Map</span><span class="switch"></span></a>
           </div>
         </div>
