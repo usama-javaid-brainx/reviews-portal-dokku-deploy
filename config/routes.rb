@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :create, :update, :destroy, :show]
   end
   get 'groups/search'
-  get 'guests/create_review'
   get 'users/index'
   patch 'users/update'
   get 'users/remove_avatar'
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   patch :update_categories_status, to: 'categories#update_categories_status'
   get :homepage, to: 'reviews#homepage'
   get :edit_new, to: 'groups#edit_new'
+  get :create_review, to: 'guests#create_review'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do
