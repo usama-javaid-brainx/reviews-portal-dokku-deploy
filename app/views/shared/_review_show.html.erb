@@ -210,12 +210,13 @@
       <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= review.latitude %>" data-map-longitude-value="<%= review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(review) %>">
         <!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
-          <div data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
+          <div class="d-none" data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
             <h3 class="pb_10">Score</h3>
             <div class="review_wrap pb_30">
-              <div class="spinner-border text-secondary d-block m-auto" role="status" data-map-target="scoreLoading">
-                <span class="sr-only">Loading...</span>
-              </div>
+<!--              TODO: its in testing phase from client side-->
+<!--              <div class="spinner-border text-secondary d-block m-auto" role="status" data-map-target="scoreLoading">-->
+<!--                <span class="sr-only">Loading...</span>-->
+<!--              </div>-->
               <ul>
                 <li class="d-none" data-map-target="yelpScore">
                   <%= image_tag("template/Yelp.svg") %>
