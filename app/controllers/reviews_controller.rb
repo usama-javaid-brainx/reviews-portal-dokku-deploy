@@ -103,7 +103,7 @@ class ReviewsController < ApplicationController
   end
 
   def category_order
-    @ordered_categories = Category.all.order("name asc")
+    @ordered_categories = Category.all.order("position asc")
   end
 
   private
