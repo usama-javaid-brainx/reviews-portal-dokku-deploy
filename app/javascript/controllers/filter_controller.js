@@ -16,7 +16,7 @@ export default class extends Controller {
       });
       $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
     }
-    if (this.sortDropdownTarget) {
+    if (this.hasSortDropdownTarget) {
       $(this.sortDropdownTarget).select2({
         minimumResultsForSearch: Infinity
       })
