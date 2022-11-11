@@ -49,7 +49,19 @@
           <% end %>
         </div>
         <div class="col-lg-4 justify-content-evenly align-items-center large-add-new-btn">
-          <div class="col-lg-7 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
+          <ul class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
+            <li class="nav-item" role="presentation">
+              <a href="#gridLayout" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
+                <%= image_tag("template/grid_view.svg") %>
+              </a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a href="#listLayout" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
+                <%= image_tag("template/list_view.svg") %>
+              </a>
+            </li>
+          </ul>
+          <div class="col-lg-1 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
