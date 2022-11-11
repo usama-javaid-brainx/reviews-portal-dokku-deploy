@@ -84,3 +84,5 @@ group :test do
 end
 
 gem 'httparty', '~> 0.20.0'
+
+gem 'nokogiri', '~> 1.13', '>= 1.13.8'

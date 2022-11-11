@@ -2844,3 +2844,18 @@ div.ck ul {
     border-color: rgb(110, 62, 247) !important;
     background: rgb(247, 245, 252) !important;
 }
+
+.review-url {
+    display: inline-block;
+    display: flex;
+    justify-content: end;
+}
+
+.review-url .text {
+    font-size: 14px;
+    font-weight: 400;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
