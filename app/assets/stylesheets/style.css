@@ -2513,7 +2513,7 @@ h3.review-name {
     color: #636373;
     height: 4rem;
     padding: 0 2.2rem;
-    border-width: 1px 1px 1px 1px;
+    border-width: 1px;
     border-style: solid;
     border-color: #EDEDFB;
     background: #FFFFFF;
