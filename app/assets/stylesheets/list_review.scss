@@ -1,0 +1,58 @@
+.list-review {
+  flex-direction: row;
+
+  .card-header {
+    .image-placeholder {
+      border-right: 1px solid #e9e9e9;
+      border-bottom: none;
+    }
+
+    .item {
+      height: 175px
+    }
+
+    img {
+      aspect-ratio: unset;
+      height: 100%;
+    }
+  }
+
+  .card-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.6rem 2rem;
+
+    .top {
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+    }
+
+    .url-list-view {
+      display: flex;
+      justify-content: space-between;
+
+      .list-site-review {
+        border-left: 1px solid #e9e9e9;
+        padding: 15px 35px;
+
+        .list-sites-reviews-numbers {
+          margin-top: 10px;
+          font-weight: 500;
+
+          .light-numbers {
+            color: gray;
+          }
+
+          .small-numbers {
+            margin-left: 8px;
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}
