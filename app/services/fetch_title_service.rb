@@ -6,7 +6,7 @@ class FetchTitleService
   def call
     begin
       doc = Nokogiri::HTML(URI.open(@url))
-      title = doc.at_css('title').text
+      title = doc.at_css('title').text.strip
     rescue
       title = ""
     end
