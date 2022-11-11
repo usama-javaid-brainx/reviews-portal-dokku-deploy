@@ -92,7 +92,7 @@ class ReviewsController < ApplicationController
   end
 
   def update_favourite
-    Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
+    Review.find_by(slug: params[:review_id]).update(favourite: params[:favourite])
   end
 
   def update_status
