@@ -1,14 +1,19 @@
 .dropdown-filter-wrapper {
   .select2-container {
-    width: 170px !important;
+    width: unset !important;
 
     .select2-selection {
       height: 4rem;
-      padding: 10px 0 0 8px;
+      padding-left: 8px;
+      display: flex;
+      align-items: center;
 
       .select2-selection__arrow {
-        margin-top: 10px;
-        margin-right: 7px;
+        position: unset;
+
+        b {
+          margin-left: 35%;
+        }
       }
     }
 
