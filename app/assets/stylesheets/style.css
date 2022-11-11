@@ -2767,7 +2767,7 @@ div.ck ul {
 
 /*image gallery start*/
 .modal-xl .ratio-16x9 {
-    background-color: rgba(0,0,0,0.85) !important;
+    background-color: rgba(0, 0, 0, 0.85) !important;
 }
 
 .modal-xl {
@@ -2778,6 +2778,7 @@ div.ck ul {
 .modal-xl .modal-content, .modal-xl .modal-content .modal-body .lightbox-carousel, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
     height: 100vh;
 }
+
 /*image gallery end*/
 
 
@@ -2807,4 +2808,19 @@ div.ck ul {
 
 .select2-results__option {
     padding-left: 15px !important;
+}
+
+.review-url {
+    display: inline-block;
+    display: flex;
+    justify-content: end;
+}
+
+.review-url .text {
+    font-size: 14px;
+    font-weight: 400;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

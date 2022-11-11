@@ -54,6 +54,6 @@ class Review < ApplicationRecord
 
 
   def generate_slug
-    self.slug = "#{SecureRandom.base58(32)}#{Review.last.id+1}"
+    self.slug = "#{SecureRandom.base58(32)}#{Review.last.present? ? Review.last.id+1 : 0}"
   end
 end
