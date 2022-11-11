@@ -15,7 +15,7 @@ export default class extends Controller {
     let that = this
     $.ajax({
       type: "GET",
-      url: this.favouritePathValue,
+      url: that.favouritePathValue,
       data: data,
       dataType: 'json',
       success() {
