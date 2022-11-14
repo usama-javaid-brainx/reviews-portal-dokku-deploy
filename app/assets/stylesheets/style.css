@@ -2819,8 +2819,8 @@ div.ck ul {
 .review-url .text {
     font-size: 14px;
     font-weight: 400;
-    width: 80%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+}
+
+.review-link{
+    color: #6E3EF7;
 }

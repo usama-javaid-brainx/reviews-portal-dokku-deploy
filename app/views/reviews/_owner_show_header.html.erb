@@ -31,9 +31,8 @@
       <% end %>
     </div>
     <div class="review-url mb-4">
-      <p class="text"><%= @review.url.present? ? @review.url : "Url missing" %></p>
+      <%= link_to  @review.url.truncate(32, separator: ' ') , @review.url , class: "review-link", target: '_blank' if @review.url.present? %>
     </div>
-
     <div>
       <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">
         <%= image_tag("template/share.svg") %>Share
@@ -64,7 +63,7 @@
       </div>
     </div>
     <div class="review-url mb-4">
-      <p class="text"><%= @review.url.present? ? @review.url : "Url missing" %></p>
+      <%= link_to  @review.url.truncate(32, separator: ' ') , @review.url , class: "review-link", target: '_blank' if @review.url.present? %>
     </div>
     <div class="d-flex justify-content-between pt_30">
       <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">
