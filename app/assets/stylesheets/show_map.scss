@@ -1,0 +1,56 @@
+.map-enable-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  color: #21212D;
+  font-size: 1.4rem;
+  padding: 0 1.6rem;
+  border: 1px solid #EDEDFB;
+  border-radius: 6px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+
+  .text {
+    padding: 0 .8rem;
+  }
+
+  .switch {
+    display: inline-block;
+    position: relative;
+    width: 3rem;
+    height: 1.6rem;
+    background: #CCCCE1;
+    border-radius: 4rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: .2rem;
+      top: .2rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 50%;
+      background: #FFFFFF;
+    }
+  }
+}
+
+.map-enable-btn.enabled {
+  .switch {
+    background: #6E3EF7;
+
+    &::before {
+      left: auto;
+      right: .2rem;
+    }
+  }
+}
+
+.grid-review-card {
+  overflow-y: scroll;
+}
+
+#reviewMap {
+  height: 700px;
+}

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  root "home#homepage_load"
 
   devise_for :users
   resources :guests, only: [:show]
   resources :categories, only: :index
   resources :requests, only: :create
+  
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  root "home#index"
   resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
@@ -25,6 +29,7 @@ Rails.application.routes.draw do
   get :homepage, to: 'reviews#homepage'
   get :edit_new, to: 'groups#edit_new'
   get :create_review, to: 'guests#create_review'
+  get :show_map, to: 'reviews#show_map'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do

@@ -41,8 +41,10 @@
               </li>
             </ul>
             <!-- map_enable_btn -->
-            <a class="map_enable_btn" href="grid-view-map-enabled.html"><%= image_tag("template/map.svg") %>
-              <span class="text">Show Map</span><span class="switch"></span></a>
+              <%= link_to show_map_path, class: "map-enable-btn" do %>
+                <%= image_tag("template/map.svg") %>
+                <span class="text">Show Map</span><span class="switch"></span>
+              <% end %>
           </div>
         </div>
       </div>
