@@ -205,11 +205,7 @@
         margin-top: 5px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
-        margin-top: 2px;
-    }
-
-    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b, .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
         margin-top: 2px;
     }
 
@@ -227,11 +223,7 @@
         right: 5px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection__rendered {
-        margin-top: 0px;
-    }
-
-    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+    .filter-bar span.select2 .selection .select2-selection__rendered, .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 0px;
     }
 
@@ -287,11 +279,11 @@
         height: 100%;
     }
 
-    .middle-nav form{
+    .middle-nav form {
         width: 100%;
     }
 
-    .filter-search-invert{
+    .filter-search-invert {
         flex-direction: row-reverse;
     }
 
@@ -301,7 +293,7 @@
         margin-top: 1.6rem;
     }
 
-    .middle_nav .nav li , .middle-nav .homepage-nav li{
+    .middle_nav .nav li, .middle-nav .homepage-nav li {
         width: 25%;
     }
 
@@ -364,16 +356,12 @@
         right: 15px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection__rendered {
+    .filter-bar span.select2 .selection .select2-selection__rendered, .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
         margin-top: 5px;
     }
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 3px;
-    }
-
-    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
-        margin-top: 5px;
     }
 
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -382,9 +370,10 @@
 }
 
 @media (max-width: 767px) {
-    .tags_list li{
+    .tags_list li {
         margin-top: 5px;
     }
+
     .card_carousel .owl-dot {
         width: 15%;
     }
@@ -580,14 +569,12 @@
         background: #848496;
     }
 
-
     .review-card {
         height: 350px;
     }
 }
 
 @media (max-width: 420px) {
-
     .review-card {
         height: 325px;
     }
