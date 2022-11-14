@@ -2860,62 +2860,11 @@ div.ck ul {
 
 /*image gallery end*/
 
-#shareModal .modal-body {
-    background-color: unset;
+    100% {
+        -webkit-transform: scale(1, 1);
+        opacity: 0;
+    }
 }
-
-#shareModal .modal-footer {
-    background-color: #efefef;
-    border-top: none;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 0px 24px 15px 24px;
-}
-
-#shareModal .modal-footer .link-field {
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-}
-
-#share .jssocials-shares {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#share .jssocials-shares .jssocials-share {
-    width: 48%;
-    margin: 0.3em 0em 0.3em 0;
-    border-radius: 6px;
-}
-
-#share .jssocials-shares .jssocials-share:hover {
-    background-color: #6E3EF7;
-}
-
-#share .jssocials-shares .jssocials-share:hover .jssocials-share-label {
-    color: white;
-}
-
-#share .jssocials-shares .jssocials-share .jssocials-share-link {
-    width: 100%;
-    background: unset;
-    border: 1px solid #6E3EF7;
-    color: unset;
-    box-shadow: none;
-    padding: 10px 0px 10px 0px;
-    border-radius: 6px;
-}
-
-#share .jssocials-shares .jssocials-share .jssocials-share-label {
-    color: #373737;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-/*============================*/
 
 .show-list-group {
     display: flex;
@@ -2948,4 +2897,3 @@ div.ck ul {
 .show-list-group li:first-child::before {
     display: none;
 }
-
