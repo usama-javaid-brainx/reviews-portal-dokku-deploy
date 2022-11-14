@@ -4,13 +4,24 @@
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
-          <div class="row g-5">
+          <% if params[:action] == "show_map" %>
+            <div class="row g-5">
+              <div class="col-lg-6 d-flex flex-wrap grid-review-card">
+                <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
+              </div>
+              <div data-controller="reviews-map" class="position-relative review-map col-lg-6">
+                <%= render partial: "shared/maps", collection: reviews, as: :review %>
+              </div>
+            </div>
+          <% else %>
+            <div class="row g-5">
               <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
-          </div>
+            </div>
+          <% end %>
         </div>
         <!--All list card here -->
         <div class="tab-pane fade" id="listLayout" role="tabpanel" aria-labelledby="listLayout-tab">
-          <div class="row g-5">
+          <div class="g-5">
             <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
           </div>
         </div>
