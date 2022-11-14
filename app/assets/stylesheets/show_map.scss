@@ -1,0 +1,46 @@
+.map-enable-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  color: #21212D;
+  font-size: 1.4rem;
+  padding: 0 1.6rem;
+  border: 1px solid #EDEDFB;
+  border-radius: 6px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.map-enable-btn .text {
+  padding: 0 .8rem;
+}
+
+.map-enable-btn .switch {
+  display: inline-block;
+  position: relative;
+  width: 3rem;
+  height: 1.6rem;
+  background: #CCCCE1;
+  border-radius: 4rem;
+}
+
+.map-enable-btn.enabled .switch {
+  background: #6E3EF7;
+}
+
+.map-enable-btn .switch::before {
+  content: '';
+  position: absolute;
+  left: .2rem;
+  top: .2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.map_enable_btn.enabled .switch::before {
+  left: auto;
+  right: .2rem;
+}

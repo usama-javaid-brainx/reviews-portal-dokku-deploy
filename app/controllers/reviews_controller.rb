@@ -102,6 +102,10 @@ class ReviewsController < ApplicationController
     Review.find_by(slug: params[:review_id]).update(share: params[:shareable])
   end
 
+  def show_map
+
+  end
+
   def category_order
     @ordered_categories = Category.all.order("name asc")
   end
