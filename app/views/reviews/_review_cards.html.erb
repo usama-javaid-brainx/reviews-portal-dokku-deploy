@@ -5,13 +5,14 @@
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="grid_layout1" role="tabpanel">
           <div class="row g-5">
-              <%= render partial: 'reviews/review_card', collection: reviews, as: :review %>
+            <%= render partial: 'reviews/review_card', collection: reviews, as: :review %>
           </div>
         </div>
       </div>
     </div>
-    <div class="pagy my-5 d-flex justify-content-center">
-      <%== pagy_bootstrap_nav(pagy) %>
+    <div class="my-5 d-flex justify-content-center">
+      <% limit_value = params[:limit].present? ? params[:limit].to_i + 12 : 12 %>
+      <%= link_to "Load More", reviews_path(limit: limit_value), class: "btn btn-primary" %>
     </div>
   </div>
 </div>
