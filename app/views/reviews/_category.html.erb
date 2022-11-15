@@ -8,7 +8,7 @@
       </div>
       <div class="category-group row align-items-center">
         <label for="search">Type</label>
-          <%= f.select :to_try, [["Review", false], ["Wishlist", true]], { include_blank: false }, class:"text-black", data: { "action": "change->category#categorySelect", "category-target": "category" } %>
+        <%= f.select :to_try, [["Review", false], ["Wishlist", true]], { include_blank: false }, class: "text-black", data: { "action": "change->category#categorySelect", "category-target": "category" } %>
       </div>
     </div>
   </div>

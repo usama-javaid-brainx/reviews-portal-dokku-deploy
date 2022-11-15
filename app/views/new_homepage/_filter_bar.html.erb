@@ -3,28 +3,32 @@
     <div class="container">
       <!--Web view-->
       <div class="row align-items-center">
-        <div class="col-lg-4 d-flex justify-content-xl-start justify-content-evenly align-items-center">
-          <div class="col-lg-7 col-5 category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+        <div class="filter-search-invert col-lg-4 d-flex justify-content-xl-start justify-content-evenly align-items-center">
+          <div class="col-lg-7 d-none d-lg-block category-dropdown" data-controller="category">
+            <%= select_tag :category_id, options_from_collection_for_select(ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
-          <div class="d-flex justify-content-center col-lg-3 col-2" data-controller="filter">
+          <div class="d-flex justify-content-center col-lg-3 col-3" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <button type="button" class="new-filter-button" data-bs-toggle="modal" data-bs-target="#filterModal">
                 <%= image_tag("template/filter.svg") %>
-                <span class="pl_5 d-none d-sm-inline">Filters</span><span data-filter-target="appliedFilter"></span>
+                <span class="pl_5">Filters</span><span data-filter-target="appliedFilter"></span>
               </button>
               <!--filter modal-->
               <%= render 'shared/filter_modal', f: f, cuisines: cuisines, tags: tags %>
             <% end %>
           </div>
-          <div class="col-lg-7 col-4 d-flex d-lg-none justify-content-end navbar-search" data-controller="filter">
-            <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-              <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
-            <% end %>
-            <%= image_tag("template/search.svg", class: "search-icon", "data-action": "click->filter#fieldDisplay") %>
+          <div class="col-lg-7 col-7 d-block d-lg-none justify-content-end navbar-search" data-controller="filter">
+            <div class="search-mobile">
+              <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
+                <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
+              <% end %>
+              <button>
+                <%= image_tag("template/search.svg") %>
+              </button>
+            </div>
           </div>
         </div>
-        <div class="col-lg-4 mt-5 d-flex justify-content-center mt-lg-0" data-controller="filter">
+        <div class="col-lg-4 col-11 mt-5 d-flex justify-content-center mx-auto mx-lg-0 mt-lg-0" data-controller="filter">
           <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
             <ul class="nav homepage-nav">
               <%= f.hidden_field :to_try, value: "#{params[:to_try]}" %>
@@ -35,12 +39,16 @@
             </ul>
           <% end %>
         </div>
+        <div class="col-lg-4 mt-5 d-block d-lg-none">
+          <div class="col-11 mx-auto category-dropdown" data-controller="category">
+            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id),id: "category-id-mobile", data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+          </div>
+        </div>
         <div class="col-lg-4 text-end small-add-new-btn">
           <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'addNew' do %>
             <%= image_tag("template/plus.svg") %><span> Add New</span>
           <% end %>
         </div>
-
         <div class="col-lg-4 justify-content-evenly align-items-center large-add-new-btn">
           <div class="col-lg-7 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
@@ -54,8 +62,8 @@
             <% end %>
           </div>
         </div>
-
       </div>
+
     </div>
   </div>
 </div>

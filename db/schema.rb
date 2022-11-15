@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_072416) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_07_121821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_072416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_ck_editor_images_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_groups_on_discarded_at"
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "groups_reviews", id: false, force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["review_id", "group_id"], name: "index_groups_reviews_on_review_id_and_group_id"
   end
 
   create_table "meals", force: :cascade do |t|

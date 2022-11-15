@@ -30,7 +30,8 @@
 </div>
 <!-- Preloader End -->
 
-<% if user_signed_in? %> <%= render "shared/header" %>
+<% if user_signed_in? %>
+  <%= render "shared/header" %>
 <% end %>
 
 <%= render 'shared/flash_messages' %>
@@ -42,6 +43,7 @@
     if (!longEl) {
       return
     }
+
     let long = document.getElementById("long").getAttribute("data-longitude");
     let lati = document.getElementById("lat").getAttribute("data-latitude");
     lati = parseFloat(lati);
@@ -66,7 +68,6 @@
     source: 'snippet'
   };
 </script>
-
 <script>
   !function (e, r, a) {
     if (!e.__Marker) {

@@ -5,6 +5,8 @@ import './src/jquery'
 import * as bootstrap from "bootstrap"
 require('select2')();
 import './src/main'
+import './jssocial/jssocials'
+import './jssocial/jssocials.min'
 
 import PhotoSwipeLightbox from "photoswipe/lightbox"
 import PhotoSwipe from "photoswipe"
