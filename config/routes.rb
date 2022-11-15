@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get :homepage, to: 'reviews#homepage'
   get :edit_new, to: 'groups#edit_new'
   get :create_review, to: 'guests#create_review'
+  get :show_map, to: 'reviews#show_map'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do

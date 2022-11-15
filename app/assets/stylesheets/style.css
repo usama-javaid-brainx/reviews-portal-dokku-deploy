@@ -2776,40 +2776,13 @@ div.ck ul {
     background: #424250;
 }
 
+
 .select2-results__option {
     padding-left: 15px !important;
 }
 
 .show-list-group li:first-child::before {
     display: none;
-}
-
-.show-list-group {
-    display: flex;
-    align-items: center;
-}
-
-.show-list-group li {
-    display: inline-flex;
-    align-items: center;
-    color: #424250;
-    font-weight: 400;
-    font-size: 12px;
-    position: relative;
-    padding-right: 1.1rem;
-    white-space: nowrap;
-}
-
-.show-list-group li::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -7.5px;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: #424250;
 }
 
 .show-list-group li:first-child::before {
@@ -2838,5 +2811,9 @@ div.ck ul {
 
 .review-link {
     color: #6E3EF7;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 

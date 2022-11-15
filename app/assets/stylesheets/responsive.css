@@ -304,7 +304,7 @@
         display: none !important;
     }
 
-    .map_enable_btn {
+    .map-enable-btn {
         display: none;
     }
 
@@ -368,6 +368,7 @@
 }
 
 @media (max-width: 767px) {
+
     .tags_list li {
         margin-top: 5px;
     }
