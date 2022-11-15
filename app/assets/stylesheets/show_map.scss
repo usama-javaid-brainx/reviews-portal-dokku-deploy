@@ -51,6 +51,17 @@
   overflow-y: scroll;
 }
 
-#reviewMap {
-  height: 700px;
+.review-map {
+  position: sticky;
+  height: 650px;
+  top: 0;
+  left: 50%;
+
+  #reviewMap {
+    height: 650px;
+    border-radius: 7px;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
