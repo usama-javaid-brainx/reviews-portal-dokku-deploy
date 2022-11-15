@@ -977,53 +977,6 @@ header {
     width: 1.6rem;
 }
 
-.map_enable_btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 4rem;
-    color: #21212D;
-    font-size: 1.4rem;
-    padding: 0 1.6rem;
-    border: 1px solid #EDEDFB;
-    border-radius: 6px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.map_enable_btn .text {
-    padding: 0 .8rem;
-}
-
-.map_enable_btn .switch {
-    display: inline-block;
-    position: relative;
-    width: 3rem;
-    height: 1.6rem;
-    background: #CCCCE1;
-    border-radius: 4rem;
-}
-
-.map_enable_btn.enabled .switch {
-    background: #6E3EF7;
-}
-
-.map_enable_btn .switch::before {
-    content: '';
-    position: absolute;
-    left: .2rem;
-    top: .2rem;
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    background: #FFFFFF;
-}
-
-.map_enable_btn.enabled .switch::before {
-    left: auto;
-    right: .2rem;
-}
-
 .map_enabled .addNew {
     left: 28%;
 }
@@ -1301,6 +1254,13 @@ header {
     display: none;
 }
 
+/*.avatar img {*/
+/*    width: 4rem;*/
+/*    height: 4rem;*/
+/*    margin-left: .8rem;*/
+/*    border-radius: 50%;*/
+/*}*/
+
 .avatar .reviewer {
     text-transform: uppercase;
     font-weight: 500;
@@ -1505,12 +1465,12 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 2.4rem 0;
-    border-bottom: 1px solid #EDEDFB;
+    border-top: 1px solid #EDEDFB;
 }
 
-.review_wrap li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+.review_wrap li:first-child {
+    padding-top: 0;
+    border-top: none;
 }
 
 .review_wrap li:last-child {
@@ -2745,63 +2705,83 @@ div.ck ul {
     }
 }
 
-#shareModal .modal-body {
-    background-color: unset;
-}
-
-#shareModal .modal-footer {
-    background-color: #efefef;
-    border-top: none;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 0px 24px 15px 24px;
-}
-
-#shareModal .modal-footer .link-field {
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 16px;
-}
-
-#share .jssocials-shares {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-#share .jssocials-shares .jssocials-share {
-    width: 48%;
-    margin: 0.3em 0em 0.3em 0;
-    border-radius: 6px;
-}
-
-#share .jssocials-shares .jssocials-share:hover {
-    background-color: #6E3EF7;
-}
-
-#share .jssocials-shares .jssocials-share:hover .jssocials-share-label {
-    color: white;
-}
-
-#share .jssocials-shares .jssocials-share .jssocials-share-link {
-    width: 100%;
-    background: unset;
+.second-view-review-btn {
+    display: inline-block;
+    width: 7rem;
+    height: 2.4rem;
+    line-height: 2.2rem;
+    background: #6E3EF7;
     border: 1px solid #6E3EF7;
-    color: unset;
-    box-shadow: none;
-    padding: 10px 0px 10px 0px;
-    border-radius: 6px;
+    color: #F7F5FC;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 4px;
+    cursor: default;
+    font-size: 1.4rem;
 }
 
-#share .jssocials-shares .jssocials-share .jssocials-share-label {
-    color: #373737;
-    font-size: 16px;
-    font-weight: 500;
+/*image gallery start*/
+.modal-xl .ratio-16x9 {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.modal-xl {
+    margin: 0 auto;
+    --bs-modal-width: 100% !important;
+}
+
+.modal-xl .modal-content {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
+    height: 100vh;
+}
+
+/*image gallery end*/
+
+.show-list-group {
+    display: flex;
+    align-items: center;
+}
+
+.show-list-group li {
+    display: inline-flex;
+    align-items: center;
+    color: #424250;
+    font-weight: 400;
+    font-size: 12px;
+    position: relative;
+    padding-right: 1.1rem;
+    white-space: nowrap;
+}
+
+.show-list-group li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -7.5px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #424250;
 }
 
 .select2-results__option {
     padding-left: 15px !important;
+}
+
+.show-list-group li:first-child::before {
+    display: none;
 }
 
 .show-list-group {
@@ -2854,8 +2834,9 @@ div.ck ul {
 .review-url .text {
     font-size: 14px;
     font-weight: 400;
-    width: 80%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
+
+.review-link {
+    color: #6E3EF7;
+}
+

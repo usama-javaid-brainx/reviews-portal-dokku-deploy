@@ -1,13 +1,12 @@
 class GroupsController < ApplicationController
   def index
-    groups = current_user.groups.all
-    @pagy, @groups = pagy(groups, items: 12)
+    @groups = current_user.groups.all
   end
 
   def show
     @group = current_user.groups.find(params[:id])
-    reviews = current_user.groups.find(params[:id]).reviews
-    @pagy, @reviews = pagy(reviews, items: 12)
+    @limit = params[:limit].present? ? params[:limit].to_i : 12
+    @reviews = current_user.groups.find(params[:id]).reviews.limit(@limit)
   end
 
   def edit_new
