@@ -11,8 +11,12 @@
       </div>
     </div>
     <div class="my-5 d-flex justify-content-center">
-      <% limit_value = params[:limit].present? ? params[:limit].to_i + 12 : 12 %>
-      <%= link_to "Load More", reviews_path(limit: limit_value), class: "btn btn-primary" %>
+      <% if current_user.reviews.count <= @reviews.count %>
+        <% flash.notice = 'All the reviews has been showed' %>
+        <%= link_to "Load More", reviews_path(limit: @limit), class: "btn btn-primary disabled", :disabled => true %>
+      <% else %>
+        <%= link_to "Load More", reviews_path(limit: @limit+=12), class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
