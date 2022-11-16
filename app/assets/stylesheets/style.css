@@ -1395,103 +1395,6 @@ header {
     right: 1.6rem;
 }
 
-/* img gallery */
-
-.img_gallery .large img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.img_gallery .large-half img {
-    max-width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.img_gallery .large-slice img {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.img_gallery .small {
-    text-align: center;
-    max-height: 250px;
-}
-
-.img_gallery .small img {
-    height: 244px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.img_gallery .search {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 8.6rem;
-    height: 8.6rem;
-    border-radius: 50%;
-    background: rgba(0, 0, 10, 0.3);
-    backdrop-filter: blur(2px);
-}
-
-.img_gallery .search img {
-    max-width: 2.5rem;
-    height: 2.5rem;
-}
-
-.img_gallery .delect {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    width: 3.2rem;
-    height: 3.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 10, 0.5);
-    border: 1px solid #FFFFFF;
-    backdrop-filter: blur(2px);
-    border-radius: 6px;
-}
-
-.img_gallery .delect img {
-    width: 1.65rem;
-}
-
-.img_gallery .seeAll {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 17rem;
-    height: 4rem;
-    border: 1px solid #FFFFFF;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.04));
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 1.4rem;
-    color: #FFFFFF;
-}
-
-.img_gallery .seeAll img {
-    width: 2rem;
-    margin-right: .8rem;
-}
-
 #map {
     height: 300px;
     width: 100%;
@@ -2610,7 +2513,7 @@ h3.review-name {
     color: #636373;
     height: 4rem;
     padding: 0 2.2rem;
-    border-width: 1px 1px 1px 0;
+    border-width: 1px;
     border-style: solid;
     border-color: #EDEDFB;
     background: #FFFFFF;
