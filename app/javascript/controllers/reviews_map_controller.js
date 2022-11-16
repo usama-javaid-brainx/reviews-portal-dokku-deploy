@@ -3,17 +3,37 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["reviewDetails"]
 
-  connect() {
-    this.reviewLocations = [];
-    for (let i = 0; i < this.reviewDetailsTargets.length; i++) {
-      let reviewLocation = {id: this.reviewDetailsTargets[i].getAttribute('id')};
-      reviewLocation["name"] = this.reviewDetailsTargets[i].getAttribute('data-name')
-      reviewLocation["longitude"] = this.reviewDetailsTargets[i].getAttribute('data-longitude')
-      reviewLocation["latitude"] = this.reviewDetailsTargets[i].getAttribute('data-latitude')
-      this.reviewLocations.push(reviewLocation)
-    }
-    this.multiMarker()
+  // connect() {
+  //   this.reviewLocations = [];
+  //   for (let i = 0; i < this.reviewDetailsTargets.length; i++) {
+  //     let reviewLocation = {id: this.reviewDetailsTargets[i].getAttribute('id')};
+  //     reviewLocation["name"] = this.reviewDetailsTargets[i].getAttribute('data-name')
+  //     reviewLocation["longitude"] = this.reviewDetailsTargets[i].getAttribute('data-longitude')
+  //     reviewLocation["latitude"] = this.reviewDetailsTargets[i].getAttribute('data-latitude')
+  //     this.reviewLocations.push(reviewLocation)
+  //   }
+  //   this.multiMarker()
+  //   this.allReviews()
+  // }
+
+  get reviewCardItemController() {
+    return this.application.controllers.filter(controller => {
+      return controller.context.identifier === 'review-card-item'
+    })
   }
+
+  allReviews() {
+    this.allLocations = []
+    var allControllers = this.reviewCardItemController
+    for (let i = 0; i < allControllers.length; i++) {
+      let reviewLocation = {id: allControllers[i].element.getAttribute('id')}
+      reviewLocation["name"] = allControllers[i].element.getAttribute('data-name')
+      reviewLocation["longitude"] = allControllers[i].element.getAttribute('data-longitude')
+      reviewLocation["latitude"] = allControllers[i].element.getAttribute('data-latitude')
+      this.allLocations.push(reviewLocation)
+    }
+  }
+
 
   multiMarker() {
     const infoWindow = new google.maps.InfoWindow()
@@ -33,12 +53,12 @@ export default class extends Controller {
         title: this.reviewLocations[i]["name"],
       });
       bounds.extend(marker.position);
-      google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
-        return function() {
-          infoWindow.setContent(marker.title);
-          infoWindow.open(map, marker);
-        }
-      })(marker, i));
+      // google.maps.event.addListener(marker, 'mouseover', (function (marker, i) {
+      //   return function () {
+      //     infoWindow.setContent(marker.title);
+      //     infoWindow.open(map, marker);
+      //   }
+      // })(marker, i));
     }
   }
 }
