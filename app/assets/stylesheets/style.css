@@ -2860,11 +2860,6 @@ div.ck ul {
 
 /*image gallery end*/
 
-.show-list-group {
-    display: flex;
-    align-items: center;
-}
-
 .show-list-group li {
     display: inline-flex;
     align-items: center;
