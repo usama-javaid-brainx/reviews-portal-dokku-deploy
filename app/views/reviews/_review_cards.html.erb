@@ -10,8 +10,7 @@
                 <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
               </div>
               <div data-controller="reviews-map" class="review-map row gy-4 col-lg-6">
-                <%= render partial: "shared/maps", collection: reviews, as: :review %>
-                <div class="" id="reviewMap"> </div>
+                <div id="reviewMap" data-reviews-map-target="mapDisplay"> </div>
               </div>
             </div>
           <% else %>
