@@ -10,14 +10,14 @@
             <% end %>
           </div>
         <% end %>
-        <% if review.to_try == true %>
+        <% if review.to_try? %>
           <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
         <% end %>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <% if review.to_try == true %>
+        <% if review.to_try? %>
           <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
         <% end %>
       <% end %>
@@ -30,7 +30,7 @@
             <span><%= review.average_score %></span>
           </p>
         <% else %>
-          <% if review.to_try == false %>
+          <% unless review.to_try? %>
             <span class="second-view-review-btn">Review</span>
           <% end %>
         <% end %>

@@ -2808,3 +2808,13 @@ div.ck ul {
     border-color: #6E3EF7;
     background: #F7F5FC;
 }
+
+.faveroit {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 20px;
+    color: #5F33DD;
+    margin-right: 2.2rem;
+}
