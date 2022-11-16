@@ -9,7 +9,7 @@
       <span>Public REVIEW</span>
     </div>
     <h1><%= @review.name %></h1>
-    <ul class="show-list-group">
+    <ul class="show-list-group d-flex align-items-center">
       <% if @review.cuisine.present? %>
         <li>
           <span class="show-subcategory"><%= @review.cuisine %></span>

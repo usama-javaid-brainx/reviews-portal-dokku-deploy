@@ -2860,17 +2860,6 @@ div.ck ul {
 
 /*image gallery end*/
 
-    100% {
-        -webkit-transform: scale(1, 1);
-        opacity: 0;
-    }
-}
-
-.show-list-group {
-    display: flex;
-    align-items: center;
-}
-
 .show-list-group li {
     display: inline-flex;
     align-items: center;
