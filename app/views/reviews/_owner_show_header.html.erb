@@ -14,10 +14,10 @@
     <div class="d-flex align-items-center justify-content-end avatar">
       <div>
         <p class="reviewer">Reviewer</p>
-        <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
+        <p class="name"><%= current_user.first_name %></p>
       </div>
       <span class="show-user-img">
-         <%#= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
+         <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
       </span>
     </div>
     <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">

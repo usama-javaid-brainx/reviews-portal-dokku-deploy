@@ -1,5 +1,5 @@
-.img_gallery {
-  .gallery-aspect-ratio {
+.img-gallery {
+  .aspect-ratio {
     aspect-ratio: 16 / 9;
   }
 
@@ -8,8 +8,6 @@
     overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
@@ -21,8 +19,6 @@
     width: 49.7%;
 
     img {
-      width: 100%;
-      height: 100%;
       border-radius: 5px;
       object-fit: cover;
     }
@@ -32,8 +28,6 @@
     height: 49.1%;
 
     img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
@@ -44,8 +38,6 @@
     width: 33.1%;
 
     img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
@@ -55,8 +47,6 @@
     height: 49.1%;
 
     img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
       border-radius: 5px;
     }
@@ -67,15 +57,19 @@
   }
 }
 
-.mobile-gallery-wrapper .owl-item {
-  aspect-ratio: 2 / 3;
-  overflow: hidden;
+.mobile-gallery-wrapper {
+  .owl-item {
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    img {
+      display: block;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+
+  .owl-dots {
     border-radius: 5px;
   }
 }
