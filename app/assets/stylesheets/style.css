@@ -1308,13 +1308,6 @@ header {
     display: none;
 }
 
-/*.avatar img {*/
-/*    width: 4rem;*/
-/*    height: 4rem;*/
-/*    margin-left: .8rem;*/
-/*    border-radius: 50%;*/
-/*}*/
-
 .avatar .reviewer {
     text-transform: uppercase;
     font-weight: 500;
@@ -2859,9 +2852,3 @@ div.ck ul {
 }
 
 /*image gallery end*/
-
-    100% {
-        -webkit-transform: scale(1, 1);
-        opacity: 0;
-    }
-}

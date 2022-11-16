@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root "home#homepage_load"
-
   devise_for :users
   resources :guests, only: [:show]
   resources :categories, only: :index
