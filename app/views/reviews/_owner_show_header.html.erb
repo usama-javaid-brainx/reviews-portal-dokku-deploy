@@ -14,7 +14,7 @@
     <div class="d-flex align-items-center justify-content-end avatar">
       <div>
         <p class="reviewer">Reviewer</p>
-        <p class="name"><%= current_user.first_name %> <%= current_user.last_name %></p>
+        <p class="name"><%= current_user.first_name %></p>
       </div>
       <span class="show-user-img">
          <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatarplaceholder.jpg") %>
