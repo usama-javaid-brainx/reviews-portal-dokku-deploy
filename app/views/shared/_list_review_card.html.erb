@@ -19,7 +19,7 @@
       <% end %>
     </div>
     <div class="card-body <%= review.foursquare_url.present? ? 'col-2' : 'col-10' %>">
-      <div class="<%= review.foursquare_url.present? ? 'col-4' : 'col-12' %>">
+      <div class="col-12">
         <div class="top">
           <div>
             <span class='review_btn'><%= review.to_try ? "Wishlist" : "Review" %> </span>
@@ -34,7 +34,7 @@
             <li><%= review.city %></li>
           <% end %>
           <% if review.state.present? and review.country.present? %>
-            <li><%= review.state %> <%= ',' + review.country %></li>
+            <li><%= review.state+', ' + review.country %></li>
           <% end %>
           <% if !review.city.present? and !review.country.present? and review.date? %>
             <li>
@@ -50,32 +50,6 @@
           </li>
         </ul>
       </div>
-      <% if review.foursquare_url.present? || review.google_url.present? || review.yelp_url.present? %>
-        <div class="col-7 url-list-view">
-          <!-- TODO:" Real data from google yelp and foursquare yet to fetch-->
-          <% if review.foursquare_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Foursquare.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-          <% if review.google_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Google.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-          <% if review.yelp_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Yelp.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
