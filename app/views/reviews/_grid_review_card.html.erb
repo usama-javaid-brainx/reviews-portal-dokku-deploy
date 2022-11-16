@@ -2,20 +2,17 @@
 <div class="col-lg-3 col-md-6 card-load">
   <div class="card review-card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
-      <% if review.images.present? %>
-        <%= link_to review_path(review.slug) do %>
+      <%= link_to review_path(review.slug) do %>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.images.present? %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
-        <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
-      <% else %>
-        <%= link_to review_path(review.slug) do %>
+        <% else %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% end %>
     </div>
     <div class="card-body">

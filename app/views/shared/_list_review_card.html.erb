@@ -3,16 +3,15 @@
   <div class="card list-review">
     <div class="card-header col-2 p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <%= link_to review_path(review.slug) do %>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
         <% if review.images.present? %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
-          <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
         <% else %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
-          <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
         <% end %>
       <% end %>
     </div>
