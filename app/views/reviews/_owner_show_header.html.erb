@@ -30,9 +30,8 @@
           <%= image_tag("template/star.svg") %><span><%= review.average_score %></span></p>
       <% end %>
     </div>
-    <div class="review-url mb-4">
+    <div class="review-url d-flex justify-content-end mb-4">
       <%= link_to @review.url.truncate(32, separator: ' '), @review.url, class: "review-link", target: '_blank' if @review.url.present? %>
-      <p class="text"><%= @review.url if @review.url.present? %></p>
     </div>
     <div>
       <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">
@@ -62,9 +61,8 @@
         <% end %>
       </div>
     </div>
-    <div class="review-url mb-4">
+    <div class="review-url d-flex justify-content-end mb-4">
       <%= link_to @review.url.truncate(32, separator: ' '), @review.url, class: "review-link", target: '_blank' if @review.url.present? %>
-      <p class="text"><%= @review.url if @review.url.present? %></p>
     </div>
     <div class="d-flex justify-content-between pt_30">
       <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">

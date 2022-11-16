@@ -2798,12 +2798,6 @@ div.ck ul {
     background: rgb(247, 245, 252) !important;
 }
 
-.review-url {
-    display: inline-block;
-    display: flex;
-    justify-content: end;
-}
-
 .review-url .text {
     font-size: 14px;
     font-weight: 400;
@@ -2814,6 +2808,6 @@ div.ck ul {
     width: 70%;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white1-space: nowrap;
 }
 
