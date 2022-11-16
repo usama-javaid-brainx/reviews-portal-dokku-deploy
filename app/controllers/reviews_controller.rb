@@ -105,6 +105,7 @@ class ReviewsController < ApplicationController
     foursquare_yelp = foursquare_yelp.call
     render json: foursquare_yelp
   end
+
   private
 
   def set_review
