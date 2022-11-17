@@ -56,9 +56,8 @@ class Review < ApplicationRecord
     self.slug = "#{SecureRandom.base58(32)}#{Review.last.id + 1}"
   end
 
-  scope :default_order, ->(review) {
-
-    Review.find_by_sql("SELECT * FROM #{review}
+  scope :default_order, ->(user_id) {
+    Review.find_by_sql("SELECT * FROM reviews WHERE reviews.discarded_at IS NULL AND reviews.user_id = #{user_id}
      ORDER BY
      (CASE
        WHEN date IS NOT NULL THEN date
