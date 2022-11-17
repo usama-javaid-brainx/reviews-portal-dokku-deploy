@@ -1,7 +1,6 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['favoriteLink', 'publicStatus']
 
   static values = {
     likedPath: String,
@@ -11,10 +10,9 @@ export default class extends Controller {
   updateFavourite(event) {
     let favouriteReview = $(event.currentTarget).toggleClass('checked')
     this.request(`favourite=${favouriteReview.hasClass('checked')}`)
-    window.location.reload();
   }
 
-  request(data, favouriteBtn) {
+  request(data) {
     let that = this
     $.ajax({
       type: "GET",
@@ -22,9 +20,7 @@ export default class extends Controller {
       data: data,
       dataType: 'json',
       success() {
-        if (that.hasFavoriteLinkTarget) {
-          location.reload()
-        }
+          window.location.reload();
       }
     })
   }
