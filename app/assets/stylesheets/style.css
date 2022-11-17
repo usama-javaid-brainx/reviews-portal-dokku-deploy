@@ -2664,7 +2664,7 @@ div.ck ul {
 
 /*image gallery start*/
 .modal-xl .ratio-16x9 {
-    background-color: rgba(0,0,0,0.85) !important;
+    background-color: rgba(0, 0, 0, 0.85) !important;
 }
 
 .modal-xl {
@@ -2675,6 +2675,7 @@ div.ck ul {
 .modal-xl .modal-content, .modal-xl .modal-content .modal-body .lightbox-carousel, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
     height: 100vh;
 }
+
 /*image gallery end*/
 
 
@@ -2710,4 +2711,13 @@ div.ck ul {
     border-width: 1px 1px 1px 1px;
     border-color: #6E3EF7;
     background: #F7F5FC;
+}
+
+.review-url .text {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.review-link{
+    color: #6E3EF7;
 }
