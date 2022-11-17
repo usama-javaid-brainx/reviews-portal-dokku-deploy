@@ -69,17 +69,5 @@ class Review < ApplicationRecord
       [:name, :id]
     ]
   end
-
-  scope :default_order, ->(review) {
-
-    Review.find_by_sql("SELECT * FROM #{review}
-     ORDER BY
-     (CASE
-       WHEN date IS NOT NULL THEN date
-       WHEN start_date IS NOT NULL THEN start_date
-       ELSE created_at
-     END) DESC")
-  }
-
 end
 
