@@ -765,14 +765,13 @@ header {
 }
 
 .card .list_group li span {
-    display: inline-block;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
     color: #CCCCE1;
-    transition: .2s;
     margin-right: 2px;
 }
 
@@ -1258,39 +1257,36 @@ header {
     align-items: center;
 }
 
-.hero_header .date {
+.hero_header .review-show-detail {
     color: #424250;
-    font-weight: 400;
-    font-size: 1.3rem;
+    font-weight: 500;
+    font-size: 1.5rem;
     line-height: 1.428
 }
 
 .hero_header .list_group li {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     color: #424250;
-    font-weight: 400;
-    font-size: 1.3rem;
-    line-height: 1.428;
+    font-weight: 500;
+    font-size: 15px;
     position: relative;
-    padding-right: 1.1rem;
+    padding-right: 12px;
 }
 
-.hero_header .list_group li span {
-    width: 1.43rem;
-    height: 1.43rem;
+.show-price {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     border: 1px solid #CCCCE1;
+    font-size: 11px;
     color: #CCCCE1;
-    font-size: .8rem;
     transition: .2s;
-    margin-right: 1px;
+    margin-right: -2px;
 }
 
-.hero_header .list_group li span:hover {
+.show-price:hover {
     cursor: pointer;
     color: #FFFFFF;
     background: #CCCCE1;
@@ -1310,13 +1306,6 @@ header {
 
 .hero_header .list_group li:first-child::before {
     display: none;
-}
-
-.avatar img {
-    width: 4rem;
-    height: 4rem;
-    margin-left: .8rem;
-    border-radius: 50%;
 }
 
 .avatar .reviewer {
@@ -2659,6 +2648,26 @@ h3.review-name {
     border-radius: 6px 0 0 6px;
 }
 
+.cuisine-group .select2-container {
+    padding: 0px;
+}
+
+.ck-editor__editable_inline {
+    min-height: 150px;
+}
+
+div.ck ul {
+    list-style: inside !important;
+}
+
+.ck-rounded-corners {
+    width: 100% !important;
+}
+
+.h-17 {
+    height: 17px;
+}
+
 .middle-nav .homepage-nav li a:hover,
 .middle-nav .homepage-nav li a.active:hover {
     background: #6E3EF7;
@@ -2705,7 +2714,6 @@ h3.review-name {
     right: 10px !important;
 }
 
-
 .cuisine-group .select2-container {
     padding: 0px;
 }
@@ -2728,40 +2736,6 @@ div.ck ul {
     height: 390px;
 }
 
-.log-in-text {
-    font-size: 3.5rem;
-}
-
-@keyframes slidein {
-    from {
-        margin-top: 0;
-    }
-
-    to {
-        margin-top: 35.520px;
-    }
-}
-
-.to-try-all {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
-}
-
-.cuisine-group .select2-container {
-    padding: 0px;
-}
-
-.ck-editor__editable_inline {
-    min-height: 150px;
-}
-
-div.ck ul {
-    list-style: inside !important;
-}
-
-.ck-rounded-corners {
-    width: 100% !important;
-}
 
 .h-17 {
     height: 17px;
@@ -2780,8 +2754,19 @@ div.ck ul {
     height: 200px;
 }
 
-.image-resizing {
-    aspect-ratio: 2.2/2.3;
+.show-subcategory {
+    text-transform: uppercase;
+    color: #6E3EF7;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.show-user-img {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    margin-left: 8px;
 }
 
 .search-mobile {
@@ -2824,21 +2809,46 @@ div.ck ul {
         transform: scale(0, 0);
         opacity: 0.8;
     }
-
-    100% {
-        transform: scale(1, 1);
-        opacity: 0;
-    }
 }
 
-@-webkit-keyframes loader3 {
-    0% {
-        -webkit-transform: scale(0, 0);
-        opacity: 0.8;
-    }
-
-    100% {
-        -webkit-transform: scale(1, 1);
-        opacity: 0;
-    }
+.second-view-review-btn {
+    display: inline-block;
+    width: 7rem;
+    height: 2.4rem;
+    line-height: 2.2rem;
+    background: #6E3EF7;
+    border: 1px solid #6E3EF7;
+    color: #F7F5FC;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 4px;
+    cursor: default;
+    font-size: 1.4rem;
 }
+
+/*image gallery start*/
+.modal-xl .ratio-16x9 {
+    background-color: rgba(0,0,0,0.85) !important;
+}
+
+.modal-xl {
+    margin: 0 auto;
+    --bs-modal-width: 100% !important;
+}
+.modal-xl .modal-content {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel {
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner{
+    height: 100vh;
+}
+
+.modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9{
+    height: 100vh;
+}
+
+/*image gallery end*/

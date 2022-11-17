@@ -1,7 +1,7 @@
-import { Controller } from "@hotwired/stimulus"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel"]
+  static targets = ["favouriteMeals", "mealName", "mealNotes", "image", "edit", "mealId", "noMealDiv", "mealCard", "modalLabel", "deletedMeals"]
 
   static get values() {
     return {editIcon: String, deleteIcon: String}
@@ -10,6 +10,7 @@ export default class extends Controller {
   connect() {
     super.connect();
     this.favourite_dishes = [];
+
   }
 
   saveChanges(event) {
@@ -17,7 +18,7 @@ export default class extends Controller {
       let favourite_dish = {id: event.currentTarget.id}
       favourite_dish["name"] = this.mealNameTarget.value
       favourite_dish["notes"] = this.mealNotesTarget.value
-      favourite_dish["image"] = this.imageTarget.src
+      favourite_dish["image"] = this.imageTarget.getAttribute('src')
       event.currentTarget.id = ""
       this.updateCard(favourite_dish)
     } else {
@@ -56,6 +57,16 @@ export default class extends Controller {
   }
 
   deleteMeal(event) {
+    if (document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`) != null) {
+      let mealId = document.getElementById(`review_meals_attributes_${event.currentTarget.id}_id`).value
+      let deletedMeals = [];
+
+      if (this.deletedMealsTarget.value != '') {
+        deletedMeals.push(this.deletedMealsTarget.value)
+      }
+      deletedMeals.push(mealId)
+      this.deletedMealsTarget.value = deletedMeals
+    }
     document.getElementById(event.currentTarget.id).remove()
     if (!this.hasMealCardTarget) {
       this.noMealDivTarget.classList.remove('d-none')
@@ -64,11 +75,15 @@ export default class extends Controller {
 
   makeNewMeal() {
     let randomId = Math.floor(Math.random() * 1000) * 3243;
+    let imgSrc = ""
+    if (this.imageTarget.getAttribute('src')) {
+      imgSrc = this.imageTarget.src
+    }
     let dish = `<li data-meals-target="mealCard" id="${randomId}">
-       <img id = "image-${randomId}" class='main_img' src='${this.imageTarget.src}'>
-       <input name="review[meals_attributes][${randomId}][image_url]" value="${this.imageTarget.src}" hidden>
-       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden>
-       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden>
+       <img id = "image-${randomId}" class='main_img' src='${imgSrc}'>
+       <input name="review[meals_attributes][${randomId}][image_url]" value="${imgSrc}" hidden id = "review_meals_attributes_${randomId}_image_url">
+       <input name="review[meals_attributes][${randomId}][name]" value="${this.mealNameTarget.value}" hidden id = "review_meals_attributes_${randomId}_name">
+       <input name="review[meals_attributes][${randomId}][notes]" value="${this.mealNotesTarget.value}" hidden id = "review_meals_attributes_${randomId}_notes">
       <div class='d-flex justify-content-between align-items-center w-100 ml_15'>
         <div class="text-left">
           <h4 id="name-${randomId}"> ${this.mealNameTarget.value}</h4>
@@ -94,4 +109,3 @@ export default class extends Controller {
     this.mealNotesTarget.value = ""
   }
 }
-

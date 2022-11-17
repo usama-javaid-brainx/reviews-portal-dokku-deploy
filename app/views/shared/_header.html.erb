@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <% if !current_user.second_view? %>
-        <div class="col-6 text-center">
+        <div class="col-5 col-sm-6 text-center">
           <ul class="menu d-lg-inline-flex align-items-center jutify-content-center d-none d-lg-block">
             <li>
               <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "nav_link #{'active' if params[:category_id] == 'all' || !params[:category_id].present?}" %>
@@ -53,11 +53,11 @@
               <li>
                 <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
               </li>
-              <% Category.all.each do |category| %>
+              <% @categories.each do |category| %>
                 <li>
                   <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
-                    <!--      TODO will uncomment when S3 will configure-->
+<!--                          TODO will uncomment when S3 will configure-->
                     <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
                     <%= category.name %>
@@ -68,22 +68,22 @@
           </div>
         </div>
       <% end %>
-      <div class="<%= current_user.second_view ? "col-6" : "col-3" %> text-end">
+      <div class="<%= current_user.second_view ? "col-6" : "col-4 col-sm-3" %> text-end">
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
-              <span class="header-img">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+              <span class="header-img user-img-wrapper">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
                         </span>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
             <ul class="dropdown-menu dropdown-w" aria-labelledby="sessionDropdown">
               <li class="cursor-pointer">
-                <div class="dropdown-item dropdown-img">
+                <div class="dropdown-item p-3">
                   <div class="d-flex ">
-                      <span class="col-2">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                      <span class="col-2 user-img-wrapper dropdown-img">
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
                         </span>
                     <div class="d-inline dropdown-info">
                       <span class="d-block user-name"><%= current_user.first_name.titleize %></span>
@@ -94,6 +94,9 @@
               </li>
               <li class="cursor-pointer">
                 <%= link_to "My Profile", users_index_path(profile: 'true'), class: "dropdown-item" %>
+              </li>
+              <li class="cursor-pointer">
+                <%= link_to "Groups", groups_path, class: "dropdown-item" %>
               </li>
               <li class="cursor-pointer">
                 <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>

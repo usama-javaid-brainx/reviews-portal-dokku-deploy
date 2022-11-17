@@ -1,7 +1,8 @@
+<% more_review_fields = ["author", "platform", "url", "google_url", "foursquare_url", "yelp_url"] %>
 <h2>Description</h2>
 <div class="tabs_content_wrap">
 
-  <% if @curr_category.google_places? %>
+  <% if curr_category.google_places? %>
     <div class="form_group row align-items-center">
       <label for="search">Location</label>
 
@@ -16,64 +17,47 @@
     <%= f.text_field :name, placeholder: "Enter Name", type: "text", id: "search", 'data-places-target': "name" %>
   </div>
 
-  <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-    <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-    <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: false } %>
-  </div>
+  <% if curr_category.sub_category_title.present? %>
+    <div class="row cuisine-group align-items-center form_group" data-controller="tags">
+      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
+      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).pluck(:name), selected: @review.cuisine), { include_blank: true } %>
+    </div>
+  <% end %>
 
   <div class="row align-items-center form_group">
     <%= f.label :date, "Date" %>
     <%= f.date_field :date %>
   </div>
-  <!------TODO check will be add after clint provide requer------------>
-  <div class="row align-items-center form_group">
-    <%= f.label :date, "Start Date" %>
-    <%= f.date_field :start_date %>
-  </div>
 
-  <div class="row align-items-center form_group">
-    <%= f.label :date, "End Date" %>
-    <%= f.date_field :end_date %>
-  </div>
+  <% if curr_category.start_date %>
+    <div class="row align-items-center form_group">
+      <%= f.label :date, "Start Date" %>
+      <%= f.date_field :start_date %>
+    </div>
+  <% end %>
 
-  <div class="form_group align-items-center row">
-    <%= f.label "Author" %>
-    <%= f.text_field :author, placeholder: 'Author', step: "0.01", max: "10", min: "0" %>
-  </div>
+  <% if curr_category.end_date %>
+    <div class="row align-items-center form_group">
+      <%= f.label :date, "End Date" %>
+      <%= f.date_field :end_date %>
+    </div>
+  <% end %>
 
-  <div class="form_group align-items-center row">
-    <%= f.label "Platform" %>
-    <%= f.text_field :platform, placeholder: 'Platform', step: "0.01", max: "10", min: "0" %>
-  </div>
+  <% more_review_fields.each do |field| %>
+    <% if curr_category.send(field) %>
+      <div class="form_group align-items-center row">
+        <label><%= field.titleize %></label>
+        <%= f.text_field field, placeholder: field.titleize, step: "0.01", max: "10", min: "0" %>
+      </div>
+    <% end %>
+  <% end %>
 
-  <div class="form_group align-items-center row">
-    <%= f.label "Url" %>
-    <%= f.text_field :url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Google Url" %>
-    <%= f.text_field :google_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Foursquare Url" %>
-    <%= f.text_field :foursquare_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-  </div>
-
-  <div class="form_group align-items-center row">
-    <%= f.label "Yelp Url" %>
-    <%= f.text_field :yelp_url, placeholder: 'Url', step: "0.01", max: "10", min: "0" %>
-  </div>
-  <!--  TODO end--------------->
-
-  <% if @curr_category.price? %>
+  <% if curr_category.price? %>
     <div class="form_group align-items-center row">
       <%= f.label "Score" %>
       <%= f.number_field :average_score, class: 'col-lg-4 col-10', step: "0.01", max: "10", min: "0" %>
       <span class="score-text"> /10</span>
     </div>
-
     <div class="row form_group">
       <%= f.label :price_range, 'Price', class: 'indent' %>
       <div class="align-items-center rating d-flex p-0" data-controller="dollar-price-range">
@@ -84,6 +68,7 @@
       </div>
     </div>
   <% end %>
+
   <div class="row form_group">
     <%= f.label :notes, "Description" %>
     <%= f.ckeditor :notes, placeholder: "Write your reviews...", type: "text", rows: '5', class: "w-100" %>

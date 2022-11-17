@@ -23,14 +23,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Discard::Model
   has_one_attached :avatar
+  default_scope -> { kept }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :reviews, dependent: :destroy
+  has_many :groups, dependent: :destroy
   has_many :ck_editor_images, dependent: :destroy
   has_many :requests, dependent: :destroy
 
   #validation
   validates :first_name, :last_name, presence: true
   validates :email, format: { with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/, multiline: true }, presence: true, uniqueness: true
+  validates :phone_number, uniqueness: true, allow_blank: true, on: :update
 end

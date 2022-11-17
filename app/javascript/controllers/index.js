@@ -42,3 +42,9 @@ application.register("user-validation", UserValidationController)
 
 import GuestController from "./guest_controller.js"
 application.register("guest", GuestController)
+
+import MapController from "./map_controller.js"
+application.register("map", MapController)
+
+import GroupController from "./group_controller.js"
+application.register("group", GroupController)

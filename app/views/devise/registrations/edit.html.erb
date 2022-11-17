@@ -1,56 +1,60 @@
 <div class="container" data-controller="user-validation">
   <div class="row justify-content-center mb-5">
     <div class="col-lg-6">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: users_update_path, html: { method: :patch }) do |f| %>
         <%= devise_error_messages! %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
 
-            <div class="row align-items-center form_group  mb_50">
+            <div class="row align-items-center form_group  mb-4 mb-sm-5">
               <div class="edit-heading">Profile Photo</div>
               <div class="d-flex mt-5">
-                <div class="col-1">
-                    <%= image_tag( resource.avatar.attached? ? resource.avatar : "template/avatarplaceholder.jpg", class: 'rounded-circle') %>
+                <div class="user-img-wrapper profile-img d-flex align-items-center">
+                  <%= image_tag(resource.avatar.attached? ? resource.avatar : "template/avatarplaceholder.jpg") %>
                 </div>
-                <div class="d-flex align-items-center col-11 flex-wrap">
+                <div class="d-flex align-items-center flex-wrap">
                   <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
-                  <a class="ml-14 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg">
+                  <button class="ml-14 ml-10 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg" type="button">
                     <%= image_tag("template/upload.svg", class: "mr-2 upload-svg") %>
-                    Upload New Picture
-                  </a>
-                  <%= link_to users_remove_avatar_path, class: "ml-24 btn-profile-pic edit-upload" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
-                    Delete Picture
+                    Upload <span class="d-none mx-1 d-sm-block"> New Picture</span>
+                  </button>
+                  <%= link_to users_remove_avatar_path, class: " btn-profile-pic edit-upload ml-14" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
+                    Delete <span class="d-none mx-1 d-sm-block">Picture</span>
                   <% end %>
                 </div>
               </div>
             </div>
             <hr class="edit-separator">
-            <div class="row align-items-center form_group  mb_50">
-              <div class="edit-heading mb-5 mt-4">Details</div>
-              <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label' %>
+            <div class="edit-heading mb-5 mt-4">Details</div>
+            <div class="row align-items-center form_group  mb-4 mb-sm-5">
+              <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label mb-1' %>
               <%= f.text_field :first_name, class: "col-lg-7 edit-text-field", value: @user.first_name.titleize %>
             </div>
+            <div class="row align-items-center form_group  mb-4 mb-sm-5">
+              <%= f.label :phone_number, "Phone Number", class: 'col-lg-5 edit-label' %>
+              <%= f.text_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number" %>
+            </div>
+
             <hr class="edit-separator">
 
             <div class="edit-heading mb-5 mt-4">Password</div>
-            <div class="row align-items-center form_group  mb_50">
-              <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
-              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", required: true, autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
-
+            <div class="row align-items-center form_group  mb-4 mb-sm-5">
+              <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label mb-1' %>
+              <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
             </div>
-            <div class="row align-items-center form_group  mb_50">
-              <%= f.label :name, "New Password", class: 'col-lg-5 edit-label' %>
+            <div class="row align-items-center form_group mb-4 mb-sm-5">
+              <%= f.label :name, "New Password", class: 'col-lg-5 edit-label mb-1' %>
               <%= f.password_field :password, class: "col-lg-7 edit-text-field", placeholder: "Enter New Password" %>
             </div>
             <hr class="edit-separator">
-            <div class="row align-items-center form_group  mb_50">
+            <div class="row align-items-center form_group  mb-4 mb-sm-5">
               <div class="edit-heading mb-5 mt-4">Account</div>
-              <label class="col-lg-5 edit-label">Delete Account</label>
+              <label class="col-5 edit-label">Delete Account</label>
               <button type="button" class="btn-profile-pic edit-upload w-auto p-19" data-bs-toggle="modal" data-bs-target="#userDeleteModal">
                 Delete Account
               </button>
             </div>
-            <hr class="edit-separator  mb_50">
+            <hr class="edit-separator  mb-4 mb-sm-5">
             <div class="row align-items-center form_group">
               <button class="w-auto edit-save p-19"> Save Changes</button>
             </div>

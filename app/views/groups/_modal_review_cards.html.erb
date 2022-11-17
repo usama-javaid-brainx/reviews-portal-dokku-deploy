@@ -1,0 +1,20 @@
+<div class="content_area">
+  <div class="content_wrap pb_10">
+    <div class="container mt_30">
+      <div class="tab-content">
+        <!--All grid card here -->
+        <div class="tab-pane fade show active" id="grid_layout1" role="tabpanel">
+          <% if selected_reviews.present? %>
+            <div class="row g-5 mb-5 outer-review-card-select">
+              <%= render partial: 'modal_single_review', collection: selected_reviews, as: :review %>
+            </div>
+            <hr>
+          <% end %>
+          <div class="row g-5">
+            <%= render partial: 'modal_single_review', collection: reviews, as: :review %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

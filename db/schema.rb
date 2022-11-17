@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_07_121821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,10 +60,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
     t.bigint "user_id"
+    t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -80,6 +80,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_ck_editor_images_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_groups_on_discarded_at"
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "groups_reviews", id: false, force: :cascade do |t|
+    t.bigint "review_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["review_id", "group_id"], name: "index_groups_reviews_on_review_id_and_group_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -134,8 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.string "slug"
     t.date "start_date"
     t.date "end_date"
-    t.string "author"
-    t.string "platform"
+    t.text "author"
+    t.text "platform"
     t.string "url"
     t.string "google_url"
     t.string "foursquare_url"
@@ -169,6 +185,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_29_085754) do
     t.string "last_sign_in_ip"
     t.datetime "discarded_at"
     t.boolean "second_view", default: false
+    t.string "phone_number"
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
