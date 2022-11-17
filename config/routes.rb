@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   resources :guests, only: [:show]
   resources :categories, only: :index

@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ['favoriteLink', 'publicStatus']
 
   static values = {
-    favouritePath: String,
+    likedPath: String,
     statusPath: String
   }
 
@@ -18,7 +18,7 @@ export default class extends Controller {
     let that = this
     $.ajax({
       type: "GET",
-      url: this.favouritePathValue,
+      url: this.likedPathValue,
       data: data,
       dataType: 'json',
       success() {
