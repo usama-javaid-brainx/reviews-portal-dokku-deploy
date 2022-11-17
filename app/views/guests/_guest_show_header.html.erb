@@ -43,7 +43,7 @@
       <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
         <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
-      <%= link_to "Write Your Review", guests_create_review_path(edit_review: true), class: 'btn' %>
+      <%= link_to "Write Your Review", create_review_path(edit_review: true), class: 'btn' %>
     </div>
   </div>
 
@@ -71,7 +71,7 @@
       <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
         <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
-      <%= link_to "Write Your Review", guests_create_review_path(edit_review: true), class: 'btn' %>
+      <%= link_to "Write Your Review", create_review_path(edit_review: true), class: 'btn' %>
     </div>
   </div>
   <!-- mobile end-->
