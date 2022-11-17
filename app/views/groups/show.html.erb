@@ -1,4 +1,7 @@
 <main class="container overflow-hidden" data-controller="group" data-group-search-value="<%= groups_search_path %>" data-group-newgroup-value="<%= edit_new_path %>">
+  <%= link_to groups_path do %>
+    <span class="back grp-back"><%= image_tag("template/left-arrow.svg")%></span>
+  <% end %>
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= @group.name.titleize %></span>
   <div class="row justify-content-center pt_30" data-controller="guest">
@@ -11,6 +14,6 @@
     <%= link_to "Delete", group_path(@group), data: { turbo_method: :delete }, class: "grp-btn delete col-lg-1 col-md-3 col-8 mt-3 mt-md-0 btn mx-2" %>
     <%= render "shared/share_modal" %>
   </div>
-  <%= render "new_homepage/review_cards", reviews: @reviews %>
+  <%= render "new_homepage/review_cards", reviews: @reviews, limit: @limit %>
   <div id="groupModalAppend"></div>
 </main>

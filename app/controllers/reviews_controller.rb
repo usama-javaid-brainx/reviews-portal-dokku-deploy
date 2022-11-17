@@ -95,8 +95,12 @@ class ReviewsController < ApplicationController
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
+  def update_status
+    Review.find_by(slug: params[:review_id]).update(share: params[:shareable])
+  end
+
   def category_order
-    @ordered_categories = Category.all.order("name asc")
+    @ordered_categories = Category.all.order("position asc")
   end
 
   def get_score

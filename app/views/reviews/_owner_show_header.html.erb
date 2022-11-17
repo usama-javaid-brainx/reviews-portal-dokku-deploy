@@ -1,9 +1,9 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <div class="public_review">
+    <div class="public_review" data-controller="favourite" data-favourite-status-path-value="<%= review_update_status_path(review) %>">
       <div class="mode-switch d-flex flex-row align-items-center">
-        <input type="checkbox" id="switch" <%= 'checked' if review.shareable == true %>/>
-        <label for="switch"></label>
+        <input type="checkbox" id="switch" <%= 'checked' if review.shareable? %> data-favourite-target="publicStatus">
+        <label for="switch" data-action="click->favourite#updateReviewStatus"></label>
       </div>
       <%= image_tag("template/users.svg", class: 'mr_5') %>
       <span>Public REVIEW</span>
@@ -21,20 +21,22 @@
       </span>
     </div>
     <div class="d-flex align-items-center justify-content-end rating_box" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
-      <%= link_to nil, data: { action: "click->favourite#updateFavourite", "favourite-target": "favoriteLink" }, class: "#{'checked' if review.favourite} #{ 'm-0' if review.average_score.blank?}" do %>
-        <%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %>
-        <span class=<%= review.favourite ? "" : "text-black-50" %>>Save as Favorite</span>
-      <% end %>
+      <span data-action="click->favourite#updateFavourite" class=<%= "#{'checked' if review.favourite} #{ 'm-0' if review.average_score.blank?}" %>>
+        <% unless current_user.second_view? %>
+          <%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/heart.svg") %>
+          <span class="faveroit <%= review.favourite ? "" : 'text-black-50' %>">Save as Favorite</span>
+        <% end %>
+      </span>
       <% if review.average_score.present? %>
         <p class="rating">
           <%= image_tag("template/star.svg") %><span><%= review.average_score %></span></p>
       <% end %>
     </div>
-    <div class="review-url mb-4">
+    <div class="review-url d-flex justify-content-end mb-4">
       <%= link_to @review.url.truncate(32, separator: ' '), @review.url, class: "review-link", target: '_blank' if @review.url.present? %>
     </div>
     <div>
-      <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">
+      <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
       <%= link_to edit_review_path(review), class: 'btn' do %>
@@ -61,11 +63,11 @@
         <% end %>
       </div>
     </div>
-    <div class="review-url mb-4">
+    <div class="review-url d-flex justify-content-end mb-4">
       <%= link_to @review.url.truncate(32, separator: ' '), @review.url, class: "review-link", target: '_blank' if @review.url.present? %>
     </div>
     <div class="d-flex justify-content-between pt_30">
-      <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> data-action="click->guest#copyLink">
+      <button class="btn white <%= 'text-black-50 border-secondary' if review.shareable != true %>" <%= 'disabled' if review.shareable != true %> type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModal" data-action="click->guest#addLinkField">
         <%= image_tag("template/share.svg") %>Share
       </button>
       <%= link_to edit_review_path(review), class: 'btn' do %>

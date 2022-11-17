@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown']
 
   connect() {
     this.filterCount = 0
@@ -9,9 +9,22 @@ export default class extends Controller {
     this.filters = [];
     this.location = [];
     this.appliedFilters()
+    if (this.hasSortReviewsTarget) {
+      $(this.sortReviewsTarget).select2({
+        minimumResultsForSearch: Infinity,
+        dropdownParent: $("#filterModal")
+      });
+      $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
+    }
+    if (this.hasSortDropdownTarget) {
+      $(this.sortDropdownTarget).select2({
+        minimumResultsForSearch: Infinity
+      })
+      $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+    }
   }
 
-  selectLocation(event){
+  selectLocation(event) {
     this.location = this.selectParam(event, 'clear-location', this.location)
   }
 
@@ -93,11 +106,19 @@ export default class extends Controller {
 
   fieldDisplay(event) {
     this.inputTarget.classList.contains("search-input-expand") ? this.inputTarget.classList.remove("search-input-expand") : this.inputTarget.classList.add("search-input-expand")
-    }
+  }
 
   search(event) {
     if (event.key === "Enter") {
       this.filtersFormTarget.submit()
     }
+  }
+
+  reviewSort() {
+    this.scoreFilterTarget.value = this.sortReviewsTarget.value
+  }
+
+  sortDropdown() {
+    this.filtersFormTarget.submit()
   }
 }
