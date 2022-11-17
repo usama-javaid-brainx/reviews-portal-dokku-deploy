@@ -1,21 +1,18 @@
 <!-- single card -->
 <div class="col-lg-12 d-lg-block d-none card-load">
   <div class="card list-review">
-    <div class="card-header col-2 p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
-      <% if review.images.present? %>
-        <%= link_to review_path(review.slug) do %>
+    <div class="card-header col-2 p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
+      <%= link_to review_path(review.slug) do %>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.images.present? %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
-        <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
-      <% else %>
-        <%= link_to review_path(review.slug) do %>
+        <% else %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% end %>
     </div>
     <div class="card-body <%= review.foursquare_url.present? ? 'col-2' : 'col-10' %>">
@@ -48,32 +45,34 @@
           </li>
         </ul>
       </div>
-      <% if review.foursquare_url.present? || review.google_url.present? || review.yelp_url.present? %>
-        <div class="col-7 url-list-view">
-          <!-- TODO:" Real data from google yelp and foursquare yet to fetch-->
-          <% if review.foursquare_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Foursquare.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-          <% if review.google_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Google.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-          <% if review.yelp_url.present? %>
-            <div class="col-4 list-site-review">
-              <%= image_tag("template/Yelp.svg") %>
-              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>
-                <span class="small-numbers">409 reviews</span></p>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+
+      <!-- TODO:" Real data from google yelp and foursquare yet to fetch then had to use the following structure-->
+      <%# if review.foursquare_url.present? || review.google_url.present? || review.yelp_url.present? %>
+      <!--        <div class="col-7 url-list-view">-->
+      <%# if review.foursquare_url.present? %>
+      <!--            <div class="col-4 list-site-review">-->
+      <%#= image_tag("template/Foursquare.svg") %>
+      <!--              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>-->
+      <!--                <span class="small-numbers">409 reviews</span></p>-->
+      <!--            </div>-->
+      <%# end %>
+      <%# if review.google_url.present? %>
+      <!--            <div class="col-4 list-site-review">-->
+      <%#= image_tag("template/Google.svg") %>
+      <!--              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>-->
+      <!--                <span class="small-numbers">409 reviews</span></p>-->
+      <!--            </div>-->
+      <%# end %>
+      <%# if review.yelp_url.present? %>
+      <!--            <div class="col-4 list-site-review">-->
+      <%#= image_tag("template/Yelp.svg") %>
+      <!--              <p class="list-sites-reviews-numbers">4.6<span class="light-numbers"> / 5.0</span>-->
+      <!--                <span class="small-numbers">409 reviews</span></p>-->
+      <!--            </div>-->
+      <%# end %>
+      <!--        </div>-->
+      <%# end %>
+
     </div>
   </div>
 </div>

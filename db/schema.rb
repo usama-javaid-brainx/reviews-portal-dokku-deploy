@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_121821) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.integer "position"
+    t.bigint "user_id"
     t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"

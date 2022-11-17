@@ -10,7 +10,7 @@ class FetchTitleService
     rescue
       title = ""
     end
-    title = title.present? ? title[0,25] : "New review"
+    title = title.present? ? title[0, 25] : "New review"
     title
   end
 end

@@ -41,10 +41,11 @@
               </li>
             </ul>
             <!-- map_enable_btn -->
-              <%= link_to show_map_path, class: "map-enable-btn" do %>
-                <%= image_tag("template/map.svg") %>
-                <span class="text">Show Map</span><span class="switch"></span>
-              <% end %>
+            <%= link_to show_map_path, class: "map-enable-btn d-none d-lg-flex" do %>
+              <%= image_tag("template/map.svg") %>
+              <span class="text">Show Map</span>
+              <!--  <span class="switch"></span>-->
+            <% end %>
           </div>
         </div>
       </div>

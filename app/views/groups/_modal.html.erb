@@ -6,7 +6,7 @@
         <h5 class="modal-title" id="groupModalLabel">Add Folder</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <%= form_with model: @group do |group_frm| %>
+      <%= form_with model: group do |group_frm| %>
         <div class="modal-body">
           <div class="mb-4">
             <%= group_frm.label :name, "Name", class: "form-label" %>
