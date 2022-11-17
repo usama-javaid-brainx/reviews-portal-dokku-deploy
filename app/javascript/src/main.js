@@ -24,9 +24,6 @@ import Lightbox from 'bs5-lightbox';
       dots: true,
     });
 
-    // niceSelect Initialize
-    $('.middle_nav select').niceSelect();
-
     // Smooth Scroll Effect
     $('.add_review_area .nav-pills .nav-link').bind('click', function (event) {
       var $anchor = $(this);
