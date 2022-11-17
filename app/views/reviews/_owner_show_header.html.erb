@@ -1,33 +1,40 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <div class="public_review">
+    <div class="public_review" data-controller="favourite" data-favourite-status-path-value="<%= review_update_status_path(@review) %>" >
       <div class="mode-switch d-flex flex-row align-items-center">
-        <input type="checkbox" id="switch" <%= 'checked' if review.shareable == true %>/>
-        <label for="switch"></label>
+        <input type="checkbox" id="switch" <%= 'checked' if @review.shareable? %> data-favourite-target="publicStatus">
+        <label for="switch" data-action="click->favourite#updateReviewStatus"></label>
       </div>
       <%= image_tag("template/users.svg", class: 'mr_5') %>
       <span>Public REVIEW</span>
     </div>
-    <h1><%= review.name %></h1>
-    <% if review.cuisine.present? %>
-      <span class="show-subcategory"><%= review.cuisine %></span>
-      .
-    <% end %>
-    <% if review.state.present? and review.country.present? %>
-      <span class="review-show-detail"><%= "#{review.state}, #{review.country}" %></span>
-    <% end %>
-    <% if review.date.present? %>
-      .
-      <span class="review-show-detail"><%= review.date.strftime("%b %e,%Y") %></span>
-    <% end %>
-    <% if review.price_range.present? %>
-      <span class="d-none d-lg-inline-block">.</span>
-      <span class="d-block d-lg-inline-block">
+    <h1><%= @review.name %></h1>
+    <ul class="show-list-group d-flex align-items-center">
+      <% if @review.cuisine.present? %>
+        <li>
+          <span class="show-subcategory"><%= @review.cuisine %></span>
+        </li>
+      <% end %>
+      <% if @review.state.present? and @review.country.present? %>
+        <li>
+          <span class="review-show-detail"><%= "#{@review.state}, #{@review.country}" %></span>
+        </li>
+      <% end %>
+      <% if @review.date.present? %>
+        <li>
+          <span class="review-show-detail"><%= @review.date.strftime("%b %e,%Y") %></span>
+        </li>
+      <% end %>
+      <% if @review.price_range.present? %>
+        <li>
+        <span class="d-block d-lg-inline-block">
         <% for count in 1..4 %>
           <span class="price-sz pe-none show-price <%= ('text-white bg-price' if review.price_range >= count) %>">$</span>
         <% end %>
       </span>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
     <div class="d-flex align-items-center justify-content-end avatar">

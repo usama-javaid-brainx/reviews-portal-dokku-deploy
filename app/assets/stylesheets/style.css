@@ -2790,7 +2790,7 @@ div.ck ul {
     border-color: #6E3EF7;
 }
 
-.search-mobile button {
+.search-mobile span {
     position: absolute;
     top: 0;
     left: 0;
@@ -2852,3 +2852,30 @@ div.ck ul {
 }
 
 /*image gallery end*/
+
+.show-list-group li {
+    display: inline-flex;
+    align-items: center;
+    color: #424250;
+    font-weight: 400;
+    font-size: 12px;
+    position: relative;
+    padding-right: 1.1rem;
+    white-space: nowrap;
+}
+
+.show-list-group li::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -7.5px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #424250;
+}
+
+.show-list-group li:first-child::before {
+    display: none;
+}

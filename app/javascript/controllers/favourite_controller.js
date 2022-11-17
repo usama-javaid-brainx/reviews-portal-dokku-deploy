@@ -1,10 +1,11 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['favoriteLink']
+  static targets = ['favoriteLink', 'publicStatus']
 
   static values = {
-    favouritePath: String
+    favouritePath: String,
+    statusPath: String
   }
 
   updateFavourite(event) {
@@ -24,6 +25,18 @@ export default class extends Controller {
         if (that.hasFavoriteLinkTarget) {
           location.reload()
         }
+      }
+    })
+  }
+
+  updateReviewStatus(event) {
+    let reviewStatus = !(this.publicStatusTarget.checked)
+    $.ajax({
+      type: "GET",
+      url: this.statusPathValue,
+      data: {share: reviewStatus},
+      success() {
+        window.location.reload()
       }
     })
   }
