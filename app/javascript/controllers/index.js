@@ -52,5 +52,5 @@ application.register("group", GroupController)
 import ReviewsMapController from "./reviews_map_controller.js"
 application.register("reviews-map", ReviewsMapController)
 
-// import ReviewsMapController from "./reviews_map_controller.js"
-// application.register("reviews-map", ReviewsMapController)
+import ReviewCardItemController from "./review_card_item_controller.js"
+application.register("review-card-item", ReviewCardItemController)
