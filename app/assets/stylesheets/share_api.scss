@@ -1,0 +1,58 @@
+#shareModal {
+  .modal-body {
+    background-color: unset;
+  }
+
+  .modal-footer {
+    background-color: #efefef;
+    border-top: none;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0px 24px 15px 24px;
+
+    .link-field {
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 16px;
+    }
+  }
+}
+
+#share {
+  .jssocials-shares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .jssocials-share {
+      width: 48%;
+      margin: 0.3em 0em 0.3em 0;
+      border-radius: 6px;
+
+      &:hover {
+        background-color: #6E3EF7;
+      }
+
+      &:hover .jssocials-share-label {
+        color: white;
+      }
+
+      .jssocials-share-label {
+        color: #373737;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .jssocials-share-link {
+        width: 100%;
+        background: unset;
+        border: 1px solid #6E3EF7;
+        color: unset;
+        box-shadow: none;
+        padding: 10px 0px 10px 0px;
+        border-radius: 6px;
+      }
+    }
+  }
+}

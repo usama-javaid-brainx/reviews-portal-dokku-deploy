@@ -5,7 +5,7 @@
       <div class="row align-items-center">
         <div class="filter-search-invert col-lg-4 d-flex justify-content-xl-start justify-content-evenly align-items-center">
           <div class="col-lg-7 d-none d-lg-block category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+            <%= select_tag :category_id, options_from_collection_for_select(ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id), data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
           <div class="d-flex justify-content-center col-lg-3 col-3" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
@@ -63,7 +63,7 @@
           <div class="col-lg-7 col-7 d-block d-lg-none justify-content-end navbar-search" data-controller="filter">
             <div class="search-mobile">
               <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
-                <%= f.text_field :search, :value => "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
+                <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", "data-action": "keyup->filter#search" %>
               <% end %>
               <span>
                 <%= image_tag("template/search.svg") %>
