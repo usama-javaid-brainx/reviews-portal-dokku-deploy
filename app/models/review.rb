@@ -54,8 +54,7 @@ class Review < ApplicationRecord
     "http://maps.google.com/?q=#{latitude},#{longitude}"
   end
 
-
   def generate_slug
-    self.slug = "#{SecureRandom.base58(32)}#{Review.last.id+1}"
+    self.slug = "#{SecureRandom.base58(32)}#{Review.last.present? ? Review.last.id + 1 : 1}"
   end
 end

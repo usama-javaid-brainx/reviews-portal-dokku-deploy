@@ -1,22 +1,20 @@
 <!-- single card -->
 <div data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-target="reviewCardDetails" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>" class="<%= params[:action] == "show_map" ? "col-lg-6" : "col-lg-3" %> col-md-6 card-load">
   <div class="card review-card">
-    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
-      <% if review.images.present? %>
-        <%= link_to review_path(review.slug) do %>
+    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
+      <%= link_to review_path(review.slug) do %>
+        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.images.present? %>
           <div class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
           </div>
-        <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% else %>
-        <%= link_to review_path(review.slug) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
       <% end %>
+      <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
     </div>
     <div class="card-body">
       <div class="top">

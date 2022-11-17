@@ -11,9 +11,7 @@
             <hr>
           <% end %>
           <div class="row g-5">
-            <% reviews.each do |review| %>
-              <%= render 'modal_single_review',review: review %>
-            <% end %>
+            <%= render partial: 'modal_single_review', collection: reviews, as: :review %>
           </div>
         </div>
       </div>

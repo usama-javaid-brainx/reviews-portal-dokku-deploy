@@ -1,45 +1,44 @@
 <div class="container" data-controller="user-validation">
   <div class="row justify-content-center mb-5">
-    <div class="col-lg-6">
+    <div class="col-lg-7 col-xxl-6">
       <%= form_for(resource, as: resource_name, url: users_update_path, html: { method: :patch }) do |f| %>
         <%= devise_error_messages! %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
-
             <div class="row align-items-center form_group  mb-4 mb-sm-5">
               <div class="edit-heading">Profile Photo</div>
               <div class="d-flex mt-5">
                 <div class="user-img-wrapper profile-img d-flex align-items-center">
-                  <%= image_tag(resource.avatar.attached? ? resource.avatar : "template/avatarplaceholder.jpg") %>
+                  <%= image_tag(resource.avatar.attached? ? resource.avatar : "template/avatar-placeholder.jpg") %>
                 </div>
                 <div class="d-flex align-items-center flex-wrap">
                   <%= f.file_field :avatar, class: "d-none", "data-user-validation-target": "avatarUpload" %>
-                  <button class="ml-14 ml-10 btn-profile-pic edit-upload cursor-pointer" data-action="click->user-validation#uploadImg" type="button">
+                  <button class="ml-14 ml-10 btn-profile-pic edit-upload cursor-pointer profile-pic-btn" data-action="click->user-validation#uploadImg" type="button">
                     <%= image_tag("template/upload.svg", class: "mr-2 upload-svg") %>
-                    Upload <span class="d-none mx-1 d-sm-block"> New Picture</span>
+                    Upload <span class="d-none mx-1 d-md-block"> New Picture</span>
                   </button>
-                  <%= link_to users_remove_avatar_path, class: " btn-profile-pic edit-upload ml-14" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
-                    Delete <span class="d-none mx-1 d-sm-block">Picture</span>
+                  <%= link_to users_remove_avatar_path, class: " btn-profile-pic edit-upload ml-14 profile-pic-btn" do %> <%= image_tag("template/edit-delete.svg", class: "mr-2") %>
+                    Delete <span class="d-none mx-1 d-md-block">Picture</span>
                   <% end %>
                 </div>
               </div>
             </div>
             <hr class="edit-separator">
-            <div class="edit-heading mb-5 mt-4">Details</div>
             <div class="row align-items-center form_group  mb-4 mb-sm-5">
-              <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label mb-1' %>
-              <%= f.text_field :first_name, class: "col-lg-7 edit-text-field", value: @user.first_name.titleize %>
+              <div class="edit-heading mb-5 mt-4">Details</div>
+              <div class="row align-items-center form_group  mb_50">
+                <%= f.label :first_name, "Username", class: 'col-lg-5 edit-label mb-1' %>
+                <%= f.text_field :first_name, class: "col-lg-7 edit-text-field", value: @user.first_name.titleize %>
+              </div>
+              <div class="row align-items-center form_group  mb-4 mb-sm-5">
+                <%= f.label :phone_number, "Phone Number", class: 'col-lg-5 edit-label' %>
+                <%= f.text_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number" %>
+              </div>
             </div>
-            <div class="row align-items-center form_group  mb-4 mb-sm-5">
-              <%= f.label :phone_number, "Phone Number", class: 'col-lg-5 edit-label' %>
-              <%= f.text_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number" %>
-            </div>
-
             <hr class="edit-separator">
-
             <div class="edit-heading mb-5 mt-4">Password</div>
-            <div class="row align-items-center form_group  mb-4 mb-sm-5">
-              <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label mb-1' %>
+            <div class="row align-items-center form_group  mb_50">
+              <%= f.label :name, "Old Password", class: 'col-lg-5 edit-label' %>
               <%= f.password_field :current_password, class: "col-lg-7 edit-text-field", autocomplete: "off", placeholder: "Enter Old Password", "data-user-validation-target": "oldPassword" %>
             </div>
             <div class="row align-items-center form_group mb-4 mb-sm-5">
