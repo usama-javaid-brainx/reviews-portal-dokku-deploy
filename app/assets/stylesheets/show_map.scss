@@ -48,17 +48,56 @@
 }
 
 .grid-review-card {
+  position: relative;
   overflow-y: scroll;
+  height: 70vh;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 5px;
+    border-radius: 5px;
+    background: #888;
+
+    &:hover {
+      background: #555;
+    }
+  }
+
+  .add-new-half {
+    position: sticky;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    width: 200px;
+    align-items: center;
+    justify-content: center;
+    background: #6E3EF7;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    padding: 1rem 3rem;
+    color: #FFFFFF;
+    font-size: 1.6rem;
+    font-weight: 500;
+    z-index: 1111;
+  }
 }
 
 .review-map {
   position: sticky;
-  height: 650px;
+  height: 630px;
   top: 0;
   left: 50%;
 
   #reviewMap {
-    height: 650px;
+    height: 630px;
     border-radius: 7px;
     width: 95%;
     left: 50%;

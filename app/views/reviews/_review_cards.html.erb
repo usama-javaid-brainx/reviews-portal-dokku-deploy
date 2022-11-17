@@ -1,5 +1,5 @@
 <div class="content_area">
-  <div class="content_wrap pb_100">
+  <div class="content_wrap">
     <div class="container">
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
@@ -8,9 +8,13 @@
             <div class="row">
               <div class="col-lg-6 row gy-4 grid-review-card">
                 <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
+
+                <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-half' do %>
+                  <%= image_tag("template/plus.svg") %><span>Add New</span>
+                <% end %>
               </div>
               <div data-controller="reviews-map" class="review-map row gy-4 col-lg-6">
-                <div id="reviewMap" data-reviews-map-target="mapDisplay"> </div>
+                <div id="reviewMap" data-reviews-map-target="mapDisplay"></div>
               </div>
             </div>
           <% else %>
@@ -29,10 +33,10 @@
     </div>
     <div class="my-5 d-flex justify-content-center">
       <% if current_user.reviews.count > reviews.count %>
-        <%= link_to "Load More", reviews_path(limit: limit+12), class: "btn btn-primary" %>
+        <%#= link_to "Load More", reviews_path(limit: limit+12), class: "btn btn-primary" %>
       <% else %>
         <% flash.notice = 'All the reviews has been showed' %>
-        <%= link_to "Load More", reviews_path(limit: limit), class: "btn btn-primary disabled", disabled: true %>
+        <%#= link_to "Load More", reviews_path(limit: limit), class: "btn btn-primary disabled", disabled: true %>
       <% end %>
     </div>
   </div>
