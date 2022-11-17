@@ -1,31 +1,31 @@
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <div class="public_review" data-controller="favourite" data-favourite-status-path-value="<%= review_update_status_path(@review) %>" >
+    <div class="public_review" data-controller="favourite" data-favourite-status-path-value="<%= review_update_status_path(review) %>" >
       <div class="mode-switch d-flex flex-row align-items-center">
-        <input type="checkbox" id="switch" <%= 'checked' if @review.shareable? %> data-favourite-target="publicStatus">
+        <input type="checkbox" id="switch" <%= 'checked' if review.shareable? %> data-favourite-target="publicStatus">
         <label for="switch" data-action="click->favourite#updateReviewStatus"></label>
       </div>
       <%= image_tag("template/users.svg", class: 'mr_5') %>
       <span>Public REVIEW</span>
     </div>
-    <h1><%= @review.name %></h1>
+    <h1><%= review.name %></h1>
     <ul class="show-list-group d-flex align-items-center">
-      <% if @review.cuisine.present? %>
+      <% if review.cuisine.present? %>
         <li>
-          <span class="show-subcategory"><%= @review.cuisine %></span>
+          <span class="show-subcategory"><%= review.cuisine %></span>
         </li>
       <% end %>
-      <% if @review.state.present? and @review.country.present? %>
+      <% if review.state.present? and review.country.present? %>
         <li>
-          <span class="review-show-detail"><%= "#{@review.state}, #{@review.country}" %></span>
+          <span class="review-show-detail"><%= "#{review.state}, #{review.country}" %></span>
         </li>
       <% end %>
-      <% if @review.date.present? %>
+      <% if review.date.present? %>
         <li>
-          <span class="review-show-detail"><%= @review.date.strftime("%b %e,%Y") %></span>
+          <span class="review-show-detail"><%= review.date.strftime("%b %e,%Y") %></span>
         </li>
       <% end %>
-      <% if @review.price_range.present? %>
+      <% if review.price_range.present? %>
         <li>
         <span class="d-block d-lg-inline-block">
         <% for count in 1..4 %>

@@ -35,7 +35,7 @@
 
       <div class="hero_header">
         <!--        render guest or owner or shared link header here d-->
-        <%= render owner ? "reviews/owner_show_header" : 'guests/guest_show_header', review_user: review_user %>
+        <%= render owner ? "reviews/owner_show_header" : 'guests/guest_show_header',review: review, review_user: review_user %>
 
         <!-- gallery-->
         <div class="row img_gallery g-3 d-none d-lg-flex">
