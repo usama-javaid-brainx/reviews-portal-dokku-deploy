@@ -1,0 +1,45 @@
+<div class="col-lg-3 col-md-6">
+  <div class="group-card">
+    <%= link_to group_path(group), class: "group-link" do %>
+      <% if group.reviews.pluck(:images).flatten.present? %>
+        <% if group.reviews.pluck(:images).flatten.count == 1 %>
+          <div class="col-12">
+            <img class="group-image" src=<%= group.reviews.pluck(:images).flatten.first %>>
+          </div>
+        <% elsif group.reviews.pluck(:images).flatten.count == 2 %>
+          <div class="two-image-thumbnail row gx-1">
+            <div class="col-6">
+              <img class="group-half-thumbnail" src=<%= group.reviews.pluck(:images).flatten.first %>>
+            </div>
+            <div class="col-6">
+              <img class="group-half-thumbnail" src=<%= group.reviews.pluck(:images).flatten.second %>>
+            </div>
+          </div>
+        <% else %>
+          <div class="three-image-thumbnail row gx-1">
+            <div class="col-8">
+              <img class="group-half-thumbnail" src=<%= group.reviews.pluck(:images).flatten.first %>>
+            </div>
+            <div class="col-4">
+              <div class="col-12 top mb-1">
+                <img class="group-quarter-thumbnail" src=<%= group.reviews.pluck(:images).flatten.second %>>
+              </div>
+              <div class="col-12 bottom">
+                <img class="group-quarter-thumbnail" src=<%= group.reviews.pluck(:images).flatten.third %>>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-12">
+          <%= image_tag("template/card-placeholder.svg", class: "group-image") %>
+        </div>
+      <% end %>
+      <h3 class="mx-2 mt-2"><%= group.name %></h3>
+      <span class="text mx-2"><%= group.reviews.count %> Folders</span>
+    <% end %>
+    <span class="group-pen-icon" data-groupId="<%= group.id %>" data-bs-toggle="modal" data-bs-target="#exampleModal" data-action="click->group#newRequest">
+      <%= image_tag("template/edit.svg") %>
+    </span>
+  </div>
+</div>

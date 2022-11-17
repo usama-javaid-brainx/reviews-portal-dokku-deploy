@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="<%= current_user.second_view ? "col-6" : "col-3" %>">
-        <%= link_to current_user.second_view ? homepage_path : root_path, class: 'logo' do %>
+        <%= link_to current_user.second_view ? homepage_path : reviews_path, class: 'logo' do %>
           <%= image_tag("template/fullsite-logo.svg", class: "d-lg-block d-none") %>
           <%= image_tag("template/smallsite-logo.svg", class: "d-lg-none d-block") %>
         <% end %>
@@ -53,11 +53,11 @@
               <li>
                 <%= link_to "All", params[:profile].present? ? users_index_path(category_id: 'all', profile: 'true') : reviews_path(category_id: 'all'), class: "icon" %>
               </li>
-              <% Category.all.each do |category| %>
+              <% @categories.each do |category| %>
                 <li>
                   <%= link_to reviews_path(category_id: category.id), class: "icon" do %>
                   <span class="icon">
-                    <!--      TODO will uncomment when S3 will configure-->
+<!--                          TODO will uncomment when S3 will configure-->
                     <%#= show_svg(category.icon) if category.icon.attached? %>
                     </span>
                     <%= category.name %>
@@ -94,6 +94,9 @@
               </li>
               <li class="cursor-pointer">
                 <%= link_to "My Profile", users_index_path(profile: 'true'), class: "dropdown-item" %>
+              </li>
+              <li class="cursor-pointer">
+                <%= link_to "Groups", groups_path, class: "dropdown-item" %>
               </li>
               <li class="cursor-pointer">
                 <%= link_to "Edit Account", edit_user_registration_path, class: "dropdown-item" %>

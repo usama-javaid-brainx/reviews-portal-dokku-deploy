@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     if @review.save
       FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name]) if params[:review][:city].present? && params[:review][:name].present?
-      redirect_to current_user.second_view? ? homepage_path : root_path, notice: "Review created successfully!"
+      redirect_to current_user.second_view? ? homepage_path : reviews_path, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
     if new_review.update(user_id: current_user.id, parent_id: existing_review.id, slug: "#{SecureRandom.base58(32)}#{Review.last.id + 1}", to_try: edit_review == 'true' ? new_review.to_try : true)
       redirect_to edit_review == 'true' ? edit_review_path(new_review) : review_path(new_review.slug)
     else
-      redirect_to root_path, notice: "Review didn't created successfully please try again"
+      redirect_to reviews_path, notice: "Review didn't created successfully please try again"
     end
   end
 
@@ -82,7 +82,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      redirect_to current_user.second_view? ? homepage_path : root_path, status: :see_other, notice: "Review deleted successfully!"
+      redirect_to current_user.second_view? ? homepage_path : reviews_path, status: :see_other, notice: "Review deleted successfully!"
     end
   end
 
@@ -95,8 +95,12 @@ class ReviewsController < ApplicationController
     Review.find_by(id: params[:review_id]).update(favourite: params[:favourite])
   end
 
+  def update_status
+    Review.find_by(slug: params[:review_id]).update(share: params[:shareable])
+  end
+
   def category_order
-    @ordered_categories = Category.all.order("name asc")
+    @ordered_categories = Category.all.order("position asc")
   end
 
   def get_score

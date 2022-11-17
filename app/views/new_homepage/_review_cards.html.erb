@@ -1,11 +1,17 @@
-<div class="content_area" data-simplebar>
+<div class="content_area">
   <div class="content_wrap pb_100">
     <div class="container mt_30">
       <div class="tab-content">
         <!--All grid card here -->
-        <div class="tab-pane fade show active" id="grid_layout1" role="tabpanel">
+        <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
           <div class="row g-5">
-            <%= render partial: 'new_homepage/single_review_card', collection: reviews, as: :review %>
+            <%= render partial: 'new_homepage/grid_single_review_card', collection: reviews, as: :review %>
+          </div>
+        </div>
+        <!--All list card here -->
+        <div class="tab-pane fade" id="listLayout" role="tabpanel" aria-labelledby="listLayout-tab">
+          <div class="row g-5">
+            <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
           </div>
         </div>
       </div>

@@ -152,7 +152,6 @@
         padding-bottom: 0;
     }
 
-
     .filter-bar span.select2 .selection .select2-selection__rendered {
         margin-top: 7px;
     }
@@ -166,7 +165,7 @@
     .review-card {
         height: 290px;
     }
-    
+
     .search-icon {
         right: 12px;
     }
@@ -177,6 +176,10 @@
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 6px;
+    }
+
+    .modal-xl {
+        --bs-modal-width: 100% !important;
     }
 
     .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
@@ -201,11 +204,7 @@
         margin-top: 5px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
-        margin-top: 2px;
-    }
-
-    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b, .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
         margin-top: 2px;
     }
 
@@ -223,11 +222,7 @@
         right: 5px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection__rendered {
-        margin-top: 0px;
-    }
-
-    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
+    .filter-bar span.select2 .selection .select2-selection__rendered, .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 0px;
     }
 
@@ -245,7 +240,7 @@
         margin: unset;
     }
 
-   .content_area {
+    .content_area {
         max-height: 100%;
     }
 
@@ -283,17 +278,25 @@
         height: 100%;
     }
 
-    .middle_nav .nav {
+    .middle-nav form {
+        width: 100%;
+    }
+
+    .filter-search-invert {
+        flex-direction: row-reverse;
+    }
+
+    .middle_nav .nav, .middle-nav .homepage-nav {
         width: 100%;
         display: flex;
         margin-top: 1.6rem;
     }
 
-    .middle_nav .nav li {
+    .middle_nav .nav li, .middle-nav .homepage-nav li {
         width: 25%;
     }
 
-    .middle_nav .nav li a {
+    .middle_nav .nav li a, .middle-nav .homepage-nav li a {
         justify-content: center;
         width: 100%;
     }
@@ -352,16 +355,12 @@
         right: 15px;
     }
 
-    .filter-bar span.select2 .selection .select2-selection__rendered {
+    .filter-bar span.select2 .selection .select2-selection__rendered, .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
         margin-top: 5px;
     }
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 3px;
-    }
-
-    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
-        margin-top: 5px;
     }
 
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -370,9 +369,85 @@
 }
 
 @media (max-width: 767px) {
+
     .save-changes {
         font-size: 14px;
         padding: 10px 20px;
+    }
+    .tags_list li {
+        margin-top: 5px;
+    }
+
+    .card_carousel .owl-dot {
+        width: 15%;
+    }
+
+    .save-changes {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .card_carousel .owl-dot {
+        width: 15%;
+    }
+
+    .review-card {
+        height: 405px;
+    }
+
+    .add_review_area input {
+        height: 5rem;
+        font-size: 16px;
+    }
+
+    .cuisine-group .select2-selection, .category-group .select2-selection {
+        height: 5rem;
+    }
+
+    .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
+        margin-top: 9px;
+        font-size: 1.6rem;
+    }
+
+    .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 12px !important;
+    }
+
+    .add_review_area textarea::placeholder,
+    .add_review_area input::placeholder {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .review_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .category_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .photo_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .localization_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .favourite_dishes_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .content_area {
+        margin-left: 1rem;
+        margin-right: 1rem;
     }
 
     .tags_list li {
@@ -539,7 +614,7 @@
     }
 
     .filter-bar .new-filter-button {
-        padding: 1rem 1.5rem 1rem 1.5rem;
+        padding: 0.9rem 1.5rem 1rem 1.5rem;
     }
 
     .search-input {
@@ -586,14 +661,12 @@
         background: #848496;
     }
 
-
     .review-card {
         height: 350px;
     }
 }
 
 @media (max-width: 420px) {
-
     .review-card {
         height: 325px;
     }
@@ -609,6 +682,7 @@
     .profile-pic-btn {
         margin-left: 5px !important;
     }
+
 }
 
 
