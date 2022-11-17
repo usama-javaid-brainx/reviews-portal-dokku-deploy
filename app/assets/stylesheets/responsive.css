@@ -166,8 +166,6 @@
         right: 12px;
     }
 
-
-
     .filter-bar span.select2 .selection .select2-selection__rendered {
         margin-top: 7px;
     }
@@ -176,12 +174,9 @@
         margin-top: 6px;
     }
 
-
     .modal-xl {
         --bs-modal-width: 100% !important;
     }
-
-
 
     .cuisine-group .select2-selection .select2-selection__rendered, .category-group .select2-selection .select2-selection__rendered {
         margin-top: 5px;
@@ -241,7 +236,7 @@
         margin: unset;
     }
 
-   .content_area {
+    .content_area {
         max-height: 100%;
     }
 
