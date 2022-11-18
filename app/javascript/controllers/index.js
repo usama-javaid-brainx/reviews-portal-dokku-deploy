@@ -54,3 +54,6 @@ application.register("reviews-map", ReviewsMapController)
 
 import ReviewCardItemController from "./review_card_item_controller.js"
 application.register("review-card-item", ReviewCardItemController)
+
+import MapViewController from "./map_view_controller.js"
+application.register("map-view", MapViewController)
