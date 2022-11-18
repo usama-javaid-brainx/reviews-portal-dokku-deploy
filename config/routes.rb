@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   patch :update_categories_status, to: 'categories#update_categories_status'
   get :homepage, to: 'reviews#homepage'
   get :edit_new, to: 'groups#edit_new'
-  get :show_map, to: 'reviews#show_map'
   get :create_review, to: 'guests#create_review'
   namespace :api do
     namespace :v1, defaults: { format: :json } do
