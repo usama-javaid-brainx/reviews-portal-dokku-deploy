@@ -107,11 +107,6 @@
     display: none;
 }
 
-
-img.small-thumb:hover + .delete-icon {
-    display: block;
-}
-
 .delete-icon:hover {
     display: block;
     cursor: pointer;

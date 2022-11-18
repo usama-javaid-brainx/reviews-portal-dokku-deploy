@@ -5,7 +5,7 @@ export default class extends Controller {
 
 
   static values = {
-    favouritePath: String,
+    likedPath: String,
     statusPath: String
   }
 
@@ -18,7 +18,7 @@ export default class extends Controller {
     let that = this
     $.ajax({
       type: "GET",
-      url: that.favouritePathValue,
+      url: this.likedPathValue,
       data: data,
       success() {
           window.location.reload();

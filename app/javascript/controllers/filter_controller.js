@@ -121,4 +121,20 @@ export default class extends Controller {
   sortDropdown() {
     this.filtersFormTarget.submit()
   }
+
+  showMap() {
+    let view = this.mapViewController
+    view.allReviewsTarget.classList.remove("col-lg-12")
+    view.allReviewsTarget.classList.add("grid-review-card", "col-lg-6")
+    view.mapViewTarget.classList.remove("d-none")
+    for (let i = 0; i < view.reviewCardTargets.length; i++) {
+      view.reviewCardTargets[i].classList.remove("col-lg-3")
+    }
+  }
+
+  get mapViewController() {
+    return this.application.controllers.find(controller => {
+      return controller.context.identifier === 'map-view'
+    })
+  }
 }
