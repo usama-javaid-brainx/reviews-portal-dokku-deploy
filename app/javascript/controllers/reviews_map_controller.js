@@ -16,7 +16,12 @@ export default class extends Controller {
 
     this.reviewCardItemControllers.forEach(controller => {
         let marker = controller.createMarker(map)
-          bounds.extend(marker.position);
+        var infoWindow = new google.maps.InfoWindow();
+        google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.setContent(marker.title);
+          infoWindow.open(map, this);
+        });
+        bounds.extend(marker.position);
       }
     )
   }

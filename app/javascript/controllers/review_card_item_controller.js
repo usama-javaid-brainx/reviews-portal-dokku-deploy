@@ -14,7 +14,6 @@ export default class extends Controller {
       map: map,
       title: this.nameValue,
     });
-
     return this.marker
   }
 
@@ -29,10 +28,5 @@ export default class extends Controller {
       this.marker.setAnimation(null);
     }
   }
-
-  popups(_event) {
-    const infoWindow = new google.maps.InfoWindow()
-    infoWindow.setContent(this.marker.title);
-    infoWindow.open(map, this.marker);
-  }
+  
 }
