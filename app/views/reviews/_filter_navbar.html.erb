@@ -43,8 +43,8 @@
             <span class="map-enable-btn d-none d-lg-flex">
               <%= image_tag("template/map.svg") %>
               <span class="text">Show Map</span>
-                <div data-action="click->filter#showMap" class="mode-switch d-flex flex-row align-items-center">
-                  <input type="checkbox" id="switch" data-filter-target="publicStatus">
+                <div class="mode-switch d-flex flex-row align-items-center">
+                  <input type="checkbox" id="switch" data-filter-target="publicStatus" data-action="change->filter#showMap">
                   <label for="switch"></label>
                 </div>
             </span>

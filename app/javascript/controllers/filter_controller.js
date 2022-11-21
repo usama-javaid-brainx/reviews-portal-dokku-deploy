@@ -101,13 +101,22 @@ export default class extends Controller {
     }
   }
 
-  showMap() {
+  showMap(event) {
     let view = this.mapViewController
-    view.allReviewsTarget.classList.remove("col-lg-12")
-    view.allReviewsTarget.classList.add("grid-review-card", "col-lg-6")
-    view.mapViewTarget.classList.remove("d-none")
-    for(let i = 0; i < view.reviewCardTargets.length; i++ ){
-      view.reviewCardTargets[i].classList.remove("col-lg-3")
+    if (event.currentTarget.checked) {
+      view.allReviewsTarget.classList.remove("col-lg-12")
+      view.allReviewsTarget.classList.add("grid-review-card", "col-lg-6")
+      view.mapViewTarget.classList.remove("d-none")
+      for (let i = 0; i < view.reviewCardTargets.length; i++) {
+        view.reviewCardTargets[i].classList.remove("col-lg-3")
+      }
+    } else {
+      view.allReviewsTarget.classList.add("col-lg-12")
+      view.allReviewsTarget.classList.remove("grid-review-card", "col-lg-6")
+      view.mapViewTarget.classList.add("d-none")
+      for (let i = 0; i < view.reviewCardTargets.length; i++) {
+        view.reviewCardTargets[i].classList.add("col-lg-3")
+      }
     }
   }
 
