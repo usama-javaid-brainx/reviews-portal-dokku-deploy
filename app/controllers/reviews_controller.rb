@@ -14,11 +14,15 @@ class ReviewsController < ApplicationController
 
   def index
     duplicate_review if session[:edit_review].present?
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def home_data
-    @limit = params[:limit].present? ? params[:limit].to_i : 12
-    @reviews = review_filter(current_user.reviews.limit(@limit))
+    reviews = review_filter(current_user.reviews)
+    @pagy, @reviews = pagy(reviews, items: 12)
     @addresses = locations(@reviews)
     @cuisine_presence = (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
   end
