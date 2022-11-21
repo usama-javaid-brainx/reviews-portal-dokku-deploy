@@ -10,6 +10,10 @@ class ReviewsController < ApplicationController
     else
       @curr_category = "all"
     end
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def index
@@ -22,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def home_data
     reviews = review_filter(current_user.reviews)
-    @pagy, @reviews = pagy(reviews, items: 12)
+    @pagy, @reviews = pagy_countless(reviews, items: 12)
     @addresses = locations(@reviews)
     @cuisine_presence = (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
   end
