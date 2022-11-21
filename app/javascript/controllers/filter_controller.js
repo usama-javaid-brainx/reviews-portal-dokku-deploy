@@ -122,15 +122,42 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
-  showMap() {
+  showMap(event) {
     let view = this.mapViewController
-    view.allReviewsTarget.classList.remove("col-lg-12")
-    view.allReviewsTarget.classList.add("grid-review-card", "col-lg-6")
-    view.mapViewTarget.classList.remove("d-none")
-    for (let i = 0; i < view.reviewCardTargets.length; i++) {
-      view.reviewCardTargets[i].classList.remove("col-lg-3")
+    if (event.currentTarget.checked) {
+      this.mapOn(view)
+    } else {
+      this.mapOff(view)
     }
   }
+
+  mapOn(view) {
+    for (let i = 0; i < view.allReviewsTargets.length; i++) {
+      view.allReviewsTargets[i].classList.remove("col-lg-12")
+      view.allReviewsTargets[i].classList.add("grid-review-card", "col-lg-6")
+      view.mapViewTargets[i].classList.remove("d-none")
+    }
+    for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
+      if (view.hasListReviewCardTarget) {
+        view.listReviewCardTargets[i].classList.remove("col-lg-12")
+      }
+        view.gridReviewCardTargets[i].classList.remove("col-lg-3")
+      }
+    }
+
+  mapOff(view) {
+    for (let i = 0; i < view.allReviewsTargets.length; i++) {
+      view.allReviewsTargets[i].classList.add("col-lg-12")
+      view.allReviewsTargets[i].classList.remove("grid-review-card", "col-lg-6")
+      view.mapViewTargets[i].classList.add("d-none")
+    }
+    for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
+      if (view.hasListReviewCardTarget) {
+        view.listReviewCardTargets[i].classList.add("col-lg-12")
+      }
+        view.gridReviewCardTargets[i].classList.add("col-lg-3")
+      }
+    }
 
   get mapViewController() {
     return this.application.controllers.find(controller => {

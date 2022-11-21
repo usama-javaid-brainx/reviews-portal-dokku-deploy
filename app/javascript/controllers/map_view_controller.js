@@ -1,6 +1,6 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["allReviews", "reviewCard", "mapView"]
+  static targets = ["allReviews", "gridReviewCard", "listReviewCard" ,"mapView"]
 
 }
