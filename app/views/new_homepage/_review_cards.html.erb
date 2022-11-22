@@ -4,33 +4,19 @@
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
-          <div class="row">
+          <div class="row g-5" id="groups-reviews">
             <div data-map-view-target="allReviews" class="col-lg-12 row gy-4">
               <%= render partial: 'new_homepage/grid_single_review_card', collection: reviews, as: :review %>
             </div>
-            <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map row gy-4 col-lg-6">
-              <div id="reviewMap" data-reviews-map-target="mapDisplay"></div>
-            </div>
+          </div>
+          <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map row gy-4 col-lg-6">
+            <div id="reviewMap" data-reviews-map-target="mapDisplay"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="my-5 d-flex justify-content-center">
-      <% if params[:controller] == "reviews" %>
-        <% if current_user.reviews.count <= @reviews.count %>
-          <% flash.notice = 'All the reviews has been showed' %>
-          <%= link_to "Load More", homepage_path(limit: @limit), class: "btn btn-primary disabled", :disabled => true %>
-        <% else %>
-          <%= link_to "Load More", homepage_path(limit: @limit += 12), class: "btn btn-primary" %>
-        <% end %>
-      <% elsif params[:controller] == "groups" %>
-        <% if current_user.groups.find(params[:id]).reviews.count <= @reviews.count %>
-          <% flash.notice = 'All the reviews has been showed' %>
-          <%= link_to "Load More", group_path(id: params[:id], limit: @limit), class: "btn btn-primary disabled", :disabled => true %>
-        <% else %>
-          <%= link_to "Load More", group_path(id: params[:id], limit: @limit += 12), class: "btn btn-primary" %>
-        <% end %>
-      <% end %>
+    <div class="my-5 d-flex justify-content-center" id="next_link">
+      <%= button_to "Load More", pagy_url_for(@pagy, @pagy.next), class: "btn btn-primary" %>
     </div>
   </div>
 </div>

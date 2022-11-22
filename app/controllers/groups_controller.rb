@@ -5,8 +5,12 @@ class GroupsController < ApplicationController
 
   def show
     @group = current_user.groups.find(params[:id])
-    @limit = params[:limit].present? ? params[:limit].to_i : 12
-    @reviews = current_user.groups.find(params[:id]).reviews.limit(@limit)
+    reviews = current_user.groups.find(params[:id]).reviews
+    @pagy, @reviews = pagy_countless(reviews, items: 12)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def edit_new

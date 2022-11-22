@@ -7,14 +7,21 @@ Rails.application.routes.draw do
   resources :guests, only: [:show]
   resources :categories, only: :index
   resources :requests, only: :create
+
+  post '/', to: "reviews#index"
+
   resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
+    post :index, on: :collection
     get :update_status
   end
+
   scope :users do
-    resources :groups, only: [:index, :create, :update, :destroy, :show]
+    resources :groups, only: [:index, :create, :update, :destroy, :show] do
+      post :show, on: :member
+    end
   end
   get 'groups/search'
   get 'users/index'
@@ -28,10 +35,16 @@ Rails.application.routes.draw do
   get :edit_new, to: 'groups#edit_new'
   get :create_review, to: 'guests#create_review'
   get :show_map, to: 'reviews#show_map'
-
+  post :homepage, to: 'reviews#homepage'
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       resources :reviews, only: :create
     end
+  end
+  resources :homepage do
+    collection do
+      post :homepage, to: 'reviews#homepage'
+    end
+
   end
 end

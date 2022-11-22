@@ -210,7 +210,7 @@
       </div>
       <div class="col-lg-4" data-controller="map" data-map-location-value="<%= @review.name %>, <%= @review.city %>, <%= @review.state %>, <%= @review.country %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>"><!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
-          <div class="d-none" data-foursquareUrl="<%= @review.foursquare_url %>" data-map-target="score">
+          <div class="d-none" data-foursquare-url="<%= @review.foursquare_url %>" data-map-target="score">
             <h3 class="pb_10">Score</h3>
             <div class="review_wrap pb_30">
               <!--              TODO: its in testing phase from client side-->

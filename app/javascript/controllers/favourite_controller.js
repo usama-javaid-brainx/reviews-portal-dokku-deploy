@@ -3,7 +3,6 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ['publicStatus']
 
-
   static values = {
     likedPath: String,
     statusPath: String
@@ -14,7 +13,7 @@ export default class extends Controller {
     this.request(`favourite=${favouriteReview.hasClass('checked')}`)
   }
 
-  request(data, favouriteBtn) {
+  request(data) {
     let that = this
     $.ajax({
       type: "GET",
