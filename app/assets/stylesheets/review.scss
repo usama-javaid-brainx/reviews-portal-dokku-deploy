@@ -1,0 +1,24 @@
+.dropdown-filter-wrapper {
+  .select2-container {
+    width: unset !important;
+
+    .select2-selection {
+      height: 4rem;
+      padding-left: 8px;
+      display: flex;
+      align-items: center;
+
+      .select2-selection__arrow {
+        position: unset;
+
+        b {
+          margin-left: 35%;
+        }
+      }
+    }
+
+    .select2-selection {
+      border-color: #EDEDFB;
+    }
+  }
+}

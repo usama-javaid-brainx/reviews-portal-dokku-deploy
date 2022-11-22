@@ -10,12 +10,16 @@
             <% end %>
           </div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.to_try? %>
+          <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
+        <% end %>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.to_try? %>
+          <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
+        <% end %>
       <% end %>
     </div>
     <div class="card-body">
@@ -26,7 +30,9 @@
             <span><%= review.average_score %></span>
           </p>
         <% else %>
-          <span class="second-view-review-btn"><%= review.to_try ? "Wishlist" : "Review" %> </span>
+          <% unless review.to_try? %>
+            <span class="second-view-review-btn">Review</span>
+          <% end %>
         <% end %>
       </div>
 
