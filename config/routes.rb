@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get :update_status
   end
   scope :users do
-    resources :groups, only: [:index, :create, :update, :destroy, :show]
+    resources :groups, only: [:index, :create, :update, :destroy, :show] do
+      post :show, on: :member
+    end
   end
   get 'groups/search'
   get 'users/index'

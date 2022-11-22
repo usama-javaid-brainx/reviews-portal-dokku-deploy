@@ -1,5 +1,6 @@
-<%= turbo_stream.append("reviews") do %>
-  <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
+<% debugger %>
+<%= turbo_stream.append("group-reviews") do %>
+  <%= render partial: 'shared/list_review_card', collection: @reviews, as: :review %>
 <% end %>
 <!-- add Button -->
 

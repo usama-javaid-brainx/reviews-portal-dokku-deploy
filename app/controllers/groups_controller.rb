@@ -7,6 +7,10 @@ class GroupsController < ApplicationController
     @group = current_user.groups.find(params[:id])
     reviews = current_user.groups.find(params[:id]).reviews
     @pagy, @reviews = pagy_countless(reviews, items: 12)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def edit_new
