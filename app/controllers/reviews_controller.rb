@@ -100,7 +100,6 @@ class ReviewsController < ApplicationController
   end
 
   def show_map
-
   end
 
   def category_order
