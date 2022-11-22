@@ -5,7 +5,7 @@
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
           <div class="row g-5" id="groups-reviews">
-            <div data-map-view-target="allReviews" class="col-lg-12 row gy-4">
+            <div data-map-view-target="allReviews" class="col-lg-12 row g-5">
               <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
             </div>
             <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map row gy-4 col-lg-6">
