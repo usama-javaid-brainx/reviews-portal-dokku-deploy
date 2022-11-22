@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input"]
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown']
 
   connect() {
     this.filterCount = 0
@@ -9,6 +9,19 @@ export default class extends Controller {
     this.filters = [];
     this.location = [];
     this.appliedFilters()
+    if (this.hasSortReviewsTarget) {
+      $(this.sortReviewsTarget).select2({
+        minimumResultsForSearch: Infinity,
+        dropdownParent: $("#filterModal")
+      });
+      $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
+    }
+    if (this.hasSortDropdownTarget) {
+      $(this.sortDropdownTarget).select2({
+        minimumResultsForSearch: Infinity
+      })
+      $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+    }
   }
 
   selectLocation(event) {
@@ -101,6 +114,14 @@ export default class extends Controller {
     }
   }
 
+  reviewSort() {
+    this.scoreFilterTarget.value = this.sortReviewsTarget.value
+  }
+
+  sortDropdown() {
+    this.filtersFormTarget.submit()
+  }
+
   showMap(event) {
     let view = this.mapViewController
     if (event.currentTarget.checked) {
@@ -117,9 +138,10 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.remove("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
+      if (view.hasListReviewCardTarget) {
+        view.listReviewCardTargets[i].classList.remove("col-lg-12")
+      }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
-      view.listReviewCardTargets[i].classList.remove("col-lg-12")
-
     }
   }
 
@@ -130,9 +152,10 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.add("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
+      if (view.hasListReviewCardTarget) {
+        view.listReviewCardTargets[i].classList.add("col-lg-12")
+      }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
-      view.listReviewCardTargets[i].classList.add("col-lg-12")
-
     }
   }
 
