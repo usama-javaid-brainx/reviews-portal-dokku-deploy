@@ -2,5 +2,5 @@
   <%= render "shared/profile_image" %>
   <span class="user-name d-flex justify-content-center profile-name mt-3"><%= current_user.first_name.titleize %></span>
   <%= render "filter_navbar", reviews: @reviews, cuisines: @cuisines, tags: @tags %>
-  <%= render "reviews/review_cards", reviews: @reviews %>
+  <%= render "reviews/review_cards", reviews: @reviews, pagy: @pagy %>
 </main>

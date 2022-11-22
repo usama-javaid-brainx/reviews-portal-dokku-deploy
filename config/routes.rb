@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'users/remove_avatar'
   get 'users/delete_user'
   get 'users/settings'
+  post 'users/index', to: "users#index"
   post 'upload', to: 'file_uploads#upload'
   patch :update_categories_status, to: 'categories#update_categories_status'
   get :homepage, to: 'reviews#homepage'
@@ -41,10 +42,5 @@ Rails.application.routes.draw do
       resources :reviews, only: :create
     end
   end
-  resources :homepage do
-    collection do
-      post :homepage, to: 'reviews#homepage'
-    end
 
-  end
 end
