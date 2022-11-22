@@ -32,14 +32,16 @@
 #
 class Review < ApplicationRecord
   include Discard::Model
-  before_save :generate_slug, if: -> { slug.blank? }
-
   default_scope -> { kept }
+
+  before_save :generate_slug, if: -> { slug.blank? }
+  scope :all_except, ->(review) { where.not(id: review) }
 
   attr_accessor :images_input
   store_accessor :images, []
 
   belongs_to :user
+  has_and_belongs_to_many :groups
   belongs_to :category
   has_many :meals, dependent: :destroy
 
@@ -52,8 +54,7 @@ class Review < ApplicationRecord
     "http://maps.google.com/?q=#{latitude},#{longitude}"
   end
 
-
   def generate_slug
-    self.slug = "#{SecureRandom.base58(32)}#{Review.last.present? ? Review.last.id+1 : 0}"
+    self.slug = "#{SecureRandom.base58(32)}#{Review.last.present? ? Review.last.id + 1 : 1}"
   end
 end

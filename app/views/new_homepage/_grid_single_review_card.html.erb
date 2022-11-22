@@ -1,7 +1,7 @@
 <!-- single card -->
-<div class="col-lg-3 col-md-6">
+<div class="col-lg-3 col-md-6 card-load">
   <div class="card review-card">
-    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-favourite-path-value="<%= review_update_favourite_path(review) %>">
+    <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <% if review.images.present? %>
         <%= link_to review_path((review.slug)) do %>
           <div class="owl-carousel owl-theme card_carousel">
@@ -10,12 +10,16 @@
             <% end %>
           </div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.to_try? %>
+          <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
+        <% end %>
       <% else %>
         <%= link_to review_path((review.slug)) do %>
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+        <% if review.to_try? %>
+          <span class="favourite checked"><%= image_tag("template/fill-heart.svg") %></span>
+        <% end %>
       <% end %>
     </div>
     <div class="card-body">
@@ -26,7 +30,9 @@
             <span><%= review.average_score %></span>
           </p>
         <% else %>
-          <span class="second-view-review-btn"><%= review.to_try ? "Wishlist" : "Review" %> </span>
+          <% unless review.to_try? %>
+            <span class="second-view-review-btn">Review</span>
+          <% end %>
         <% end %>
       </div>
 

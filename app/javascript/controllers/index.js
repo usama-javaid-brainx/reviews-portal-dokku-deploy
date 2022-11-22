@@ -45,3 +45,6 @@ application.register("guest", GuestController)
 
 import MapController from "./map_controller.js"
 application.register("map", MapController)
+
+import GroupController from "./group_controller.js"
+application.register("group", GroupController)

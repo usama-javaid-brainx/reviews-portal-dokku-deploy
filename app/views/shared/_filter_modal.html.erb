@@ -1,12 +1,24 @@
 <!--filter modal-->
 <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header" style="height: 72px; padding: 20px 24px;">
         <h5 class="modal-title filter-h" id="filterModalLabel">Filters</h5>
         <span type="button" class="filter-close" data-bs-dismiss="modal" aria-label="Close">x</span>
       </div>
       <div class="modal-body" style="background: #FBFBFE;">
+        <% if current_user.second_view.present? %>
+          <div class="card cuisine-card-h mb-5">
+            <div class="d-flex justify-content-between p-4">
+              <span class="cuisine-font cuisine-h">Sort</span>
+            </div>
+            <div class="tag-card-h overflow-auto pb-3">
+              <%= f.hidden_field :score, value: params[:score], 'data-filter-target': "scoreFilter" %>
+              <%= select_tag :score, options_for_select([["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], params[:score]), data: { "filter-target": "sortReviews" } %>
+            </div>
+          </div>
+        <% end %>
+
         <% if @cuisine_presence %>
           <div class="card cuisine-card-h">
             <div class="d-flex justify-content-between p-4">

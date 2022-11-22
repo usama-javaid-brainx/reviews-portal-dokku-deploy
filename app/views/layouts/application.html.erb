@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= favicon_link_tag asset_path('favicon.png') %>
+  <%= favicon_link_tag 'favicon.png', rel: 'apple-touch-icon', type: 'image/png' %>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -29,7 +29,8 @@
 </div>
 <!-- Preloader End -->
 
-<% if user_signed_in? %> <%= render "shared/header" %>
+<% if user_signed_in? %>
+  <%= render "shared/header" %>
 <% end %>
 
 <%= render 'shared/flash_messages' %>
@@ -41,6 +42,7 @@
     if (!longEl) {
       return
     }
+
     let long = document.getElementById("long").getAttribute("data-longitude");
     let lati = document.getElementById("lat").getAttribute("data-latitude");
     lati = parseFloat(lati);
@@ -65,7 +67,6 @@
     source: 'snippet'
   };
 </script>
-
 <script>
   !function (e, r, a) {
     if (!e.__Marker) {

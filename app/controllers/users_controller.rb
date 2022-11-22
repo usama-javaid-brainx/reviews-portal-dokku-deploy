@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
   def index
-    reviews = review_filter(current_user.reviews.kept)
-    @pagy, @reviews = pagy(reviews, items: 12)
+    @limit = params[:limit].present? ? params[:limit].to_i : 12
+    @reviews = review_filter(current_user.reviews.limit(@limit).kept)
   end
 
   def update
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       if current_user.second_view?
         redirect_to homepage_path
       else
-        redirect_to root_path
+        redirect_to reviews_path
       end
     end
   end
@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :avatar)
+    params.require(:user).permit(:first_name, :avatar, :phone_number)
   end
 end
+
