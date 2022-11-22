@@ -21,9 +21,7 @@ Rails.application.routes.draw do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
-    collection do
-      post :index
-    end
+    post :index, on: :collection
   end
 
   post 'upload', to: 'file_uploads#upload'
