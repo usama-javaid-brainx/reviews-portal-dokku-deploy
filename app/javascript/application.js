@@ -1,4 +1,3 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "./controllers"
 import './src/jquery'
@@ -22,6 +21,7 @@ document.addEventListener('turbo:load', () => {
     pswpModule: () => PhotoSwipe
   });
   lightbox.init();
+  console.log("Turbo:Loaded")
 })
 
 window.markerConfig = {

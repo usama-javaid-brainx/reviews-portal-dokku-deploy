@@ -1,8 +1,9 @@
 <main class="overflow-hidden">
   <%= render "filter_navbar", addresses: @addresses, reviews: @reviews, cuisines: @cuisines, tags: @tags %>
-  <%= render "review_cards", reviews: @reviews, limit: @limit %>
+  <%= render "review_cards", reviews: @reviews, pagy: @pagy %>
   <!-- add Button -->
   <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'addNew' do %>
     <%= image_tag("template/plus.svg") %><span>Add New</span>
   <% end %>
 </main>
+
