@@ -1,0 +1,10 @@
+<%= turbo_stream.append("reviews") do %>
+  <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
+<% end %>
+<!-- add Button -->
+
+<%= turbo_stream.update "next_link" do %>
+  <% if @pagy.next.present? %>
+    <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: "btn btn-primary" %>
+  <% end %>
+<% end %>

@@ -31,4 +31,10 @@ Rails.application.routes.draw do
       resources :reviews, only: :create
     end
   end
+  resources :homepage do
+    collection do
+      post :homepage, to: 'reviews#homepage'
+    end
+
+  end
 end
