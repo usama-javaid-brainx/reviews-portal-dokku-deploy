@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:update]
 
   def index
-    @limit = params[:limit].present? ? params[:limit].to_i : 12
-    @reviews = review_filter(current_user.reviews.limit(@limit).kept)
+    reviews = review_filter(current_user.reviews.kept)
+    @pagy , @reviews = pagy_countless(reviews, items: 12)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def update

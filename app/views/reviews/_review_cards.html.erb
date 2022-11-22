@@ -17,7 +17,9 @@
       </div>
     </div>
     <div class="my-5 d-flex justify-content-center" id="next_link">
-      <%= button_to "Load More", pagy_url_for(@pagy, @pagy.next), class: "btn btn-primary" %>
+      <% if pagy.next.present? %>
+        <%= button_to "Load More", pagy_url_for(pagy, pagy.next), class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
