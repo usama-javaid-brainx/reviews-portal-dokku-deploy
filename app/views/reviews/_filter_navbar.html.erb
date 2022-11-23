@@ -39,10 +39,15 @@
                 </a>
               </li>
             </ul>
-            <!--TODO: map_enable_btn -->
-            <a class="map_enable_btn" href="#"><%= image_tag("template/map.svg") %>
-              <span class="text">Show Map</span><span class="switch"></span>
-            </a>
+            <!-- map_enable_btn -->
+            <span class="map-enable-btn d-none d-lg-flex">
+              <%= image_tag("template/map.svg") %>
+              <span class="text">Show Map</span>
+                <div class="mode-switch d-flex flex-row align-items-center">
+                  <input type="checkbox" id="switch" data-filter-target="publicStatus" data-action="change->filter#showMap">
+                  <label for="switch"></label>
+                </div>
+            </span>
           </div>
         </div>
       </div>

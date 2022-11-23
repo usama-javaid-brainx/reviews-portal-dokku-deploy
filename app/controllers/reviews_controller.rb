@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :home_data, only: [:homepage, :index]
+  before_action :home_data, only: [:homepage, :index, :show_map]
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
@@ -105,6 +105,9 @@ class ReviewsController < ApplicationController
 
   def update_status
     Review.find_by(slug: params[:review_id]).update(share: params[:shareable])
+  end
+
+  def show_map
   end
 
   def category_order
