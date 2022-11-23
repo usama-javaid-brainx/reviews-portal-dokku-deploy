@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     reviews = review_filter(current_user.reviews.kept)
-    @pagy, @reviews = pagy(reviews, items: 12)
+    @pagy, @reviews = pagy_countless(reviews)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def update
@@ -52,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = current_user
   end
