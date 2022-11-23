@@ -74,7 +74,7 @@
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
               <span class="header-img user-img-wrapper">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar_placeholder.jpg") %>
                         </span>
               <%= image_tag("template/bottom-arrow1.png", class: 'arrow') %>
             </a>
@@ -83,7 +83,7 @@
                 <div class="dropdown-item p-3">
                   <div class="d-flex ">
                       <span class="col-2 user-img-wrapper dropdown-img">
-                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatarplaceholder.jpg") %>
+                      <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar_placeholder.jpg") %>
                         </span>
                     <div class="d-inline dropdown-info">
                       <span class="d-block user-name"><%= current_user.first_name.titleize %></span>

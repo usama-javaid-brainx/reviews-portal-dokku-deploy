@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get 'users/remove_avatar'
   get 'users/delete_user'
   get 'users/settings'
+  patch 'users/update'
   post 'users/index', to: "users#index"
   post 'upload', to: 'file_uploads#upload'
   patch :update_categories_status, to: 'categories#update_categories_status'
