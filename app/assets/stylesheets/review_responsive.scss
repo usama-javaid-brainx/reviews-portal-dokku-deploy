@@ -1,0 +1,20 @@
+@media (max-width: 991px) {
+  .dropdown-filter-wrapper {
+    .select2-container {
+      width: 100% !important;
+      margin-top: 14px;
+
+      .select2-selection {
+        justify-content: center;
+
+        .select2-selection__arrow {
+          position: unset;
+
+          b {
+            margin-left: 6%;
+          }
+        }
+      }
+    }
+  }
+}

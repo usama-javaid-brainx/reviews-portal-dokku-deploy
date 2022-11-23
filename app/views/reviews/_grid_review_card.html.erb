@@ -1,5 +1,5 @@
 <!-- single card -->
-<div class="col-lg-3 col-md-6 card-load">
+<div class="col-lg-3 col-md-6 card-load" data-map-view-target="gridReviewCard" data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>">
   <div class="card review-card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <%= link_to review_path(review.slug) do %>
@@ -14,6 +14,7 @@
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
       <% end %>
+      <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
     </div>
     <div class="card-body">
       <div class="top">

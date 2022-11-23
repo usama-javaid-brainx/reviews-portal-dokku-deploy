@@ -1,13 +1,16 @@
 class GroupsController < ApplicationController
   def index
-    groups = current_user.groups
-    @pagy, @groups = pagy(groups, items: 12)
+    @groups = current_user.groups.all
   end
 
   def show
     @group = current_user.groups.find(params[:id])
-    reviews = @group.reviews
-    @pagy, @reviews = pagy(reviews, items: 12)
+    reviews = current_user.groups.find(params[:id]).reviews
+    @pagy, @reviews = pagy_countless(reviews)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def edit_new

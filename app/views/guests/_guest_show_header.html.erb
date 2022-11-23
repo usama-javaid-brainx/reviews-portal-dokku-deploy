@@ -1,27 +1,7 @@
 <% session[:review_id] = review.slug %>
 <div class="row align-items-end pb_50">
   <div class="col-lg-6">
-    <h1><%= review.name %></h1>
-    <% if review.cuisine.present? %>
-      <span class="show-subcategory"><%= review.cuisine %></span>
-      .
-    <% end %>
-    <% if review.state.present? and review.country.present? %>
-      <span class="review-show-detail"><%="#{review.state}, #{review.country}"%></span>
-    <% end %>
-    <% if review.date.present? %>
-      .
-      <span class="review-show-detail"><%= review.date.strftime("%b %e,%Y") %></span>
-    <% end %>
-    <% if review.price_range.present? %>
-      <span class="d-none d-lg-inline-block">.</span>
-      <span class="d-block d-lg-inline-block">
-        <% for count in 1..4 %>
-          <span class="price-sz pe-none show-price <%= ('text-white bg-price' if review.price_range >= count) %>">$</span>
-        <% end %>
-      </span>
-    <% end %>
-    </ul>
+    <%= render "shared/show_header_title", review: review %>
   </div>
   <div class="col-lg-6 text-end d-none d-lg-block">
     <div class="d-flex align-items-center justify-content-end avatar">
@@ -40,13 +20,12 @@
     </div>
     <div>
       <!--      ToDo requerement did't clear yet-->
-      <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
+      <%= link_to review.to_try ? '#' : create_review_path(edit_review: false), class: "btn white" do %>
         <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
       <%= link_to "Write Your Review", create_review_path(edit_review: true), class: 'btn' %>
     </div>
   </div>
-
   <!-- for mobile -->
   <div class="col-12 d-lg-none">
     <div class="d-flex justify-content-between align-items-center pt_30">
@@ -56,7 +35,7 @@
         </span>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
-          <p class="name"><%= User.find_by(id: review.user_id).first_name %> <%= User.find_by(id: review.user_id).last_name %></p>
+          <p class="name"><%= User.find_by(id: review.user_id).first_name %></p>
         </div>
       </div>
       <% if review.average_score.present? %>
@@ -68,7 +47,7 @@
     </div>
     <div class="d-flex justify-content-between pt_30">
       <!--      todo-->
-      <%= link_to review.to_try ? '#' : guests_create_review_path(edit_review: false), class: "btn white" do %>
+      <%= link_to review.to_try ? '#' : create_review_path(edit_review: false), class: "btn white" do %>
         <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>
       <%= link_to "Write Your Review", create_review_path(edit_review: true), class: 'btn' %>
