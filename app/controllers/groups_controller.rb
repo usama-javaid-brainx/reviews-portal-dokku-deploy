@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   def show
     @group = current_user.groups.find(params[:id])
     reviews = current_user.groups.find(params[:id]).reviews
-    @pagy, @reviews = pagy_countless(reviews, items: 12)
+    @pagy, @reviews = pagy_countless(reviews)
     respond_to do |format|
       format.html
       format.turbo_stream

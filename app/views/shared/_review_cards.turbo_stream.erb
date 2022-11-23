@@ -1,0 +1,13 @@
+<%= turbo_stream.append("groups-reviews") do %>
+  <% if params[:action] == "homepage" || params[:controller] == "groups" %>
+    <%= render partial: 'new_homepage/grid_single_review_card', collection: @reviews, as: :review %>
+  <% else %>
+    <%= render partial: 'reviews/grid_review_card', collection: @reviews, as: :review %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update "next_link" do %>
+  <% if @pagy.next.present? %>
+    <%= button_to "Load More", pagy_url_for(@pagy, @pagy.next), class: "btn btn-primary" %>
+  <% end %>
+<% end %>
