@@ -40,7 +40,7 @@
         </div>
         <div class="col-lg-4 mt-5 d-block d-lg-none">
           <div class="col-11 mx-auto category-dropdown" data-controller="category">
-            <%= select_tag :category_id, options_from_collection_for_select(@ordered_categories, "id", "name", selected: @curr_category == "all" ? "all" : @curr_category.id),id: "category-id-mobile", data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
+            <%= select_tag :category_id, options_from_collection_for_select(ordered_categories, "id", "name", selected: curr_category == "all" ? "all" : curr_category.id), id: "category-id-mobile", data: { "action": "change->category#categorySelect", "category-target": "category" }, include_blank: "All" %>
           </div>
         </div>
         <div class="col-lg-4 text-end small-add-new-btn">

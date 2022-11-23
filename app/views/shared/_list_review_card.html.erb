@@ -31,7 +31,7 @@
             <li><%= review.city %></li>
           <% end %>
           <% if review.state.present? and review.country.present? %>
-            <li><%= review.state %> <%= ',' + review.country %></li>
+            <li><%= "#{review.state}, #{ review.country}"%></li>
           <% end %>
           <% if !review.city.present? and !review.country.present? and review.date? %>
             <li>
@@ -39,8 +39,10 @@
             </li>
           <% end %>
           <li class="ml-1">
-            <% for count in 1..4 %>
-              <span class="price-sz pe-none <%= ('text-white bg-price' if review.price_range >= count) if review.price_range.present? %>">$</span>
+            <% if review.price_range.present? %>
+              <% for count in 1..4 %>
+                <span class="price-sz pe-none <%= ('text-white bg-price' if review.price_range >= count) %>">$</span>
+              <% end %>
             <% end %>
           </li>
         </ul>
