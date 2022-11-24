@@ -2,7 +2,7 @@
   <div class="col-sm-4 col-sm-offset-4">
     <h2 class="text-center">Resend confirmation instructions</h2>
 
-    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <%= form_for(resource, as: resource_name, html: {'data-turbo' => "false"}, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-group">

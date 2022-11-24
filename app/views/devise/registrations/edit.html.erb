@@ -1,11 +1,10 @@
 <div class="container" data-controller="user-validation">
   <div class="row justify-content-center mb-5">
     <div class="col-lg-6">
-      <%= form_for(resource, as: resource_name, url: users_update_path, html: { method: :patch }) do |f| %>
+      <%= form_for(resource, as: resource_name, url: users_update_path, html: { method: :patch, "data-turbo" => "false" }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="review_area" id="review_area">
           <div class="tabs_content_wrap">
-
             <div class="row align-items-center form_group  mb-4 mb-sm-5">
               <div class="edit-heading">Profile Photo</div>
               <div class="d-flex mt-5">
@@ -33,7 +32,7 @@
               </div>
               <div class="row align-items-center form_group  mb-4 mb-sm-5">
                 <%= f.label :phone_number, "Phone Number", class: 'col-lg-5 edit-label' %>
-                <%= f.telephone_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number", "data-user-validation-target":"inputValue", "data-action": "input->user-validation#formatNumber" %>
+                <%= f.telephone_field :phone_number, class: "col-lg-7 edit-text-field", placeholder: "Phone Number", "data-user-validation-target": "inputValue", "data-action": "input->user-validation#formatNumber" %>
                 <p class="note-text col-lg-7">
                   <span>*</span> By adding your phone number you can text a url to
                   <span>+1 (914) 266 8355</span> to create a wishlist item
