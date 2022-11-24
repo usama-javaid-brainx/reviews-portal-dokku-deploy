@@ -141,8 +141,8 @@ export default class extends Controller {
       if (view.hasListReviewCardTarget) {
         view.listReviewCardTargets[i].classList.remove("col-lg-12")
       }
-        view.gridReviewCardTargets[i].classList.remove("col-lg-3")
-      }
+      view.gridReviewCardTargets[i].classList.remove("col-lg-3")
+    }
     }
 
   mapOff(view) {

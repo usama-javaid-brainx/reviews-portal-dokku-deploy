@@ -31,7 +31,7 @@
           <li><%= review.city %></li>
         <% end %>
         <% if review.state.present? and review.country.present? %>
-          <li><%= review.state+', ' + review.country %></li>
+          <li><%= "#{review.state}, #{ review.country}"%></li>
         <% end %>
         <% if !review.city.present? and !review.country.present? and review.date? %>
           <li>

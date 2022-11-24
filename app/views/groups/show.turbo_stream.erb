@@ -1,9 +1,1 @@
-<%= turbo_stream.append("groups-reviews") do %>
-  <%= render partial: 'new_homepage/grid_single_review_card', collection: @reviews, as: :review %>
-<% end %>
-
-<%= turbo_stream.update "next_link" do %>
-  <% if @pagy.next.present? %>
-    <%= button_to "next", pagy_url_for(@pagy, @pagy.next), class: "btn btn-primary" %>
-  <% end %>
-<% end %>
+<%= render 'shared/review_cards', reviews: @reviews, pagy: @pagy %>
