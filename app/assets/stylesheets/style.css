@@ -537,7 +537,7 @@ header {
 
 .middle_nav .nav li a:hover,
 .middle_nav .nav li a.active:hover {
-    background: #6E3EF7;
+    background: #6E3EF7 !important;
     color: #FFFFFF;
     border-color: #6E3EF7;
 }
@@ -2240,7 +2240,6 @@ h3.review-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0px;
 }
 
 .state-name {
