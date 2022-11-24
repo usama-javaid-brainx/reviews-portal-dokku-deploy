@@ -16,12 +16,12 @@
           </div>
           <div class="col-lg-4 d-flex justify-content-around">
             <ul class="nav">
-              <%= f.hidden_field :to_try, :value => "#{params[:to_try]}" %>
-              <%= f.hidden_field :category_id, :value => "#{params[:category_id]}" %>
-              <li><%= link_to 'All', reviews_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "to-try-all #{'middle-filter-active' if params[:to_try] == 'all' || params[:to_try].blank?}" %></li>
+              <%= f.hidden_field :to_try, :value => params[:to_try] %>
+              <%= f.hidden_field :category_id, :value => params[:category_id] %>
+              <li><%= link_to 'All', reviews_path(to_try: 'all', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "rounded-start to-try-all #{'middle-filter-active' if params[:to_try] == 'all' || params[:to_try].blank?}" %></li>
               <li><%= link_to 'Reviews', reviews_path(to_try: false, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'middle-filter-active' if params[:to_try] == 'false'}" %></li>
               <li><%= link_to 'Wishlist', reviews_path(to_try: true, category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'middle-filter-active' if params[:to_try] == 'true'}" %></li>
-              <li><%= link_to 'Favorites', reviews_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "#{'middle-filter-active' if params[:to_try] == 'favourite'}" %></li>
+              <li><%= link_to 'Favorites', reviews_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], cuisines_filter: params[:cuisines_filter], tags_filter: params[:tags_filter], search: params[:search]), class: "rounded-end #{'middle-filter-active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
           </div>
           <div class="col-lg-4 d-flex justify-content-end dropdown-filter-wrapper">
