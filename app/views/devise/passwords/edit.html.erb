@@ -6,10 +6,10 @@
       <p class="forget-description my-3">
         We have received a request to reset the password for the user. Create a new password below.</p>
 
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= form_for(resource, as: resource_name, html: {'data-turbo' => "false"}, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.hidden_field :reset_password_token %>
 
-        <%= devise_error_messages! %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group mt-5 input-container" data-controller="toggle-password">
           <%= f.label :password, "Password" %>

@@ -427,9 +427,9 @@ header {
 /* ============ middle nav ============ */
 
 .middle_nav {
-    height: 9.7rem;
+    height: 6.5rem;
     background: #FBFBFE;
-    padding: 2.8rem 0;
+    padding-top: 3rem;
     transition: 200ms;
 }
 

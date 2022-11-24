@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     if @review.save
       FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name]) if params[:review][:city].present? && params[:review][:name].present?
-      redirect_to current_user.second_view? ? homepage_path : reviews_path, notice: "Review created successfully!"
+      redirect_to root_path, status: :see_other, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new
@@ -128,7 +128,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params[:review][:images] = [] if params[:review][:images] == [""]
+    # params[:review][:images] = [] if params[:review][:images] == [""]
     params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
   end
 
