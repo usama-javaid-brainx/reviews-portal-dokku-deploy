@@ -11,9 +11,7 @@ import Lightbox from 'bs5-lightbox';
   });
 
   $(document).on('turbo:load', function () {
-
     document.querySelectorAll('[data-toggle=lightbox]').forEach(el => el.addEventListener('click', Lightbox.initialize));
-
     // card carousel Initialize
     $('.card_carousel').owlCarousel({
       loop: false,
