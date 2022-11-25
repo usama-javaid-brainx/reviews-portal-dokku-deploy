@@ -48,8 +48,9 @@
             <%= image_tag("template/plus.svg") %><span> Add New</span>
           <% end %>
         </div>
-        <div class="col-lg-4 justify-content-evenly align-items-center large-add-new-btn">
-            <span class="map-enable-btn d-none d-lg-flex" data-controller="filter" >
+        <div class="col-lg-4 justify-content-end align-items-center large-add-new-btn">
+          <% if curr_category == "all" || curr_category.google_places? %>
+            <span class="map-enable-btn d-none d-lg-flex" data-controller="filter">
               <%= image_tag("template/map.svg") %>
               <span class="text">Show Map</span>
                 <div class="mode-switch d-flex flex-row align-items-center">
@@ -57,20 +58,20 @@
                   <label for="switch"></label>
                 </div>
             </span>
-          <div class="col-lg-1 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
+          <% end %>
+          <div class="ml_30 col-lg-1 col-4 d-flex justify-content-end navbar-search" data-controller="filter">
             <%= form_with(method: :GET, local: true, data: { 'filter-target': 'filtersForm' }) do |f| %>
               <%= f.text_field :search, value: "#{params[:search]}", "type": "search", "placeholder": "Search reviews...", class: "search-input", "data-filter-target": "input", "data-action": "keyup->filter#search" %>
             <% end %>
             <%= image_tag("template/search.svg", class: "search-icon", "data-action": "click->filter#fieldDisplay") %>
           </div>
-          <div class='col-lg-4'>
+          <div class='ml_20 col-lg-4'>
             <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'add-new-btn' do %>
               <%= image_tag("template/plus.svg") %><span> Add New</span>
             <% end %>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

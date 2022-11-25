@@ -21,7 +21,7 @@ export default class extends Controller {
           infoWindow.setContent(marker.title);
           infoWindow.open(map, this);
         });
-        bounds.extend(marker.position);
+        // bounds.extend(marker.position);
       }
     )
   }

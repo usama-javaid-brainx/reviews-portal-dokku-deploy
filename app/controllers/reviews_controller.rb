@@ -5,11 +5,6 @@ class ReviewsController < ApplicationController
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    if params[:category_id].present?
-      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
-    else
-      @curr_category = "all"
-    end
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -25,6 +20,11 @@ class ReviewsController < ApplicationController
   end
 
   def home_data
+    if params[:category_id].present?
+      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
+    else
+      @curr_category = "all"
+    end
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy_countless(reviews)
     @addresses = locations(@reviews)

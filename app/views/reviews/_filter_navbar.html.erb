@@ -26,7 +26,7 @@
           </div>
           <div class="col-lg-4 d-flex justify-content-end dropdown-filter-wrapper">
             <!-- Top Rating -->
-            <%= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown"} %>
+            <%= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown" } %>
             <ul class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
               <li class="nav-item" role="presentation">
                 <a href="#gridLayout" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
@@ -40,6 +40,7 @@
               </li>
             </ul>
             <!-- map_enable_btn -->
+            <% if curr_category == "all" || curr_category.google_places? %>
             <span class="map-enable-btn d-none d-lg-flex">
               <%= image_tag("template/map.svg") %>
               <span class="text">Show Map</span>
@@ -48,6 +49,7 @@
                   <label for="switch"></label>
                 </div>
             </span>
+            <% end %>
           </div>
         </div>
       </div>
