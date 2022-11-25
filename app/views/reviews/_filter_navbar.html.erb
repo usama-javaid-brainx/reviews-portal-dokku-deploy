@@ -41,6 +41,7 @@
               </li>
             </ul>
             <!-- map_enable_btn -->
+            <% if curr_category == "all" || curr_category.google_places? %>
             <span class="map-enable-btn d-none d-lg-flex">
               <%= image_tag("template/map.svg") %>
               <span class="text">Show Map</span>
@@ -49,6 +50,7 @@
                   <label for="switch"></label>
                 </div>
             </span>
+            <% end %>
           </div>
         </div>
       </div>

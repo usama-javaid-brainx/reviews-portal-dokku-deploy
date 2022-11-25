@@ -2,6 +2,7 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import './src/jquery'
 import * as bootstrap from "bootstrap"
+
 require('select2')();
 import './src/main'
 import './jssocial/jssocials'
@@ -17,6 +18,17 @@ document.addEventListener('turbo:load', () => {
     pswpModule: () => PhotoSwipe
   });
   lightbox.init();
+})
+
+$(document).on("ajaxComplete", function () {
+  $('.card_carousel').owlCarousel({
+    loop: false,
+    margin: 0,
+    items: 1,
+    autoplay: false,
+    nav: false,
+    dots: true,
+  });
 })
 
 window.markerConfig = {

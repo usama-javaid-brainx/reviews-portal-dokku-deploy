@@ -4,7 +4,7 @@
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
-          <div data-controller="map-view" class="row">
+          <div data-controller="map-view" class="row justify-content-center">
             <div data-map-view-target="allReviews" class="col-lg-12 row g-5" id="groups-reviews">
               <%= render partial: 'new_homepage/grid_review_card', collection: reviews, as: :review %>
             </div>
