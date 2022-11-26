@@ -33,3 +33,17 @@
     font-weight: 600;
   }
 }
+
+.nav-rounded-first {
+  a {
+    border-width: 1px 1px 1px 1px;
+    border-radius: 6px 0 0 6px;
+  }
+}
+
+.nav-rounded-last {
+  a {
+    border-width: 1px 1px 1px 1px;
+    border-radius: 0 6px 6px 0;
+  }
+}
