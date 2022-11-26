@@ -530,11 +530,6 @@ header {
     background: #FFFFFF;
 }
 
-.middle_nav .nav li:last-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 0 6px 6px 0;
-}
-
 .middle_nav .nav li a:hover,
 .middle_nav .nav li a.active:hover {
     background: #6E3EF7;
@@ -2485,16 +2480,6 @@ h3.review-name {
     border-width: 1px 1px 1px 1px;
     border-color: #6E3EF7;
     background: #F7F5FC;
-}
-
-.middle-nav .homepage-nav li:last-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 0 6px 6px 0;
-}
-
-.middle-nav .homepage-nav li:first-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
 }
 
 .cuisine-group .select2-container {
