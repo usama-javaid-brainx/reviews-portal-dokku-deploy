@@ -13,7 +13,7 @@
     </div>
   </header>
 <% end %>
-<main class="overflow-hidden position-relative" data-controller="guest" data-guest-slug-value="<%= @review.slug %>">
+<main class="overflow-hidden position-relative" data-controller="guest" data-guest-slug-value="<%= review.slug %>">
   <div class="d-flex justify-content-center position-absolute share-message-wraper d-none" data-guest-target="shareMsg">
     <span class="share-message"> <%= image_tag("template/check-circle.svg", class: "mr_10") %>
       Link Copied To Clipboard</span>
@@ -27,73 +27,71 @@
     <div class="container custom">
       <!-- carousel start -->
       <div class="owl-carousel owl-theme card_carousel d-lg-none mobile-gallery-wrapper">
-        <% @review.images[0..5].each do |image_src| %>
-
+        <% review.images[0..5].each do |image_src| %>
           <img class="w-100 h-100" src="<%= image_src %>">
-
         <% end %>
       </div>
       <!-- carousel start -->
       <div class="hero_header">
         <!--        render guest or owner or shared link header here d-->
-        <%= render owner ? "reviews/owner_show_header" : 'guests/guest_show_header', review_user: review_user, review: @review %>
+        <%= render owner ? "reviews/owner_show_header" : 'guests/guest_show_header', review_user: review_user, review: review %>
 
         <!-- gallery-->
         <div class="row img-gallery g-3 d-none d-lg-flex">
-          <% if @review.images? %>
-            <% if @review.images.count == 1 %>
+          <% if review.images? %>
+            <% if review.images.count == 1 %>
               <div class="large ">
-                <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                  <img class="w-100 h-100" src=<%= @review.images.first %>>
+                <a href="<%= review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                  <img class="w-100 h-100" src=<%= review.images.first %>>
                 </a>
               </div>
-            <% elsif @review.images.count == 2 %>
+            <% elsif review.images.count == 2 %>
               <div class="col-lg-12 d-flex justify-content-between aspect-ratio">
                 <div class="col-lg-6 large-half ">
-                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.first %>>
+                  <a href="<%= review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.first %>>
                   </a>
                 </div>
                 <div class="large-half ">
-                  <a href="<%= @review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.second %>>
+                  <a href="<%= review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.second %>>
                   </a>
                 </div>
               </div>
-            <% elsif @review.images.count == 3 %>
+            <% elsif review.images.count == 3 %>
               <div class="col-lg-12 d-flex justify-content-between aspect-ratio">
                 <div class="large-half">
-                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.first %>>
+                  <a href="<%= review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.first %>>
                   </a>
                 </div>
                 <div class="large-half d-flex flex-column justify-content-between">
                   <div class="large-slice ">
-                    <a href="<%= @review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                      <img class="w-100 h-100" src=<%= @review.images.second %>>
+                    <a href="<%= review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                      <img class="w-100 h-100" src=<%= review.images.second %>>
                     </a>
                   </div>
                   <div class="large-slice ">
-                    <a href="<%= @review.images.third %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                      <img class="w-100 h-100" src=<%= @review.images.third %>>
+                    <a href="<%= review.images.third %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                      <img class="w-100 h-100" src=<%= review.images.third %>>
                     </a>
                   </div>
                 </div>
               </div>
-            <% elsif @review.images.count == 4 %>
+            <% elsif review.images.count == 4 %>
               <div class="col-lg-12 d-flex justify-content-between aspect-ratio">
                 <div class="third-half ">
-                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.first %>>
+                  <a href="<%= review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.first %>>
                   </a>
                 </div>
                 <div class="third-half ">
-                  <a href="<%= @review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.second %>>
+                  <a href="<%= review.images.second %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.second %>>
                   </a>
                 </div>
                 <div class="third-half  d-flex flex-column justify-content-between">
-                  <% @review.images[2..].each_with_index do |image_src, idx| %>
+                  <% review.images[2..].each_with_index do |image_src, idx| %>
                     <div class="third-half-slice">
                       <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                         <img class="w-100 h-100" src="<%= image_src %>" class="<%= 'd-none' if idx > 3 %>">
@@ -101,19 +99,18 @@
                     </div>
                   <% end %>
                 </div>
-
               </div>
             <% else %>
               <div class="col-lg-12 d-flex justify-content-between aspect-ratio">
                 <div class="large-half ">
-                  <a href="<%= @review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
-                    <img class="w-100 h-100" src=<%= @review.images.first %>>
+                  <a href="<%= review.images.first %>" data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
+                    <img class="w-100 h-100" src=<%= review.images.first %>>
                   </a>
                 </div>
                 <div class="large-half d-flex justify-content-between">
 
                   <div class="fourth-half d-flex flex-column justify-content-between">
-                    <% @review.images[1..2].each do |image_src| %>
+                    <% review.images[1..2].each do |image_src| %>
                       <div class="third-half-slice">
                         <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                           <img class="w-100 h-100" src="<%= image_src %>">
@@ -122,12 +119,12 @@
                     <% end %>
                   </div>
                   <div class="fourth-half d-flex flex-column justify-content-between">
-                    <% @review.images[3..].each_with_index do |image_src, idx| %>
+                    <% review.images[3..].each_with_index do |image_src, idx| %>
                       <div class="position-relative third-half-slice <%= 'd-none' if idx > 1 %>">
                         <a href="<%= image_src %> " data-toggle="lightbox" data-gallery="first-gallery" data-type="image">
                           <img class="w-100 h-100" src="<%= image_src %>">
                         </a>
-                        <% if image_src.equal?(@review.images[1..4].last) %>
+                        <% if image_src.equal?(review.images[1..4].last) %>
                           <button type="button" class="see-all-photo" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <%= image_tag("template/eye.svg", class: 'gallery-icon mr-2') %>
                             See All Photos
@@ -156,7 +153,7 @@
         </div>
         <div class="modal-body">
           <div class="modal-gallery">
-            <% @review.images.each do |image_src| %>
+            <% review.images.each do |image_src| %>
               <div class="grid-item">
                 <a href="<%= image_src %>" data-toggle="lightbox" data-gallery="full-gallery" data-type="image">
                   <img class=" img-fluid" src=<%= image_src %>>
@@ -171,46 +168,49 @@
 
   <div class="container custom pb_50 mobile-show">
     <div class="row g-lg-5">
-      <div class="col-lg-8">
-        <h3 class="review-detail-head mt_50 mb-3">Review</h3>
-        <div class="review_details_wrap">
-          <% if @review.notes.present? %>
-            <div class="review-notes position-relative list-style-unset ck-content">
-              <%= raw @review.notes %>
-            </div>
-          <% end %>
-          <% if @review.meals.present? %>
-            <div class="review-highlight mt-5">
-              <h3 class="mb-3">Highlights</h3>
-              <ul class="favorite_dishes_list">
-                <% @review.meals.each do |meal| %>
-                  <li>
-                    <img class="main_img" src=<%= meal.image_url %>>
-                    <div class="d-flex justify-content-between align-items-center w-100 ml_15">
-                      <div>
-                        <h4><%= meal.name %></h4>
-                        <p><%= meal.notes %></p>
+      <% if review.notes.present? || review.meals.present? || review.tags.present? %>
+        <div class="col-lg-8">
+          <h3 class="review-detail-head mt_50 mb-3">Review</h3>
+          <div class="review_details_wrap">
+            <% if review.notes.present? %>
+              <div class="review-notes position-relative list-style-unset ck-content">
+                <%= raw review.notes %>
+              </div>
+            <% end %>
+            <% if review.meals.present? %>
+              <div class="review-highlight mt-5">
+                <h3 class="mb-3">Highlights</h3>
+                <ul class="favorite_dishes_list">
+                  <% review.meals.each do |meal| %>
+                    <li>
+                      <img class="main_img" src=<%= meal.image_url %>>
+                      <div class="d-flex justify-content-between align-items-center w-100 ml_15">
+                        <div>
+                          <h4><%= meal.name %></h4>
+                          <p><%= meal.notes %></p>
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <% if @review.tags.present? %>
-            <div class="review-tag mt-5 mb-3">
-              <ul class="tags_list">
-                <% @review.tags.split(",").drop(1).each do |res_tag| %>
-                  <li><%= res_tag.split.map(&:capitalize).join(' ') %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% if review.tags.present? %>
+              <div class="review-tag mt-5 mb-3">
+                <ul class="tags_list">
+                  <% review.tags.split(",").drop(1).each do |res_tag| %>
+                    <li><%= res_tag %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4" data-controller="map" data-map-location-value="<%= @review.name %>, <%= @review.city %>, <%= @review.state %>, <%= @review.country %>" data-map-getscoreurl-value="<%= review_get_score_path(@review) %>"><!--TODO Have to configure these platforms with apis-->
+      <% end %>
+      <div class="col-lg-4" data-controller="map" data-map-latitude-value="<%= review.latitude %>" data-map-longitude-value="<%= review.longitude %>" data-map-getscoreurl-value="<%= review_get_score_path(review) %>">
+        <!--TODO Have to configure these platforms with apis-->
         <div class="pt_50">
-          <div class="d-none" data-foursquare-url="<%= @review.foursquare_url %>" data-map-target="score">
+          <div class="d-none" data-foursquare-url="<%= review.foursquare_url %>" data-map-target="score">
             <h3 class="pb_10">Score</h3>
             <div class="review_wrap pb_30">
               <!--              TODO: its in testing phase from client side-->
@@ -248,20 +248,20 @@
           </div>
         </div>
 
-        <% if @review.city.present? and @review.country.present? %>
+        <% if review.city.present? and review.country.present? %>
           <div>
             <h3 class="pb_10">Localization</h3>
             <div class="map_wrap">
-              <span id="lat" data-latitude=<%= @review.latitude %>> </span>
-              <span id="long" data-longitude=<%= @review.longitude %>> </span>
+              <span id="lat" data-latitude=<%= review.latitude %>> </span>
+              <span id="long" data-longitude=<%= review.longitude %>> </span>
               <div id="map">
               </div>
               <div class="position-relative mt-3 pt_15 pb_15">
-                <% if @review.country.present? %>
-                  <h4><%= @review.country %>, <%= @review.state %></h4>
+                <% if review.country.present? %>
+                  <h4><%= review.country %>, <%= review.state %></h4>
                 <% end %>
-                <% if @review.address.present? or @review.zip_code.present? %>
-                  <p><%= @review.address + ',' if @review.address.present? %> <%= @review.zip_code if @review.zip_code.present? %></p>
+                <% if review.address.present? or review.zip_code.present? %>
+                  <p><%= review.address + ',' if review.address.present? %> <%= review.zip_code if review.zip_code.present? %></p>
                 <% end %>
               </div>
               <button class="map-button bg-white" data-action="click->map#openMap">
@@ -271,16 +271,16 @@
             </div>
           </div>
         <% end %>
-      </div>
-      <% if @review.author.present? %>
-        <div class="pt_30">
-          <h3 class="pb_10">Author</h3>
-          <div class="review-author">
-            <h4><%= @review.author %></h4>
-            <p><%= @review.address %> <%= @review.zip_code %></p>
+        <% if review.author.present? %>
+          <div class="pt_30">
+            <h3 class="pb_10">Author</h3>
+            <div class="review-author">
+              <h4><%= review.author %></h4>
+              <p><%= review.address %> <%= review.zip_code %></p>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </main>
