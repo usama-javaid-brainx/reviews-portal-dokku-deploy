@@ -13,6 +13,9 @@ export default class extends Controller {
     $(this.categoryTarget).on('select2:select select2:unselect', this.categorySelect.bind(this))
     $(document).on('turbo:before-cache', function () {
       $("#category_id").select2('destroy');
+      $("#review_category_id").select2('destroy');
+      $("#category-id-mobile").select2('destroy');
+      $("#review_to_try").select2('destroy');
     });
   }
 
