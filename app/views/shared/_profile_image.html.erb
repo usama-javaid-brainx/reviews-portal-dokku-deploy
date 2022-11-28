@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center profile-img-wraper m-auto mt-5 position-relative">
-  <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar-placeholder.jpg", class: 'rounded-circle') %>
+  <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar_placeholder.jpg", class: 'rounded-circle') %>
   <%= link_to edit_user_registration_path, class: "rounded-circle avatar-edit" do %>
     <%= image_tag "template/edit.svg", class: "avatar-edit-icon" %>
   <% end %>

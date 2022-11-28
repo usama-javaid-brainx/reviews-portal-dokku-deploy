@@ -1131,6 +1131,7 @@ header {
     border: 1px solid #6E3EF7;
     border-radius: 6px;
     z-index: 900;
+    cursor: pointer;
 }
 
 .public_review {
