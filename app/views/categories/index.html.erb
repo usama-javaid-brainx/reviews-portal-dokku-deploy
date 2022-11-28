@@ -2,7 +2,7 @@
   <h3>
     Manage Categories
   </h3>
-  <%= form_with url: update_categories_status_path, method: :patch do |form| %>
+  <%= form_with url: update_categories_status_path, html: { "data-turbo" => "false" }, method: :patch do |form| %>
     <div class="active">
       <h4 class="mt-5 mb-4">Active</h4>
       <ul class="active-list category-list" data-controller="category-reorder">
