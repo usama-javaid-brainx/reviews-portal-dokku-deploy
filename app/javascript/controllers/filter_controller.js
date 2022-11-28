@@ -21,6 +21,9 @@ export default class extends Controller {
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+      $(document).on('turbo:before-cache', function () {
+        $("#score").select2('destroy');
+      });
     }
   }
 

@@ -11,6 +11,9 @@ export default class extends Controller {
       minimumResultsForSearch: Infinity
     });
     $(this.categoryTarget).on('select2:select select2:unselect', this.categorySelect.bind(this))
+    $(document).on('turbo:before-cache', function () {
+      $("#category_id").select2('destroy');
+    });
   }
 
   categorySelect() {
