@@ -12,15 +12,6 @@ import Lightbox from 'bs5-lightbox';
 
   $(document).on('turbo:load', function () {
     document.querySelectorAll('[data-toggle=lightbox]').forEach(el => el.addEventListener('click', Lightbox.initialize));
-    // card carousel Initialize
-    $('.card_carousel').owlCarousel({
-      loop: false,
-      margin: 0,
-      items: 1,
-      autoplay: false,
-      nav: false,
-      dots: true,
-    });
 
     // Smooth Scroll Effect
     $('.add_review_area .nav-pills .nav-link').bind('click', function (event) {

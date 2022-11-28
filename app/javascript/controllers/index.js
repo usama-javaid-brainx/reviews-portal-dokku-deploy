@@ -58,5 +58,5 @@ application.register("review-card-item", ReviewCardItemController)
 import MapViewController from "./map_view_controller.js"
 application.register("map-view", MapViewController)
 
-import TurboLoaderController from "./turbo_loader_controller.js"
-application.register("turbo-loader", TurboLoaderController)
+import CarouselLoaderController from "./carousel_loader_controller.js"
+application.register("carousel-loader", CarouselLoaderController)

@@ -26,9 +26,9 @@
         </div>
       </div>
     </div>
-    <div data-controller="turbo-loader" class="my-5 d-flex justify-content-center" id="next_link">
+    <div class="my-5 d-flex justify-content-center" id="next_link">
       <% if pagy.next.present? %>
-        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), 'data-turbo-stream': "true", class: "btn btn-primary", "data-action": "click->turbo-loader#loader" %>
+        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), 'data-turbo-stream': "true", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
