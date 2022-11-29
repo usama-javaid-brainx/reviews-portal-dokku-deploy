@@ -28,5 +28,5 @@ export default class extends Controller {
       this.marker.setAnimation(null);
     }
   }
-  
+
 }
