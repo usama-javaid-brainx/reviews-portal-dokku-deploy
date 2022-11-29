@@ -127,12 +127,14 @@ export default class extends Controller {
   }
 
   showMap(event) {
+    this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
     if (event.currentTarget.checked) {
       this.mapOn(view)
     } else {
       this.mapOff(view)
     }
+    document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
   }
 
   mapOn(view) {
@@ -142,7 +144,7 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.remove("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
-      if (view.hasListReviewCardTarget) {
+      if (view.hasListReviewCardTarget[i]) {
         view.listReviewCardTargets[i].classList.remove("col-lg-12")
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
@@ -156,7 +158,7 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.add("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
-      if (view.hasListReviewCardTarget) {
+      if (view.hasListReviewCardTarget[i]) {
         view.listReviewCardTargets[i].classList.add("col-lg-12")
       }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
@@ -166,6 +168,12 @@ export default class extends Controller {
   get mapViewController() {
     return this.application.controllers.find(controller => {
       return controller.context.identifier === 'map-view'
+    })
+  }
+
+  get reviewsMapController() {
+    return this.application.controllers.find(controller => {
+      return controller.context.identifier === 'reviews-map'
     })
   }
 }
