@@ -24,7 +24,7 @@ export default class extends Controller {
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
       $(document).on('turbo:before-cache', function () {
-        $("#score").select2('destroy');
+        $(this.sortDropdownTarget).select2('destroy');
       });
     }
   }
