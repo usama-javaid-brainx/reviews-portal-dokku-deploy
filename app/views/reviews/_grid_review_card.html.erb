@@ -3,9 +3,8 @@
   <div class="card review-card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <%= link_to review_path(review.slug) do %>
-        <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
         <% if review.images.present? %>
-          <div data-controller = "carousel-loader" class="owl-carousel owl-theme card_carousel">
+          <div data-controller="carousel-loader" class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
@@ -14,7 +13,9 @@
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
       <% end %>
-      <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite == true %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
+      <span data-action="click->favourite#updateFavourite" data-fill-heart-icon="<%= asset_path("template/fill-heart.svg") %>" data-empty-heart-icon="<%= asset_path("template/empty-heart.svg") %>" class="favourite <%= 'checked' if review.favourite == true %>">
+        <%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg" ) %>
+      </span>
     </div>
     <div class="card-body">
       <div class="top">
@@ -31,7 +32,7 @@
           <li><%= review.city %></li>
         <% end %>
         <% if review.state.present? and review.country.present? %>
-          <li><%= "#{review.state}, #{ review.country}"%></li>
+          <li><%= "#{review.state}, #{ review.country}" %></li>
         <% end %>
         <% if !review.city.present? and !review.country.present? and review.date? %>
           <li>

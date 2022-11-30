@@ -8,20 +8,21 @@ export default class extends Controller {
   }
 
   updateFavourite(event) {
+    debugger
     let favouriteReview = $(event.currentTarget).toggleClass('checked')
+    if(event.currentTarget.classList.contains("checked")){
+      event.currentTarget.firstElementChild.src = event.currentTarget.getAttribute("data-fill-heart-icon")
+    }
+    else{
+      event.currentTarget.firstElementChild.src = event.currentTarget.getAttribute("data-empty-heart-icon")
+    }
     this.request(`favourite=${favouriteReview.hasClass('checked')}`)
   }
-
   request(data) {
-    let that = this
     $.ajax({
       type: "GET",
       url: this.likedPathValue,
-      data: data,
-      dataType: 'json',
-      success() {
-          window.location.reload();
-      }
+      data: data
     })
   }
 
