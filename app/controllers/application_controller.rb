@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     reviews = if params[:score].present?
                 reviews.order(params[:score] == "recent" ? "created_at desc" : "average_score #{params[:score]} NULLS LAST")
               else
-                reviews.order("created_at desc")
+                reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
               end
 
     reviews

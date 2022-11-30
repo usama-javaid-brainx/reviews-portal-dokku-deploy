@@ -1,5 +1,5 @@
 <!-- single card -->
-<div class="col-lg-3 col-md-6">
+<div class="col-lg-3 col-md-6" data-controller="review-search" data-review-search-name-value = <%= review.name %>>
   <div class="card small-card-review selected" data-action="click->group#cardSelect">
     <input type="checkbox" hidden="true" value=<%= review.id %> name="group[reviews][]">
     <div class="card-header p-0 border-0 position-relative">

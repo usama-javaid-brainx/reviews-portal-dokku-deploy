@@ -5,12 +5,16 @@ export default class extends Controller {
   static values = {search: String, newgroup: String }
 
   searchRequest(event) {
-    let searchData = event.currentTarget.value
-    $.ajax({
-      type: "GET",
-      url: this.searchValue,
-      data: {search: searchData}
-    })
+    this.reviewSearchControllers.forEach(controller => {controller.element.classList.remove('d-none')})
+    if (event.currentTarget.value != ""){
+      this.reviewSearchControllers.forEach(controller => {
+        let productDetail = controller.nameValue
+        let valuePresence = productDetail.toLowerCase().includes(event.currentTarget.value.toLowerCase())
+        if (valuePresence == false){
+          controller.element.classList.add('d-none')
+        }
+      })
+    }
   }
 
   cardSelect(event) {
@@ -31,4 +35,11 @@ export default class extends Controller {
       url: finalUrl
     })
   }
+
+  get reviewSearchControllers() {
+    return this.application.controllers.filter(controller => {
+      return controller.context.identifier === 'review-search'
+    })
+  }
+
 }
