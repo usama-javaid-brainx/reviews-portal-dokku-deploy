@@ -366,6 +366,11 @@
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: 6px !important;
     }
+
+    .middle-nav .homepage-nav{
+        box-shadow: unset;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 767px) {
