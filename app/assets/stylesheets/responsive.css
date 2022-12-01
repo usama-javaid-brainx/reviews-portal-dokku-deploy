@@ -366,6 +366,11 @@
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: 6px !important;
     }
+
+    .middle-nav .homepage-nav{
+        box-shadow: unset;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 767px) {
@@ -553,7 +558,7 @@
     }
 
     .review-card {
-        height: 420px;
+        height: 390px;
     }
 
     .back {
@@ -570,7 +575,20 @@
     }
 
     .filter-bar .new-filter-button {
-        padding: 0.9rem 1.5rem 1rem 1.5rem;
+        padding: 1.3rem 1.5rem 1.3rem 1.5rem;
+    }
+
+    .search-mobile input{
+        padding: 1.4rem 1.2rem 1.4rem 4rem
+    }
+
+    .search-mobile span{
+        left: 5px;
+        height: 4.9rem;
+    }
+
+    .middle-nav .homepage-nav li a{
+        height: 4.8rem;
     }
 
     .search-input {
@@ -588,12 +606,18 @@
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: 8px !important;
     }
+    .state-name {
+        font-size: 14px;
+    }
+    .card h3 {
+        font-size: 2.2rem;
+    }
 }
 
 @media (max-width: 520px) {
 
     .review-card {
-        height: 380px;
+        height: 360px;
     }
 
     .hero_area .card_carousel .owl-dots .owl-dot {
@@ -618,13 +642,13 @@
     }
 
     .review-card {
-        height: 350px;
+        height: 330px;
     }
 }
 
 @media (max-width: 420px) {
     .review-card {
-        height: 325px;
+        height: 300px;
     }
 
     .hero_area .card_carousel .owl-dots .owl-dot {
@@ -639,11 +663,30 @@
         margin-left: 5px !important;
     }
 
+    .card .list_group{
+        flex-wrap: wrap;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection--single{
+        height: 5rem;
+    }
+
+    .filter-bar span.select2 .selection .select2-selection__rendered{
+        margin-top: 8px;
+    }
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{
+        margin-top: 5px;
+    }
 }
 
-
-@media (max-width: 370px) {
+@media (max-width: 395px) {
     .review-card {
-        height: 295px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 360px) {
+    .review-card {
+        height: 260px;
     }
 }

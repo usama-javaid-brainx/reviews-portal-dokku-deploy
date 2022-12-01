@@ -149,7 +149,9 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
     }
-    }
+    document.getElementById('loadMoreButton').parentElement.classList.remove("justify-content-center")
+    document.getElementById('loadMoreButton').parentElement.classList.add("load-more")
+  }
 
   mapOff(view) {
     for (let i = 0; i < view.allReviewsTargets.length; i++) {
@@ -163,7 +165,9 @@ export default class extends Controller {
       }
         view.gridReviewCardTargets[i].classList.add("col-lg-3")
       }
-    }
+    document.getElementById('loadMoreButton').parentElement.classList.add("justify-content-center")
+    document.getElementById('loadMoreButton').parentElement.classList.remove("load-more")
+  }
 
   get mapViewController() {
     return this.application.controllers.find(controller => {
