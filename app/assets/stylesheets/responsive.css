@@ -651,6 +651,12 @@
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: 8px !important;
     }
+    .state-name {
+        font-size: 14px;
+    }
+    .card h3 {
+        font-size: 2.2rem;
+    }
 }
 
 @media (max-width: 520px) {
