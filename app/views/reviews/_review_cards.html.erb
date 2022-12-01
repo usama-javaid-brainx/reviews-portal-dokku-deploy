@@ -1,11 +1,11 @@
 <div class="content_area">
-  <div class="content_wrap pb_35">
+  <div class="position-relative content_wrap pb_35">
     <div data-controller="map-view" class="container">
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
           <div class="row justify-content-center">
-            <div data-map-view-target="allReviews" class="col-lg-12 row g-5" id="groups-reviews">
+            <div data-map-view-target="allReviews" class="position-relative col-lg-12 row g-5" id="groups-reviews">
               <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
             </div>
             <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map row g-5 col-lg-6">
