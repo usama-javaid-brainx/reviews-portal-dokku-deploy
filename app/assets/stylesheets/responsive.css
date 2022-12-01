@@ -689,6 +689,10 @@
         margin-left: 5px !important;
     }
 
+    .card .list_group{
+        flex-wrap: wrap;
+    }
+
 }
 
 @media (max-width: 395px) {
