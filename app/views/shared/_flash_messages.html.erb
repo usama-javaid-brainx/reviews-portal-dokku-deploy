@@ -1,6 +1,6 @@
 <% if flash.notice || flash.alert %>
   <div class="col-lg-8 col-12 flash-msg">
-    <div class="alert mt-5 <%= flash.notice ? 'alert-primary' : 'alert-danger' %> alert-dismissible fade show" role="alert">
+    <div class="alert <%= flash.notice ? 'alert-primary' : 'alert-danger' %> alert-dismissible fade show" role="alert">
       <%= flash.notice || flash.alert %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
