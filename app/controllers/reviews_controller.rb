@@ -90,7 +90,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     if @review.discard
-      redirect_to current_user.second_view? ? homepage_path : reviews_path, status: :see_other, notice: "Review deleted successfully!"
+      redirect_to current_user.second_view? ? homepage_path(format: :html) : reviews_path(format: :html), status: :see_other, notice: "Review deleted successfully!"
     end
   end
 
