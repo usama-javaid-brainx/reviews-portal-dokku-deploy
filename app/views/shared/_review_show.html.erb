@@ -31,7 +31,7 @@
           <img class="w-100 h-100" src="<%= image_src %>">
         <% end %>
       </div>
-      <!-- carousel start -->
+      
       <div class="hero_header">
         <!--        render guest or owner or shared link header here d-->
         <%= render owner ? "reviews/owner_show_header" : 'guests/guest_show_header', review_user: review_user, review: review %>
