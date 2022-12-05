@@ -133,16 +133,7 @@
 
 /*===========================================*/
 
-@media (max-width: 1999px) {
-    .review-card {
-        height: 355px;
-    }
-}
-
 @media (max-width: 1799px) {
-    .review-card {
-        height: 325px;
-    }
 
     .modal-xl {
         --bs-modal-width: 100% !important;
@@ -162,9 +153,6 @@
 }
 
 @media (max-width: 1599px) {
-    .review-card {
-        height: 290px;
-    }
 
     .search-icon {
         right: 12px;
@@ -192,9 +180,6 @@
 }
 
 @media (max-width: 1399px) {
-    .review-card {
-        height: 255px;
-    }
 
     .search-icon {
         right: 9px;
@@ -214,9 +199,6 @@
 }
 
 @media (max-width: 1199px) {
-    .review-card {
-        height: 220px;
-    }
 
     .search-icon {
         right: 5px;
@@ -347,10 +329,6 @@
         top: 3.8rem;
     }
 
-    .review-card {
-        height: 300px;
-    }
-
     .search-icon {
         right: 15px;
     }
@@ -395,10 +373,6 @@
 
     .card_carousel .owl-dot {
         width: 15%;
-    }
-
-    .review-card {
-        height: 405px;
     }
 
     .add_review_area input {
@@ -483,10 +457,6 @@
 
     .card_carousel .owl-dot {
         width: 15%;
-    }
-
-    .review-card {
-        height: 405px;
     }
 
     .add_review_area input {
@@ -602,10 +572,6 @@
         padding-top: 7rem;
     }
 
-    .review-card {
-        height: 390px;
-    }
-
     .back {
         top: 1rem;
         left: .8rem;
@@ -663,10 +629,6 @@
 
 @media (max-width: 520px) {
 
-    .review-card {
-        height: 360px;
-    }
-
     .hero_area .card_carousel .owl-dots .owl-dot {
         width: 14.5%;
     }
@@ -695,16 +657,9 @@
     .bg-price {
         background: #848496;
     }
-
-    .review-card {
-        height: 330px;
-    }
 }
 
 @media (max-width: 420px) {
-    .review-card {
-        height: 300px;
-    }
 
     .hero_area .card_carousel .owl-dots .owl-dot {
         width: 14%;
@@ -732,17 +687,5 @@
 
     .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 5px;
-    }
-}
-
-@media (max-width: 395px) {
-    .review-card {
-        height: 280px;
-    }
-}
-
-@media (max-width: 360px) {
-    .review-card {
-        height: 260px;
     }
 }
