@@ -143,7 +143,7 @@
     .review-card {
         height: 325px;
     }
-    
+
     .modal-xl {
         --bs-modal-width: 100% !important;
     }
@@ -367,7 +367,7 @@
         top: 6px !important;
     }
 
-    .middle-nav .homepage-nav{
+    .middle-nav .homepage-nav {
         box-shadow: unset;
         justify-content: center;
     }
@@ -623,16 +623,16 @@
         padding: 1.3rem 1.5rem 1.3rem 1.5rem;
     }
 
-    .search-mobile input{
+    .search-mobile input {
         padding: 1.4rem 1.2rem 1.4rem 4rem
     }
 
-    .search-mobile span{
+    .search-mobile span {
         left: 5px;
         height: 4.9rem;
     }
 
-    .middle-nav .homepage-nav li a{
+    .middle-nav .homepage-nav li a {
         height: 4.8rem;
     }
 
@@ -651,9 +651,11 @@
     .cuisine-group .select2-container--default .select2-selection--single .select2-selection__arrow, .category-group .select2-container--default .select2-selection--single .select2-selection__arrow {
         top: 8px !important;
     }
+
     .state-name {
         font-size: 14px;
     }
+
     .card h3 {
         font-size: 2.2rem;
     }
@@ -672,6 +674,14 @@
     .profile-img {
         width: 48px !important;
         height: 49px !important;
+    }
+
+    .mobile-gallery-wrapper .owl-item {
+        aspect-ratio: unset !important;
+    }
+
+    .search-mobile {
+        box-shadow: unset;
     }
 }
 
@@ -708,18 +718,19 @@
         margin-left: 5px !important;
     }
 
-    .card .list_group{
+    .card .list_group {
         flex-wrap: wrap;
     }
 
-    .filter-bar span.select2 .selection .select2-selection--single{
+    .filter-bar span.select2 .selection .select2-selection--single {
         height: 5rem;
     }
 
-    .filter-bar span.select2 .selection .select2-selection__rendered{
+    .filter-bar span.select2 .selection .select2-selection__rendered {
         margin-top: 8px;
     }
-    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b{
+
+    .filter-bar span.select2 .selection .select2-selection--single .select2-selection__arrow b {
         margin-top: 5px;
     }
 }
