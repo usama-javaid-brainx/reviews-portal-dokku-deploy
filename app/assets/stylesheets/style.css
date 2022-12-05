@@ -576,6 +576,7 @@ header {
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     overflow: hidden;
+    height: 100%;
 }
 
 .card_carousel {
@@ -2558,11 +2559,6 @@ div.ck ul {
     animation-name: slidein;
     animation-iteration-count: 1;
 }
-
-.review-card {
-    height: 390px;
-}
-
 
 .h-17 {
     height: 17px;
