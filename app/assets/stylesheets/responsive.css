@@ -353,6 +353,10 @@
     .mobile-gallery-wrapper .owl-item {
         aspect-ratio: 16/9 !important;
     }
+    .card-header .owl-item .item img {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+    }
 }
 
 @media (max-width: 767px) {
