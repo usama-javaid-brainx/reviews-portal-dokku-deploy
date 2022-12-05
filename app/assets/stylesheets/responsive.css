@@ -349,6 +349,10 @@
         box-shadow: unset;
         justify-content: center;
     }
+
+    .mobile-gallery-wrapper .owl-item {
+        aspect-ratio: 16/9 !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -396,16 +400,9 @@
         font-size: 1.6rem;
     }
 
-    .mobile-gallery-wrapper .owl-item {
-        aspect-ratio: 16/9 !important;
-    }
 }
 
 @media (max-width: 575px) {
-
-    .mobile-gallery-wrapper .owl-item {
-        aspect-ratio: unset !important;
-    }
 
     .tags_list li {
         width: 50%;
