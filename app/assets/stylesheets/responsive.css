@@ -393,7 +393,7 @@
     }
 
     .mobile-gallery-wrapper .owl-item{
-        aspect-ratio: unset !important;
+        aspect-ratio: 16/9 !important;
     }
 }
 
