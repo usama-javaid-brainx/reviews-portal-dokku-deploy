@@ -349,6 +349,10 @@
         box-shadow: unset;
         justify-content: center;
     }
+
+    .mobile-gallery-wrapper .owl-item {
+        aspect-ratio: 16/9 !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -390,10 +394,6 @@
     .add_review_area textarea::placeholder,
     .add_review_area input::placeholder {
         font-size: 1.6rem;
-    }
-
-    .mobile-gallery-wrapper .owl-item{
-        aspect-ratio: 16/9 !important;
     }
 }
 
