@@ -395,6 +395,10 @@
     .add_review_area input::placeholder {
         font-size: 1.6rem;
     }
+
+    .mobile-gallery-wrapper .owl-item {
+        aspect-ratio: 16/9 !important;
+    }
 }
 
 @media (max-width: 575px) {
