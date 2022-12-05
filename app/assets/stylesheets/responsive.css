@@ -399,7 +399,6 @@
     .add_review_area input::placeholder {
         font-size: 1.6rem;
     }
-
 }
 
 @media (max-width: 575px) {

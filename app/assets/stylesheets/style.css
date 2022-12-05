@@ -469,7 +469,7 @@ header {
     border-color: #6E3EF7;
 }
 
-.search button {
+.search span {
     position: absolute;
     top: 0;
     left: 0;
