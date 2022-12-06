@@ -17,6 +17,9 @@ export default class extends Controller {
         dropdownParent: $("#filterModal")
       });
       $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
+      $(document).on('turbo:before-cache', function () {
+        $(this.sortReviewsTarget).select2('destroy');
+      });
     }
     if (this.hasSortDropdownTarget) {
       $(this.sortDropdownTarget).select2({
