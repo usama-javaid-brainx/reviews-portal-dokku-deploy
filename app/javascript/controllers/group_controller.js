@@ -8,8 +8,7 @@ export default class extends Controller {
     this.reviewSearchControllers.forEach(controller => {controller.element.classList.remove('d-none')})
     if (event.currentTarget.value != ""){
       this.reviewSearchControllers.forEach(controller => {
-        let productDetail = controller.nameValue
-        let valuePresence = productDetail.toLowerCase().includes(event.currentTarget.value.toLowerCase())
+        let valuePresence = controller.nameValue.toLowerCase().includes(event.currentTarget.value.toLowerCase())
         if (valuePresence == false){
           controller.element.classList.add('d-none')
         }

@@ -13,8 +13,8 @@
           <div class="image-placeholder item"><%= image_tag("template/card-placeholder.svg") %></div>
         <% end %>
       <% end %>
-      <span data-action="click->favourite#updateFavourite" data-fill-heart-icon="<%= asset_path("template/fill-heart.svg") %>" data-empty-heart-icon="<%= asset_path("template/empty-heart.svg") %>" class="favourite <%= 'checked' if review.favourite == true %>">
-        <%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg" ) %>
+      <span data-action="click->favourite#updateFavourite" data-fill-heart-icon="<%= asset_path("template/fill-heart.svg") %>" data-empty-heart-icon="<%= asset_path("template/empty_heart_white.svg") %>" class="favourite <%= 'checked' if review.favourite == true %>">
+        <%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty_heart_white.svg") %>
       </span>
     </div>
     <div class="card-body">
