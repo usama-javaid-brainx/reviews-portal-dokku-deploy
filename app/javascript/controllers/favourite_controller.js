@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   updateFavourite(event) {
-    debugger
     let favouriteReview = $(event.currentTarget).toggleClass('checked')
     if(event.currentTarget.classList.contains("checked")){
       event.currentTarget.firstElementChild.src = event.currentTarget.getAttribute("data-fill-heart-icon")
