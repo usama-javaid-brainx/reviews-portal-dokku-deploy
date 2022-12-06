@@ -3,6 +3,7 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ['publicStatus']
 
+  static targets = ["publicStatus"]
   static values = {
     likedPath: String,
     statusPath: String
@@ -27,14 +28,12 @@ export default class extends Controller {
   }
 
   updateReviewStatus(event) {
+    debugger
     let reviewStatus = !(this.publicStatusTarget.checked)
     $.ajax({
       type: "GET",
       url: this.statusPathValue,
-      data: {share: reviewStatus},
-      success() {
-        window.location.reload()
-      }
+      data: {share: reviewStatus}
     })
   }
 }
