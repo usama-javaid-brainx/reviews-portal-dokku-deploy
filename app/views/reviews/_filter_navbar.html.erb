@@ -29,12 +29,12 @@
             <%= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown" } %>
             <ul class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
               <li class="nav-item" role="presentation">
-                <a href="#gridLayout" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
+                <a class="nav-link active" href="#" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
                   <%= image_tag("template/grid_view.svg") %>
                 </a>
               </li>
               <li class="nav-item" role="presentation">
-                <a href="#listLayout" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
+                <a class="nav-link" href="#" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
                   <%= image_tag("template/list_view.svg") %>
                 </a>
               </li>
