@@ -2,9 +2,9 @@
   <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
 <% end %>
 
-<%= turbo_stream.append("home-groups-reviews") do %>
-  <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
-<% end %>
+<%#= turbo_stream.append("list-groups-reviews") do %>
+  <%#= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
+<%# end %>
 
 <%= turbo_stream.update "next_link" do %>
   <% if @pagy.next.present? %>

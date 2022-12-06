@@ -27,14 +27,14 @@
           <div class="col-lg-4 d-flex justify-content-end dropdown-filter-wrapper">
             <!-- Top Rating -->
             <%= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown" } %>
-            <ul class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link active" href="#" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
+            <ul data-controller="navs-view" class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
+              <li data-action="click->navs-view#gridView" class="nav-item" role="presentation">
+                <a data-navs-view-target="navGrid" class="nav-link active" href="#" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
                   <%= image_tag("template/grid_view.svg") %>
                 </a>
               </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link" href="#" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
+              <li data-action="click->navs-view#listView" class="nav-item" role="presentation">
+                <a data-navs-view-target="navList" class="nav-link" href="#" id="listLayout-tab" data-bs-toggle="tab" data-bs-target="#listLayout" role="tab" aria-controls="listLayout" aria-selected="false">
                   <%= image_tag("template/list_view.svg") %>
                 </a>
               </li>
