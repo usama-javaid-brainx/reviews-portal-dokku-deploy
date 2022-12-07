@@ -126,6 +126,8 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
+  // TODO: Code to be clean
+
   showMap(event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController

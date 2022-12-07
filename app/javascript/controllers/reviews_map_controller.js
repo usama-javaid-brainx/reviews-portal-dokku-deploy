@@ -6,7 +6,7 @@ export default class extends Controller {
   initilizeMap() {
     let bounds = new google.maps.LatLngBounds();
     let map = new google.maps.Map(this.mapDisplayTarget, {
-      zoom: 5,
+      zoom: 3,
       center: new google.maps.LatLng(52.2571543, 20.984522),
     });
 
@@ -15,7 +15,6 @@ export default class extends Controller {
       this.infoPopups(marker, map)
       bounds.extend(marker.position);
     })
-    // map.fitBounds(bounds)
   }
 
   infoPopups(marker, map) {
