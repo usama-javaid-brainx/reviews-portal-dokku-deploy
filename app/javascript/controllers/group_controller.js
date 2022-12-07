@@ -1,20 +1,19 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select"]
-  static values = {search: String, newgroup: String }
+  static targets = ["card-select", "searchField"]
+  static values = {search: String, newgroup: String}
 
   searchRequest(event) {
-    this.reviewSearchControllers.forEach(controller => {controller.element.classList.remove('d-none')})
-    if (event.currentTarget.value != ""){
-      this.reviewSearchControllers.forEach(controller => {
-        let valuePresence = controller.nameValue.toLowerCase().includes(event.currentTarget.value.toLowerCase())
-        if (valuePresence == false){
+    let val = this.searchFieldTarget.value
+    this.reviewSearchControllers.forEach(controller => {
+      controller.element.classList.remove('d-none')
+      if (val != "") {
+        if (!(controller.nameValue.toLowerCase().includes(val.toLowerCase()))) {
           controller.element.classList.add('d-none')
         }
-      })
-    }
-
+      }
+    })
   }
 
   cardSelect(event) {
