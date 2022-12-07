@@ -25,8 +25,7 @@
             </ul>
           </div>
           <div class="col-lg-4 d-flex justify-content-end dropdown-filter-wrapper">
-            <!--  TODO : Order/Sorting Filter-->
-            <%#= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown" } %>
+            <%= f.select :score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], { selected: params[:score] }, data: { "filter-target": "sortDropdown" } %>
             <ul data-controller="navs-view" class="layout_changer nav nav-tabs" role="tablist" id="layoutTab">
               <li data-action="click->navs-view#gridView" class="nav-item" role="presentation">
                 <a data-navs-view-target="navGrid" class="nav-link active" href="#" id="gridLayout-tab" data-bs-toggle="tab" data-bs-target="#gridLayout" role="tab" aria-controls="gridLayout" aria-selected="true">
