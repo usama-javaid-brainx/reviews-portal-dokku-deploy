@@ -1,10 +1,10 @@
 <!-- single card -->
-<div class="col-lg-3 col-md-6 card-load" data-map-view-target="reviewCard" data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-target="reviewCardDetails" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>">
+<div class="<%= params[:map].present? && params[:map] == 'true' ? 'col-md-6' : 'col-lg-3 col-md-6' %> card-load" data-map-view-target="gridReviewCard" data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-target="reviewCardDetails" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>">
   <div class="card review-card">
     <div class="card-header p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <% if review.images.present? %>
         <%= link_to review_path((review.slug)) do %>
-          <div class="owl-carousel owl-theme card_carousel">
+          <div data-controller = "carousel-loader" class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>

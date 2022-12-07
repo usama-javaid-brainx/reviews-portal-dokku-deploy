@@ -8,13 +8,10 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :requests, only: :create
 
-  post '/', to: "reviews#index"
-
-  resources :reviews do
+  resources :reviews  do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
-    post :index, on: :collection
     get :update_status
   end
 
@@ -28,7 +25,7 @@ Rails.application.routes.draw do
   get 'users/remove_avatar'
   get 'users/delete_user'
   get 'users/settings'
-  post 'users/index', to: "users#index"
+  patch 'users/update'
   post 'upload', to: 'file_uploads#upload'
   patch :update_categories_status, to: 'categories#update_categories_status'
   get :homepage, to: 'reviews#homepage'

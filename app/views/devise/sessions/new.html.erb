@@ -3,7 +3,7 @@
   <div class="col-xl-4 col-lg-5 col-md-7 col-sm-10 col-11 mx-auto form-container">
     <div class="form-card">
       <h2 class="h1 log-in-text text-center">Log In</h2>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, html: {'data-turbo' => "false"}, url: session_path(resource_name)) do |f| %>
         <div class="form-group mt-4">
           <%= f.label :email, "Email" %>
           <%= f.email_field :email, required: true, label: 'Email', autofocus: true, placeholder: 'Enter your email', class: 'form-control' %>

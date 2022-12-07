@@ -1,5 +1,5 @@
 <main class="overflow-hidden">
-  <%= render "filter_navbar", addresses: @addresses, reviews: @reviews, cuisines: @cuisines, tags: @tags %>
+  <%= render "filter_navbar", addresses: @addresses, reviews: @reviews, cuisines: @cuisines, tags: @tags, curr_category: @curr_category %>
   <%= render "review_cards", reviews: @reviews, pagy: @pagy %>
   <!-- add Button -->
   <%= link_to new_review_path(category_id: params[:category_id] != 'all' ? params[:category_id] : nil), class: 'addNew' do %>

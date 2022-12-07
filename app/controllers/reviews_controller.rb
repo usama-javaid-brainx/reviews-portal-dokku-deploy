@@ -5,11 +5,6 @@ class ReviewsController < ApplicationController
   before_action :category_order, only: [:homepage, :new, :create, :edit]
 
   def homepage
-    if params[:category_id].present?
-      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
-    else
-      @curr_category = "all"
-    end
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -25,6 +20,11 @@ class ReviewsController < ApplicationController
   end
 
   def home_data
+    if params[:category_id].present?
+      @curr_category = params[:category_id] == "all" ? "all" : Category.find_by(id: params[:category_id])
+    else
+      @curr_category = "all"
+    end
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy_countless(reviews)
     @addresses = locations(@reviews)
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new(review_params)
     if @review.save
       FetchUrlJob.perform_later(@review, params[:review][:city], params[:review][:name]) if params[:review][:city].present? && params[:review][:name].present?
-      redirect_to current_user.second_view? ? homepage_path : reviews_path, notice: "Review created successfully!"
+      redirect_to root_path, status: :see_other, notice: "Review created successfully!"
     else
       @curr_category = params[:review][:category_id].present? ? Category.find_by(id: params[:review][:category_id]) : Category.find_by(name: 'Restaurants')
       render :new

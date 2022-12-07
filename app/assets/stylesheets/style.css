@@ -427,9 +427,9 @@ header {
 /* ============ middle nav ============ */
 
 .middle_nav {
-    height: 9.7rem;
+    height: 6.5rem;
     background: #FBFBFE;
-    padding: 2.8rem 0;
+    padding-top: 3rem;
     transition: 200ms;
 }
 
@@ -528,11 +528,6 @@ header {
     border-style: solid;
     border-color: #EDEDFB;
     background: #FFFFFF;
-}
-
-.middle_nav .nav li:last-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 0 6px 6px 0;
 }
 
 .middle_nav .nav li a:hover,
@@ -1136,6 +1131,7 @@ header {
     border: 1px solid #6E3EF7;
     border-radius: 6px;
     z-index: 900;
+    cursor: pointer;
 }
 
 .public_review {
@@ -2485,16 +2481,6 @@ h3.review-name {
     border-width: 1px 1px 1px 1px;
     border-color: #6E3EF7;
     background: #F7F5FC;
-}
-
-.middle-nav .homepage-nav li:last-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 0 6px 6px 0;
-}
-
-.middle-nav .homepage-nav li:first-child a {
-    border-width: 1px 1px 1px 1px;
-    border-radius: 6px 0 0 6px;
 }
 
 .cuisine-group .select2-container {

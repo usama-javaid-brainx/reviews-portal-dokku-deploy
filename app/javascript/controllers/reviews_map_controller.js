@@ -3,11 +3,7 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["mapDisplay"]
 
-  connect() {
-    this.initMap()
-  }
-
-  initMap() {
+  initilizeMap() {
     let bounds = new google.maps.LatLngBounds();
     let map = new google.maps.Map(this.mapDisplayTarget, {
       zoom: 3,
@@ -15,15 +11,18 @@ export default class extends Controller {
     });
 
     this.reviewCardItemControllers.forEach(controller => {
-        let marker = controller.createMarker(map)
-        var infoWindow = new google.maps.InfoWindow();
-        google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.setContent(marker.title);
-          infoWindow.open(map, this);
-        });
-        bounds.extend(marker.position);
-      }
-    )
+      let marker = controller.createMarker(map)
+      this.infoPopups(marker, map)
+      bounds.extend(marker.position);
+    })
+  }
+
+  infoPopups(marker, map) {
+    var infoWindow = new google.maps.InfoWindow();
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.setContent(marker.title);
+      infoWindow.open(map, this);
+    });
   }
 
   get reviewCardItemControllers() {

@@ -8,7 +8,9 @@ export default class extends Controller {
     this.cuisines = [];
     this.filters = [];
     this.location = [];
-    this.appliedFilters()
+    if(this.hasLocationFilterTarget) {
+      this.appliedFilters()
+    }
     if (this.hasSortReviewsTarget) {
       $(this.sortReviewsTarget).select2({
         minimumResultsForSearch: Infinity,
@@ -21,6 +23,9 @@ export default class extends Controller {
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+      $(document).on('turbo:before-cache', function () {
+        $(this.sortDropdownTarget).select2('destroy');
+      });
     }
   }
 
@@ -97,7 +102,6 @@ export default class extends Controller {
       this.appliedFilterTarget.classList.add('cuisine-select', 'ml-2', 'px-2', 'rounded-3')
       this.applyBtnTarget.innerHTML = `Apply(${appliedFilters.toString()})`
       this.filterCount = appliedFilters
-
       this.location = this.locationFilterTarget.value.split(',').filter(x => x != '')
       this.cuisines = this.cuisinesFilterTarget.value.split(',').filter(x => x != '')
       this.filters = this.tagsFilterTarget.value.split(',').filter(x => x != '')
@@ -122,13 +126,17 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
+  // TODO: Code to be clean
+
   showMap(event) {
+    this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
     if (event.currentTarget.checked) {
       this.mapOn(view)
     } else {
       this.mapOff(view)
     }
+    document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
   }
 
   mapOn(view) {
@@ -138,7 +146,7 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.remove("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
-      if (view.hasListReviewCardTarget) {
+      if (view.hasListReviewCardTarget[i]) {
         view.listReviewCardTargets[i].classList.remove("col-lg-12")
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
@@ -152,7 +160,7 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.add("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
-      if (view.hasListReviewCardTarget) {
+      if (view.hasListReviewCardTarget[i]) {
         view.listReviewCardTargets[i].classList.add("col-lg-12")
       }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
@@ -162,6 +170,12 @@ export default class extends Controller {
   get mapViewController() {
     return this.application.controllers.find(controller => {
       return controller.context.identifier === 'map-view'
+    })
+  }
+
+  get reviewsMapController() {
+    return this.application.controllers.find(controller => {
+      return controller.context.identifier === 'reviews-map'
     })
   }
 }
