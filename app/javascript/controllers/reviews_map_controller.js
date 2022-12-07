@@ -15,7 +15,7 @@ export default class extends Controller {
         this.infoPopups(marker, map)
         bounds.extend(marker.position);
       })
-      // map.fitBounds(bounds);
+      // map.fitBounds(bounds);  TODO: Remove the Center and Set bounds
     }
   }
 

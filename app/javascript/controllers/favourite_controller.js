@@ -26,7 +26,6 @@ export default class extends Controller {
   }
 
   updateReviewStatus(event) {
-    debugger
     let reviewStatus = !(this.publicStatusTarget.checked)
     $.ajax({
       type: "GET",
