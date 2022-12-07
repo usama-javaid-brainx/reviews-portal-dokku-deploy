@@ -1,8 +1,8 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select"]
-  static values = {search: String, newgroup: String }
+  static targets = ["card-select", "searchField"]
+  static values = {search: String, newgroup: String}
 
   searchRequest(event) {
     this.reviewSearchControllers.forEach(controller => {controller.element.classList.remove('d-none')})
@@ -14,7 +14,6 @@ export default class extends Controller {
         }
       })
     }
-
   }
 
   cardSelect(event) {
