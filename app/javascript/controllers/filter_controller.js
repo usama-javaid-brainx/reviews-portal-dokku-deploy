@@ -18,9 +18,6 @@ export default class extends Controller {
         dropdownParent: $("#filterModal")
       });
       $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
-      $(document).on('turbo:before-cache', function () {
-        $("#score").select2('destroy');
-      });
     }
 
     if (this.hasSortDropdownTarget) {
@@ -28,9 +25,6 @@ export default class extends Controller {
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
-      $(document).on('turbo:before-cache', function () {
-        $("#score").select2('destroy');
-      });
     }
   }
 
