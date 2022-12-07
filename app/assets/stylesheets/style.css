@@ -1194,6 +1194,10 @@ header {
 
 .hero_header h1 {
     padding: .8rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .hero_header .list_group {
@@ -2236,6 +2240,8 @@ h3.review-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0px;
+    width: 80%;
 }
 
 .state-name {
