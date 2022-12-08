@@ -19,6 +19,10 @@ document.addEventListener('turbo:load', () => {
   lightbox.init();
 })
 
+$(document).on('turbo:before-cache', function () {
+  $("#score").select2('destroy');
+});
+
 window.markerConfig = {
   destination: '62f7c831ea66067c8549b9fa',
   source: 'snippet'

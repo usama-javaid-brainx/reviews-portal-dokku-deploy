@@ -11,24 +11,20 @@ export default class extends Controller {
     if (this.hasLocationFilterTarget) {
       this.appliedFilters()
     }
+
     if (this.hasSortReviewsTarget) {
       $(this.sortReviewsTarget).select2({
         minimumResultsForSearch: Infinity,
         dropdownParent: $("#filterModal")
       });
       $(this.sortReviewsTarget).on('select2:select select2:unselect', this.reviewSort.bind(this))
-      $(document).on('turbo:before-cache', function () {
-        $(this.sortReviewsTarget).select2('destroy');
-      });
     }
+
     if (this.hasSortDropdownTarget) {
       $(this.sortDropdownTarget).select2({
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
-      $(document).on('turbo:before-cache', function () {
-        $(this.sortDropdownTarget).select2('destroy');
-      });
     }
   }
 
