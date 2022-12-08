@@ -1,11 +1,11 @@
-<div class="content_area">
-  <div class="content_wrap pb_35">
-    <div data-controller="map-view" class="container">
+<div data-controller="map-view" class="content_area">
+  <div class="content_wrap pb_45">
+    <div class="container">
       <div class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
         <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
-          <div class="row justify-content-center">
-            <div data-map-view-target="allReviews" class="position-relative row mt_30" id="home-groups-reviews">
+          <div class="row position-relative justify-content-center">
+            <div data-map-view-target="allReviews" class="row mt_30" id="home-groups-reviews">
               <%= render partial: 'new_homepage/grid_single_review_card', collection: reviews, as: :review %>
             </div>
             <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none mt_40 review-map col-lg-6">
@@ -17,7 +17,7 @@
     </div>
     <div class="my-5 d-flex justify-content-center" id="home_next_link">
       <% if pagy.next.present? %>
-        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', 'data-turbo-stream': "true", class: "btn btn-primary" %>
+        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', "data-map-view-target": "loadMore", 'data-turbo-stream': "true", class: "btn btn-primary #{'load-more' if params[:map].present?}" %>
       <% end %>
     </div>
   </div>

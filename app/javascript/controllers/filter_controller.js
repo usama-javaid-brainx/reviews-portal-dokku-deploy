@@ -126,8 +126,6 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
-  // TODO: Code to be clean
-
   showMap(event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
@@ -151,8 +149,7 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
     }
-    document.getElementById('loadMoreButton').parentElement.classList.remove("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.add("load-more")
+    document.getElementById('loadMoreButton').classList.add("load-more")
   }
 
   mapOff(view) {
@@ -167,8 +164,7 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
     }
-    document.getElementById('loadMoreButton').parentElement.classList.add("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.remove("load-more")
+    document.getElementById('loadMoreButton').classList.remove("load-more")
   }
 
   get mapViewController() {

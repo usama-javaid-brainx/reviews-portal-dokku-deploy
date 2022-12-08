@@ -49,5 +49,8 @@
 }
 
 .load-more {
-  margin-left: 25%;
+    position: absolute;
+    bottom: 30px;
+    left: 25%;
+    transform: translateX(-40%);
 }
