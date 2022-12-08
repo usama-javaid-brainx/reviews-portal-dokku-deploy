@@ -12,10 +12,10 @@ export default class extends Controller {
       });
       this.reviewCardItemControllers.forEach(controller => {
         let marker = controller.createMarker(map)
-        this.infoPopups(marker, map)
         bounds.extend(marker.position);
+        this.infoPopups(marker, map)
       })
-      // map.fitBounds(bounds);  TODO: Remove the Center and Set bounds
+      map.fitBounds(bounds);
     }
   }
 
