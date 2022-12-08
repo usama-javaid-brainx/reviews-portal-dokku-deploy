@@ -469,7 +469,7 @@ header {
     border-color: #6E3EF7;
 }
 
-.search button {
+.search span {
     position: absolute;
     top: 0;
     left: 0;
@@ -576,6 +576,7 @@ header {
     border: 1px solid #EDEDFB;
     border-radius: 6px;
     overflow: hidden;
+    height: 100%;
 }
 
 .card_carousel {
@@ -731,7 +732,7 @@ header {
     text-overflow: ellipsis;
     color: #00000A;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.177;
     padding: 1rem 0 0.2rem;
 }
@@ -1193,6 +1194,10 @@ header {
 
 .hero_header h1 {
     padding: .8rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .hero_header .list_group {
@@ -2236,6 +2241,8 @@ h3.review-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0px;
+    width: 80%;
 }
 
 .state-name {
@@ -2566,11 +2573,6 @@ div.ck ul {
     animation-name: slidein;
     animation-iteration-count: 1;
 }
-
-.review-card {
-    height: 390px;
-}
-
 
 .h-17 {
     height: 17px;
