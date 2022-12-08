@@ -6,15 +6,15 @@ export default class extends Controller {
   initilizeMap() {
     let bounds = new google.maps.LatLngBounds();
     let map = new google.maps.Map(this.mapDisplayTarget, {
-      zoom: 3,
-      center: new google.maps.LatLng(52.2571543, 20.984522),
+      zoom: 2,
+      center: new google.maps.LatLng(0, 0),
     });
-
     this.reviewCardItemControllers.forEach(controller => {
       let marker = controller.createMarker(map)
       this.infoPopups(marker, map)
       bounds.extend(marker.position);
     })
+    // map.fitBounds(bounds)
   }
 
   infoPopups(marker, map) {
@@ -30,4 +30,5 @@ export default class extends Controller {
       return controller.context.identifier === 'review-card-item'
     })
   }
+
 }

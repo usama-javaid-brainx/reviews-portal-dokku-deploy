@@ -1,14 +1,14 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown']
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown', "publicStatus"]
 
   connect() {
     this.filterCount = 0
     this.cuisines = [];
     this.filters = [];
     this.location = [];
-    if(this.hasLocationFilterTarget) {
+    if (this.hasLocationFilterTarget) {
       this.appliedFilters()
     }
     if (this.hasSortReviewsTarget) {
@@ -129,11 +129,13 @@ export default class extends Controller {
   showMap(event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
-    if (event.currentTarget.checked) {
-      this.mapOn(view)
-    } else {
-      this.mapOff(view)
-    }
+      if (event.currentTarget.checked) {
+        this.mapOn(view)
+        localStorage.setItem('map', 'on');
+      } else {
+        this.mapOff(view)
+        localStorage.setItem('map', 'off');
+      }
     document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
   }
 
