@@ -160,7 +160,7 @@ export default class extends Controller {
       view.mapViewTargets[i].classList.add("d-none")
     }
     for (let i = 0; i < view.gridReviewCardTargets.length; i++) {
-      if (view.hasListReviewCardTarget) {
+      if (view.hasListReviewCardTarget[i]) {
         view.listReviewCardTargets[i].classList.add("col-lg-12")
       }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
