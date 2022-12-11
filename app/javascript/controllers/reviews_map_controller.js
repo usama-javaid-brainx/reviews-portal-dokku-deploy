@@ -6,7 +6,7 @@ export default class extends Controller {
   initilizeMap() {
     let bounds = new google.maps.LatLngBounds();
     let map = new google.maps.Map(this.mapDisplayTarget, {
-      zoom: 20,
+      zoom: 5,
       center: new google.maps.LatLng(0, 0),
     });
     this.reviewCardItemControllers.forEach(controller => {
