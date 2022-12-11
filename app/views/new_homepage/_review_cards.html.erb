@@ -17,7 +17,7 @@
     </div>
     <div class="my-5 d-flex justify-content-center" id="home_next_link">
       <% if pagy.next.present? %>
-        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', "data-map-view-target": "loadMore", 'data-turbo-stream': "true", class: "btn btn-primary #{'load-more' if params[:map].present?}" %>
+        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', 'data-turbo-stream': "true", class: "btn btn-primary #{'load-more' if params[:map].present?}" %>
       <% end %>
     </div>
   </div>
