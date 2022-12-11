@@ -7,15 +7,17 @@ export default class extends Controller {
     for (let i = 0; i < this.mapDisplayTargets.length; i++) {
       let bounds = new google.maps.LatLngBounds();
       let map = new google.maps.Map(this.mapDisplayTargets[i], {
-        zoom: 3,
-        center: new google.maps.LatLng(52.2571543, 20.984522),
+        zoom: 5,
+        center: new google.maps.LatLng(0, 0),
       });
       this.reviewCardItemControllers.forEach(controller => {
         let marker = controller.createMarker(map)
         this.infoPopups(marker, map)
-        bounds.extend(marker.position);
+        if (!(isNaN(marker.position.lat()) && isNaN(marker.position.lng()))) {
+          bounds.extend(marker.position);
+        }
       })
-      // map.fitBounds(bounds);  TODO: Remove the Center and Set bounds
+      map.fitBounds(bounds)
     }
   }
 
@@ -32,4 +34,5 @@ export default class extends Controller {
       return controller.context.identifier === 'review-card-item'
     })
   }
+
 }

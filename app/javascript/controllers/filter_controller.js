@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown']
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown', "publicStatus"]
 
   connect() {
     this.filterCount = 0
@@ -125,16 +125,16 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
-  // TODO: Code to be clean
-
   showMap(event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
-    if (event.currentTarget.checked) {
-      this.mapOn(view)
-    } else {
-      this.mapOff(view)
-    }
+      if (event.currentTarget.checked) {
+        this.mapOn(view)
+        // localStorage.setItem('map', 'on');
+      } else {
+        this.mapOff(view)
+        // localStorage.setItem('map', 'off');
+      }
     document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
   }
 
@@ -150,8 +150,7 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
     }
-    document.getElementById('loadMoreButton').parentElement.classList.remove("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.add("load-more")
+    document.getElementById('loadMoreButton').classList.add("load-more")
   }
 
   mapOff(view) {
@@ -164,10 +163,9 @@ export default class extends Controller {
       if (view.hasListReviewCardTarget) {
         view.listReviewCardTargets[i].classList.add("col-lg-12")
       }
-        view.gridReviewCardTargets[i].classList.add("col-lg-3")
-      }
-    document.getElementById('loadMoreButton').parentElement.classList.add("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.remove("load-more")
+      view.gridReviewCardTargets[i].classList.add("col-lg-3")
+    }
+    document.getElementById('loadMoreButton').classList.remove("load-more")
   }
 
   get mapViewController() {

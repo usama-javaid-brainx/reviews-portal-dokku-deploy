@@ -1,11 +1,11 @@
-<div class="content_area">
-  <div class="position-relative content_wrap pb_35">
-    <div data-controller="map-view" class="container">
+<div  data-controller="map-view" class="content_area">
+  <div class="position-relative content_wrap pb_45">
+    <div class="container">
       <div data-controller="reviews-map" class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
-        <div data-map-view-target="gridView" class="tab-pane fade active show" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
-          <div class="row justify-content-center">
-            <div data-map-view-target="allReviews" class="position-relative row mt_30" id="groups-reviews">
+        <div data-map-view-target="gridView" class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
+          <div class="row position-relative justify-content-center">
+            <div data-map-view-target="allReviews" class="row mt_30" id="groups-reviews">
               <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
             </div>
             <div data-map-view-target="mapView" class="d-none review-map row mt_40 col-lg-6">
@@ -28,7 +28,7 @@
     </div>
     <div class="my-5 d-flex justify-content-center" id="next_link">
       <% if pagy.next.present? %>
-        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', 'data-turbo-stream': "true", class: "btn btn-primary" %>
+        <%= link_to "Load More", pagy_url_for(pagy, pagy.next), id: 'loadMoreButton', 'data-turbo-stream': "true", class: "btn btn-primary #{'load-more' if params[:map].present?}" %>
       <% end %>
     </div>
   </div>

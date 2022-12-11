@@ -24,7 +24,7 @@
     </div>
     <div class="card-body">
       <div class="card-body-name top">
-        <h3 class="review-name"><%= review.name %></h3>
+        <h3 class="review-name p-0"><%= review.name %></h3>
         <% if review.average_score.present? %>
           <p class="product_rating"><%= image_tag("template/star.svg") if review.average_score? %>
             <span><%= review.average_score %></span>
