@@ -16,7 +16,6 @@ export default class extends Controller {
         bounds.extend(marker.position);
         this.infoPopups(marker, map)
       })
-      // map.fitBounds(bounds)
     }
   }
 
