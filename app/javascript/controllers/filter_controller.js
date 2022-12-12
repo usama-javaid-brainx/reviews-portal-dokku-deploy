@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown', "publicStatus"]
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown', "mapStatus"]
 
   connect() {
     this.filterCount = 0
@@ -25,6 +25,11 @@ export default class extends Controller {
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+    }
+    if (localStorage.getItem("map") == "on") {
+      this.mapStatusTarget.checked = true
+    } else {
+      this.mapStatusTarget.checked = false
     }
   }
 
@@ -125,17 +130,20 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
-  showMap(event) {
+  showMap(_event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
-      if (event.currentTarget.checked) {
+    if (this.hasMapStatusTarget) {
+
+      if (this.mapStatusTarget.checked) {
         this.mapOn(view)
-        // localStorage.setItem('map', 'on');
+        localStorage.setItem('map', 'on');
       } else {
         this.mapOff(view)
-        // localStorage.setItem('map', 'off');
+        localStorage.setItem('map', 'off');
       }
-    document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
+      document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${this.mapStatusTarget.checked}`
+    }
   }
 
   mapOn(view) {

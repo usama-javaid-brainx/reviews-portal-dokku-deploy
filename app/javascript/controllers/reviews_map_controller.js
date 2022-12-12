@@ -3,6 +3,14 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["mapDisplay"]
 
+  connect() {
+    if (localStorage.getItem("map") == "on") {
+      this.filterController.forEach(controller => {
+        controller.showMap()
+      })
+    }
+  }
+
   initilizeMap() {
     for (let i = 0; i < this.mapDisplayTargets.length; i++) {
       let bounds = new google.maps.LatLngBounds();
@@ -32,6 +40,12 @@ export default class extends Controller {
   get reviewCardItemControllers() {
     return this.application.controllers.filter(controller => {
       return controller.context.identifier === 'review-card-item'
+    })
+  }
+
+  get filterController() {
+    return this.application.controllers.filter(controller => {
+      return controller.context.identifier === 'filter'
     })
   }
 
