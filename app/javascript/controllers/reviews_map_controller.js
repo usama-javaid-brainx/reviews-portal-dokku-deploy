@@ -6,7 +6,7 @@ export default class extends Controller {
   connect() {
     if (localStorage.getItem("map") == "on") {
       this.filterControllers.forEach(controller => {
-          controller.showMap()
+        controller.showMap()
       })
     }
   }
