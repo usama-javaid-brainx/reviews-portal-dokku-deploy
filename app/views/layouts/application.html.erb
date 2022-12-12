@@ -13,7 +13,9 @@
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag 'new_ckeditor/ckeditor', "data-turbo-track": "reload" %>
   <%= javascript_include_tag 'new_ckeditor/classic/ckeditor', "data-turbo-track": "reload" %>
+  <script async charset="utf-8" src="//cdn.embedly.com/widgets/platform.js"></script>
   <%= yield(:head_content) if content_for?(:head_content) %>
   <%= filestack_js_include_tag %>
   <%= filestack_js_init_tag %>
