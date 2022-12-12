@@ -412,10 +412,6 @@
         width: 50%;
     }
 
-    .tags_list li:nth-child(3) {
-        padding-top: 1.5rem;
-    }
-
     .review_area {
         margin-left: 1rem;
         margin-right: 1rem;

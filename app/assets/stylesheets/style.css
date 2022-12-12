@@ -1928,7 +1928,7 @@ header {
     color: #848496;
 }
 
-.tags_search_form button {
+.tags_search_form span {
     position: absolute;
     top: 0;
     left: 0;
