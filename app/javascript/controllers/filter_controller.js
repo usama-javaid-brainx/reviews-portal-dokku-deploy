@@ -26,10 +26,12 @@ export default class extends Controller {
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
     }
-    if (localStorage.getItem("map") == "on") {
-      this.mapStatusTarget.checked = true
-    } else {
-      this.mapStatusTarget.checked = false
+    if (this.hasMapStatusTarget) {
+      if (localStorage.getItem("map") == "on") {
+        this.mapStatusTarget.checked = true
+      } else {
+        this.mapStatusTarget.checked = false
+      }
     }
   }
 
