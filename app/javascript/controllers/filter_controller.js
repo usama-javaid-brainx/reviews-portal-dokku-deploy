@@ -27,10 +27,12 @@ export default class extends Controller {
         $(this.sortDropdownTarget).select2('destroy');
       });
     }
-    if (localStorage.getItem("map") == "on") {
-      this.mapStatusTarget.checked = true
-    } else {
-      this.mapStatusTarget.checked = false
+    if (this.hasMapStatusTarget) {
+      if (localStorage.getItem("map") == "on") {
+        this.mapStatusTarget.checked = true
+      } else {
+        this.mapStatusTarget.checked = false
+      }
     }
   }
 
