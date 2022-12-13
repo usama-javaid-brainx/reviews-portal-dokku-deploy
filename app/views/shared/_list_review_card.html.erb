@@ -5,7 +5,7 @@
       <%= link_to review_path(review.slug) do %>
         <span data-action="click->favourite#updateFavourite" class="favourite <%= 'checked' if review.favourite? %>"><%= image_tag(review.favourite ? "template/fill-heart.svg" : "template/empty-heart.svg") %></span>
         <% if review.images.present? %>
-          <div class="owl-carousel owl-theme card_carousel">
+          <div data-controller= "carousel-loader" class="owl-carousel owl-theme card_carousel">
             <% review.images[..5].each do |image| %>
               <div class="item"><%= image_tag(image) %></div>
             <% end %>
@@ -31,7 +31,7 @@
             <li><%= review.city %></li>
           <% end %>
           <% if review.state.present? and review.country.present? %>
-            <li><%= "#{review.state}, #{ review.country}"%></li>
+            <li><%= "#{review.state}, #{ review.country}" %></li>
           <% end %>
           <% if !review.city.present? and !review.country.present? and review.date? %>
             <li>
