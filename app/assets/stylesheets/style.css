@@ -2666,6 +2666,7 @@ div.ck ul {
     margin: 0 auto;
     --bs-modal-width: 100% !important;
 }
+
 .modal-xl .modal-content {
     height: 100vh;
 }
@@ -2741,7 +2742,7 @@ div.ck ul {
     font-weight: 400;
 }
 
-.review-link{
+.review-link {
     color: #6E3EF7;
 }
 
@@ -2753,4 +2754,8 @@ div.ck ul {
     line-height: 20px;
     color: #5F33DD;
     margin-right: 2.2rem;
+}
+
+[type=search] {
+    -webkit-appearance: unset !important;
 }
