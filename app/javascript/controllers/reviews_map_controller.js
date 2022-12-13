@@ -6,28 +6,30 @@ export default class extends Controller {
   connect() {
     if (localStorage.getItem("map") == "on") {
       this.filterControllers.forEach(controller => {
-        controller.showMap()
+        if (controller.hasMapStatusTarget) {
+          controller.showMap()
+        }
       })
     }
   }
 
   initilizeMap() {
-    for (let i = 0; i < this.mapDisplayTargets.length; i++) {
-      let bounds = new google.maps.LatLngBounds();
-      let map = new google.maps.Map(this.mapDisplayTargets[i], {
-        zoom: 1,
-        center: new google.maps.LatLng(0, 0),
-      });
-      this.reviewCardItemControllers.forEach(controller => {
-        let marker = controller.createMarker(map)
-        this.infoPopups(marker, map)
-        if (!(isNaN(marker.position.lat()) && isNaN(marker.position.lng()))) {
-          bounds.extend(marker.position);
-        }
-      })
-      map.fitBounds(bounds)
+      for (let i = 0; i < this.mapDisplayTargets.length; i++) {
+        let bounds = new google.maps.LatLngBounds();
+        let map = new google.maps.Map(this.mapDisplayTargets[i], {
+          zoom: 1,
+          center: new google.maps.LatLng(0, 0),
+        });
+        this.reviewCardItemControllers.forEach(controller => {
+          let marker = controller.createMarker(map)
+          this.infoPopups(marker, map)
+          if (!(isNaN(marker.position.lat()) && isNaN(marker.position.lng()))) {
+            bounds.extend(marker.position);
+          }
+        })
+        map.fitBounds(bounds)
+      }
     }
-  }
 
   infoPopups(marker, map) {
     var infoWindow = new google.maps.InfoWindow();
