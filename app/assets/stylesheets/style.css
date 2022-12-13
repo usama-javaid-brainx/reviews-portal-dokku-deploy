@@ -2757,6 +2757,11 @@ div.ck ul {
     color: #5F33DD;
     margin-right: 2.2rem;
 }
+
 .tab-content > .tab-pane{
     display: unset !important;
+}
+
+[type=search] {
+    -webkit-appearance: unset !important;
 }
