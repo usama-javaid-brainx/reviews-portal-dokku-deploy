@@ -73,7 +73,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @curr_category = @review.category
+    @curr_category = params[:category_id].present? ? Category.find(params[:category_id]) : @review.category
   end
 
   def update
