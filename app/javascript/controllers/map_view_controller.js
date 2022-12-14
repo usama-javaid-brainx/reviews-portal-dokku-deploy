@@ -6,25 +6,18 @@ export default class extends Controller {
   connect() {
     if (this.navsViewController != undefined) {
       if (localStorage.getItem("view") == "grid" || localStorage.getItem("view") == "") {
-        this.gridView()
+        this.toggle(this.navsViewController.navGridTarget, this.navsViewController.navListTarget)
+        this.toggle(this.gridViewTarget, this.listViewTarget)
       } else {
-        this.listView()
+        this.toggle(this.navsViewController.navListTarget, this.navsViewController.navGridTarget)
+        this.toggle(this.listViewTarget, this.gridViewTarget)
       }
     }
   }
 
-  gridView() {
-    this.navsViewController.navGridTarget.classList.add("active")
-    this.navsViewController.navListTarget.classList.remove("active")
-    this.gridViewTarget.classList.add("active")
-    this.listViewTarget.classList.remove("active")
-  }
-
-  listView() {
-    this.navsViewController.navGridTarget.classList.remove("active")
-    this.navsViewController.navListTarget.classList.add("active")
-    this.gridViewTarget.classList.remove("active")
-    this.listViewTarget.classList.add("active")
+  toggle(classAddTarget, classRemoveTarget) {
+    classAddTarget.classList.add("active")
+    classRemoveTarget.classList.remove("active")
   }
 
   get navsViewController() {
