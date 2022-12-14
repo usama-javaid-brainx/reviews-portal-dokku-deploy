@@ -38,6 +38,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @categories = Category.where(active: true)
+    @all_categories = Category.where(active: true)
+    @default_categories = Category.where(default_category: true)
+    @common_categories = Category.where(default_category: false)
   end
+  
 end

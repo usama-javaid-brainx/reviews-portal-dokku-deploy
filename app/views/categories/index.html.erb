@@ -1,48 +1,18 @@
 <div class="manage-categories">
   <h3>
-    Manage Categories
+    All Categories
   </h3>
-  <%= form_with url: update_categories_status_path, html: { "data-turbo" => "false" }, method: :patch do |form| %>
     <div class="active">
-      <h4 class="mt-5 mb-4">Active</h4>
-      <ul class="active-list category-list" data-controller="category-reorder">
+      <ul class="active-list category-list">
         <% @categories.each do |category| %>
           <% if category.active? %>
             <li class="drag-field category-list-item row">
-              <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!-- TODO    Have to show SVGs when provided by client  <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div>-->
               <span class="category-name col-9"><%= category.name %></span>
-              <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
-                <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
-                <label for=<%= "#{category.name}-switch" %>></label>
-                <%= image_tag('template/reorder.svg') %>
-              </div>
             </li>
           <% end %>
         <% end %>
       </ul>
     </div>
-    <div class="inactive">
-      <h4>Inactive</h4>
-      <ul class="inactive-list category-list" data-controller="category-reorder">
-        <% @categories.each do |category| %>
-          <% unless category.active? %>
-            <li class="drag-field category-list-item row">
-              <%= form.text_field "positions[#{category.id}]", hidden: true %>
-              <!--  TODO    Have to show SVGs when provided by client    <div class="col-1"><%#= show_svg(category.icon) if category.icon.attached?%></div> -->
-              <span class="category-name col-9"><%= category.name %></span>
-              <div class="col-3 mode-switch d-flex flex-row justify-content-between align-items-center">
-                <%= form.check_box "categories[#{category.id}]", id: "#{category.name}-switch", class: "switch", checked: category.active %>
-                <label for=<%= "#{category.name}-switch" %>></label>
-                <%= image_tag('template/reorder.svg') %>
-              </div>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-    <%= form.submit "Save Changes", class: 'save-changes d-block ms-auto' %>
-  <% end %>
 </div>
 
 <div class="manage-categories d-flex">
@@ -62,7 +32,7 @@
     <div class="modal fade" id="request-modal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <%= form_for :request, url: requests_path, method: :post do |req_form| %>
+          <%= form_for :request, url: requests_path, method: :post, html: {'data-turbo' => "false"} do |req_form| %>
             <div class="modal-header d-block">
               <div class="header-title d-flex align-items-center">
                 <h2 class="modal-title" id="requestModalLabel">New Category Request</h2>
