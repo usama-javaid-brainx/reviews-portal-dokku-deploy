@@ -7,10 +7,12 @@ export default class extends Controller {
   searchRequest(event) {
     let val = this.searchFieldTarget.value
     this.reviewSearchControllers.forEach(controller => {
-      controller.element.classList.remove('d-none')
       if (val != "") {
         if (!(controller.nameValue.toLowerCase().includes(val.toLowerCase()))) {
           controller.element.classList.add('d-none')
+        }
+        else{
+          controller.element.classList.remove('d-none')
         }
       }
     })
