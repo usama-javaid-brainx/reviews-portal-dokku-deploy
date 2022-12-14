@@ -30,7 +30,7 @@
 <!-- Preloader End -->
 
 <% if user_signed_in? %>
-  <%= render "shared/header" %>
+  <%= render "shared/header", default_categories: @default_categories, common_categories: @common_categories, all_categories: @all_categories %>
 <% end %>
 
 <%= render 'shared/flash_messages' %>
