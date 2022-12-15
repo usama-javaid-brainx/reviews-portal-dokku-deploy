@@ -1,5 +1,5 @@
 <!-- single card -->
-<div class="col-lg-12 d-lg-block d-none card-load" data-map-view-target="listReviewCard" data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>">
+<div class="mb-4 d-lg-block d-none card-load" data-map-view-target="listReviewCard" data-controller="review-card-item" data-action="mouseenter->review-card-item#mouseEnter mouseleave->review-card-item#mouseLeave" data-review-card-item-name-value="<%= review.name %>" data-review-card-item-latitude-value="<%= review.latitude %>" data-review-card-item-longitude-value="<%= review.longitude %>">
   <div class="card list-review">
     <div class="card-header col-2 p-0 border-0 position-relative" data-controller="favourite" data-favourite-liked-path-value="<%= review_update_favourite_path(review) %>">
       <%= link_to review_path(review.slug) do %>
