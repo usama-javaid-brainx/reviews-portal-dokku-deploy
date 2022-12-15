@@ -13,11 +13,6 @@
               <li><%= link_to 'Favorites', users_index_path(to_try: 'favourite', category_id: params[:category_id], score: params[:score], profile: 'true'), class: "rounded-end #{'active' if params[:to_try] == 'favourite'}" %></li>
             </ul>
           </div>
-          <div class="<%= 'col-lg-8' %> d-flex justify-content-end">
-            <!-- Top Rating -->
-            <%= f.hidden_field :profile, :value => "#{params[:profile]}" %>
-            <%= f.select(:score, [["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], selected: params[:score]) %>
-          </div>
         </div>
       </div>
     </div>

@@ -46,7 +46,6 @@
       <% end %>
     </div>
     <div class="d-flex justify-content-between pt_30">
-      <!--      todo-->
       <%= link_to review.to_try ? '#' : create_review_path(edit_review: false), class: "btn white" do %>
         <%= image_tag("template/check.svg") %><span><%= review.to_try ? "To Try" : "Mark To Try" %></span>
       <% end %>

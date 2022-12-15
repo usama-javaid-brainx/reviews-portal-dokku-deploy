@@ -1,25 +1,25 @@
 <div class="content_area">
   <div class="position-relative content_wrap pb_35">
     <div data-controller="map-view" class="container">
-      <div class="tab-content" id="layoutTabContent">
+      <div data-controller="reviews-map" class="tab-content" id="layoutTabContent">
         <!--All grid card here -->
-        <div class="tab-pane fade show active" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
+        <div data-map-view-target="gridView" class="tab-pane fade active show" id="gridLayout" role="tabpanel" aria-labelledby="gridLayout-tab">
           <div class="row justify-content-center">
             <div data-map-view-target="allReviews" class="position-relative row mt_30" id="groups-reviews">
               <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
             </div>
-            <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map row mt_40 col-lg-6">
+            <div data-map-view-target="mapView" class="d-none review-map row mt_40 col-lg-6">
               <div id="reviewMap" data-reviews-map-target="mapDisplay"></div>
             </div>
           </div>
         </div>
         <!--All list card here -->
-        <div class="tab-pane fade" id="listLayout" role="tabpanel" aria-labelledby="listLayout-tab">
+        <div data-map-view-target="listView" class="tab-pane fade show" id="listLayout" role="tabpanel" aria-labelledby="listLayout-tab">
           <div class="row">
-            <div data-map-view-target="allReviews" class="col-lg-12 g-5">
+            <div data-map-view-target="allReviews" class="col-lg-12 row g-4" id="list-groups-reviews">
               <%= render partial: 'shared/list_review_card', collection: reviews, as: :review %>
             </div>
-            <div data-map-view-target="mapView" data-controller="reviews-map" class="d-none review-map g-5 col-lg-6">
+            <div data-map-view-target="mapView" class="d-none review-map row g-4 col-lg-6">
               <div id="reviewMap" data-reviews-map-target="mapDisplay"></div>
             </div>
           </div>

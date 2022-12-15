@@ -47,10 +47,6 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
-  def search
-    @reviews = current_user.reviews.where('name ilike ?', "%#{params[:search]}%")
-  end
-
   def destroy
     @group = current_user.groups.find(params[:id])
     if @group.discard

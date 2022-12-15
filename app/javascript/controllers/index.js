@@ -60,3 +60,9 @@ application.register("map-view", MapViewController)
 
 import CarouselLoaderController from "./carousel_loader_controller.js"
 application.register("carousel-loader", CarouselLoaderController)
+
+import ReviewSearchController from "./review_search_controller.js"
+application.register("review-search", ReviewSearchController)
+
+import NavsViewController from "./navs_view_controller.js"
+application.register("navs-view", NavsViewController)
