@@ -34,9 +34,6 @@ application.register("photos", PhotosController)
 import SortableImagesController from "./sortable_images_controller.js"
 application.register("sortable-images", SortableImagesController)
 
-import CategoryReorderController from "./category_reorder_controller.js"
-application.register("category-reorder", CategoryReorderController)
-
 import UserValidationController from "./user_validation_controller.js"
 application.register("user-validation", UserValidationController)
 
@@ -60,3 +57,9 @@ application.register("map-view", MapViewController)
 
 import CarouselLoaderController from "./carousel_loader_controller.js"
 application.register("carousel-loader", CarouselLoaderController)
+
+import ReviewSearchController from "./review_search_controller.js"
+application.register("review-search", ReviewSearchController)
+
+import NavsViewController from "./navs_view_controller.js"
+application.register("navs-view", NavsViewController)

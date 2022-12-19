@@ -1,16 +1,20 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["card-select"]
-  static values = {search: String, newgroup: String }
+  static targets = ["card-select", "searchField"]
+  static values = {search: String, newgroup: String}
 
   searchRequest(event) {
-    let searchData = event.currentTarget.value
-    let that = this
-    $.ajax({
-      type: "GET",
-      url: this.searchValue,
-      data: {search: searchData}
+    let val = this.searchFieldTarget.value
+    this.reviewSearchControllers.forEach(controller => {
+      if (val != "") {
+        if (!(controller.nameValue.toLowerCase().includes(val.toLowerCase()))) {
+          controller.element.classList.add('d-none')
+        }
+        else{
+          controller.element.classList.remove('d-none')
+        }
+      }
     })
   }
 
@@ -32,4 +36,11 @@ export default class extends Controller {
       url: finalUrl
     })
   }
+
+  get reviewSearchControllers() {
+    return this.application.controllers.filter(controller => {
+      return controller.context.identifier === 'review-search'
+    })
+  }
+
 }

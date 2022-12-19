@@ -628,10 +628,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 11;
     border-radius: 50%;
     background: rgba(0, 0, 10, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    z-index: 11;
 }
 
 .favourite img {
@@ -639,12 +639,12 @@ header {
     width: 2.3rem;
 }
 
-.favourite.checked {
-    background: #FFFFFF;
-}
-
 .favourite.checked img {
     filter: brightness(0) saturate(100%) invert(28%) sepia(63%) saturate(6978%) hue-rotate(251deg) brightness(101%) contrast(94%);
+}
+
+.favourite.checked {
+    background: #FFFFFF;
 }
 
 .card-body {

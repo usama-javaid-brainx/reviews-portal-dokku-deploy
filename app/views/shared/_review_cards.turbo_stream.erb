@@ -1,5 +1,5 @@
 <%= turbo_stream.append("groups-reviews") do %>
-    <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
+  <%= render partial: 'reviews/grid_review_card', collection: reviews, as: :review %>
 <% end %>
 
 <%= turbo_stream.append("list-groups-reviews") do %>
