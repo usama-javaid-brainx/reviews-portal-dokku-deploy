@@ -22,11 +22,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Discard::Model
+  include DeviseTokenAuth::Concerns::User
+
   has_one_attached :avatar
   default_scope -> { kept }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum app_platform: [:android, :ios, :flutter]
   has_many :reviews, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :ck_editor_images, dependent: :destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_104311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -181,6 +181,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
     t.datetime "discarded_at"
     t.boolean "second_view", default: false
     t.string "phone_number"
+    t.string "device_token", default: "", null: false
+    t.integer "app_platform", default: 0, null: false
+    t.string "app_version", default: "", null: false
+    t.integer "status", default: 0, null: false
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.boolean "allow_password_change", default: false
+    t.string "confirmation_token"
+    t.string "unconfirmed_email"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.text "tokens"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
