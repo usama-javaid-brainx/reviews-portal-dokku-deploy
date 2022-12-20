@@ -10,10 +10,20 @@ module Api
       def_param_group(:user) do
         property :id, Integer
         property :active?, [true, false]
-        param :name, String, required: true
+        param :first_name, String, required: true
+        param :last_name, String, required: true
         param :app_platform, String, desc: "Possible values: #{User.app_platforms.keys}", required: true
         param :app_version, String, required: true
         param :device_token, String
+      end
+
+      api :POST, "users.json", "User Signup"
+      error 422, "Unprocessable Entity"
+      param_group :user
+      returns :user, code: 201
+
+      def create
+        super
       end
 
       api :PUT, "users.json", "Reader Update"
@@ -30,11 +40,11 @@ module Api
       private
 
       def sign_up_params
-        params.permit(:email, :password, :name, :device_token, :app_platform, :app_version)
+        params.permit(:email, :password, :first_name, :last_name, :device_token, :app_platform, :app_version)
       end
 
       def account_update_params
-        params.permit(:name, :device_token, :app_platform, :app_version)
+        params.permit(:first_name, :email, :last_name, :phone_number, :device_token, :app_platform, :app_version)
       end
 
       def render_create_success
