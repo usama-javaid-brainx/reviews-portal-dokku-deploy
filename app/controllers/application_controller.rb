@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :phone_number])
   end
 
   def after_sign_in_path_for(resource)
@@ -37,9 +37,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_categories
-    @all_categories = Category.where(active: true)
-    @default_categories = Category.where(default_category: true)
-    @common_categories = Category.where(default_category: false)
+    @all_categories = Category.where(active: true).order(id: :asc)
+    @default_categories = Category.where(default_category: true).order(id: :asc)
+    @common_categories = Category.where(default_category: false).order(id: :asc)
   end
 
 end
