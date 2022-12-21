@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_16_104311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.integer "position"
-    t.bigint "user_id"
     t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"
@@ -73,7 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
     t.boolean "foursquare_url"
     t.boolean "yelp_url"
     t.boolean "default_category", default: false
-    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "ck_editor_images", force: :cascade do |t|
@@ -123,17 +121,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
-    t.string "address"
     t.string "city"
-    t.string "state"
-    t.string "country"
-    t.string "place_id"
-    t.string "longitude"
-    t.string "latitude"
     t.string "cuisine"
     t.string "favorite_dish"
+    t.string "country"
     t.float "average_score"
     t.text "notes"
+    t.string "google_maps_link"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -143,16 +137,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
     t.integer "status"
     t.boolean "favourite"
     t.boolean "shareable"
+    t.text "images", default: [], array: true
     t.bigint "category_id"
     t.boolean "to_try", default: false
     t.datetime "discarded_at"
-    t.text "images", default: [], array: true
     t.integer "parent_id"
     t.string "slug"
     t.date "start_date"
     t.date "end_date"
-    t.text "author"
-    t.text "platform"
+    t.string "author"
+    t.string "platform"
     t.string "url"
     t.string "google_url"
     t.string "foursquare_url"
@@ -187,6 +181,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_142811) do
     t.datetime "discarded_at"
     t.boolean "second_view", default: false
     t.string "phone_number"
+    t.string "device_token", default: "", null: false
+    t.integer "app_platform", default: 0, null: false
+    t.string "app_version", default: "", null: false
+    t.integer "status", default: 0, null: false
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.boolean "allow_password_change", default: false
+    t.string "confirmation_token"
+    t.string "unconfirmed_email"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.text "tokens"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

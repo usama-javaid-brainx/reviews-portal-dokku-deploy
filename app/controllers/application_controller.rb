@@ -41,5 +41,5 @@ class ApplicationController < ActionController::Base
     @default_categories = Category.where(default_category: true)
     @common_categories = Category.where(default_category: false)
   end
-  
+
 end

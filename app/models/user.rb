@@ -22,11 +22,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Discard::Model
+  include DeviseTokenAuth::Concerns::User
+
   has_one_attached :avatar
   default_scope -> { kept }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum app_platform: [:android, :ios, :flutter]
   has_many :reviews, dependent: :destroy
   has_many :groups, dependent: :destroy
   has_many :ck_editor_images, dependent: :destroy
@@ -36,4 +39,16 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :email, format: { with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/, multiline: true }, presence: true, uniqueness: true
   validates :phone_number, uniqueness: true, allow_blank: true, on: :update
+
+  #methods
+
+  protected
+
+  def confirmation_required?
+    false
+  end
+
+  def active_for_authentication?
+    true
+  end
 end
