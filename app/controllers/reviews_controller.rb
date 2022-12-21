@@ -73,7 +73,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @curr_category = @review.category
+    @curr_category = params[:category_id].present? ? Category.find(params[:category_id]) : @review.category
   end
 
   def update
@@ -111,7 +111,7 @@ class ReviewsController < ApplicationController
   end
 
   def category_order
-    @ordered_categories = Category.all.order("position asc")
+    @ordered_categories = Category.all.order(id: :asc)
   end
 
   def get_score

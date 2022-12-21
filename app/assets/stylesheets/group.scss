@@ -137,7 +137,6 @@
 }
 
 .small-card-review {
-  height: 160px;
   cursor: pointer;
 }
 
@@ -171,10 +170,10 @@
 }
 
 .small-review-card {
-  width: 4rem;
+  width: 5rem;
   font-size: 10px;
-  height: 1.8rem;
-  line-height: 1.8rem;
+  height: unset;
+  line-height: unset;
   margin-right: 0px;
 }
 

@@ -1927,7 +1927,7 @@ header {
     color: #848496;
 }
 
-.tags_search_form button {
+.tags_search_form span {
     position: absolute;
     top: 0;
     left: 0;
@@ -2665,6 +2665,10 @@ div.ck ul {
     --bs-modal-width: 100% !important;
 }
 
+.modal-xl .modal-content {
+    height: 100vh;
+}
+
 .modal-xl .modal-content, .modal-xl .modal-content .modal-body .lightbox-carousel, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner, .modal-xl .modal-content .modal-body .lightbox-carousel .carousel-inner .active .ratio-16x9 {
     height: 100vh;
 }
@@ -2756,4 +2760,8 @@ div.ck ul {
     line-height: 20px;
     color: #5F33DD;
     margin-right: 2.2rem;
+}
+
+[type=search] {
+    -webkit-appearance: unset !important;
 }
