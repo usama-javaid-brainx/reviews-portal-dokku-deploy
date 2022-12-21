@@ -841,7 +841,6 @@ header {
 }
 
 .lock:hover {
-    /* background: #6E3EF7; */
     border-color: rgb(232, 232, 232);
 }
 
@@ -849,10 +848,6 @@ header {
     max-width: 1.3rem;
     margin: auto
 }
-
-/* .lock:hover img {
-	filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(32deg) brightness(109%) contrast(101%);
-} */
 
 .addNew {
     position: fixed;
@@ -1552,8 +1547,7 @@ header {
 
 /* ============= Add restaurant review CSS start ============= */
 
-hitting-enter-submit
-.category_area {
+.hitting-enter-submit .category_area {
     padding-top: 15rem;
     margin-top: -10rem;
 }
@@ -1934,7 +1928,7 @@ hitting-enter-submit
     color: #848496;
 }
 
-.tags_search_form button {
+.tags_search_form span {
     position: absolute;
     top: 0;
     left: 0;
@@ -2217,13 +2211,13 @@ li.category-list-item {
     padding: 1rem 0rem;
 }
 
-.filter-bar large-add-new-btn .add-new-btn:hover {
+.filter-bar .large-add-new-btn .add-new-btn:hover {
     background: #FFFFFF;
     color: #6E3EF7;
     border-color: #6E3EF7;
 }
 
-large-add-new-btn .add-new-btn:hover img {
+.large-add-new-btn .add-new-btn:hover img {
     filter: brightness(0) saturate(100%) invert(28%) sepia(63%) saturate(6978%) hue-rotate(251deg) brightness(101%) contrast(94%);
 }
 
@@ -2241,7 +2235,7 @@ h3.review-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0px;
+    /*padding: 0px;*/
     width: 80%;
 }
 
@@ -2672,6 +2666,7 @@ div.ck ul {
     margin: 0 auto;
     --bs-modal-width: 100% !important;
 }
+
 .modal-xl .modal-content {
     height: 100vh;
 }
@@ -2747,7 +2742,7 @@ div.ck ul {
     font-weight: 400;
 }
 
-.review-link{
+.review-link {
     color: #6E3EF7;
 }
 
@@ -2759,4 +2754,8 @@ div.ck ul {
     line-height: 20px;
     color: #5F33DD;
     margin-right: 2.2rem;
+}
+
+[type=search] {
+    -webkit-appearance: unset !important;
 }

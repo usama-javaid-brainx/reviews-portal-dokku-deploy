@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown']
+  static targets = ["applyBtn", 'filtersForm', 'locationFilter', "cuisinesFilter", "tagsFilter", 'appliedFilter', "input", 'sortReviews', 'scoreFilter', 'sortDropdown', "mapStatus"]
 
   connect() {
     this.filterCount = 0
@@ -25,6 +25,13 @@ export default class extends Controller {
         minimumResultsForSearch: Infinity
       })
       $(this.sortDropdownTarget).on('select2:select select2:unselect', this.sortDropdown.bind(this))
+    }
+    if (this.hasMapStatusTarget) {
+      if (localStorage.getItem("map") == "on") {
+        this.mapStatusTarget.checked = true
+      } else {
+        this.mapStatusTarget.checked = false
+      }
     }
   }
 
@@ -125,17 +132,20 @@ export default class extends Controller {
     this.filtersFormTarget.submit()
   }
 
-  // TODO: Code to be clean
-
-  showMap(event) {
+  showMap(_event) {
     this.reviewsMapController.initilizeMap()
     let view = this.mapViewController
-    if (event.currentTarget.checked) {
-      this.mapOn(view)
-    } else {
-      this.mapOff(view)
+    if (this.hasMapStatusTarget) {
+
+      if (this.mapStatusTarget.checked) {
+        this.mapOn(view)
+        localStorage.setItem('map', 'on');
+      } else {
+        this.mapOff(view)
+        localStorage.setItem('map', 'off');
+      }
+      document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${this.mapStatusTarget.checked}`
     }
-    document.getElementById('loadMoreButton').href = `${document.getElementById('loadMoreButton').href}&map=${event.currentTarget.checked}`
   }
 
   mapOn(view) {
@@ -150,8 +160,7 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.remove("col-lg-3")
     }
-    document.getElementById('loadMoreButton').parentElement.classList.remove("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.add("load-more")
+    document.getElementById('loadMoreButton').classList.add("load-more")
   }
 
   mapOff(view) {
@@ -166,8 +175,7 @@ export default class extends Controller {
       }
       view.gridReviewCardTargets[i].classList.add("col-lg-3")
     }
-    document.getElementById('loadMoreButton').parentElement.classList.add("justify-content-center")
-    document.getElementById('loadMoreButton').parentElement.classList.remove("load-more")
+    document.getElementById('loadMoreButton').classList.remove("load-more")
   }
 
   get mapViewController() {
