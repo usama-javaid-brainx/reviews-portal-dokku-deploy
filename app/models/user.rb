@@ -23,6 +23,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Discard::Model
   include DeviseTokenAuth::Concerns::User
+  include Statusable
 
   has_one_attached :avatar
   default_scope -> { kept }
@@ -42,13 +43,9 @@ class User < ApplicationRecord
 
   #methods
 
-  protected
-
-  def confirmation_required?
-    false
-  end
-
-  def active_for_authentication?
+  # You can override this method to set confirmation for registration
+  def confirmed?
     true
   end
+
 end
