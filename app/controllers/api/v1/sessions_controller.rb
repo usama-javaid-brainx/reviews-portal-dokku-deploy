@@ -39,14 +39,6 @@ module Api
       end
 
       api :Delete, "users/sign_out.json", "User logout"
-      example <<~EOS
-                HEADERS: {
-                  "Content-Type": "application/json",
-                  "access_token" : "GMSAe3RWuXwWo8tMYWu07g"
-                  "uid": "user@example.com",
-                  "client": "PTg8YW9rnTzEYeMnVnNkoQ"
-                }
-      EOS
       def destroy
         # remove auth instance variables so that after_action does not run
         user = @resource ? remove_instance_variable(:@resource) : nil
