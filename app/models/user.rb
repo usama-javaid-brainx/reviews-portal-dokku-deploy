@@ -3,8 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  first_name             :string           default(""), not null
-#  last_name              :string           default(""), not null
+#  username             :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -36,16 +35,24 @@ class User < ApplicationRecord
   has_many :ck_editor_images, dependent: :destroy
   has_many :requests, dependent: :destroy
 
-  #validation
-  validates :first_name, :last_name, presence: true
+  # validation
+  validates :username, uniqueness: true, presence: true
   validates :email, format: { with: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/, multiline: true }, presence: true, uniqueness: true
   validates :phone_number, uniqueness: true, allow_blank: true, on: :update
 
-  #methods
+  # callbacks
+  before_save :set_username_to_downcase
+  # methods
 
   # You can override this method to set confirmation for registration
   def confirmed?
     true
+  end
+
+  private
+
+  def set_username_to_downcase
+    self.username = self.username.gsub(/\s+/, "").downcase
   end
 
 end

@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.all.order(id: :asc)
   end
   def update_categories_status
     if update_category?

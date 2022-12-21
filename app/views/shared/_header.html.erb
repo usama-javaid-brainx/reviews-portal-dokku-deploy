@@ -71,7 +71,7 @@
         <% if user_signed_in? %>
           <div class="dropdown user d-inline-block">
             <a class="d-inline-flex align-items-center" href="#" id="sessionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <p class="name">Hello, <span><%= current_user.first_name.titleize %></span></p>
+              <p class="name">Hello, <span><%= current_user.username %></span></p>
               <span class="header-img user-img-wrapper">
                       <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar_placeholder.jpg") %>
                         </span>
@@ -85,7 +85,7 @@
                       <%= image_tag(current_user.avatar.attached? ? current_user.avatar : "template/avatar_placeholder.jpg") %>
                         </span>
                     <div class="d-inline dropdown-info">
-                      <span class="d-block user-name"><%= current_user.first_name.titleize %></span>
+                      <span class="d-block user-name"><%= current_user.username %></span>
                       <span class="user-email"><%= current_user.email %></span>
                     </div>
                   </div>

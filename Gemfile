@@ -7,7 +7,7 @@ ruby "~> #{`cat .ruby-version`.strip}"
 gem "rails", "~> 7.0", ">= 7.0.2.3"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem "propshaft", "~> 0.6.4"
+gem "propshaft", "~> 0.6"
 
 # Use postgres as the database for Active Record
 gem "pg", "~> 1.3"
@@ -19,11 +19,11 @@ gem "puma", "~> 5.6"
 gem "jsbundling-rails", "~> 1.0"
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
+gem "cssbundling-rails", "~> 1.1"
 
-gem 'new_ckeditor'
+gem 'new_ckeditor', "~> 0.1"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", "~> 1.0"
+gem "turbo-rails", "~> 1.3"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", "~> 1.0"
@@ -33,7 +33,7 @@ gem "stimulus-rails", "~> 1.0"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.6"
 
-gem 'devise_token_auth'
+gem 'devise_token_auth', "~> 1.2"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -45,7 +45,7 @@ gem "devise", git: 'https://github.com/ghiculescu/devise.git', branch: "error-co
 gem "image_processing", "~> 1.12"
 gem "devise-bootstrapped", "~> 0.1"
 
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3', "~> 1.113", require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
@@ -55,15 +55,15 @@ gem 'pagy', '~> 5.10'
 gem 'filestack-rails', '~> 5.5'
 
 gem 'discard', '~> 1.2'
-gem 'acts_as_list'
-gem 'apipie-rails'
+gem 'acts_as_list', "~> 1.0"
+gem 'apipie-rails', "~> 0.8"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "letter_opener"
-  gem "debug", "~> 1.4", platforms: %i[ mri mingw x64_mingw ]
+  gem "letter_opener", "~> 1.8"
+  gem "debug", "~> 1.5", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
@@ -85,6 +85,7 @@ group :test do
   gem "webdrivers", "~> 5.0"
 end
 
-gem 'httparty', '~> 0.20.0'
+gem 'httparty', '~> 0.20'
 
 gem 'nokogiri', '~> 1.13', '>= 1.13.8'
+gem "active_model_serializers", "~> 0.10"

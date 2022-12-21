@@ -15,7 +15,7 @@
         <%= image_tag(review_user.avatar.attached? ? review_user.avatar : "template/avatar_placeholder.jpg") %>
       </span>
       <div>
-        <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: review.user_id).first_name %> <%= User.find_by(id: review.user_id).last_name %></span>
+        <span class="name pl_10"><span class="text-black-50">by</span> <%= User.find_by(id: review.user_id).username %> </span>
       </div>
     </div>
     <div>
@@ -35,7 +35,7 @@
         </span>
         <div class="pl_10">
           <p class="reviewer">Reviewer</p>
-          <p class="name"><%= User.find_by(id: review.user_id).first_name %></p>
+          <p class="name"><%= User.find_by(id: review.user_id).username %></p>
         </div>
       </div>
       <% if review.average_score.present? %>

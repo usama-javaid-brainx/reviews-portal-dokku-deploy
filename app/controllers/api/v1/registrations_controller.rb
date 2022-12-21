@@ -10,8 +10,7 @@ module Api
       def_param_group(:user) do
         property :id, Integer
         property :active?, [true, false]
-        param :first_name, String, required: true
-        param :last_name, String, required: true
+        param :username, String, required: true
         param :app_platform, String, desc: "Possible values: #{User.app_platforms.keys}", required: true
         param :app_version, String, required: true
         param :device_token, String
@@ -40,11 +39,11 @@ module Api
       private
 
       def sign_up_params
-        params.permit(:email, :password, :first_name, :last_name, :device_token, :app_platform, :app_version)
+        params.permit(:email, :password, :username, :device_token, :app_platform, :app_version)
       end
 
       def account_update_params
-        params.permit(:first_name, :email, :last_name, :phone_number, :device_token, :app_platform, :app_version)
+        params.permit( :email, :username, :phone_number, :device_token, :app_platform, :app_version)
       end
 
       def render_create_success
