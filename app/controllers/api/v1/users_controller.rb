@@ -12,20 +12,20 @@ module Api
         param :device_token, String
       end
 
-      api :GET, "user/profile.json", "Reader Profile"
-      returns :current_user, desc: "a successful response"
+      # api :GET, "user/profile.json", "Reader Profile"
+      # returns :current_user, desc: "a successful response"
 
       def profile
         render json: current_user
       end
-
-      api :POST, "user/change_password.json", "Change Password"
-      param :current_password, String, required: true
-      param :password, String, required: true
-      param :password_confirmation, String, required: true
-      returns code: 200, desc: "a successful response" do
-        property :message, String
-      end
+      #TODO: This is commented for now will use it when needed
+      # api :POST, "user/change_password.json", "Change Password"
+      # param :current_password, String, required: true
+      # param :password, String, required: true
+      # param :password_confirmation, String, required: true
+      # returns code: 200, desc: "a successful response" do
+      #   property :message, String
+      # end
 
       def change_password
         if params[:password] != params[:password_confirmation]

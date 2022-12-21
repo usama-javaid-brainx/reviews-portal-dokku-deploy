@@ -7,14 +7,14 @@ module Api
       protect_from_forgery with: :exception
       include Api::Concerns::ActAsApiRequest
       skip_before_action :check_json_request, only: %i[edit update]
-
-      api :POST, "users/password.json", "Reader Reset Password"
-      error 422, "Unprocessable Entity"
-      description "Authorization not required"
-      param :email, String, required: true
-      returns code: 200, desc: "a successful response" do
-        property :message, String
-      end
+      #TODO: This is commented for now will use it when needed
+      # api :POST, "users/password.json", "Reader Reset Password"
+      # error 422, "Unprocessable Entity"
+      # description "Authorization not required"
+      # param :email, String, required: true
+      # returns code: 200, desc: "a successful response" do
+      #   property :message, String
+      # end
       # this action is responsible for generating password reset tokens and
       # sending emails
       def create

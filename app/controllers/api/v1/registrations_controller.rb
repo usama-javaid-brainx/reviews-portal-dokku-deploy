@@ -24,11 +24,11 @@ module Api
       def create
         super
       end
-
-      api :PUT, "users.json", "Reader Update"
-      error 422, "Unprocessable Entity"
-      param_group :user
-      returns :user, code: 201
+      #TODO: This is commented for now will use it when needed
+      # api :PUT, "users.json", "Reader Update"
+      # error 422, "Unprocessable Entity"
+      # param_group :user
+      # returns :user, code: 201
 
       def update
         super
