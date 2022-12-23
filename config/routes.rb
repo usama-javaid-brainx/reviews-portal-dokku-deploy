@@ -42,7 +42,7 @@ Rails.application.routes.draw do
         passwords: "api/v1/passwords",
         registrations: "api/v1/registrations"
       }
-      resources :reviews, only: :create
+      resources :reviews, only: [:create, :index]
       resources :categories, only: :index
     end
   end

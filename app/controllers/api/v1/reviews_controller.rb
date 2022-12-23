@@ -1,8 +1,10 @@
-class Api::V1::ReviewsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create]
-  skip_before_action :verify_authenticity_token
-  before_action :validate_key
+class Api::V1::ReviewsController < ApiController
+  skip_before_action :authenticate_user!, :verify_authenticity_token, only: [:create]
+  before_action :validate_key, only: [:create]
 
+  def index
+
+  end
   def create
     user = User.find_by(phone_number: params[:phone_number])
     rev_name = FetchTitleService.new(params[:review]['url'])
