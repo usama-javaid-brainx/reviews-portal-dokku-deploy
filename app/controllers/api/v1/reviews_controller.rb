@@ -1,7 +1,7 @@
 module Api
   module V1
     class ReviewsController < Api::V1::ApiController
-      skip_before_action :authenticate_user!, :verify_authenticity_token, only: [:create]
+      skip_before_action :authenticate_user!, only: [:create]
       before_action :validate_key, only: [:create]
 
       def index
