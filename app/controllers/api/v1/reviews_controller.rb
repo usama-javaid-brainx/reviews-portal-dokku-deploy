@@ -3,7 +3,7 @@ class Api::V1::ReviewsController < ApiController
   before_action :validate_key, only: [:create]
 
   def index
-
+    reviews = Review.all
   end
   def create
     user = User.find_by(phone_number: params[:phone_number])
