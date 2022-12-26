@@ -48,7 +48,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <%= form_for review, html: {'data-turbo' => "false"} do |form| %>
+          <%= form_for review, html: {'data-turbo': "false", 'class': "review_form" } do |form| %>
             <div data-controller="places"
                  data-action="google-maps-callback@window->places#initMap" data-places-country-value='["us"]'
                  data-places-latitude-value="<%= review.latitude %>"
