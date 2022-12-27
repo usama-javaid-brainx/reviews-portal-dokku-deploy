@@ -121,13 +121,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
+    t.string "address"
     t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "place_id"
+    t.string "longitude"
+    t.string "latitude"
     t.string "cuisine"
     t.string "favorite_dish"
-    t.string "country"
     t.float "average_score"
     t.text "notes"
-    t.string "google_maps_link"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
