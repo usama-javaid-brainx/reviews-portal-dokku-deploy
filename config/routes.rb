@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         registrations: "api/v1/registrations"
       }
       resources :reviews, only: [:create, :index]
+      post :create_review_with_num
       resources :categories, only: :index
     end
   end

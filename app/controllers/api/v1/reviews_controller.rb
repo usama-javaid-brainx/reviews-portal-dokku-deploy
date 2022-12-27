@@ -1,8 +1,8 @@
 module Api
   module V1
     class ReviewsController < Api::V1::ApiController
-      skip_before_action :authenticate_user!, only: [:create]
-      before_action :validate_key, only: [:create]
+      skip_before_action :authenticate_user!, only: [:create_review_with_num]
+      before_action :validate_key, only: [:create_review_with_num]
 
       def index
         reviews = Review.all
@@ -10,10 +10,17 @@ module Api
           reviews = review_filter(reviews)
         end
         pagy, reviews = pagy_countless(reviews)
-        render json: reviews, meta: pagy_meta(pagy),each_serializer: ReviewSerializer, adapter: :json
+        render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
 
       def create
+        @review = current_user.reviews.new(review_params)
+        if @review.save
+        else
+        end
+      end
+
+      def create_review_with_num
         user = User.find_by(phone_number: params[:phone_number])
         rev_name = FetchTitleService.new(params[:review]['url'])
         if params[:phone_number].present? && user.present?
@@ -24,11 +31,11 @@ module Api
         end
       end
 
+      private
+
       def validate_key
         message("invalid secret key") unless Rails.application.credentials.config[:x_api_key] == request.headers["x-api-key"]
       end
-
-      private
 
       def message(msg)
         render json: {
@@ -50,6 +57,10 @@ module Api
                     reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
                   end
         reviews
+      end
+
+      def review_params
+        params.require(:review).permit(:name, :category_id, :to_try, :shareable, :date, :tags, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :cuisine, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy])
       end
 
     end
