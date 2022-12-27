@@ -9,7 +9,8 @@ module Api
         if (params[:filters].present? || params[:search].present? || params[:to_try].present? || params[:order].present? || params[:category_id].present?)
           reviews = review_filter(reviews)
         end
-        render json: reviews
+        pagy, reviews = pagy_countless(reviews)
+        render json: reviews, meta: pagy_meta(pagy),each_serializer: ReviewSerializer, adapter: :json
       end
 
       def create
