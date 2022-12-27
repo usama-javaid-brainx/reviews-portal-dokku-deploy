@@ -21,7 +21,9 @@ module Api
       rescue_from AbstractController::ActionNotFound, with: :render_not_found
       rescue_from ActionController::ParameterMissing, with: :render_parameter_missing
       rescue_from ArgumentError, with: :render_argument_error
-
+      def parse_reviews(collection)
+        collection.map { |obj| obj.split(",") }.flatten.collect { |e| e.strip.downcase }.reject(&:empty?).uniq.sort
+      end
       private
 
       def render_exception_error(exception)

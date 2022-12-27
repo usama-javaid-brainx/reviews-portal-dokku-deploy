@@ -1,23 +1,70 @@
 module Api
   module V1
     class FiltersController < Api::V1::ApiController
-      skip_before_action :authenticate_user!, only: [:index]
       api :GET, "filters", "Get a list of all available filters"
+      param :category_id, String, desc: "Category id for which filters are requested, if this is empty it will return filters from all reviews", required: false
+
+      example <<-EOS
+        
+      Status Codes with Response
+      200:{
+          "sort_by": [
+              {
+                  "Newest": "recent"
+              },
+              {
+                  "Top Rated": "desc"
+              },
+              {
+                  "Low Rated": "asc"
+              }
+          ],
+          "cuisines": [
+              "afghan",
+              "andalusian"
+          ],
+          "tags": [
+              "great",
+              "heavy",
+              "hello world",
+              "nice",
+              "random"
+          ],
+          "locations": [
+              "frankfurt . he",
+              "lahore . punjab",
+              "paris . idf"
+          ]
+      }
+      EOS
+
       def index
         reviews = params[:category_id].present? ? Review.where(category_id: params[:category_id]) : Review.all
-        sort_by = [{"Newest": 'recent'}, {"Top_Rated": 'desc'}, {"Low_Rated": 'asc'}]
-        cuisines = reviews.pluck(:cuisine).map { |cuisine| cuisine.split(",") }.flatten.collect { |e| e.strip.downcase }.uniq.reject(&:empty?).sort
-        tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.collect { |e| e.strip.downcase }.uniq.reject(&:empty?).sort
+        render json: { "sort_by": sort_by, "cuisines": cuisines(reviews), "tags": tags(reviews), "locations": locations(reviews) }
+      end
+
+      private
+
+      def sort_by
+        [{ "Newest": 'recent' }, { "Top Rated": 'desc' }, { "Low Rated": 'asc' }]
+      end
+
+      def cuisines(reviews)
+        parse_reviews(reviews.pluck(:cuisine))
+      end
+
+      def tags(reviews)
+        parse_reviews(reviews.pluck(:tags))
+      end
+
+      def locations(reviews)
         locations = []
         reviews.each do |review|
-          unless review.city.nil? && review.state.nil?
-            locations << (review.city + ' . ' + review.state)
-          end
+          (review.city.nil? && review.state.nil?) ? next : locations << (review.city + ' . ' + review.state)
         end
-        locations.map { |loc| loc.split(",") }.flatten.collect { |e| e.strip.downcase }.uniq.reject(&:empty?).sort
-        filters = [{"sort_by": sort_by}, {"cuisines": cuisines}, {"tags": tags}, {"locations": locations}]
-        render json: filters, adapter: :json
+        parse_reviews(locations)
       end
+
     end
   end
 end
