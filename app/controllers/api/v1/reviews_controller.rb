@@ -16,7 +16,9 @@ module Api
       def create
         @review = current_user.reviews.new(review_params)
         if @review.save
+          render_message("Review Created successfully")
         else
+          render_error(500, "Review didn't created successfully")
         end
       end
 
