@@ -54,7 +54,10 @@ module Api
       end
 
       def pagy_meta(pagy)
-        pagy_headers(pagy).except("Link")
+        {
+          "current_page": pagy.page,
+          "total_pages": pagy.pages
+        }
       end
 
       def attach_base64_attachment(attachment, attachment_params)
