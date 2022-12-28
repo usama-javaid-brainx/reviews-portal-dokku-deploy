@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       }
       resources :reviews, only: [:create, :index]
       resources :categories, only: :index
+      resources :filters, only: :index
     end
   end
 
