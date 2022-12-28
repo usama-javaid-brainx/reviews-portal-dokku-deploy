@@ -4,6 +4,64 @@ module Api
       skip_before_action :authenticate_user!, only: [:create_review_with_num]
       before_action :validate_key, only: [:create_review_with_num]
 
+      api :GET, "reviews", "Get a list of all available reviews or with applied filters"
+
+      example <<-EOS
+        
+      Status Codes with Response
+      200: {
+    "reviews": [
+        {
+            "id": 84,
+            "user_id": 1,
+            "name": "KFC Yum! Center",
+            "address": "1 Arena Plaza",
+            "city": "Louisville",
+            "state": "KY",
+            "country": "United States",
+            "place_id": "ChIJ8QWjWLxyaYgR5MYIpV71c0c",
+            "longitude": "-85.7542438",
+            "latitude": "38.25716789999999",
+            "cuisine": "Drama",
+            "favorite_dish": null,
+            "average_score": 5.0,
+            "notes": "<p>Very good</p>",
+            "date": "2022-11-15",
+            "created_at": "2022-11-17T11:02:57.829Z",
+            "updated_at": "2022-11-17T11:03:29.960Z",
+            "zip_code": "40202-1363",
+            "tags": ",hello,working",
+            "price_range": 4,
+            "status": null,
+            "favourite": null,
+            "shareable": true,
+            "category_id": 1,
+            "to_try": false,
+            "discarded_at": null,
+            "images": [
+                "https://cdn.filestackcontent.com/WCxWynf7QX2NJDhXgjqv",
+                "https://cdn.filestackcontent.com/2KIs4ADS4OrYQFOgUfQb"
+            ],
+            "parent_id": null,
+            "slug": "U9GSBhCiaArmMmrsgAFqFUedzBhQU51p84",
+            "start_date": null,
+            "end_date": null,
+            "author": null,
+            "platform": null,
+            "url": null,
+            "google_url": null,
+            "foursquare_url": "https://foursquare.com/v/antidote/4cab506a2f08236a745c8561",
+            "yelp_url": null
+        }
+        ],
+        "meta": {
+            "current_page": 1,
+            "total_pages": 1
+        }
+    }
+
+      EOS
+
       def index
         reviews = Review.all
         if (params[:filters].present? || params[:search].present? || params[:to_try].present? || params[:order].present? || params[:category_id].present?)
@@ -15,8 +73,8 @@ module Api
 
       def create
 
-        # TODO : Documentation
-        
+      api :POST, "review", "Create a new review"
+
         @review = current_user.reviews.new(review_params)
         if @review.save
           render_message("Review Created successfully")
