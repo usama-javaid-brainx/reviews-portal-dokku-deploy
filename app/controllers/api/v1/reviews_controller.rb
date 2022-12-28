@@ -72,14 +72,33 @@ module Api
       end
 
       def create
+        api :POST, "review", "Create a new review"
 
-      api :POST, "review", "Create a new review"
-
-        @review = current_user.reviews.new(review_params)
-        if @review.save
+        review = current_user.reviews.new(review_params)
+        if review.save
           render_message("Review Created successfully")
         else
           render_error(500, "Review didn't created successfully")
+        end
+      end
+
+      api :PUT, "review", "Update a review"
+
+      def update
+        api :PUT, "review", "Update a review"
+
+        review = Review.find(params[:id])
+        if review.update(review_params)
+          params[:review][:meals_attributes].each do |meal|
+            if meal[:id].present? && meal[:_destroy].present?
+              Meal.find(meal[:id]).delete
+            else
+              render_error(404, "Meal not found")
+            end
+          end
+          render_message("Review updated successfully!")
+        else
+          render_error(500, "Review didn't updated")
         end
       end
 
