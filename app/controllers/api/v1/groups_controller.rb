@@ -25,7 +25,7 @@ module Api
         render json: groups, meta: pagy_meta(pagy), each_serializer: GroupSerializer, adapter: :json
       end
 
-      api :POST, "Group", "Create a new group"
+      api :POST, "groups", "Create a new group"
       def create
         group = current_user.groups.new(group_params)
         if group.save
@@ -36,7 +36,7 @@ module Api
         end
       end
 
-      api :PUT, "group", "Update a group"
+      api :PUT, "groups", "Update a group"
       def update
         group = current_user.groups.find(params[:id])
         group.review_ids = params[:reviews] if params[:reviews].present?
@@ -48,7 +48,7 @@ module Api
         end
       end
 
-      api :DELETE, "group", "Delete a group"
+      api :DELETE, "groups", "Delete a group"
       def destroy
         group = current_user.groups.find(params[:id])
         if group.discard
