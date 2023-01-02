@@ -68,7 +68,7 @@ module Api
           reviews = current_user.reviews.where(to_try: params[:to_try])
         end
         if reviews.present?
-          pagy, reviews = pagy_countless(reviews)
+          pagy, reviews = pagy(reviews)
           render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
         else
           render_error(500, "No record found")
