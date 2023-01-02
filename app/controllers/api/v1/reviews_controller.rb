@@ -67,8 +67,12 @@ module Api
         if (params[:to_try].present?)
           reviews = current_user.reviews.where(to_try: params[:to_try])
         end
-        pagy, reviews = pagy_countless(reviews)
-        render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
+        if reviews.present?
+          pagy, reviews = pagy_countless(reviews)
+          render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
+        else
+          render_error(500, "No record found")
+        end
       end
 
       api :GET, "reviews", "Get a list of current user reviews with applied filters"
