@@ -18,6 +18,7 @@ module Api
       def profile
         render json: current_user
       end
+
       #TODO: This is commented for now will use it when needed
       # api :POST, "user/change_password.json", "Change Password"
       # param :current_password, String, required: true
@@ -26,6 +27,10 @@ module Api
       # returns code: 200, desc: "a successful response" do
       #   property :message, String
       # end
+
+      def update
+        debugger
+      end
 
       def change_password
         if params[:password] != params[:password_confirmation]
