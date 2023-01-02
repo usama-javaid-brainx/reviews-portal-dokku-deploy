@@ -63,7 +63,7 @@ module Api
       EOS
 
       def index
-        reviews = Review.all
+        reviews = current_user.reviews
         if (params[:filters].present? || params[:search].present? || params[:to_try].present? || params[:order].present? || params[:category_id].present?)
           reviews = review_filter(reviews)
         end
