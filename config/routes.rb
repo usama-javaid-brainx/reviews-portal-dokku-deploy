@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       }
       resources :reviews, only: [:create, :index, :update] do
         post :create_review_with_num
+        get :filtered_reviews, on: :collection
       end
       resources :groups, only: [:index, :create, :update, :destroy]
       resources :categories, only: :index
