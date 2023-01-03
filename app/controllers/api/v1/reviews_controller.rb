@@ -63,10 +63,7 @@ module Api
       EOS
 
       def index
-        reviews = current_user.reviews
-        if params[:filters].present?
-          reviews = review_filter(current_user.reviews)
-        end
+        reviews = review_filter(current_user.reviews)
         pagy, reviews = pagy(reviews)
         render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
@@ -127,7 +124,7 @@ module Api
 
       def review_filter(reviews)
         reviews = reviews.where('state ilike any (array[?])', params[:filters][:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:filters][:search])).or(reviews.where('city ilike any (array[?])', params[:filters][:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:filters][:search])).or(reviews.where('country ilike any (array[?])', params[:filters][:search])).or(reviews.where('name ilike ?', "%#{params[:filters][:search]}%").or(reviews.where("cuisine ilike any (array[?])", params[:filters][:search])).or(reviews.where("tags ilike '%#{params[:filters][:search]}%'")).or(reviews.where("notes ilike '%#{params[:filters][:search]}%'"))) if params[:filters][:search].present?
-        reviews = params[:filters][:category_id] == 'all' ? reviews : reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
+        reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
         location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
         reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
         reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?

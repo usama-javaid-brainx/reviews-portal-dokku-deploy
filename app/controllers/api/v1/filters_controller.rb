@@ -50,7 +50,7 @@ module Api
       end
 
       def cuisines(reviews)
-        parse_reviews(reviews.pluck(:cuisine))
+        reviews.pluck(:cuisine)
       end
 
       def tags(reviews)
@@ -58,11 +58,17 @@ module Api
       end
 
       def locations(reviews)
-        locations = []
-        reviews.each do |review|
-          (review.city.nil? && review.state.nil?) ? next : locations << (review.city + ' . ' + review.state)
+        reviews.map do |review|
+          if review.city.blank? && review.state.blank?
+            next
+          else
+            if review.city.present?
+              review.state.present? ? review.city + " . " + review.state : review.city
+            else
+              review.state
+            end
+          end
         end
-        parse_reviews(locations)
       end
 
     end
