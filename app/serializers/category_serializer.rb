@@ -4,7 +4,7 @@ class CategorySerializer < ActiveModel::Serializer
   has_many :sub_categories
 
   def icon
-    Rails.application.routes.url_helpers.rails_blob_url(@object.icon) if @object.icon.present?
+    Rails.application.routes.url_helpers.rails_blob_url(@object.icon) if @object.icon.attached?
   end
 end
 

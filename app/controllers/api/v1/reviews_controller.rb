@@ -64,15 +64,11 @@ module Api
 
       def index
         reviews = current_user.reviews
-        if (params[:to_try].present? || params[:search].present? || params[:order].present? || params[:category_id].present? || params[:filters].present?)
+        if params[:filters].present?
           reviews = review_filter(current_user.reviews)
         end
-        if reviews.present?
-          pagy, reviews = pagy(reviews)
-          render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
-        else
-          render_error(500, "No record found")
-        end
+        pagy, reviews = pagy(reviews)
+        render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
 
       def create
@@ -82,7 +78,7 @@ module Api
         if review.save
           render_message("Review Created successfully")
         else
-          render_error(500, "Review didn't created successfully")
+          render_error(422, "Review didn't created successfully")
         end
       end
 
@@ -102,7 +98,7 @@ module Api
           end
           render_message("Review updated successfully!")
         else
-          render_error(500, "Review didn't updated")
+          render_error(422, "Review didn't updated")
         end
       end
 
@@ -130,17 +126,15 @@ module Api
       end
 
       def review_filter(reviews)
-        reviews = reviews.where('state ilike any (array[?])', params[:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:search])).or(reviews.where('city ilike any (array[?])', params[:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:search])).or(reviews.where('country ilike any (array[?])', params[:search])).or(reviews.where('name ilike ?', "%#{params[:search]}%").or(reviews.where("cuisine ilike any (array[?])", params[:search])).or(reviews.where("tags ilike '%#{params[:search]}%'")).or(reviews.where("notes ilike '%#{params[:search]}%'"))) if params[:search].present?
-        reviews = params[:category_id] == 'all' ? reviews : reviews.where(category_id: params[:category_id]) if params[:category_id].present?
-        if params[:filters].present?
-          location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
-          reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
-          reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
-          reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
-        end
-        reviews = reviews.where(to_try: params[:to_try]) if params[:to_try].present?
-        reviews = if params[:order].present?
-                    reviews.order(params[:order] == "recent" ? "created_at desc" : "average_score #{params[:order]} NULLS LAST")
+        reviews = reviews.where('state ilike any (array[?])', params[:filters][:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:filters][:search])).or(reviews.where('city ilike any (array[?])', params[:filters][:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:filters][:search])).or(reviews.where('country ilike any (array[?])', params[:filters][:search])).or(reviews.where('name ilike ?', "%#{params[:filters][:search]}%").or(reviews.where("cuisine ilike any (array[?])", params[:filters][:search])).or(reviews.where("tags ilike '%#{params[:filters][:search]}%'")).or(reviews.where("notes ilike '%#{params[:filters][:search]}%'"))) if params[:filters][:search].present?
+        reviews = params[:filters][:category_id] == 'all' ? reviews : reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
+        location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
+        reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
+        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
+        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
+        reviews = if params[:filters][:order].present?
+                    reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
                   else
                     reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
                   end
