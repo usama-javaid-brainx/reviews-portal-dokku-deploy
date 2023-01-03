@@ -37,13 +37,7 @@ module Api
 
       def index
         categories = Category.all.order(id: :asc)
-        render json: categories.map{ |category|
-          if category.icon.attached?
-            category.as_json.merge(icon_path: url_for(category.icon), sub_category: category.sub_categories)
-          else
-            category.as_json
-          end
-        }, adapter: :json
+        render json: categories, adapter: :json
       end
 
     end

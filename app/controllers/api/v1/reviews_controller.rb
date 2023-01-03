@@ -64,8 +64,8 @@ module Api
 
       def index
         reviews = current_user.reviews
-        if (params[:to_try].present?)
-          reviews = current_user.reviews.where(to_try: params[:to_try])
+        if (params[:to_try].present? || params[:search].present? || params[:order].present? || params[:category_id].present? || params[:filters].present?)
+          reviews = review_filter(current_user.reviews)
         end
         if reviews.present?
           pagy, reviews = pagy(reviews)
@@ -73,71 +73,6 @@ module Api
         else
           render_error(500, "No record found")
         end
-      end
-
-      api :GET, "reviews", "Get a list of current user reviews with applied filters"
-
-      example <<-EOS
-        
-      Status Codes with Response
-      200: {
-    "reviews": [
-        {
-            "id": 48,
-            "user_id": 2,
-            "name": "Ajmer",
-            "address": "خَشَاش",
-            "city": "Ajmer",
-            "state": "RJ",
-            "country": "India",
-            "place_id": "ChIJAc23_NjmazkR7gCB6xKPr8s",
-            "longitude": "74.6399163",
-            "latitude": "26.4498954",
-            "cuisine": "Arcade game",
-            "favorite_dish": null,
-            "average_score": 4.99,
-            "notes": "<p>Good food</p>",
-            "date": "2022-09-21",
-            "created_at": "2022-09-22T09:34:38.094Z",
-            "updated_at": "2022-12-27T11:46:35.440Z",
-            "zip_code": "600037",
-            "tags": ",hello,no,good,uyes",
-            "price_range": 4,
-            "status": null,
-            "favourite": true,
-            "shareable": false,
-            "category_id": 3,
-            "to_try": true,
-            "discarded_at": null,
-            "images": [
-                "https://cdn.filestackcontent.com/1i3dk9TeQBizFX6fpyIo",
-                "https://cdn.filestackcontent.com/BXwx7WOaTFuotADE0Iss",
-                "https://cdn.filestackcontent.com/tFo1NkSSha4ZjW0qHKgM",
-                "https://cdn.filestackcontent.com/zxBuOcxLS3OU9WxfA2X7",
-                "https://cdn.filestackcontent.com/Fa6pAj3GTyWVBloGgiLS"
-            ],
-            "parent_id": null,
-            "slug": "tq3ohcJfSB2ZT1GeeB9yqQi9nvGxKcg4",
-            "start_date": null,
-            "end_date": null,
-            "author": null,
-            "platform": null,
-            "url": null,
-            "google_url": null,
-            "foursquare_url": null,
-            "yelp_url": null
-        }
-    ],
-    "meta": {
-        "current_page": 1,
-        "total_pages": 1
-    }
-      EOS
-
-      def filtered_reviews
-        reviews = review_filter(current_user.reviews)
-        pagy, reviews = pagy_countless(reviews)
-        render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
 
       def create
@@ -197,10 +132,12 @@ module Api
       def review_filter(reviews)
         reviews = reviews.where('state ilike any (array[?])', params[:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:search])).or(reviews.where('city ilike any (array[?])', params[:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:search])).or(reviews.where('country ilike any (array[?])', params[:search])).or(reviews.where('name ilike ?', "%#{params[:search]}%").or(reviews.where("cuisine ilike any (array[?])", params[:search])).or(reviews.where("tags ilike '%#{params[:search]}%'")).or(reviews.where("notes ilike '%#{params[:search]}%'"))) if params[:search].present?
         reviews = params[:category_id] == 'all' ? reviews : reviews.where(category_id: params[:category_id]) if params[:category_id].present?
-        location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
-        reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
-        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
-        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        if params[:filters].present?
+          location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
+          reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
+          reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
+          reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        end
         reviews = reviews.where(to_try: params[:to_try]) if params[:to_try].present?
         reviews = if params[:order].present?
                     reviews.order(params[:order] == "recent" ? "created_at desc" : "average_score #{params[:order]} NULLS LAST")
