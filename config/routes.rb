@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :requests, only: :create
 
-  resources :reviews  do
+  resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
@@ -48,6 +48,9 @@ Rails.application.routes.draw do
       end
       resources :groups, only: [:index, :create, :update, :destroy]
       resources :categories, only: :index
+      resources :users, only: :update do
+        post :change_password
+      end
       resources :filters, only: :index
     end
   end
