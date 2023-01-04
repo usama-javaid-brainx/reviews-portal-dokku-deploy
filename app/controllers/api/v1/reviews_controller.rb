@@ -69,8 +69,6 @@ module Api
       end
 
       def create
-        api :POST, "review", "Create a new review"
-
         review = current_user.reviews.new(review_params)
         if review.save
           render_message("Review Created successfully")
@@ -82,8 +80,6 @@ module Api
       api :PUT, "review", "Update a review"
 
       def update
-        api :PUT, "review", "Update a review"
-
         review = Review.find(params[:id])
         if review.update(review_params)
           params[:review][:meals_attributes].each do |meal|
