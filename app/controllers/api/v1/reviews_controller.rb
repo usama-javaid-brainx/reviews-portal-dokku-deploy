@@ -123,30 +123,27 @@ module Api
       end
 
       def review_filter(reviews)
-        reviews = reviews.ransack(name_or_state_or_city_or_country_or_cuisine_or_tags_or_notes_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
+        reviews = reviews.ransack(name_or_state_or_city_or_country_or_cuisine_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
-        reviews = reviews.ransack(cuisine_i_cont: params[:filters][:cuisine]).result if params[:filters][:cuisine].present?
-        reviews = reviews.ransack(tags_i_cont: params[:filters][:tag]).result if params[:filters][:tag].present?
+        if params[:filters][:location].present?
+          cities = []
+          states = []
+          countries = []
+          params[:filters][:location].each do |obj|
+            cities << obj[:city] if obj[:city].present?
+            states << obj[:state] if obj[:state].present?
+            countries << obj[:country] if obj[:country].present?
+          end
+          reviews = reviews.where(state: states.uniq).or(reviews.where(city: cities.uniq)).or(reviews.where(country: countries.uniq))
+        end
+        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
+        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
         reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
         reviews = if params[:filters][:order].present?
                     reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
                   else
                     reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
                   end
-
-        # reviews = reviews.where('state ilike any (array[?])', params[:filters][:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:filters][:search])).or(reviews.where('city ilike any (array[?])', params[:filters][:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:filters][:search])).or(reviews.where('country ilike any (array[?])', params[:filters][:search])).or(reviews.where('name ilike ?', "%#{params[:filters][:search]}%").or(reviews.where("cuisine ilike any (array[?])", params[:filters][:search])).or(reviews.where("tags ilike '%#{params[:filters][:search]}%'")).or(reviews.where("notes ilike '%#{params[:filters][:search]}%'"))) if params[:filters][:search].present?
-        # reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
-        # location = params[:filters][:location].map { |str| str.split(' . ') }.flatten if params[:filters][:location].present?
-        # reviews = reviews.where('state ilike any (array[?])', location).or(reviews.where('city ilike any (array[?])', location)) if params[:filters][:location].present?
-        # reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
-        # reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
-        # reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
-        # reviews = if params[:filters][:order].present?
-        #             reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
-        #           else
-        #             reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
-        #           end
-
         reviews
       end
 
