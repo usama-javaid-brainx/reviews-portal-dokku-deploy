@@ -31,16 +31,23 @@ module Api
               "random"
           ],
           "locations": [
-              "frankfurt . he",
-              "lahore . punjab",
-              "paris . idf"
+          {
+            "city": "Aspen",
+            "state": "CO",
+            "country": "United States"
+          },
+          {
+            "city": "",
+            "state": "Ankara",
+            "country": "Turkey"
+          }
           ]
       }
       EOS
 
       def index
         reviews = params[:category_id].present? ? Review.where(category_id: params[:category_id]) : Review.all
-        render json: { "sort_by": sort_by, "cuisines": cuisines(reviews), "tags": tags(reviews), "locations": locations(reviews) }
+        render json: { "sort_by": sort_by, "cuisines": cuisines(reviews), "tags": tags(reviews), "location": locations(reviews) }
       end
 
       private
@@ -50,7 +57,7 @@ module Api
       end
 
       def cuisines(reviews)
-        parse_reviews(reviews.pluck(:cuisine))
+        reviews.pluck(:cuisine)
       end
 
       def tags(reviews)
@@ -58,11 +65,17 @@ module Api
       end
 
       def locations(reviews)
-        locations = []
-        reviews.each do |review|
-          (review.city.nil? && review.state.nil?) ? next : locations << (review.city + ' . ' + review.state)
+        reviews.map do |review|
+          if review.city.blank? && review.state.blank? && review.country.blank?
+            next
+          else
+            {
+              "city": review.city,
+              "state": review.state,
+              "country": review.country
+            }
+          end
         end
-        parse_reviews(locations)
       end
 
     end
