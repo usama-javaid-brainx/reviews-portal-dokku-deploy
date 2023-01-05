@@ -9,7 +9,7 @@ module Api
         
       Status Codes with Response
       200: {
-    "groups": [
+        "groups": [
         {
             "id": 31,
             "name": "Test",
@@ -17,16 +17,18 @@ module Api
             "updated_at": "2022-12-06T14:33:23.328Z",
             "user_id": 2,
             "discarded_at": null
-        }
+          }
+        ]
+      }
       EOS
 
       def index
-        groups = current_user.groups.all
-        pagy, groups = pagy_countless(groups)
+        pagy, groups = pagy(current_user.groups)
         render json: groups, meta: pagy_meta(pagy), each_serializer: GroupSerializer, adapter: :json
       end
 
       api :POST, "groups", "Create a new group"
+
       def create
         group = current_user.groups.new(group_params)
         if group.save
@@ -38,6 +40,7 @@ module Api
       end
 
       api :PUT, "groups", "Update a group"
+
       def update
         @group.review_ids = params[:reviews] if params[:reviews].present?
         if @group.update(group_params)
@@ -48,6 +51,7 @@ module Api
       end
 
       api :DELETE, "groups", "Delete a group"
+
       def destroy
         if @group.discard
           render_message("Group deleted successfully!")
