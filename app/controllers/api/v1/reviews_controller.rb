@@ -122,15 +122,17 @@ module Api
         reviews = reviews.ransack(name_or_state_or_city_or_country_or_cuisine_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
         if params[:filters][:location].present?
-          cities = []
-          states = []
-          countries = []
+          location_obj = {
+            "cities": [],
+            "states": [],
+            "countries": []
+          }
           params[:filters][:location].each do |obj|
-            cities << obj[:city] if obj[:city].present?
-            states << obj[:state] if obj[:state].present?
-            countries << obj[:country] if obj[:country].present?
+            location_obj[:cities] << obj[:city] if obj[:city].present?
+            location_obj[:states] << obj[:state] if obj[:state].present?
+            location_obj[:countries] << obj[:country] if obj[:country].present?
           end
-          reviews = reviews.where(state: states.uniq).or(reviews.where(city: cities.uniq)).or(reviews.where(country: countries.uniq))
+          reviews = reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
         end
         reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
         reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
