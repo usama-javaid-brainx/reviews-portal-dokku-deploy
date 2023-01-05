@@ -40,7 +40,6 @@ module Api
       def update
         group = current_user.groups.find(params[:id])
         group.review_ids = params[:reviews] if params[:reviews].present?
-        debugger
         if group.update(group_params)
           render_message("Group updated successfully!")
         else
