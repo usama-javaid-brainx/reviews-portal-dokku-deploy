@@ -71,7 +71,7 @@ module Api
       def create
         review = current_user.reviews.new(review_params)
         if review.save
-          render_message("Review Created successfully")
+          render json: review, each_serializer: ReviewSerializer, adapter: :json
         else
           render_error(422, "Review didn't created successfully")
         end
