@@ -113,6 +113,19 @@ module Api
         end
       end
 
+      def filestack_image_uploader
+        user = User.confirm_by_token(params[:image_upload_token])
+        debugger
+        if user.valid?
+          user.update(image_upload_token: nil)
+          sign_in(user)
+          # redirect_to dashboard_cards_path
+        else
+          sign_out(:user)
+          # redirect_to new_user_session_path, alert: 'Invitation expired'
+        end
+      end
+
       private
 
       def validate_key

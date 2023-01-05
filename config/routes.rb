@@ -44,10 +44,12 @@ Rails.application.routes.draw do
       }
       resources :reviews, only: [:create, :index, :update] do
         post :create_review_with_num
+        put :filestack_image_uploader
       end
       resources :categories, only: :index
       resources :users, only: :update do
         post :change_password
+        get :image_upload_token, on: :collection
       end
       resources :filters, only: :index
     end
