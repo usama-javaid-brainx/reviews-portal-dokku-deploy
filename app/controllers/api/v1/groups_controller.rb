@@ -31,7 +31,7 @@ module Api
         group = current_user.groups.new(group_params)
         if group.save
           group.review_ids = params[:reviews] if params[:reviews].present?
-          render_message("Group Created successfully")
+          render json: group, each_serializer: GroupSerializer, adapter: :json
         else
           render_error(500, "Group didn't created successfully")
         end
