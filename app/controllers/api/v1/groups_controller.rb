@@ -33,7 +33,7 @@ module Api
           group.review_ids = params[:reviews] if params[:reviews].present?
           render json: group, each_serializer: GroupSerializer, adapter: :json
         else
-          render_error(500, "Group didn't created successfully")
+          render_error(422, "Group didn't created successfully")
         end
       end
 
