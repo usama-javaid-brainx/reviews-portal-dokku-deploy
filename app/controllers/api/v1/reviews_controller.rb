@@ -118,6 +118,7 @@ module Api
         if user.valid?
           user.update(image_upload_token: nil)
           sign_in(user)
+          render "/home/brainx/Work/Project/james-recipes-reviews-web/app/views/mobile/mobile_filestack_fiew"
         else
           sign_out(:user)
         end
