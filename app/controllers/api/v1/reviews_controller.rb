@@ -114,14 +114,14 @@ module Api
       end
 
       def filestack_image_uploader
-        user = User.confirm_by_token(params[:image_upload_token])
-        if user.valid?
-          user.update(image_upload_token: nil)
-          sign_in(user)
-          render "/home/brainx/Work/Project/james-recipes-reviews-web/app/views/mobile/mobile_filestack_fiew"
-        else
-          sign_out(:user)
-        end
+        # user = User.confirm_by_token(params[:image_upload_token])
+        # if user.valid?
+        #   user.update(image_upload_token: nil)
+        #   sign_in(user)
+        #   redirect_to "..mobile/filestack_view"
+        # else
+        #   sign_out(:user)
+        # end
       end
 
       private
