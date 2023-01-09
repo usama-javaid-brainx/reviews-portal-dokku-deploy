@@ -44,7 +44,7 @@ module Api
       def update
         @group.review_ids = params[:reviews] if params[:reviews].present?
         if @group.update(group_params)
-          render_message("Group updated successfully!")
+          render json: @group, each_serializer: GroupSerializer, adapter: :json
         else
           render_error(422, "Group didn't updated")
         end

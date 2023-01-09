@@ -59,7 +59,7 @@ module Api
             "total_pages": 1
         }
     }
-
+q
       EOS
 
       def index
@@ -71,7 +71,7 @@ module Api
       def create
         review = current_user.reviews.new(review_params)
         if review.save
-          render json: review, each_serializer: ReviewSerializer, adapter: :json
+          render json: review, adapter: :json
         else
           render_error(422, "Review didn't created successfully")
         end
@@ -121,6 +121,19 @@ module Api
       def review_filter(reviews)
         reviews = reviews.ransack(name_or_state_or_city_or_country_or_cuisine_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
+        location_filter(reviews)
+        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
+        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
+        reviews = if params[:filters][:order].present?
+                    reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
+                  else
+                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
+                  end
+        reviews
+      end
+
+      def location_filter(reviews)
         if params[:filters][:location].present?
           location_obj = {
             "cities": [],
@@ -132,17 +145,8 @@ module Api
             location_obj[:states] << obj[:state] if obj[:state].present?
             location_obj[:countries] << obj[:country] if obj[:country].present?
           end
-          reviews = reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
         end
-        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
-        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
-        reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
-        reviews = if params[:filters][:order].present?
-                    reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
-                  else
-                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
-                  end
-        reviews
+        reviews = reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
       end
 
       def review_params

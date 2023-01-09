@@ -9,17 +9,155 @@ class CategorySerializer < ActiveModel::Serializer
 
   def customized_fields
     if object.name == "Restaurants"
-      [ "Location", "Name", "Cuisines", "Date", "Url", "Foursquare Url", "Yelp Url", "Score", "Price", "Description", "Photos", "Address", "City", "State", "Zip Code", "Country", "Tags", "Highlights" ]
+      [
+        "Location": true,
+        "Name": true,
+        "Cuisines": true,
+        "Date": true,
+        "Start Date": false,
+        "End Date": false,
+        "Url": true,
+        "Foursquare Url": true,
+        "Yelp Url": true,
+        "Google Url": false,
+        "Author": false,
+        "Score": true,
+        "Price": true,
+        "Description": true,
+        "Photos": true,
+        "Address": true,
+        "City": true,
+        "State": true,
+        "Zip Code": true,
+        "Country": true,
+        "Tags": true,
+        "Highlights": true
+      ]
     elsif object.name == "Video Games"
-      [ "Name", "Genres", "Date", "Url", "Foursquare Url", "Score", "Price", "Description", "Photos", "Tags" ]
+      [
+        "Location": false,
+        "Name": true,
+        "Genres": true,
+        "Date": true,
+        "Start Date": false,
+        "End Date": false,
+        "Url": true,
+        "Foursquare Url": true,
+        "Yelp Url": false,
+        "Google Url": false,
+        "Author": false,
+        "Score": true,
+        "Price": true,
+        "Description": true,
+        "Photos": true,
+        "Address": false,
+        "City": false,
+        "State": false,
+        "Zip Code": false,
+        "Country": false,
+        "Tags": true,
+        "Highlights": false
+      ]
     elsif object.name == "Books" || object.name == "Movies"
-      [ "Name", "Genres", "Date", "Url", "Score", "Price", "Description", "Photos", "Tags" ]
+      [
+        "Location": false,
+        "Name": true,
+        "Genres": true,
+        "Date": true,
+        "Start Date": false,
+        "End Date": false,
+        "Url": true,
+        "Foursquare Url": false,
+        "Yelp Url": false,
+        "Google Url": false,
+        "Author": false,
+        "Score": true,
+        "Price": true,
+        "Description": true,
+        "Photos": true,
+        "Address": false,
+        "City": false,
+        "State": false,
+        "Zip Code": false,
+        "Country": false,
+        "Tags": true,
+        "Highlights": false
+      ]
     elsif object.name == "TV Shows"
-      [ "Name", "Genres", "Date","Start Date","End Date", "Url", "Google Url", "Score", "Price", "Description", "Photos", "Tags" ]
+      [
+        "Location": false,
+        "Name": true,
+        "Genres": true,
+        "Date": true,
+        "Start Date": true,
+        "End Date": true,
+        "Url": true,
+        "Foursquare Url": false,
+        "Yelp Url": false,
+        "Google Url": true,
+        "Author": false,
+        "Score": true,
+        "Price": true,
+        "Description": true,
+        "Photos": true,
+        "Address": false,
+        "City": false,
+        "State": false,
+        "Zip Code": false,
+        "Country": false,
+        "Tags": true,
+        "Highlights": false
+      ]
     elsif object.name == "Accommodations"
-      [ "Name", "Genres", "Date","Start Date","End Date", "Url", "Google Url", "Score", "Price", "Description", "Photos", "Address", "City", "State", "Zip Code", "Country", "Tags"  ]
+      [
+        "Location": false,
+        "Name": true,
+        "Genres": true,
+        "Date": true,
+        "Start Date": true,
+        "End Date": true,
+        "Url": true,
+        "Foursquare Url": false,
+        "Yelp Url": false,
+        "Google Url": true,
+        "Author": false,
+        "Score": true,
+        "Price": true,
+        "Description": true,
+        "Photos": true,
+        "Address": true,
+        "City": true,
+        "State": true,
+        "Zip Code": true,
+        "Country": true,
+        "Tags": true,
+        "Highlights": false
+      ]
     elsif object.name == "Others"
-      [ "Name", "Date", "Url", "Description", "Photos", "Address", "City", "State", "Zip Code", "Country", "Tags"  ]
+      [
+        "Location": false,
+        "Name": true,
+        "Genres": false,
+        "Date": false,
+        "Start Date": false,
+        "End Date": false,
+        "Url": false,
+        "Foursquare Url": false,
+        "Yelp Url": false,
+        "Google Url": false,
+        "Author": false,
+        "Score": false,
+        "Price": false,
+        "Description": true,
+        "Photos": true,
+        "Address": true,
+        "City": true,
+        "State": true,
+        "Zip Code": true,
+        "Country": true,
+        "Tags": true,
+        "Highlights": false
+      ]
     end
   end
 
