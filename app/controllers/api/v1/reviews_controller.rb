@@ -78,7 +78,6 @@ q
       end
 
       api :PUT, "review", "Update a review"
-
       def update
         review = Review.find(params[:id])
         if review.update(review_params)
