@@ -42,8 +42,9 @@ Rails.application.routes.draw do
         passwords: "api/v1/passwords",
         registrations: "api/v1/registrations"
       }
-      resources :reviews, only: [:create, :index, :update] do
+      resources :reviews, only: [:create, :update] do
         post :create_review_with_num
+        post :index, on: :collection
       end
       resources :groups, only: [:index, :create, :update, :destroy]
       resources :categories, only: :index
