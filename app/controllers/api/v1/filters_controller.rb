@@ -46,8 +46,8 @@ module Api
       EOS
 
       def index
-        reviews = params[:category_id].present? ? Review.where(category_id: params[:category_id]) : Review.all
-        render json: { "sort_by": sort_by, "cuisines": cuisines(reviews), "tags": tags(reviews), "location": locations(reviews) }
+        @reviews = params[:category_id].present? ? Review.where(category_id: params[:category_id]) : Review.all
+        render json: { "sort_by": sort_by, "cuisines": cuisines, "tags": tags, "location": locations }
       end
 
       private
@@ -56,16 +56,16 @@ module Api
         [{ "Newest": 'recent' }, { "Top Rated": 'desc' }, { "Low Rated": 'asc' }]
       end
 
-      def cuisines(reviews)
-        reviews.pluck(:cuisine)
+      def cuisines
+        @reviews.pluck(:cuisine)
       end
 
-      def tags(reviews)
-        parse_reviews(reviews.pluck(:tags))
+      def tags
+        parse_reviews(@reviews.pluck(:tags))
       end
 
-      def locations(reviews)
-        reviews.map do |review|
+      def locations
+        @reviews.map do |review|
           if review.city.blank? && review.state.blank? && review.country.blank?
             next
           else
