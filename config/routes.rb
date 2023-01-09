@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get :update_favourite
     get :get_score
     get :update_status
+    get :filestack_image_uploader, on: :collection
   end
 
   scope :users do
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
       }
       resources :reviews, only: [:create, :index, :update] do
         post :create_review_with_num
-        put :filestack_image_uploader
       end
       resources :categories, only: :index
       resources :users, only: :update do

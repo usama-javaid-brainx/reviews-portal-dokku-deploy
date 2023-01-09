@@ -113,16 +113,6 @@ module Api
         end
       end
 
-      def filestack_image_uploader
-        # user = User.confirm_by_token(params[:image_upload_token])
-        # if user.valid?
-        #   user.update(image_upload_token: nil)
-        #   sign_in(user)
-        #   redirect_to "..mobile/filestack_view"
-        # else
-        #   sign_out(:user)
-        # end
-      end
 
       private
 

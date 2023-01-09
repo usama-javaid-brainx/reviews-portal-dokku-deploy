@@ -121,6 +121,17 @@ class ReviewsController < ApplicationController
     render json: foursquare_yelp
   end
 
+  def filestack_image_uploader
+    # user = User.confirm_by_token(params[:auth_token])
+    # if user.valid?
+    #   user.update(auth_token: nil)
+    #   sign_in(user)
+    render "/mobile/filestack_view"
+    # else
+    #   sign_out(:user)
+    # end
+  end
+
   private
 
   def set_review
