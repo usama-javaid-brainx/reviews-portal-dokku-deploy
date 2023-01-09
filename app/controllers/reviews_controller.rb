@@ -115,13 +115,14 @@ class ReviewsController < ApplicationController
   end
 
   def get_score
-    geolocations = Array.[]('foursquare', 'yelp')
+    geolocations = ['foursquare', 'yelp']
     foursquare_yelp = FetchRatingsService.new(geolocations, params[:foursquare_yelp_url])
     foursquare_yelp = foursquare_yelp.call
     render json: foursquare_yelp
   end
 
   def filestack_image_uploader
+    debugger
     # user = User.confirm_by_token(params[:auth_token])
     # if user.valid?
     #   user.update(auth_token: nil)
