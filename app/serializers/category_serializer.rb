@@ -1,6 +1,6 @@
 class CategorySerializer < ActiveModel::Serializer
 
-  attributes :name, :address, :icon, :google_places, :price, :cuisine, :active, :position, :sub_category_title, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :created_at, :updated_at, :customized_fields
+  attributes :id, :name, :address, :icon, :google_places, :price, :cuisine, :active, :position, :sub_category_title, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :created_at, :updated_at, :customized_fields
   has_many :sub_categories
 
   def icon
