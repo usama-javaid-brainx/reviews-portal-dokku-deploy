@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6" data-controller="photos">
       <%= form_with do |f| %>
         <h2 class="my-4">Photos</h2>
-        <div class="tabs_content_wrap" data-controller="photos">
+        <div class="tabs_content_wrap" >
           <!--    <div class="file-upload-place  <%#= "d-none" if f.object.images? %>" data-photos-target="fileUploadPlace" id="file-upload-place">-->
           <div class="file-upload-place" data-photos-target="fileUploadPlace" id="file-upload-place">
             <div class="content">
@@ -26,7 +26,7 @@
               <% if f.object.present? %>
                 <% f.object.images.each do |image_src| %>
                   <div class="thumbnail-wrap" data-photos-target="thumbnailSection">
-                    <img class="small-thumb thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
+                    <img class="small-thumb thumbnail px-0"  data-action="click->photos#clickImage" src=<%= image_src %> >
                     <%= image_tag("template/image-delete.svg", class: "delete-icon", "data-action": "click->photos#deleteImage") %>
                     <input type="hidden" class="image-inputs" name="reviews[filestack_image_uploader][]" value=<%= image_src %>>
                   </div>
@@ -36,14 +36,20 @@
             </div>
           </div>
         </div>
-        <%= f.submit "Save Images", class: "mt-5  btn btn-primary" %>
+        <button class= "mt-5  btn btn-primary" type="button" onclick="submitPhotos()">Save Images</button>
       <% end %>
     </div>
   </div>
 </div>
 
 <script>
+  let imagesUrl = []
+  function submitPhotos(){
+    window.location = `auth://justreview?images=${imagesUrl}`
+  }
+
     function callbackOnFileUploadFinished(data) {
+      imagesUrl.push(data.url)
         const imageDiv = document.createElement('div');
         const deleteIconUrl = document.getElementById('js-thumbnails').dataset.deleteIcon
         imageDiv.classList.add('thumbnail-wrap')

@@ -1,13 +1,18 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace"]
+  static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace", 'imageUrl']
 
   clickImage(event) {
     this.mainImageTarget.src = event.currentTarget.src
   }
 
+  connect() {
+
+  }
+
   deleteImage(event) {
+    imagesUrl = imagesUrl.filter(element => element !== event.currentTarget.previousElementSibling.src);
     event.currentTarget.parentElement.remove()
     if (!this.hasThumbnailSectionTarget) {
       this.mainImageTarget.parentElement.remove()
