@@ -68,7 +68,7 @@ q
         render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
 
-      def create
+      def create_review
         review = current_user.reviews.new(review_params)
         if review.save
           render json: review, adapter: :json
