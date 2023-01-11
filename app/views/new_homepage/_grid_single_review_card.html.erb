@@ -42,9 +42,9 @@
       <% end %>
 
       <div class="d-flex mt-2 align-items-center">
-        <% if review.cuisine? %>
+        <% if review.sub_category_id.present? %>
         <span class="cuisine-tag">
-         <%= review.cuisine %>
+         <%= review.sub_category.name %>
         </span>
         <% end %>
         <span class="share_btn"><%= image_tag(review.shareable ? "template/add.png" : "template/lock.svg") %></span>

@@ -19,8 +19,8 @@
 
   <% if curr_category.sub_category_title.present? %>
     <div class="row cuisine-group align-items-center form_group" data-controller="tags">
-      <%= f.label :cuisine, curr_category.sub_category_title.titleize %>
-      <%= f.select :cuisine, options_for_select(SubCategory.where(category_id: curr_category.id).order(:name).pluck(:name), selected: @review.cuisine), { include_blank: true } %>
+      <%= f.label :sub_category_id, curr_category.sub_category_title.titleize %>
+      <%= f.select :sub_category_id, options_for_select(SubCategory.where(category_id: curr_category.id).order(:name).pluck(:name), selected: @review.&sub_category.&name), { include_blank: true } %>
     </div>
   <% end %>
 

@@ -1,9 +1,9 @@
 <h1><%= review.name %></h1>
 <ul class="show-list-group">
 
-  <% if review.cuisine.present? %>
+  <% if review.sub_category_id.present? %>
     <li>
-      <span class="show-subcategory"><%= review.cuisine %></span>
+      <span class="show-subcategory"><%= review.sub_category.name %></span>
     </li>
   <% end %>
   <% if review.state.present? && review.country.present? %>
