@@ -18,14 +18,23 @@ module Api
       def profile
         render json: current_user
       end
-      #TODO: This is commented for now will use it when needed
-      # api :POST, "user/change_password.json", "Change Password"
-      # param :current_password, String, required: true
-      # param :password, String, required: true
-      # param :password_confirmation, String, required: true
-      # returns code: 200, desc: "a successful response" do
-      #   property :message, String
-      # end
+
+      def update
+        if current_user.update(user_params)
+          render_message("User profile updated successfully")
+        else
+          render_error(500, "User profile did not updated try again")
+        end
+      end
+
+      api :POST, "user/change_password.json", "Change Password"
+
+      param :current_password, String, required: true
+      param :password, String, required: true
+      param :password_confirmation, String, required: true
+      returns code: 200, desc: "a successful response" do
+        property :message, String
+      end
 
       def change_password
         if params[:password] != params[:password_confirmation]
@@ -38,6 +47,10 @@ module Api
       end
 
       private
+
+      def user_params
+        params.permit(:username, :email, :avatar, :phone_number)
+      end
 
       def password_resource_params
         params.permit(:current_password, :password, :password_confirmation)

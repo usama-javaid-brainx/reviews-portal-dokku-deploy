@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :categories, only: :index
   resources :requests, only: :create
 
-  resources :reviews  do
+  resources :reviews do
     delete :delete_attachment, on: :member
     get :update_favourite
     get :get_score
@@ -42,11 +42,16 @@ Rails.application.routes.draw do
         passwords: "api/v1/passwords",
         registrations: "api/v1/registrations"
       }
-      resources :reviews, only: [:create, :index, :update] do
+      resources :reviews, only: [:update] do
         post :create_review_with_num
+        post :index, on: :collection
+        post :create_review, on: :collection
       end
       resources :groups, only: [:index, :create, :update, :destroy]
       resources :categories, only: :index
+      resources :users, only: :update do
+        post :change_password
+      end
       resources :filters, only: :index
     end
   end

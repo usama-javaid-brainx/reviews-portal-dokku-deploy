@@ -68,7 +68,7 @@ q
         render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
 
-      def create
+      def create_review
         review = current_user.reviews.new(review_params)
         if review.save
           render json: review, adapter: :json
@@ -82,14 +82,16 @@ q
       def update
         review = Review.find(params[:id])
         if review.update(review_params)
-          params[:review][:meals_attributes].each do |meal|
-            if meal[:id].present? && meal[:_destroy].present?
-              Meal.find(meal[:id]).delete
-            else
-              render_error(404, "Meal not found")
+          if params[:review][:meals_attributes].present?
+            params[:review][:meals_attributes].each do |meal|
+              if meal[:id].present? && meal[:_destroy].present?
+                Meal.find(meal[:id]).delete
+              else
+                render_error(404, "Meal not found")
+              end
             end
           end
-          render_message("Review updated successfully!")
+          render json: review, each_serializer: ReviewSerializer, adapter: :json
         else
           render_error(422, "Review didn't updated")
         end
