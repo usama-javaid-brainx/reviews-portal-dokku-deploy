@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CategoriesController < Api::V1::ApiController
+    class SubCategoriesController < Api::V1::ApiController
       api :GET, "categories/:category_id/sub_categories", "Get a list of all available subcategories against category_id"
 
       example <<-EOS
