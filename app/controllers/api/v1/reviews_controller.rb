@@ -22,7 +22,6 @@ module Api
             "place_id": "ChIJ8QWjWLxyaYgR5MYIpV71c0c",
             "longitude": "-85.7542438",
             "latitude": "38.25716789999999",
-            "cuisine": "Drama",
             "favorite_dish": null,
             "average_score": 5.0,
             "notes": "<p>Very good</p>",
@@ -121,10 +120,10 @@ q
       end
 
       def review_filter(reviews)
-        reviews = reviews.ransack(name_or_state_or_city_or_country_or_cuisine_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
+        reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
         location_filter(reviews)
-        reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
+        # reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
         reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
         reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
         reviews = if params[:filters][:order].present?

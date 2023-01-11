@@ -60,9 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
+    t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -197,7 +197,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
     t.datetime "confirmation_sent_at"
     t.text "tokens"
     t.string "username", default: "", null: false
-    t.string "image_upload_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true

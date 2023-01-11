@@ -57,7 +57,8 @@ module Api
       end
 
       def cuisines
-        @reviews.pluck(:cuisine)
+        sub_categories_id = @reviews.pluck(:sub_category_id).uniq
+        SubCategory.where(id: sub_categories_id).pluck(:name)
       end
 
       def tags
