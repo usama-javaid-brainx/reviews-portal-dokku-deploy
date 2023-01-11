@@ -48,9 +48,7 @@ Rails.application.routes.draw do
         post :create_review, on: :collection
       end
       resources :groups, only: [:index, :create, :update, :destroy]
-      resources :categories, only: :index do
-        resources :sub_categories, only: :index
-      end
+      resources :categories, only: :index
       resources :users, only: :update do
         post :change_password
       end
