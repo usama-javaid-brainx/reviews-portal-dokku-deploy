@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,9 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
-    t.string "sub_category_title"
     t.boolean "start_date"
     t.boolean "end_date"
     t.boolean "author"
@@ -128,7 +128,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
     t.string "place_id"
     t.string "longitude"
     t.string "latitude"
-    t.string "cuisine"
     t.string "favorite_dish"
     t.float "average_score"
     t.text "notes"
@@ -155,8 +154,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
     t.string "google_url"
     t.string "foursquare_url"
     t.string "yelp_url"
+    t.bigint "sub_category_id"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
+    t.index ["sub_category_id"], name: "index_reviews_on_sub_category_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -196,6 +197,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
     t.datetime "confirmation_sent_at"
     t.text "tokens"
     t.string "username", default: "", null: false
+    t.string "image_upload_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -206,5 +208,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ck_editor_images", "users"
   add_foreign_key "meals", "reviews"
+  add_foreign_key "reviews", "sub_categories"
   add_foreign_key "reviews", "users"
 end
