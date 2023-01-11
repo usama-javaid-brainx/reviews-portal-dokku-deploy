@@ -15,6 +15,7 @@ export default class extends Controller {
     imagesUrl = imagesUrl.filter(element => element !== event.currentTarget.previousElementSibling.src);
     event.currentTarget.parentElement.remove()
     if (!this.hasThumbnailSectionTarget) {
+      debugger
       this.mainImageTarget.parentElement.remove()
       this.fileUploadPlaceTarget.classList.remove('d-none')
       this.jsUploadedFilesTarget.classList.add('d-none')

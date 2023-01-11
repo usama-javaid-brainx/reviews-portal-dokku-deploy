@@ -4,7 +4,6 @@
       <%= form_with do |f| %>
         <h2 class="my-4">Photos</h2>
         <div class="tabs_content_wrap" >
-          <!--    <div class="file-upload-place  <%#= "d-none" if f.object.images? %>" data-photos-target="fileUploadPlace" id="file-upload-place">-->
           <div class="file-upload-place" data-photos-target="fileUploadPlace" id="file-upload-place">
             <div class="content">
               <div class="upload-link">
@@ -45,7 +44,7 @@
 <script>
   let imagesUrl = []
   function submitPhotos(){
-    window.location = `auth://justreview?images=${imagesUrl}`
+    window.location = `images://filestack_images?images=${imagesUrl}`
   }
 
     function callbackOnFileUploadFinished(data) {
