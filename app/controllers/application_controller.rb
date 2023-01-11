@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     # or(reviews.where("cuisine ilike any (array[?])", params[:search]))
     reviews = reviews.where('state ilike any (array[?])', params[:search].split(' ')).or(reviews.where('state ilike any (array[?])', params[:search])).or(reviews.where('city ilike any (array[?])', params[:search].split(' '))).or(reviews.where('city ilike any (array[?])', params[:search])).or(reviews.where('country ilike any (array[?])', params[:search])).or(reviews.where('name ilike ?', "%#{params[:search]}%").or(reviews.where("tags ilike '%#{params[:search]}%'")).or(reviews.where("notes ilike '%#{params[:search]}%'"))) if params[:search].present?
     reviews = params[:category_id] == 'all' ? reviews : reviews.where(category_id: params[:category_id]) if params[:category_id].present?
-    @cuisines = Subcategory.where(id: reviews.pluck(:sub_category_id).uniq).pluck(:name).sort
+    @cuisines = SubCategory.where(id: reviews.pluck(:sub_category_id).uniq).pluck(:name).sort
     @tags = reviews.pluck(:tags).map { |tags| tags.split(",") }.flatten.collect { |e| e.strip.downcase }.uniq.reject(&:empty?).sort
 
     if params[:to_try] != 'favourite'
