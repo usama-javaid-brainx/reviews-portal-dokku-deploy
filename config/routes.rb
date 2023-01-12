@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get :update_favourite
     get :get_score
     get :update_status
+    get :filestack_image_uploader, on: :collection
   end
 
   scope :users do
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
       resources :categories, only: :index
       resources :users, only: :update do
         post :change_password
+        get :confirmation_token, on: :collection
       end
       resources :filters, only: :index
     end

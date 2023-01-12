@@ -1,13 +1,21 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace"]
+  static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace", 'imageUrl']
 
   clickImage(event) {
     this.mainImageTarget.src = event.currentTarget.src
   }
 
+  connect() {
+    if(this.hasThumbnailSectionTarget){
+      this.mainImageTarget.src = this.thumbnailSectionTarget.firstElementChild.src
+      this.sortImages()
+    }
+  }
+
   deleteImage(event) {
+    imagesUrl = imagesUrl.filter(element => element !== event.currentTarget.previousElementSibling.src);
     event.currentTarget.parentElement.remove()
     if (!this.hasThumbnailSectionTarget) {
       this.mainImageTarget.parentElement.remove()
@@ -19,5 +27,13 @@ export default class extends Controller {
       Object.assign(hiddenInput, attributes)
       this.jsUploadedFilesTarget.appendChild(hiddenInput)
     }
+  }
+
+  sortImages(){
+    imagesUrl = []
+    this.thumbnailSectionTargets.forEach(function (imageWrapper) {
+      imagesUrl.push(imageWrapper.firstElementChild.src)
+    })
+    this.mainImageTarget.src = imagesUrl[0]
   }
 }
