@@ -37,7 +37,7 @@ export default class extends Controller {
   }
 
   connect() {
-    $('#review_cuisine').select2()
+    $('#review_sub_category_id').select2()
   }
 
 }
