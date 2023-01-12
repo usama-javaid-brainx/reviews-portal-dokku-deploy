@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_05_132708) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_21_135505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,7 +128,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_132708) do
     t.string "place_id"
     t.string "longitude"
     t.string "latitude"
-    t.string "cuisine"
     t.string "favorite_dish"
     t.float "average_score"
     t.text "notes"
@@ -155,6 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_132708) do
     t.string "google_url"
     t.string "foursquare_url"
     t.string "yelp_url"
+    t.string "cuisine"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -196,7 +196,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_132708) do
     t.datetime "confirmation_sent_at"
     t.text "tokens"
     t.string "username", default: "", null: false
-    t.string "image_upload_token"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -123,14 +123,14 @@ class ReviewsController < ApplicationController
   end
 
   def filestack_image_uploader
-    # user = User.confirm_by_token(params[:auth_token])
-    # if user.valid?
-    #   user.update(confirmation_token: nil)
-    #   sign_in(user)
+    user = User.confirm_by_token(params[:auth_token])
+    if user.valid?
+      user.update(confirmation_token: nil)
+      sign_in(user)
       render "/mobile/filestack_view"
-    # else
-    #   sign_out(:user)
-    # end
+    else
+      sign_out(:user)
+    end
   end
 
   private
