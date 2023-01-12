@@ -2,7 +2,7 @@ module Api
   module V1
     class FiltersController < Api::V1::ApiController
       api :GET, "filters", "Get a list of all available filters"
-      param :category_id, String, desc: "Category id for which filters are requested, if this is empty it will return filters from all reviews", required: false
+      param :category_id, Integer, desc: "Category id for which filters are requested, if this is empty it will return filters from all reviews", required: false
 
       example <<-EOS
         
@@ -58,9 +58,10 @@ module Api
 
       def sub_category_names
         joined_reviews = @reviews.joins(:sub_category).distinct
+        category = Category.find_by(name: 'Restaurants')
         {
-          cuisines: joined_reviews.pluck("sub_categories.name"),
-          genere: joined_reviews.pluck("sub_categories.name")
+          cuisine: joined_reviews.where(id: category.id).pluck("sub_categories.name"),
+          genre: joined_reviews.where.not(id: category.id).pluck("sub_categories.name")
         }
       end
 
@@ -70,16 +71,13 @@ module Api
 
       def locations
         @reviews.map do |review|
-          if review.city.blank? && review.state.blank? && review.country.blank?
-            next
-          else
-            {
-              "city": review.city,
-              "state": review.state,
-              "country": review.country
-            }
-          end
-        end
+          next if review.city.blank? && review.state.blank? && review.country.blank?
+          {
+            "city": review.city,
+            "state": review.state,
+            "country": review.country
+          }
+        end.compact
       end
 
     end

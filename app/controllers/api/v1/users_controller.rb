@@ -19,16 +19,21 @@ module Api
         render json: current_user
       end
 
+      api :PUT, "users/update", "Update user"
+      param :username, String, desc: "Username of user", required: false
+      param :email, String, desc: "Email of user", required: false
+      param :phone_number, String, desc: "Phone number of user", required: false
+      returns :current_user, desc: "a successful response"
+
       def update
         if current_user.update(user_params)
-          render_message("User profile updated successfully")
+          render current_user, adapter: :json
         else
-          render_error(500, "User profile did not updated try again")
+          render_error(422, current_user.errors.full_messages)
         end
       end
 
       api :POST, "user/change_password.json", "Change Password"
-
       param :current_password, String, required: true
       param :password, String, required: true
       param :password_confirmation, String, required: true
@@ -42,7 +47,7 @@ module Api
         elsif current_user.update_with_password(password_resource_params) && current_user.save
           render_message(I18n.t("devise.passwords.updated"))
         else
-          render_error(422, current_user.errors.full_messages.first)
+          render_error(422, current_user.errors.full_messages)
         end
       end
 
