@@ -146,7 +146,10 @@ module Api
             location_obj[:states] << obj[:state] if obj[:state].present?
             location_obj[:countries] << obj[:country] if obj[:country].present?
           end
-        reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
+          reviews = reviews.where(state: location_obj[:states].uniq) if location_obj[:states].present?
+          reviews = reviews.where(city: location_obj[:cities].uniq) if location_obj[:cities].present?
+          reviews = reviews.where(country: location_obj[:countries].uniq) if location_obj[:countries].present?
+          reviews
       end
 
       def review_params

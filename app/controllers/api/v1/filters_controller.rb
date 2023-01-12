@@ -47,7 +47,7 @@ module Api
 
       def index
         @reviews = params[:category_id].present? ? Review.where(category_id: params[:category_id]) : Review.all
-        render json: { "sort_by": sort_by, "cuisines": cuisines, "tags": tags, "location": locations }
+        render json: { "sort_by": sort_by, "sub_category_names": sub_category_names, "tags": tags, "location": locations }
       end
 
       private
@@ -56,7 +56,7 @@ module Api
         [{ "Newest": 'recent' }, { "Top Rated": 'desc' }, { "Low Rated": 'asc' }]
       end
 
-      def cuisines
+      def sub_category_names
         joined_reviews = @reviews.joins(:sub_category).distinct
         {
           cuisines: joined_reviews.pluck("sub_categories.name"),

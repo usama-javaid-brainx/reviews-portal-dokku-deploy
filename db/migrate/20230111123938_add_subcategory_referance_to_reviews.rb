@@ -1,6 +1,6 @@
 class AddSubcategoryReferanceToReviews < ActiveRecord::Migration[7.0]
   def up
-    add_reference :reviews, :sub_category, foreign_key: true
+    add_reference :reviews, :sub_category, null: true , foreign_key: true
     Review.all.each do |review|
       review.update(sub_category_id: SubCategory.find_by(name: review.cuisine)&.id)
     end

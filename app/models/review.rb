@@ -45,7 +45,7 @@ class Review < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :groups
   belongs_to :category
-  belongs_to :sub_category
+  belongs_to :sub_category, optional: true
   has_many :meals, dependent: :destroy
 
   validates :name, presence: true
