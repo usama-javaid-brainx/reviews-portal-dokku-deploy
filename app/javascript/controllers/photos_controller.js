@@ -7,10 +7,6 @@ export default class extends Controller {
     this.mainImageTarget.src = event.currentTarget.src
   }
 
-  connect() {
-
-  }
-
   deleteImage(event) {
     imagesUrl = imagesUrl.filter(element => element !== event.currentTarget.previousElementSibling.src);
     event.currentTarget.parentElement.remove()

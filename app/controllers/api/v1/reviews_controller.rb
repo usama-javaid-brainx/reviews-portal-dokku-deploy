@@ -113,7 +113,6 @@ module Api
         end
       end
 
-
       private
 
       def validate_key

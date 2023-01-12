@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  # skip_before_action :authenticate_user!, only: [:show]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index, :show_map]
   before_action :category_order, only: [:homepage, :new, :create, :edit]
