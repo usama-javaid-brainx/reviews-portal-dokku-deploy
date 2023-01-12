@@ -4,38 +4,23 @@
 
 import { application } from "./application"
 
-import PlacesController from "./places_controller.js"
-application.register("places", PlacesController)
-
-import TogglePasswordController from "./toggle_password_controller.js";
-application.register("toggle-password", TogglePasswordController)
-
-import TagsController from "./tags_controller.js"
-application.register("tags", TagsController)
-
-import MealsController from "./meals_controller.js"
-application.register("meals", MealsController)
-
-import DollarPriceRangeController from "./dollar_price_range_controller.js"
-application.register("dollar-price-range", DollarPriceRangeController)
+import CarouselLoaderController from "./carousel_loader_controller.js"
+application.register("carousel-loader", CarouselLoaderController)
 
 import CategoryController from "./category_controller.js"
 application.register("category", CategoryController)
 
-import FilterController from "./filter_controller.js"
-application.register("filter", FilterController)
+import DollarPriceRangeController from "./dollar_price_range_controller.js"
+application.register("dollar-price-range", DollarPriceRangeController)
 
 import FavouriteController from "./favourite_controller.js"
 application.register("favourite", FavouriteController)
 
-import PhotosController from "./photos_controller.js"
-application.register("photos", PhotosController)
+import FilterController from "./filter_controller.js"
+application.register("filter", FilterController)
 
-import SortableImagesController from "./sortable_images_controller.js"
-application.register("sortable-images", SortableImagesController)
-
-import UserValidationController from "./user_validation_controller.js"
-application.register("user-validation", UserValidationController)
+import GroupController from "./group_controller.js"
+application.register("group", GroupController)
 
 import GuestController from "./guest_controller.js"
 application.register("guest", GuestController)
@@ -43,23 +28,38 @@ application.register("guest", GuestController)
 import MapController from "./map_controller.js"
 application.register("map", MapController)
 
-import GroupController from "./group_controller.js"
-application.register("group", GroupController)
+import MapViewController from "./map_view_controller.js"
+application.register("map-view", MapViewController)
 
-import ReviewsMapController from "./reviews_map_controller.js"
-application.register("reviews-map", ReviewsMapController)
+import MealsController from "./meals_controller.js"
+application.register("meals", MealsController)
+
+import NavsViewController from "./navs_view_controller.js"
+application.register("navs-view", NavsViewController)
+
+import PhotosController from "./photos_controller.js"
+application.register("photos", PhotosController)
+
+import PlacesController from "./places_controller.js"
+application.register("places", PlacesController)
 
 import ReviewCardItemController from "./review_card_item_controller.js"
 application.register("review-card-item", ReviewCardItemController)
 
-import MapViewController from "./map_view_controller.js"
-application.register("map-view", MapViewController)
-
-import CarouselLoaderController from "./carousel_loader_controller.js"
-application.register("carousel-loader", CarouselLoaderController)
-
 import ReviewSearchController from "./review_search_controller.js"
 application.register("review-search", ReviewSearchController)
 
-import NavsViewController from "./navs_view_controller.js"
-application.register("navs-view", NavsViewController)
+import ReviewsMapController from "./reviews_map_controller.js"
+application.register("reviews-map", ReviewsMapController)
+
+import SortableImagesController from "./sortable_images_controller.js"
+application.register("sortable-images", SortableImagesController)
+
+import TagsController from "./tags_controller.js"
+application.register("tags", TagsController)
+
+import TogglePasswordController from "./toggle_password_controller.js"
+application.register("toggle-password", TogglePasswordController)
+
+import UserValidationController from "./user_validation_controller.js"
+application.register("user-validation", UserValidationController)

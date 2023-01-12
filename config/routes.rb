@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       resources :categories, only: :index
       resources :users, only: :update do
         post :change_password
-        get :image_upload_token, on: :collection
+        get :confirmation_token, on: :collection
       end
       resources :filters, only: :index
     end

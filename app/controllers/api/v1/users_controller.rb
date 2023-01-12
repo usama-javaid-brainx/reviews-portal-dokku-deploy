@@ -54,9 +54,8 @@ module Api
           }
       EOS
 
-      def image_upload_token
-        current_user.confirmation_token = Devise.friendly_token
-        current_user.save
+      def confirmation_token
+        current_user.update(confirmation_token: Devise.friendly_token)
         render json: { auth_token: current_user.confirmation_token }
       end
 

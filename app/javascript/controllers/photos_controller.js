@@ -7,6 +7,13 @@ export default class extends Controller {
     this.mainImageTarget.src = event.currentTarget.src
   }
 
+  connect() {
+    if(this.hasThumbnailSectionTarget){
+      this.mainImageTarget.src = this.thumbnailSectionTarget.firstElementChild.src
+      this.sortImages()
+    }
+  }
+
   deleteImage(event) {
     imagesUrl = imagesUrl.filter(element => element !== event.currentTarget.previousElementSibling.src);
     event.currentTarget.parentElement.remove()
@@ -23,11 +30,10 @@ export default class extends Controller {
   }
 
   sortImages(){
-    let updatedImageArray = []
+    imagesUrl = []
     this.thumbnailSectionTargets.forEach(function (imageWrapper) {
-      updatedImageArray.push(imageWrapper.firstChild.src)
+      imagesUrl.push(imageWrapper.firstElementChild.src)
     })
-    imagesUrl = updatedImageArray
     this.mainImageTarget.src = imagesUrl[0]
   }
 }

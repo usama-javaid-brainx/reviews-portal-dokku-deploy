@@ -1,7 +1,7 @@
 class FetchRatingsService
 
-  def initialize(geolocations, url)
-    @geolocations = geolocations
+  def initialize(url)
+    @geolocations = ['foursquare', 'yelp']
     @url = url
   end
 
