@@ -56,7 +56,7 @@ module Api
         ],
         "meta": {
             "current_page": 1,
-            "total_pages": 10
+            "total_pages": 103
         }
     }
 
@@ -69,12 +69,12 @@ module Api
       end
 
       api :POST, "reviews/create_review", "Create a new review"
+      param :average_score, Integer, desc: "Should be between 1 to 10"
+      param :price_range, Integer, desc: "Should be between 1 to 4"
+
 
       example <<-EOS
-        
-      Status Codes with Response
-      200: {
-    "review": {
+    {
         "id": 47,
         "user_id": 2,
         "name": "Arcadian Cafe",
@@ -130,7 +130,6 @@ module Api
             }
         ]
     }
-}
 
       EOS
 
@@ -146,67 +145,47 @@ module Api
       api :PUT, "reviews/:id", "Update a review with an id"
 
       example <<-EOS
-        
-      Status Codes with Response
-      200: {
-            "review": {
-                "id": 47,
-                "user_id": 2,
-                "name": "Arcadian Cafe",
-                "address": "28 k Sir Syed Rd, Block K Gulberg 2, Lahore, Punjab, Pakistan",
-                "city": "Lahore",
-                "state": "Punjab",
-                "country": "Pakistan",
-                "place_id": "ChIJCfxBr_kEGTkR-1wlJ_OYM28",
-                "longitude": "74.3493876",
-                "latitude": "31.52254760000001",
-                "favorite_dish": null,
-                "average_score": 8.0,
-                "notes": "sakdvbaskbdvkjasbdvckljasbdkjvcas.dkbcjsavdjchasd",
-                "date": "2023-01-14",
-                "created_at": "2022-09-15T11:13:51.514Z",
-                "updated_at": "2023-01-12T15:20:46.683Z",
-                "zip_code": "54646",
-                "tags": [
-                    "tag 1",
-                    "tag 2"
-                ],
-                "price_range": 3,
-                "status": null,
-                "favourite": true,
-                "shareable": true,
-                "category_id": 1,
-                "sub_category_id": null,
-                "to_try": false,
-                "discarded_at": null,
-                "images": [
-                    "https://cdn.filestackcontent.com/jfx62MmZRmGcuWPFgUQh",
-                    "https://cdn.filestackcontent.com/iFWkHjXrTgGonIKj3U7f"
-                ],
-                "parent_id": null,
-                "slug": "arcadian-cafe-47",
-                "start_date": "2023-01-14",
-                "end_date": "2023-01-17",
-                "author": "Harry Potter",
-                "platform": "",
-                "url": "",
-                "google_url": "",
-                "foursquare_url": "",
-                "yelp_url": "",
-                "meals": [
-                    {
-                        "id": 40,
-                        "name": "Ywwwwwwes",
-                        "notes": "This is note 1",
-                        "image_url": "image_url",
-                        "created_at": "2022-12-28T10:45:31.151Z",
-                        "updated_at": "2023-01-12T13:59:47.243Z",
-                        "review_id": 47
-                    }
-                ]
-            }
-        }
-
+          {
+              "name": "Arcadian Cafe",
+              "category_id": "1",
+              "sub_category_id": "",
+              "to_try": "false",
+              "shareable": "true",
+              "date": "2023-01-14",
+              "tags": ["tag 1", "tag 2"],
+              "address": "28 k Sir Syed Rd, Block K Gulberg 2, Lahore, Punjab, Pakistan",
+              "state": "Punjab",
+              "city": "Lahore",
+              "country": "Pakistan",
+              "zip_code": "54646",
+              "latitude": "31.52254760000001",
+              "longitude": "74.3493876",
+              "place_id": "ChIJCfxBr_kEGTkR-1wlJ_OYM28",
+              "price_range": "3",
+              "average_score": "8",
+              "start_date": "2023-01-14",
+              "end_date": "2023-01-17",
+              "author": "Harry Potter",
+              "platform": "",
+              "url": "",
+              "google_url": "",
+              "foursquare_url": "",
+              "yelp_url": "",
+              "notes": "sakdvbaskbdvkjasbdvckljasbdkjvcas.dkbcjsavdjchasd",
+              "images": [
+                  "https://cdn.filestackcontent.com/jfx62MmZRmGcuWPFgUQh",
+                  "https://cdn.filestackcontent.com/iFWkHjXrTgGonIKj3U7f"
+              ],
+              "meals_attributes": [
+                  {
+                      "id": "43",
+                      "name": "Ywwwwwwes",
+                      "notes": "This is note 1",
+                      "image_url": "image_url",
+                      "_destroy": "true"
+                  }
+              ]
+          }
       EOS
 
       def update
@@ -274,6 +253,7 @@ module Api
       end
 
       def review_params
+        "<p>#{params[:review][:notes]}<p>" if params[:review][:notes].present?
         params.require(:review).permit(:name, :category_id, :sub_category_id, :to_try, :shareable, :date, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy]).merge(tags: params[:tags].join(','))
       end
 
