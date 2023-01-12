@@ -48,11 +48,12 @@
   }
 
     function callbackOnFileUploadFinished(data) {
-      imagesUrl.push(data.url)
+      imagesUrl.unshift(data.url)
         const imageDiv = document.createElement('div');
         const deleteIconUrl = document.getElementById('js-thumbnails').dataset.deleteIcon
         imageDiv.classList.add('thumbnail-wrap')
         imageDiv.setAttribute("data-photos-target", "thumbnailSection");
+        imageDiv.setAttribute("data-action", "dragend->photos#sortImages");
 
         const image = document.createElement('img');
         image.classList.add('thumbnail', 'px-0', 'small-thumb')
