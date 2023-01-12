@@ -115,10 +115,21 @@ class ReviewsController < ApplicationController
   end
 
   def get_score
-    geolocations = Array.[]('foursquare', 'yelp')
-    foursquare_yelp = FetchRatingsService.new(geolocations, params[:foursquare_yelp_url])
+    foursquare_yelp = FetchRatingsService.new(params[:foursquare_yelp_url])
     foursquare_yelp = foursquare_yelp.call
     render json: foursquare_yelp
+  end
+
+  def filestack_image_uploader
+    user = User.confirm_by_token(params[:auth_token])
+    if user.valid?
+      user.update(confirmation_token: nil)
+      sign_in(user)
+      @images = params[:review_id].present? ? Review.find(params[:review_id]).images : nil
+      render "/mobile/filestack_view"
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   private

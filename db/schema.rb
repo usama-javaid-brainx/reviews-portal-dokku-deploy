@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
     t.bigint "user_id"

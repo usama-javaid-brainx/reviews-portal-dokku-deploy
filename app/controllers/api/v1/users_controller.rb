@@ -51,6 +51,19 @@ module Api
         end
       end
 
+      api :GET, "user/confirmation_token", "Get Confirmation Token"
+      example <<-EOS
+        Status Codes with Response
+          200: {      
+            auth_token: FHcyKicUz3au3etybjNf
+          }
+      EOS
+
+      def confirmation_token
+        current_user.update(confirmation_token: Devise.friendly_token)
+        render json: { auth_token: current_user.confirmation_token }
+      end
+
       private
 
       def user_params
