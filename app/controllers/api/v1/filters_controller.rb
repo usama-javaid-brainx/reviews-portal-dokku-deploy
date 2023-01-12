@@ -57,8 +57,11 @@ module Api
       end
 
       def cuisines
-        sub_categories_id = @reviews.pluck(:sub_category_id).uniq
-        SubCategory.where(id: sub_categories_id).pluck(:name)
+        joined_reviews = @reviews.joins(:sub_category).distinct
+        {
+          cuisines: joined_reviews.pluck("sub_categories.name"),
+          genere: joined_reviews.pluck("sub_categories.name")
+        }
       end
 
       def tags

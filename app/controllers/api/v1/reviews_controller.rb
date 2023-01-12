@@ -4,7 +4,8 @@ module Api
       skip_before_action :authenticate_user!, only: [:create_review_with_num]
       before_action :validate_key, only: [:create_review_with_num]
 
-      api :GET, "reviews", "Get a list of current user reviews or with applied filters"
+      api :POST, "reviews", "Get a list of current user reviews or with applied filters"
+      param :page, String, desc: "Page number of the reviews you want to get", required: false
 
       example <<-EOS
         
@@ -55,14 +56,14 @@ module Api
         ],
         "meta": {
             "current_page": 1,
-            "total_pages": 1
+            "total_pages": 10
         }
     }
-q
+
       EOS
 
       def index
-        reviews = review_filter(current_user.reviews)
+        reviews = review_filter(current_user.reviews.includes(:sub_category, :meals))
         pagy, reviews = pagy(reviews)
         render json: reviews, meta: pagy_meta(pagy), each_serializer: ReviewSerializer, adapter: :json
       end
@@ -120,12 +121,12 @@ q
       end
 
       def review_filter(reviews)
-        reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
-        location_filter(reviews)
-        # reviews = reviews.where('cuisine ilike any (array[?])', params[:filters][:cuisine]) if params[:filters][:cuisine].present?
-        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
         reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
+        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        reviews = location_filter(reviews) if params[:filters][:location].present?
+        reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_or_sub_category_name_i_cont_any: params[:filters][:query]).result(distinct: true) if params[:filters][:query].present?
+        reviews = reviews.ransack(sub_category_name_i_cont_any: params[:filters][:sub_category_names]).result(distinct: true) if params[:filters][:sub_category_names].present?
         reviews = if params[:filters][:order].present?
                     reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
                   else
@@ -135,7 +136,6 @@ q
       end
 
       def location_filter(reviews)
-        if params[:filters][:location].present?
           location_obj = {
             "cities": [],
             "states": [],
@@ -146,8 +146,7 @@ q
             location_obj[:states] << obj[:state] if obj[:state].present?
             location_obj[:countries] << obj[:country] if obj[:country].present?
           end
-        end
-        reviews = reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
+        reviews.where(state: location_obj[:states].uniq).or(reviews.where(city: location_obj[:cities].uniq)).or(reviews.where(country: location_obj[:countries].uniq))
       end
 
       def review_params
