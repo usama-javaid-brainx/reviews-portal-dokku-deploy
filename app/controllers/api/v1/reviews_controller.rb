@@ -225,12 +225,12 @@ module Api
         reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
         reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tags].map { |str| "%,#{str}%" }) if params[:filters][:tags].present?
         reviews = location_filter(reviews) if params[:filters][:location].present?
-        reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_or_sub_category_name_i_cont_any: params[:filters][:query]).result(distinct: true) if params[:filters][:query].present?
-        reviews = reviews.ransack(sub_category_name_i_cont_any: params[:filters][:sub_category_names]).result(distinct: true) if params[:filters][:sub_category_names].present?
+        reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_or_sub_category_name_i_cont_any: params[:filters][:query]).result if params[:filters][:query].present?
+        reviews = reviews.ransack(sub_category_name_i_cont_any: params[:filters][:sub_category_names]).result if params[:filters][:sub_category_names].present?
         reviews = if params[:filters][:order].present?
                     reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
                   else
-                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
+                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE reviews.created_at END"))
                   end
         reviews
       end
