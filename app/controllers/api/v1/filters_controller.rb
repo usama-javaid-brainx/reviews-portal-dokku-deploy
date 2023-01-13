@@ -19,10 +19,13 @@ module Api
                   "Low Rated": "asc"
               }
           ],
-          "cuisines": [
-              "afghan",
-              "andalusian"
-          ],
+          "sub_category_names": {
+              "cuisine": [],
+              "genre": [
+                  "Heist",
+                  "Action"
+              ]
+          },
           "tags": [
               "great",
               "heavy",
@@ -60,8 +63,8 @@ module Api
         joined_reviews = @reviews.joins(:sub_category).distinct
         category = Category.find_by(name: 'Restaurants')
         {
-          cuisine: joined_reviews.where(id: category.id).pluck("sub_categories.name"),
-          genre: joined_reviews.where.not(id: category.id).pluck("sub_categories.name")
+          cuisine: joined_reviews.where(category_id: category.id).pluck("sub_categories.name"),
+          genre: joined_reviews.where.not(category_id: category.id).pluck("sub_categories.name")
         }
       end
 
