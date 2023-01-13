@@ -56,7 +56,7 @@ module Api
 
       def confirmation_token
         current_user.update(confirmation_token: Devise.friendly_token)
-        render json: { auth_token: current_user.confirmation_token }
+        render json: { filestack_url: Rails.application.routes.url_helpers.filestack_image_uploader_reviews_url(auth_token: current_user.confirmation_token , review_id: params[:review_id])}
       end
 
       private
