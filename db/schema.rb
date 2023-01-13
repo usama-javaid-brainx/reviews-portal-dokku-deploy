@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_13_130250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,7 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
     t.boolean "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sub_category_title"
     t.boolean "active", default: true
     t.integer "position"
     t.bigint "user_id"
@@ -124,16 +123,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.string "country"
-    t.string "place_id"
-    t.string "longitude"
-    t.string "latitude"
-    t.string "favorite_dish"
+    t.string "address", default: ""
+    t.string "city", default: ""
+    t.string "state", default: ""
+    t.string "country", default: ""
+    t.string "place_id", default: ""
+    t.string "longitude", default: ""
+    t.string "latitude", default: ""
+    t.string "favorite_dish", default: ""
     t.float "average_score"
-    t.text "notes"
+    t.text "notes", default: ""
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -151,12 +150,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_11_123938) do
     t.string "slug"
     t.date "start_date"
     t.date "end_date"
-    t.text "author"
-    t.text "platform"
-    t.string "url"
-    t.string "google_url"
-    t.string "foursquare_url"
-    t.string "yelp_url"
+    t.text "author", default: ""
+    t.text "platform", default: ""
+    t.string "url", default: ""
+    t.string "google_url", default: ""
+    t.string "foursquare_url", default: ""
+    t.string "yelp_url", default: ""
     t.bigint "sub_category_id"
     t.index ["category_id"], name: "index_reviews_on_category_id"
     t.index ["discarded_at"], name: "index_reviews_on_discarded_at"

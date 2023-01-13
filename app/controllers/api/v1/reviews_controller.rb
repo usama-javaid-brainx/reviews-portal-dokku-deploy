@@ -72,7 +72,6 @@ module Api
       param :average_score, Integer, desc: "Should be between 1 to 10"
       param :price_range, Integer, desc: "Should be between 1 to 4"
 
-
       example <<-EOS
     {
         "id": 47,
