@@ -21,9 +21,11 @@ module Api
       rescue_from AbstractController::ActionNotFound, with: :render_not_found
       rescue_from ActionController::ParameterMissing, with: :render_parameter_missing
       rescue_from ArgumentError, with: :render_argument_error
+
       def parse_reviews(collection)
         collection.map { |obj| obj.split(",") }.flatten.collect { |e| e.strip.downcase }.reject(&:empty?).uniq.sort
       end
+
       private
 
       def render_exception_error(exception)
@@ -38,17 +40,17 @@ module Api
 
         return if performed?
 
-        render json: {error: I18n.t("api.errors.server")}, status: :internal_server_error
+        render json: { error: I18n.t("api.errors.server") }, status: :internal_server_error
       end
 
       def render_not_found(exception)
         logger.info(exception) # for logging
-        render json: {error: I18n.t("api.errors.not_found")}, status: :not_found
+        render json: { error: I18n.t("api.errors.not_found") }, status: :not_found
       end
 
       def render_record_invalid(exception)
         logger.info(exception) # for logging
-        render json: {errors: exception.record.errors.as_json}, status: :bad_request
+        render json: { errors: exception.record.errors.as_json }, status: :bad_request
       end
 
       def render_parameter_missing(exception)
