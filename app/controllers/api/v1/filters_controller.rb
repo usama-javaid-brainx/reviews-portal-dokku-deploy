@@ -63,8 +63,8 @@ module Api
         joined_reviews = @reviews.joins(:sub_category).distinct
         category = Category.find_by(name: 'Restaurants')
         {
-          cuisine: joined_reviews.where(category_id: category.id).pluck("sub_categories.name").compact,
-          genre: joined_reviews.where.not(category_id: category.id).pluck("sub_categories.name").compact
+          cuisine: joined_reviews.where(category_id: category.id).pluck("sub_categories.name"),
+          genre: joined_reviews.where.not(category_id: category.id).pluck("sub_categories.name")
         }
       end
 
