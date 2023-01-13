@@ -72,7 +72,6 @@ module Api
       param :average_score, Integer, desc: "Should be between 1 to 10"
       param :price_range, Integer, desc: "Should be between 1 to 4"
 
-
       example <<-EOS
     {
         "id": 47,
@@ -254,7 +253,7 @@ module Api
 
       def review_params
         "<p>#{params[:review][:notes]}<p>" if params[:review][:notes].present?
-        params.require(:review).permit(:name, :category_id, :sub_category_id, :to_try, :shareable, :date, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy]).merge(tags: params[:tags].join(','))
+        params.require(:review).permit(:name, :category_id, :sub_category_id, :to_try, :shareable, :date, :address, :state, :city, :country, :zip_code, :latitude, :longitude, :place_id, :favorite_dish, :price_range, :average_score, :start_date, :end_date, :author, :platform, :url, :google_url, :foursquare_url, :yelp_url, :notes, images: [], meals_attributes: [:id, :name, :notes, :image_url, :_destroy]).merge(tags: params[:tags].present? ? params[:tags].join(',') : "")
       end
 
     end
