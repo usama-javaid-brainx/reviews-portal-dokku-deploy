@@ -28,7 +28,8 @@ module Api
                   "google_url": null,
                   "foursquare_url": null,
                   "yelp_url": null,
-                  "default_category": false
+                  "default_category": false,
+                  "icon_path": "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3745d7a2c3a1ea12155d58dc364affea8affc9b3/cutlery.svg"
               }
           ]
       }
