@@ -35,6 +35,8 @@ gem "redis", "~> 4.6"
 
 gem 'devise_token_auth', "~> 1.2"
 
+gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

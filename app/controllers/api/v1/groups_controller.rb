@@ -1,6 +1,7 @@
 module Api
   module V1
     class GroupsController < Api::V1::ApiController
+      before_action :set_group, only: [:update, :destroy ]
 
       api :GET, "groups", "Get a list of all available groups"
 
@@ -41,28 +42,28 @@ module Api
       api :PUT, "groups", "Update a group"
 
       def update
-        group = current_user.groups.find(params[:id])
-        group.review_ids = params[:reviews] if params[:reviews].present?
-        debugger
-        if group.update(group_params)
-          render_message("Group updated successfully!")
+        @group.review_ids = params[:reviews] if params[:reviews].present?
+        if @group.update(group_params)
+          render json: @group, each_serializer: GroupSerializer, adapter: :json
         else
-          render_error(500, "Group didn't updated")
+          render_error(422, "Group didn't updated")
         end
       end
 
       api :DELETE, "groups", "Delete a group"
 
       def destroy
-        group = current_user.groups.find(params[:id])
-        if group.discard
+        if @group.discard
           render_message("Group deleted successfully!")
         else
-          render_error(500, "Group cannot be deleted")
+          render_error(422, "Group cannot be deleted")
         end
       end
 
       private
+      def set_group
+        @group = current_user.groups.find(params[:id])
+      end
 
       def group_params
         params.require(:group).permit(:name)
