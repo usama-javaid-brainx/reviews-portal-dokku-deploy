@@ -223,7 +223,7 @@ module Api
       def review_filter(reviews)
         reviews = reviews.where(category_id: params[:filters][:category_id]) if params[:filters][:category_id].present?
         reviews = reviews.where(to_try: params[:filters][:to_try]) if params[:filters][:to_try].present?
-        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tag].map { |str| "%,#{str}%" }) if params[:filters][:tag].present?
+        reviews = reviews.where('tags ilike any (array[?])', params[:filters][:tags].map { |str| "%,#{str}%" }) if params[:filters][:tags].present?
         reviews = location_filter(reviews) if params[:filters][:location].present?
         reviews = reviews.ransack(name_or_state_or_city_or_country_or_tags_or_notes_or_sub_category_name_i_cont_any: params[:filters][:query]).result(distinct: true) if params[:filters][:query].present?
         reviews = reviews.ransack(sub_category_name_i_cont_any: params[:filters][:sub_category_names]).result(distinct: true) if params[:filters][:sub_category_names].present?
