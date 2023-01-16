@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
     reviews = review_filter(current_user.reviews)
     @pagy, @reviews = pagy_countless(reviews)
     @addresses = locations(@reviews)
-    @cuisine_presence = (Category.find_by(id: params[:category_id]).name == 'Restaurants' if params[:category_id] != 'all' && params[:category_id].present?) || params[:category_id] == 'all' || params[:category_id].blank?
   end
 
   def new
