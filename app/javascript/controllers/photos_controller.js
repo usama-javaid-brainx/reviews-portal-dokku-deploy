@@ -3,12 +3,17 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace", 'imageUrl']
 
+  static values = {
+    imageUploadUrl: String,
+    reviewId: String
+  }
+
   clickImage(event) {
     this.mainImageTarget.src = event.currentTarget.src
   }
 
   connect() {
-    if(this.hasThumbnailSectionTarget){
+    if (this.hasThumbnailSectionTarget) {
       this.mainImageTarget.src = this.thumbnailSectionTarget.firstElementChild.src
       this.sortImages()
     }
@@ -22,18 +27,32 @@ export default class extends Controller {
       this.fileUploadPlaceTarget.classList.remove('d-none')
       this.jsUploadedFilesTarget.classList.add('d-none')
       const hiddenInput = document.createElement('input')
-      const attributes = { type:"hidden", name: "review[images][]", value: null }
+      const attributes = {type: "hidden", name: "review[images][]", value: null}
       hiddenInput.classList.add("image-inputs")
       Object.assign(hiddenInput, attributes)
       this.jsUploadedFilesTarget.appendChild(hiddenInput)
     }
   }
 
-  sortImages(){
+  sortImages() {
     imagesUrl = []
     this.thumbnailSectionTargets.forEach(function (imageWrapper) {
       imagesUrl.push(imageWrapper.firstElementChild.src)
     })
     this.mainImageTarget.src = imagesUrl[0]
+  }
+
+  saveImages() {
+    $.ajax({
+      type: "GET",
+      url: this.imageUploadUrlValue,
+      data: {
+        review_id: this.reviewIdValue,
+        images_url: imagesUrl
+      },
+      success(response) {
+        window.close()
+      }
+    })
   }
 }

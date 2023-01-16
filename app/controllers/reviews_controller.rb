@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :filestack_image_uploader]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :home_data, only: [:homepage, :index, :show_map]
   before_action :category_order, only: [:homepage, :new, :create, :edit]
@@ -122,12 +122,14 @@ class ReviewsController < ApplicationController
 
   def filestack_image_uploader
     user = User.confirm_by_token(params[:auth_token])
-    if user.valid?
-      user.update(confirmation_token: nil)
+    if user.valid? && params[:images_url].blank?
       sign_in(user)
+      user.update(confirmation_token: nil)
       @images = params[:review_id].present? ? Review.find(params[:review_id]).images : nil
       render "/mobile/filestack_view"
     else
+      Review.find(params[:review_id]).update(images: params[:images_url]) if params[:images_url].present?
+      sign_out(user)
       redirect_to new_user_session_path
     end
   end
