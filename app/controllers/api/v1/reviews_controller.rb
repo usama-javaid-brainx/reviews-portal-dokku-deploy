@@ -230,7 +230,7 @@ module Api
         reviews = if params[:filters][:order].present?
                     reviews.order(params[:filters][:order] == "recent" ? "created_at desc" : "average_score #{params[:filters][:order]} NULLS LAST")
                   else
-                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END"))
+                    reviews.order(Arel.sql("CASE WHEN date IS NOT NULL THEN date WHEN start_date IS NOT NULL THEN start_date ELSE created_at END")).reverse_order
                   end
         reviews
       end
