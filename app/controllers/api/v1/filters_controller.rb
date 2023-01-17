@@ -62,10 +62,17 @@ module Api
       def sub_category_names
         joined_reviews = @reviews.joins(:sub_category).distinct
         category = Category.find_by(name: 'Restaurants')
-        {
-          cuisine: joined_reviews.where(category_id: category.id).pluck("sub_categories.name"),
-          genre: joined_reviews.where.not(category_id: category.id).pluck("sub_categories.name")
-        }
+        if params[:category_id].present?
+          {
+            cuisine: joined_reviews.where(category_id: category.id).pluck("sub_categories.name"),
+            genre: joined_reviews.where.not(category_id: category.id).pluck("sub_categories.name")
+          }
+        else
+          {
+            cuisine: [],
+            genre: []
+          }
+        end
       end
 
       def tags
