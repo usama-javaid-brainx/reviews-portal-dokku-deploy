@@ -1,7 +1,7 @@
 import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["mainImage", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace", 'imageUrl']
+  static targets = ["mainImage", "notification", "thumbnailSection", "jsUploadedFiles", "fileUploadPlace", 'imageUrl']
 
   static values = {
     imageUploadUrl: String,
@@ -43,6 +43,7 @@ export default class extends Controller {
   }
 
   saveImages() {
+    let that = this
     $.ajax({
       type: "GET",
       url: this.imageUploadUrlValue,
@@ -51,6 +52,7 @@ export default class extends Controller {
         images_url: imagesUrl
       },
       success(response) {
+        that.notificationTarget.classList.remove("d-none")
         setTimeout(function(){
           window.close();
         }, 5000);

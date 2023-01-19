@@ -218,6 +218,8 @@
 .filestack-notification {
     background: #c7eaff;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     padding: 10px;
     top: 20px;

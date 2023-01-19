@@ -1,9 +1,8 @@
-<div class="d-none filestack-notification">
-  Images Saved!
-</div>
-<div class="" data-controller="photos" data-photos-image-upload-url-value="<%= filestack_image_uploader_reviews_path %>" data-photos-review-id-value="<%= params[:review_id] %>">
+<div class="" data-controller="photos"data-photos-image-upload-url-value="<%= filestack_image_uploader_reviews_path %>" data-photos-review-id-value="<%= params[:review_id] %>">
+  <div class="d-none filestack-notification" data-photos-target="notification">
+    Images Saved!
+  </div>
   <%= form_with do |f| %>
-    <!--        <h2 class="my-4">Photos</h2>-->
     <div class="tabs_content_wrap">
       <% unless @images.present? %>
         <div class="file-upload-place" data-photos-target="fileUploadPlace" id="file-upload-place">
