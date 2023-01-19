@@ -16,6 +16,10 @@
     background: #F7F5FC;
 }
 
+.filestack-tabs-content-wrap {
+    padding: 0.5rem;
+}
+
 .tabs_content_wrap .tags .fa.fa-remove {
     color: #6E3EF7;
     cursor: pointer;
@@ -79,19 +83,24 @@
 .uploaded-files .main-thumbnail {
     border-radius: 6px;
     width: 100%;
-    max-height: 450px;
+    height: 350px;
     overflow: hidden;
 }
 
-#js-thumbnails .upload-button {
-    width: 32%;
-    height: 70px;
-    margin-right: 5px;
+.uploaded-files .main-thumbnail img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.uploaded-files .upload-button {
+    height: 100px !important;
+    border: 0.5px dashed;
 }
 
 .thumbnail-wrap {
     position: relative;
     width: 32%;
+    height: 100px;
     overflow: hidden;
     margin-bottom: 5px;
 }
@@ -126,10 +135,6 @@
     margin-bottom: 10px;
     cursor: pointer;
     margin-right: 5px;
-}
-
-.uploaded-files .upload-button {
-    border: 0.5px dashed;
 }
 
 .modal-container {
