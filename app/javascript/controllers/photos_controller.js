@@ -51,7 +51,9 @@ export default class extends Controller {
         images_url: imagesUrl
       },
       success(response) {
-        window.close()
+        setTimeout(function(){
+          window.close();
+        }, 5000);
       }
     })
   }

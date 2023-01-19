@@ -72,27 +72,26 @@
     color: #6E3EF7;
 }
 
-.photos-jpg-text{
+.photos-jpg-text {
     color: #636373;
 }
 
 .uploaded-files .main-thumbnail {
     border-radius: 6px;
+    width: 100%;
     max-height: 450px;
     overflow: hidden;
 }
 
 #js-thumbnails .upload-button {
-    width: 100px;
+    width: 32%;
     height: 70px;
     margin-right: 5px;
 }
 
 .thumbnail-wrap {
     position: relative;
-    width: 100px;
-    height: 70px;
-    margin-right: 5px;
+    width: 32%;
     overflow: hidden;
     margin-bottom: 5px;
 }
@@ -104,7 +103,7 @@
     object-fit: cover;
 }
 
-.delete-icon  {
+.delete-icon {
     position: absolute;
     right: 10px;
     top: 5px;
@@ -214,4 +213,17 @@
 
 .bg-blue {
     background-color: #0d6efd !important;
+}
+
+.filestack-notification {
+    background: #c7eaff;
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    top: 20px;
+    border-radius: 5px;
+    width: 50%;
+    opacity: 0.8;
+    color: #3c3c3c;
+    font-weight: 600;
 }
