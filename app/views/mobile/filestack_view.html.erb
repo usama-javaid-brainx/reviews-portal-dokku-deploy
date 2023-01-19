@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6" data-controller="photos">
+    <div class="col-md-6" data-controller="photos" data-photos-image-upload-url-value="<%=filestack_image_uploader_reviews_path %>" data-photos-review-id-value="<%= params[:review_id] %>">
       <%= form_with do |f| %>
         <h2 class="my-4">Photos</h2>
         <div class="tabs_content_wrap">
@@ -19,10 +19,10 @@
             <div class="mb-3 main-thumbnail">
               <img id="mainThumbnail" data-photos-target="mainImage" src="">
             </div>
-            <div class="d-flex position-relative" id="js-thumbnails" data-controller="sortable-images" data-delete-icon="<%= asset_path("template/image-delete.svg") %>">
+            <div class="d-flex position-relative flex-wrap" id="js-thumbnails" data-controller="sortable-images" data-delete-icon="<%= asset_path("template/image-delete.svg") %>">
               <% if @images.present? %>
                 <% @images.each do |image_src| %>
-                  <div class="thumbnail-wrap" data-photos-target="thumbnailSection" data-action="dragend->photos#sortImages">
+                  <div class="thumbnail-wrap mt-1" data-photos-target="thumbnailSection" data-action="dragend->photos#sortImages">
                     <img class="small-thumb thumbnail px-0" data-action="click->photos#clickImage" src=<%= image_src %>>
                     <%= image_tag("template/image-delete.svg", class: "delete-icon", "data-action": "click->photos#deleteImage") %>
                     <input type="hidden" class="image-inputs" name="reviews[filestack_image_uploader][]" value=<%= image_src %>>
@@ -33,22 +33,14 @@
             </div>
           </div>
         </div>
-        <button class="mt-5  btn btn-primary" type="button" onclick="submitPhotos()">Save Images</button>
+        <button class="mt-5  btn btn-primary" type="button" data-action="click->photos#saveImages">Save Images</button>
       <% end %>
     </div>
   </div>
 </div>
 
 <script>
-  let imagesUrl = []
-
-  function submitPhotos() {
-    let arr = ""
-    for (let i = 0; i < imagesUrl.length; i++) {
-      arr = arr + `images[]=${imagesUrl[i]}&`
-    }
-    window.location = `justreviewit://filestack_images?${arr.slice(0, -1)}`
-  }
+  var imagesUrl=new Array;
 
   function callbackOnFileUploadFinished(data){
     imagesUrl.unshift(data.url)
@@ -67,6 +59,12 @@
     deleteImage.classList.add('delete-icon')
     deleteImage.setAttribute('src', deleteIconUrl);
     deleteImage.setAttribute("data-action", "click->photos#deleteImage");
+
+    const input = document.createElement('input')
+    input.type = "hidden"
+    input.classList.add("image-inputs")
+    input.name = 'reviews[filestack_image_uploader][]'
+    input.value = data.url
 
     document.getElementById('js-thumbnails').prepend(imageDiv)
     imageDiv.append(image, deleteImage, input)

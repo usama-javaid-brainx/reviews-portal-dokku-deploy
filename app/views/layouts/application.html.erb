@@ -32,7 +32,9 @@
 <!-- Preloader End -->
 
 <% if user_signed_in? %>
-  <%= render "shared/header", default_categories: @default_categories, common_categories: @common_categories, all_categories: @all_categories %>
+  <% unless action_name == "filestack_image_uploader" %>
+    <%= render "shared/header", default_categories: @default_categories, common_categories: @common_categories, all_categories: @all_categories %>
+  <% end %>
 <% end %>
 
 <%= render 'shared/flash_messages' %>

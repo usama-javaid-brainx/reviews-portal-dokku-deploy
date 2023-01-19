@@ -13,40 +13,42 @@
               <span class="cuisine-font cuisine-h">Sort</span>
             </div>
             <div class="tag-card-h overflow-auto pb-3">
-            <%= f.hidden_field :score, value: params[:score], 'data-filter-target': "scoreFilter" %>
-            <%= select_tag :score, options_for_select([["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], params[:score]), data: { "filter-target": "sortReviews" } %>
+              <%= f.hidden_field :score, value: params[:score], 'data-filter-target': "scoreFilter" %>
+              <%= select_tag :score, options_for_select([["Newest", "recent"], ["Top Rated", "desc"], ["Low Rated", "asc"]], params[:score]), data: { "filter-target": "sortReviews" } %>
             </div>
           </div>
         <% end %>
 
-        <% if @cuisine_presence %>
-          <div class="card cuisine-card-h">
-            <div class="d-flex justify-content-between p-4">
-              <span class="cuisine-font cuisine-h">Location</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#locationClearAll ">X Clear All</span>
-            </div>
-            <div class="tag-card-h overflow-auto">
-              <%= f.hidden_field :location_filter, :value => "#{params[:location_filter]}", 'data-filter-target': "locationFilter" %>
-              <% @addresses.each do |address| %>
-                <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:location_filter]&.split(',')&.index(address.titleize).present? ? 'cuisine-select clear-location' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectLocation"><%= address.titleize %></span>
-              <% end %>
-            </div>
+        <div class="card cuisine-card-h">
+          <div class="d-flex justify-content-between p-4">
+            <span class="cuisine-font cuisine-h">Location</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#locationClearAll ">X Clear All</span>
           </div>
+          <div class="tag-card-h overflow-auto">
+            <%= f.hidden_field :location_filter, :value => "#{params[:location_filter]}", 'data-filter-target': "locationFilter" %>
+            <% @addresses.each do |address| %>
+              <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:location_filter]&.split(',')&.index(address.titleize).present? ? 'cuisine-select clear-location' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectLocation"><%= address.titleize %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="card cuisine-card-h mt-5">
+          <div class="d-flex justify-content-between p-4">
+            <% if params[:category_id].present? && params[:category_id] == "all" %>
+              <span class="cuisine-font cuisine-h">Sub Category</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
+            <% else %>
+              <span class="cuisine-font cuisine-h"><%= Category.find(params[:category_id]).sub_category_title if params[:category_id].present? %></span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
+            <% end %>
+          </div>
+          <div class="tag-card-h overflow-auto">
+            <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
+            <%= f.hidden_field :category_id, value: @curr_category.id if @curr_category != "all" %>
+            <% cuisines.each do |cuisine| %>
+              <% if cuisine.present? %>
+                <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
 
-          <div class="card cuisine-card-h mt-5">
-            <div class="d-flex justify-content-between p-4">
-              <span class="cuisine-font cuisine-h">Cuisine</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#cuisineClearAll ">X Clear All</span>
-            </div>
-            <div class="tag-card-h overflow-auto">
-              <%= f.hidden_field :cuisines_filter, :value => "#{params[:cuisines_filter]}", 'data-filter-target': "cuisinesFilter" %>
-              <%= f.hidden_field :category_id, value: @curr_category.id if @curr_category != "all" %>
-              <% cuisines.each do |cuisine| %>
-                <% if cuisine.present? %>
-                  <span class="cuisine-badge d-inline-block mb-4 cuisine-font <%= params[:cuisines_filter]&.split(',')&.index(cuisine.titleize).present? ? 'cuisine-select clear-cuisine' : 'cuisine-unselect' %> cursor-pointer" data-action="click->filter#selectCuisine"><%= cuisine.titleize %></span>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
         <div class="card mt-5">
           <div class="d-flex justify-content-between p-4">
             <span class="cuisine-font cuisine-h">Tags</span><span class="cuisine-font cuisine-clear cursor-pointer" data-action="click->filter#TagClearAll">X Clear All</span>
