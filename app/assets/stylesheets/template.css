@@ -83,19 +83,23 @@
 }
 
 #js-thumbnails .upload-button {
+    width: 100px;
     height: 70px;
-    width: 15%;
+    margin-right: 5px;
 }
 
 .thumbnail-wrap {
     position: relative;
-    width: 15%;
-    margin-right: 3px;
+    width: 100px;
+    height: 70px;
+    margin-right: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .uploaded-files .thumbnail {
     width: 100%;
-    max-height: 70px;
+    height: 100%;
     border-radius: 6px;
     object-fit: cover;
 }

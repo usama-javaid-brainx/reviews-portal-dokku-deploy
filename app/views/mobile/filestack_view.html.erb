@@ -8,7 +8,7 @@
             <div class="file-upload-place" data-photos-target="fileUploadPlace" id="file-upload-place">
               <div class="content">
                 <div class="upload-link">
-                  <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
+                  <%= f.filestack_field :images_input, 'Upload files', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 50 } %>
                   <span>or drag and drop</span>
                   <div class="photos-jpg-text">PNG, JGP (max 10MB)</div>
                 </div>
@@ -29,7 +29,7 @@
                   </div>
                 <% end %>
               <% end %>
-              <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 10 } %>
+              <%= f.filestack_field :images_input, '+', class: 'thumbnail upload-button px-0', id: 'unique-iddd', input_id: 'unique-input-idsd', pickerOptions: { accept: ["image/*"], onFileUploadFinished: 'callbackOnFileUploadFinished', maxFiles: 50 } %>
             </div>
           </div>
         </div>
