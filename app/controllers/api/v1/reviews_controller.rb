@@ -170,6 +170,7 @@ module Api
               "google_url": "",
               "foursquare_url": "",
               "yelp_url": "",
+              "sub_category_name": "Afghan",
               "notes": "sakdvbaskbdvkjasbdvckljasbdkjvcas.dkbcjsavdjchasd",
               "images": [
                   "https://cdn.filestackcontent.com/jfx62MmZRmGcuWPFgUQh",
