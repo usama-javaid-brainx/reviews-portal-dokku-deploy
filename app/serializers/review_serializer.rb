@@ -8,7 +8,7 @@ class ReviewSerializer < ActiveModel::Serializer
   end
 
   def sub_category_name
-    object.sub_category&.name
+    object.sub_category.present? ? object.sub_category.name : ""
   end
 
 end
