@@ -51,7 +51,8 @@ module Api
             "url": null,
             "google_url": null,
             "foursquare_url": "https://foursquare.com/v/antidote/4cab506a2f08236a745c8561",
-            "yelp_url": null
+            "yelp_url": null,
+            "sub_category_name": "Afghan"
         }
         ],
         "meta": {
