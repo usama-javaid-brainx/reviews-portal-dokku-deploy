@@ -34,6 +34,10 @@ export default class extends Controller {
     }
   }
 
+  mainThumbnailDelete(){
+    event.currentTarget.previousElementSibling.src = null
+  }
+
   sortImages() {
     imagesUrl = []
     this.thumbnailSectionTargets.forEach(function (imageWrapper) {
