@@ -87,9 +87,17 @@
     overflow: hidden;
 }
 
-.uploaded-files .main-thumbnail img{
+.uploaded-files .main-thumbnail img#mainThumbnail{
     height: 100%;
+    width: 100%;
     object-fit: cover;
+}
+
+.main-delete-icon{
+    position: absolute;
+    width: 30px;
+    right: 15px;
+    top: 15px;
 }
 
 .uploaded-files .upload-button {
