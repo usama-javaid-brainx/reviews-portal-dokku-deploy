@@ -123,13 +123,13 @@ class ReviewsController < ApplicationController
     user = User.confirm_by_token(params[:auth_token])
     if user.valid? && params[:images_url].blank?
       sign_in(user)
-      # user.update(confirmation_token: nil)
+      user.update(confirmation_token: nil)
       @images = params[:review_id].present? ? Review.find(params[:review_id]).images : nil
       render "/mobile/filestack_view"
     else
       Review.find(params[:review_id]).update(images: params[:images_url])
-      # sign_out(user)
-      # redirect_to new_user_session_path
+      sign_out(user)
+      redirect_to new_user_session_path
     end
   end
 
